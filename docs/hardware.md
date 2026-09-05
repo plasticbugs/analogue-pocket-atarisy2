@@ -187,7 +187,7 @@ that steered the car the wrong way, so **turning right increases the
 count** (`target/pocket/steer_wheel.sv`, verified with the D-pad) and the
 pointer simply turns against the wheel. The analog stick's mapping was left
 as first built (stick right counts down) behind a core-settings toggle,
-"Analog Stick Steering", until a dock pad has been tried. Channel 3 (1813)
+"Analog Stick" (Reversed), until a dock pad has been tried. Channel 3 (1813)
 reads 0xff. Bit 4 of the 6502's 187c
 ("LETA resolution") is ignored by MAME.
 

@@ -79,17 +79,16 @@ name; a game whose image is missing simply will not start.
 
 APB: D-pad or stick steers, B / X / L / R is the accelerator, A is the
 siren (which also starts the game and picks the day; two coins by default),
-Y is the game's other button, Select is coin 1. Its DIP switches are the
-"APB:" entries of the settings menu; Super Sprint's are the "Super Sprint:"
-ones.
+Y is the game's other button, Select is coin 1. The settings menu holds
+16 entries, the Pocket's limit: coinage is shared by both games, the rest
+of the DIP switches are the "SS:" and "APB:" entries.
 
 The wheel turns while a direction is held; its speed is set from the
 Pocket's core settings menu ("Steering Speed"). A dock pad's left stick
-turns it in proportion to its deflection; "Analog Sensitivity" makes it
-half or twice as reactive, and if the stick steers the wrong way set
-"Analog Stick Steering" to Reversed in the same menu (the D-pad's
-direction was checked on hardware, the stick's has not been yet). The DIP
-switches (coinage,
+turns it in proportion to its deflection; the "Analog Stick" entry makes
+it half or twice as reactive and reverses it if it steers the wrong way
+(the D-pad's direction was checked on hardware, the stick's has not been
+yet). The DIP switches (coinage,
 difficulty, obstacles, wrenches) and the self-test switch are in the same
 menu. Settings and high scores (the board's EEPROM) are saved to
 `Saves/atarisy2/plasticbugs.atarisy2/<game>.sav`, one file per game.

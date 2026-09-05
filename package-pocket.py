@@ -42,6 +42,26 @@ for extra in ("ssprint.mra", "apb.mra", "README.md", os.path.join("tools", "mra_
     if os.path.exists(src):
         shutil.copy(src, os.path.join(OUT, os.path.basename(extra)))
 
+# Backstop: the Pocket refuses a core whose interact.json has more than 16
+# entries or a name (variable or option) longer than 23 characters -- it
+# reports "error in interact" at load. Check here rather than on the device.
+import json
+with open(os.path.join(core_dir, "interact.json")) as f:
+    variables = json.load(f)["interact"]["variables"]
+problems = []
+if len(variables) > 16:
+    problems.append(f"{len(variables)} entries (limit 16)")
+for v in variables:
+    if len(v["name"]) > 23:
+        problems.append(f'name too long: "{v["name"]}"')
+    for o in v.get("options", []):
+        if len(o["name"]) > 23:
+            problems.append(f'option too long: "{o["name"]}" in "{v["name"]}"')
+    if len(v.get("options", [])) > 16:
+        problems.append(f'{len(v["options"])} options in "{v["name"]}" (limit 16)')
+if problems:
+    sys.exit("refusing to package, interact.json:\n  " + "\n  ".join(problems))
+
 # Backstop: the instance JSONs are how the Pocket lists the games. Losing one
 # reads as a missing game, which looks like a core bug rather than packaging.
 inst_dir = os.path.join(OUT, "Assets", PLATFORM_ID, CORE_ID)

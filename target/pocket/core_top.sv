@@ -1058,7 +1058,10 @@ module core_top
         .wheel0       ( wheel0         ),
         .wheel1       ( wheel1         ),
         .wheel2       ( wheel2         ),
-        .dsw0         ( g_apb ? dip_sw2 : dip_sw0 ),   // the DIP register's upper half holds APB's sheet (interact.json)
+        // DSW0 bits 4:0 (coinage, multiplier) are the same on every System 2
+        // game and come from the menu's shared entries; bonus coins (7:5) and
+        // DSW1 are per game, APB's in the DIP register's upper half (interact.json)
+        .dsw0         ( g_apb ? {dip_sw2[7:5], dip_sw0[4:0]} : dip_sw0 ),
         .dsw1         ( g_apb ? dip_sw3 : dip_sw1 ),
         .cen_pix      ( ss_ce_pix      ),
         .r            ( ss_r           ),
