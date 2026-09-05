@@ -51,7 +51,9 @@ int main(int argc, char **argv) {
 
     top = new Vtb_system_top;
     top->hw_reset = 1; top->reset = 1; top->dl_active = 0; top->dl_we = 0; top->nv_we = 0; top->nv_addr = 0; top->nv_wdata = 0;
-    top->coin = 0; top->start = 0; top->service = 0;
+    top->coin = 0; top->start = 0; top->btn3 = 0; top->service = 0;
+    int ncoins = getenv("COINS") ? atoi(getenv("COINS")) : 1;   // coins 20 frames apart from coin_frame (as the MAME scripts)
+    int nstarts = getenv("STARTS") ? atoi(getenv("STARTS")) : 1; // start presses 60 frames apart (APB: the siren, on btn3)
     top->pedal0 = top->pedal1 = top->pedal2 = 0xff; top->wheel0 = top->wheel1 = top->wheel2 = 0;
     top->dsw0 = getenv("DSW0") ? strtol(getenv("DSW0"), nullptr, 16) : 0x00;   // MAME's defaults: Super Sprint 00 / c0, APB 00 / 00
     top->dsw1 = getenv("DSW1") ? strtol(getenv("DSW1"), nullptr, 16) : 0xc0;
@@ -120,10 +122,8 @@ int main(int argc, char **argv) {
                 printf("frame %4d: t11 pc %04x, %ld instr, %ld cmds, %ld resps, %ld snd irqs, flags %02x, 6502 at %04x, audio max %d, %llu cycles/frame\n",
                        frame, last_pc, t11_instr, cmds, resps, s_irqs, top->dbg_flags, top->dbg_6502_addr, audio_max, (unsigned long long)(cyc - frame_start));
                 frame_start = cyc; frame++; y = -1; audio_max = 0;
-                if (frame == coin_frame) top->coin = 1;
-                if (frame == coin_frame + 10) top->coin = 0;
-                if (frame == start_frame) top->start = 1;
-                if (frame == start_frame + 10) top->start = 0;
+                for (int k = 0; k < ncoins; k++) { if (frame == coin_frame + 20 * k) top->coin = 1; if (frame == coin_frame + 20 * k + 10) top->coin = 0; }
+                for (int k = 0; k < nstarts; k++) { if (frame == start_frame + 60 * k) { top->start = 1; top->btn3 = 1; } if (frame == start_frame + 60 * k + 10) { top->start = 0; top->btn3 = 0; } }
                 if (frame == pedal_frame) { top->pedal0 = 0x3f; top->wheel0 = 0x30; }   // as tools/dumpstate.lua's PEDAL/WHEEL
             }
             if (top->de && !prev_de) { y++; x = 0; }

@@ -15,6 +15,7 @@ module tb_system_top (
     output logic  [7:0] nv_rdata,
     output logic        nv_dirty,
     input  logic  [2:0] coin, start,
+    input  logic        btn3,           // APB's siren (start)
     input  logic        service,
     input  logic  [7:0] pedal0, pedal1, pedal2, wheel0, wheel1, wheel2, dsw0, dsw1,
     output logic        cen_pix,
@@ -42,7 +43,7 @@ module tb_system_top (
         .dl_active(dl_active), .dl_addr(dl_addr), .dl_data(dl_data), .dl_we(dl_we),
         .cfg_game(cfg_game), .cfg_slapstic(cfg_slapstic), .cfg_flags(cfg_flags), .cfg_pf_bits(cfg_pf_bits), .cfg_mo_bits(cfg_mo_bits),
         .nv_addr(nv_addr), .nv_we(nv_we), .nv_wdata(nv_wdata), .nv_rdata(nv_rdata), .nv_dirty(nv_dirty),
-        .coin(coin), .start(start), .btn2(1'b0), .btn3(1'b0), .service(service),
+        .coin(coin), .start(start), .btn2(1'b0), .btn3(btn3), .service(service),
         .pedal0(pedal0), .pedal1(pedal1), .pedal2(pedal2), .wheel0(wheel0), .wheel1(wheel1), .wheel2(wheel2), .dsw0(dsw0), .dsw1(dsw1),
         .cen_pix(cen_pix), .r(r), .g(g), .b(b), .hsync(hsync), .vsync(vsync), .hblank(hblank), .vblank(vblank), .de(de),
         .audio_l(audio_l), .audio_r(audio_r), .audio_valid(audio_valid),

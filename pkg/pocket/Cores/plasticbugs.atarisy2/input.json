@@ -12,7 +12,7 @@
           },
           {
             "id": 201,
-            "name": "Accelerator (alt) / APB button 2",
+            "name": "Accelerator (alt) / APB siren (start)",
             "key": "pad_btn_a"
           },
           {
@@ -22,7 +22,7 @@
           },
           {
             "id": 203,
-            "name": "Accelerator (alt) / APB button 3",
+            "name": "Accelerator (alt) / APB button 2",
             "key": "pad_btn_y"
           },
           {

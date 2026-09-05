@@ -14,7 +14,7 @@ is gateware; nothing is emulated in software.
 | game | MAME set | status |
 |---|---|---|
 | Super Sprint (1986) | `ssprint` | verified and played on hardware (below) |
-| APB - All Points Bulletin (1987) | `apb` | in the benches: boots, attract mode and the high-score table pixel-identical to MAME, the T11 cycle-exact, the sound board's chips written as MAME writes them, speech through the TMS5220; not yet run on a Pocket |
+| APB - All Points Bulletin (1987) | `apb` | in the benches: boots, attract mode, high-score table and the start of a game pixel-identical to MAME, the T11 cycle-exact, the sound board's chips written as MAME writes them through the attract mode, speech through the TMS5220 (in-game music order still being matched); not yet run on a Pocket |
 
 ## Status (0.2.0)
 
@@ -78,8 +78,8 @@ name; a game whose image is missing simply will not start.
 | dock pads 2 and 3 | players 2 and 3 (their own wheel, pedal, coin and start) |
 
 APB: D-pad or stick steers, B / X / L / R is the accelerator, A is the
-game's button 2 and Y its button 3 (one of them starts the game, which
-takes two coins by default), Select is coin 1. Its DIP switches are the
+siren (which also starts the game and picks the day; two coins by default),
+Y is the game's other button, Select is coin 1. Its DIP switches are the
 "APB:" entries of the settings menu; Super Sprint's are the "Super Sprint:"
 ones.
 

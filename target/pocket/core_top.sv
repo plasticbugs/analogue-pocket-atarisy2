@@ -1005,12 +1005,13 @@ module core_top
     //! Per-game wiring (cfg_game from the image header): Super Sprint's three
     //! players each have a wheel, pedal (ADC 0/1/2), start and coin slot;
     //! APB (game 2) has one wheel (LETA 0), its pedal on ADC 1, two buttons
-    //! on IN0 (A = button 2, Y = button 3), coins on IN1 bits 6/7.
+    //! on IN0 -- button 3 is the SIREN, which also starts the game, so it is
+    //! A; button 2 is Y -- and coins on IN1 bits 6/7.
     wire       g_apb  = (cfg_game == 8'd2);
     wire [2:0] starts = {c3[15], p2_start, p1_start};
     wire [2:0] coins  = g_apb ? {p2_select, p1_select, 1'b0} : {c3[14], p2_select, p1_select};
-    wire       btn2   = g_apb & p1_btn_a;
-    wire       btn3   = g_apb & p1_btn_y;
+    wire       btn2   = g_apb & p1_btn_y;
+    wire       btn3   = g_apb & p1_btn_a;                   // siren / start
 
     //! Diagnostics from the modifier word: bit 5 overlay, bit 6 SDRAM read
     //! capture alternate, bit 7 slow bursts.

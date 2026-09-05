@@ -244,9 +244,14 @@ module ssprint_core
     // sound board
     // ------------------------------------------------------------------------
     // EEPROM: factory defaults from the image share the external port with the save file
-    wire       nv_we_m    = (dl_active && dl_eeprom) ? dl_pulse : nv_we;
-    wire [8:0] nv_addr_m  = (dl_active && dl_eeprom) ? 9'(dl_addr - IMG_EEPROM) : nv_addr;
-    wire [7:0] nv_wdata_m = (dl_active && dl_eeprom) ? dl_data : nv_wdata;
+    // the save port's inputs arrive from the framework's synchronisers (RAM
+    // shift registers, slow to leave) and are registered once here before
+    // the EEPROM's address decode; the path missed 96 MHz by 0.07 ns direct
+    logic [8:0] nv_addr_q; logic nv_we_q; logic [7:0] nv_wdata_q;
+    always_ff @(posedge clk) begin nv_addr_q <= nv_addr; nv_we_q <= nv_we; nv_wdata_q <= nv_wdata; end
+    wire       nv_we_m    = (dl_active && dl_eeprom) ? dl_pulse : nv_we_q;
+    wire [8:0] nv_addr_m  = (dl_active && dl_eeprom) ? 9'(dl_addr - IMG_EEPROM) : nv_addr_q;
+    wire [7:0] nv_wdata_m = (dl_active && dl_eeprom) ? dl_data : nv_wdata_q;
 
     ssprint_sound sound (
         .clk(clk), .reset(mreset), .cen_ym(cen_ym), .irq_tick(irq_tick),

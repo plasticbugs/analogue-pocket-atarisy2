@@ -106,8 +106,8 @@ module ssprint_video
             if (xscroll_we) begin scrollx <= scroll_wdata[15:6]; bank0 <= scroll_wdata[3:0]; end
             if (yscroll_we) begin
                 bank1 <= scroll_wdata[3:0];
-                if (scroll_wdata[4]) begin pend_y <= scroll_wdata[15:7]; pend_valid <= 1'b1; end
-                else scrolly <= scroll_wdata[15:7] - vcnt;          // clocked in at once: this line shows row yscroll
+                if (scroll_wdata[4]) begin pend_y <= scroll_wdata[14:6]; pend_valid <= 1'b1; end   // MAME: newscroll >> 6, 512 rows
+                else scrolly <= scroll_wdata[14:6] - vcnt;          // clocked in at once: this line shows row yscroll
             end
             // a held value takes effect at the top of the next frame: the render
             // of line 0 starts one line early, so apply it when that render starts

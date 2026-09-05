@@ -877,3 +877,6 @@ set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_we_n
 # is a real silicon failure, not lost margin, so let the fitter pad every
 # path, not just the pins.
 set_global_assignment -name OPTIMIZE_HOLD_TIMING "ALL PATHS"
+
+# fitter seed: seed 1 left a 10 ps hold miss at the fast 0 C corner inside the APF bridge (pmp_wr_data_latch -> data table RAM)
+set_global_assignment -name SEED 2

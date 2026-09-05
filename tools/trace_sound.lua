@@ -45,8 +45,10 @@ emu.register_frame_done(function()
     if frames == coin_f + 20 * k then ports[":IN1"].fields["Coin 1"]:set_value(1) end
     if frames == coin_f + 20 * k + 10 then ports[":IN1"].fields["Coin 1"]:clear_value() end
   end
-  if frames == start_f then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:set_value(1) end
-  if frames == start_f + 10 then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:clear_value() end
+  for k = 0, tonumber(os.getenv("STARTS") or "1") - 1 do   -- STARTS=n: n presses, 60 frames apart (APB: siren for start, then day select)
+    if frames == start_f + 60 * k then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:set_value(1) end
+    if frames == start_f + 60 * k + 10 then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:clear_value() end
+  end
   if pedal >= 0 and frames == start_f + 60 then for _, fl in pairs(ports[":ADC0"].fields) do fl:set_value(pedal) end end
   if wheel >= 0 and frames == start_f + 60 then for _, fl in pairs(ports[":LETA0"].fields) do fl:set_value(wheel) end end
   if frames >= nframes then out:close(); m:exit() end
