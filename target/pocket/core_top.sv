@@ -1060,9 +1060,12 @@ module core_top
         .wheel2       ( wheel2         ),
         // DSW0 bits 4:0 (coinage, multiplier) are the same on every System 2
         // game and come from the menu's shared entries; bonus coins (7:5) and
-        // DSW1 are per game, APB's in the DIP register's upper half (interact.json)
-        .dsw0         ( g_apb ? {dip_sw2[7:5], dip_sw0[4:0]} : dip_sw0 ),
-        .dsw1         ( g_apb ? dip_sw3 : dip_sw1 ),
+        // DSW1 are per game. APB's live in the DIP register's bits 26:16
+        // (interact.json; nothing above bit 30 -- the Pocket rejected option
+        // values with bit 31 set): dip_sw2 = its DSW1 bits 7:1 (bit 0, the
+        // attract lights, stays 0 = on), dip_sw3[2:0] = its DSW0 bits 7:5.
+        .dsw0         ( g_apb ? {dip_sw3[2:0], dip_sw0[4:0]} : dip_sw0 ),
+        .dsw1         ( g_apb ? {dip_sw2[7:1], 1'b0} : dip_sw1 ),
         .cen_pix      ( ss_ce_pix      ),
         .r            ( ss_r           ),
         .g            ( ss_g           ),

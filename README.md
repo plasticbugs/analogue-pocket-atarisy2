@@ -79,9 +79,12 @@ name; a game whose image is missing simply will not start.
 
 APB: D-pad or stick steers, B / X / L / R is the accelerator, A is the
 siren (which also starts the game and picks the day; two coins by default),
-Y is the game's other button, Select is coin 1. The settings menu holds
-16 entries, the Pocket's limit: coinage is shared by both games, the rest
-of the DIP switches are the "SS:" and "APB:" entries.
+Y is the game's other button, Select is coin 1. The settings menu is
+held to 14 entries (the Pocket's limit is 16, and 14 is the count proven
+on hardware): coinage is shared by both games, the other DIP switches are
+the "SS:" and "APB:" entries, the two video filters are one "Video
+Filter" list, and Super Sprint's obstacle switch and both games' coin
+multipliers stay at their factory settings.
 
 The wheel turns while a direction is held; its speed is set from the
 Pocket's core settings menu ("Steering Speed"). A dock pad's left stick

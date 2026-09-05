@@ -95,58 +95,46 @@
         ]
       },
       {
-        "name": "Scanlines",
+        "name": "Video Filter",
         "id": 61,
         "type": "list",
         "enabled": true,
         "persist": true,
         "address": "0xF3000000",
         "defaultval": 0,
-        "mask": "0xFFFFFFFC",
+        "mask": "0xFFFFFF8C",
         "options": [
           {
             "name": "Off",
             "value": "0x00000000"
           },
           {
-            "name": "25%",
+            "name": "Scanlines 25%",
             "value": "0x00000001"
           },
           {
-            "name": "50%",
+            "name": "Scanlines 50%",
             "value": "0x00000002"
           },
           {
-            "name": "75%",
+            "name": "Scanlines 75%",
             "value": "0x00000003"
-          }
-        ]
-      },
-      {
-        "name": "Shadow Mask",
-        "id": 62,
-        "type": "list",
-        "enabled": true,
-        "persist": true,
-        "address": "0xF3000000",
-        "defaultval": 0,
-        "mask": "0xFFFFFF8F",
-        "options": [
-          {
-            "name": "Off",
-            "value": "0x00000000"
           },
           {
-            "name": "On",
+            "name": "Shadow mask",
             "value": "0x00000010"
           },
           {
-            "name": "On, rotated",
+            "name": "Shadow mask, rotated",
             "value": "0x00000030"
           },
           {
-            "name": "On, 2x",
+            "name": "Shadow mask 2x",
             "value": "0x00000050"
+          },
+          {
+            "name": "Mask + scanlines 50%",
+            "value": "0x00000012"
           }
         ]
       },
@@ -258,34 +246,6 @@
         ]
       },
       {
-        "name": "SS: Obstacles",
-        "id": 74,
-        "type": "list",
-        "enabled": true,
-        "persist": true,
-        "address": "0xF1000000",
-        "defaultval": 1,
-        "mask": "0xFFFFF3FF",
-        "options": [
-          {
-            "name": "Easy",
-            "value": "0x00000400"
-          },
-          {
-            "name": "Medium",
-            "value": "0x00000000"
-          },
-          {
-            "name": "Medium Hard",
-            "value": "0x00000800"
-          },
-          {
-            "name": "Hard",
-            "value": "0x00000C00"
-          }
-        ]
-      },
-      {
         "name": "SS: Wrenches",
         "id": 75,
         "type": "list",
@@ -321,7 +281,7 @@
         "persist": true,
         "address": "0xF1000000",
         "defaultval": 0,
-        "mask": "0xFF1FFFFF",
+        "mask": "0xF8FFFFFF",
         "options": [
           {
             "name": "None",
@@ -329,31 +289,31 @@
           },
           {
             "name": "1 each 6",
-            "value": "0x00C00000"
+            "value": "0x06000000"
           },
           {
             "name": "1 each 5",
-            "value": "0x00A00000"
+            "value": "0x05000000"
           },
           {
             "name": "1 each 4",
-            "value": "0x00800000"
+            "value": "0x04000000"
           },
           {
             "name": "1 each 3",
-            "value": "0x00600000"
+            "value": "0x03000000"
           },
           {
             "name": "1 each 2",
-            "value": "0x00400000"
+            "value": "0x02000000"
           },
           {
             "name": "1 each 1",
-            "value": "0x00200000"
+            "value": "0x01000000"
           },
           {
             "name": "Free Play",
-            "value": "0x00E00000"
+            "value": "0x07000000"
           }
         ]
       },
@@ -365,15 +325,15 @@
         "persist": true,
         "address": "0xF1000000",
         "defaultval": 2,
-        "mask": "0xF9FFFFFF",
+        "mask": "0xFFF9FFFF",
         "options": [
           {
             "name": "3",
-            "value": "0x02000000"
+            "value": "0x00020000"
           },
           {
             "name": "10",
-            "value": "0x04000000"
+            "value": "0x00040000"
           },
           {
             "name": "25",
@@ -381,7 +341,7 @@
           },
           {
             "name": "199",
-            "value": "0x06000000"
+            "value": "0x00060000"
           }
         ]
       },
@@ -393,19 +353,19 @@
         "persist": true,
         "address": "0xF1000000",
         "defaultval": 3,
-        "mask": "0xC7FFFFFF",
+        "mask": "0xFFC7FFFF",
         "options": [
           {
             "name": "Easiest",
-            "value": "0x38000000"
+            "value": "0x00380000"
           },
           {
             "name": "Very Easy",
-            "value": "0x30000000"
+            "value": "0x00300000"
           },
           {
             "name": "Easy",
-            "value": "0x28000000"
+            "value": "0x00280000"
           },
           {
             "name": "Medium Easy",
@@ -413,19 +373,19 @@
           },
           {
             "name": "Medium Hard",
-            "value": "0x20000000"
+            "value": "0x00200000"
           },
           {
             "name": "Hard",
-            "value": "0x10000000"
+            "value": "0x00100000"
           },
           {
             "name": "Very Hard",
-            "value": "0x08000000"
+            "value": "0x00080000"
           },
           {
             "name": "Hardest",
-            "value": "0x18000000"
+            "value": "0x00180000"
           }
         ]
       },
@@ -437,15 +397,15 @@
         "persist": true,
         "address": "0xF1000000",
         "defaultval": 2,
-        "mask": "0x3FFFFFFF",
+        "mask": "0xFF3FFFFF",
         "options": [
           {
             "name": "3 start / 2 continue",
-            "value": "0x80000000"
+            "value": "0x00800000"
           },
           {
             "name": "3 start / 1 continue",
-            "value": "0xC0000000"
+            "value": "0x00C00000"
           },
           {
             "name": "2 start / 1 continue",
@@ -453,7 +413,7 @@
           },
           {
             "name": "1 start / 1 continue",
-            "value": "0x40000000"
+            "value": "0x00400000"
           }
         ]
       }
