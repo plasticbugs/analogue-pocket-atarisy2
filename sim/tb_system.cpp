@@ -84,8 +84,26 @@ int main(int argc, char **argv) {
     long cmds = 0, t11_instr = 0, resps = 0, s_irqs = 0; uint16_t last_pc = 0;
     uint64_t frame_start = cyc;
     long audio_n = 0; int64_t audio_sum = 0; int16_t audio_max = 0;
+    // TB_EVLOG=<frame>: from that frame on, log every T11 interrupt entry (code, interrupted PC),
+    // sound command and 6502 response with its time and raster position, in the format of
+    // tools/wipe_events.py (MAME's side), to compare the two machines' timelines
+    static int ev_from = getenv("TB_EVLOG") ? atoi(getenv("TB_EVLOG")) : -1;
+    int prev_state = 0; uint64_t t_run = cyc;
     while (frame < frames) {
         tick();
+        {
+            int st = top->rootp->tb_system_top__DOT__core__DOT__main__DOT__cpu__DOT__state;
+            if (ev_from >= 0 && frame >= ev_from) {
+                double t_us = (cyc - t_run) / 96.0;
+                double l = top->rootp->tb_system_top__DOT__core__DOT__video__DOT__vcnt + top->rootp->tb_system_top__DOT__core__DOT__video__DOT__hcnt / 640.0;
+                if (st == 13 && (prev_state == 17 || prev_state == 18))   // S_INT_PUSH1 from S_PAD / S_WAIT
+                    printf("EV %12.1f f=%4d l=%6.1f IRQ  %02x pc=%04x\n", t_us + 11.4, frame, l, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__cp, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__cpu__DOT__r[7]);
+                if (top->dbg_snd_cmd_wr) printf("EV %12.1f f=%4d l=%6.1f CMD  %02x\n", t_us, frame, l, top->dbg_snd_cmd);
+                if (top->rootp->tb_system_top__DOT__core__DOT__snd_resp_wr) printf("EV %12.1f f=%4d l=%6.1f RESP --\n", t_us, frame, l);
+                if (top->rootp->tb_system_top__DOT__core__DOT__snd_resp_rd) printf("EV %12.1f f=%4d l=%6.1f RRD  --\n", t_us, frame, l);
+            }
+            prev_state = st;
+        }
         if (top->dbg_t11_done) { t11_instr++; last_pc = top->dbg_t11_pc; }
         if (top->dbg_snd_cmd_wr) { cmds++; if (getenv("TB_CMDLOG")) printf("frame %d cmd %02x\n", frame, top->dbg_snd_cmd); }
         if (top->rootp->tb_system_top__DOT__core__DOT__snd_resp_wr) resps++;
@@ -104,7 +122,7 @@ int main(int argc, char **argv) {
                 if (frame == coin_frame + 10) top->coin = 0;
                 if (frame == start_frame) top->start = 1;
                 if (frame == start_frame + 10) top->start = 0;
-                if (frame == pedal_frame) top->pedal0 = 0x3f;
+                if (frame == pedal_frame) { top->pedal0 = 0x3f; top->wheel0 = 0x30; }   // as tools/dumpstate.lua's PEDAL/WHEEL
             }
             if (top->de && !prev_de) { y++; x = 0; }
             if (top->de && y >= 0 && y < 384 && x < 512) {

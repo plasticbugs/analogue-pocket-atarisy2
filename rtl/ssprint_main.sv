@@ -70,7 +70,7 @@ module ssprint_main
     logic [15:0] bus_addr, bus_wdata, bus_rdata;
     logic        bus_rd, bus_wr, bus_ack, bus_fetch;
     logic  [1:0] bus_be;
-    logic  [3:0] cp;
+    logic  [3:0] cp /* verilator public_flat_rd */;
     logic  [7:0] dbg_psw;
     logic        dbg_wait;
 

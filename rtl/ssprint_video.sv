@@ -330,7 +330,7 @@ module ssprint_video
     // ------------------------------------------------------------------------
     // motion object engine
     // ------------------------------------------------------------------------
-    typedef enum logic [2:0] { MO_IDLE, MO_CLR, MO_ENT, MO_ENT2, MO_WAIT, MO_PIX } mo_t;
+    typedef enum logic [2:0] { MO_IDLE, MO_CLR, MO_ENT, MO_ENT2, MO_ENT3, MO_WAIT, MO_PIX } mo_t;
     mo_t         mo_st;
     logic  [9:0] mclr;              // clear counter
     logic  [7:0] link;
@@ -342,16 +342,19 @@ module ssprint_video
     logic  [9:0] mxpos;
     logic        mhflip;
     logic  [1:0] mprio, mcolour;
-    // entry decode (from the RAM outputs, valid in MO_ENT2)
-    wire  [8:0] e_y      = mob_q_b[0][14:6];
-    wire [13:0] e_code   = {mob_q_b[0][2:0], mob_q_b[1][10:0]};
-    wire        e_hflip  = mob_q_b[1][14];
-    wire  [3:0] e_height = {1'b0, mob_q_b[1][13:11]} + 4'd1;
-    wire        e_hold   = mob_q_b[1][15];
-    wire  [9:0] e_x      = mob_q_b[2][15:6];
-    wire  [1:0] e_colour = mob_q_b[3][13:12];
-    wire  [1:0] e_prio   = mob_q_b[3][15:14];
-    wire  [7:0] e_link   = mob_q_b[3][10:3];
+    // entry decode, from the entry's words registered off the RAM in MO_ENT2
+    // (the M10K output straight into the row arithmetic missed 96 MHz by
+    // 1.6 ns), valid in MO_ENT3
+    logic [15:0] mo_e [4];
+    wire  [8:0] e_y      = mo_e[0][14:6];
+    wire [13:0] e_code   = {mo_e[0][2:0], mo_e[1][10:0]};
+    wire        e_hflip  = mo_e[1][14];
+    wire  [3:0] e_height = {1'b0, mo_e[1][13:11]} + 4'd1;
+    wire        e_hold   = mo_e[1][15];
+    wire  [9:0] e_x      = mo_e[2][15:6];
+    wire  [1:0] e_colour = mo_e[3][13:12];
+    wire  [1:0] e_prio   = mo_e[3][15:14];
+    wire  [7:0] e_link   = mo_e[3][10:3];
     wire  [8:0] e_ypos   = 9'd0 - e_y - {e_height, 4'b0000};     // (-Y - height*16) & 511
     wire  [8:0] e_row    = rl - e_ypos;                          // & 511
     wire        e_covers = ({1'b0, e_row[8:4]} < {2'b00, e_height});
@@ -391,7 +394,11 @@ module ssprint_video
                 end
             end
             MO_ENT: mo_st <= MO_ENT2;                        // RAM address = link settled -> data next clock
-            MO_ENT2: begin
+            MO_ENT2: begin                                   // RAM data valid: take the entry's words
+                for (int i = 0; i < 4; i++) mo_e[i] <= mob_q_b[i];
+                mo_st <= MO_ENT3;
+            end
+            MO_ENT3: begin
                 if (visited[link] || mcount == 9'd256) mo_st <= MO_IDLE;
                 else begin
                     visited[link] <= 1'b1;

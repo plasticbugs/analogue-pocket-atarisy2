@@ -156,14 +156,24 @@ module ssprint_sound (
         if (rom_we) rom[rom_waddr] <= rom_wdata;
         rom_q <= rom[A[14:0]];
     end
-    // EEPROM: no lock on this board (MAME's 2804 without lock_after_write)
-    logic [7:0] eep [512];
-    logic [7:0] eep_q;
+    // EEPROM: no lock on this board (MAME's 2804 without lock_after_write).
+    // 256 x 16 in a true dual-port block RAM (dpram_be) so the 6502 and the
+    // Pocket's save port each own a write port: as a 512 x 8 array with two
+    // write ports it inferred 4,096 flops behind a 512-way read mux, which
+    // missed 96 MHz by 2.7 ns. Both reads keep their one-clock latency (the
+    // RAM's registered word, then the byte picked by the address's bit 0).
+    logic [15:0] eep_a_q, eep_b_q;
+    dpram_be #(.AW(8)) u_eep (
+        .clk(clk),
+        .a_addr(A[8:1]), .a_we(cen_cpu && wr && sel_eep), .a_be({A[0], ~A[0]}), .a_wdata({cpu_do, cpu_do}), .a_rdata(eep_a_q),
+        .b_addr(nv_addr[8:1]), .b_we(nv_we), .b_be({nv_addr[0], ~nv_addr[0]}), .b_wdata({nv_wdata, nv_wdata}), .b_rdata(eep_b_q)
+    );
+    wire [7:0] eep_q = A[0] ? eep_a_q[15:8] : eep_a_q[7:0];
+    logic nv_a0_q;
+    assign nv_rdata = nv_a0_q ? eep_b_q[15:8] : eep_b_q[7:0];
     always_ff @(posedge clk) begin
-        if (cen_cpu && wr && sel_eep) begin eep[A[8:0]] <= cpu_do; nv_dirty <= ~nv_dirty; end
-        eep_q <= eep[A[8:0]];
-        if (nv_we) eep[nv_addr] <= nv_wdata;
-        nv_rdata <= eep[nv_addr];
+        nv_a0_q <= nv_addr[0];
+        if (cen_cpu && wr && sel_eep) nv_dirty <= ~nv_dirty;
         if (reset) nv_dirty <= 1'b0;
     end
 

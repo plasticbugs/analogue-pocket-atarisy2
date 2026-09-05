@@ -30,19 +30,23 @@ int main(int argc, char **argv) {
     std::vector<Ev> ev; { FILE *f = fopen(argv[2], "r"); if (!f) { perror(argv[2]); return 2; }
       char line[256]; while (fgets(line, sizeof line, f)) { char tag[16]; double us; unsigned a, d, m = 0xffff;
         int n = sscanf(line, "%lf %15s %x %x %x", &us, tag, &a, &d, &m);
+        if (n >= 3 && !strcmp(tag, "FRAME")) { unsigned fr; if (sscanf(line, "%lf FRAME %u", &us, &fr) == 2) ev.push_back({us, tag, fr, 0, 0}); continue; }
         if (n >= 4) ev.push_back({us, tag, a, d, n >= 5 ? m : 0xffffu}); } fclose(f); }
     printf("rom %zu bytes, %zu events\n", rom.size(), ev.size());
     FILE *lf = fopen(argv[4], "w"); if (!lf) { perror(argv[4]); return 2; }
 
     top = new Vtb_sound_top;
     top->reset = 1; top->cpu_reset = 1; top->snd_reset_pulse = 0; top->cmd_wr = 0; top->cmd_data = 0; top->resp_rd = 0;
-    top->coins = 0; top->test = 0; top->dsw0 = 0x00; top->dsw1 = 0xc0; top->rom_we = 0; top->nv_we = 0;
+    top->coins = 0; top->test = 0; top->dsw0 = 0x00; top->dsw1 = 0xc0; top->leta0 = 0; top->rom_we = 0; top->nv_we = 0;
     for (int i = 0; i < 8; i++) tick();
-    top->reset = 0;
+    // load the ROM and the EEPROM with the board still in reset, so that the
+    // clock enables (the 244 Hz IRQ divider in particular) start at t0 as
+    // MAME's timers do
     for (int i = 0; i < 0x8000; i++) { top->rom_we = 1; top->rom_waddr = i; top->rom_wdata = rom[0x88000 + i]; tick(); }
     top->rom_we = 0;
     for (int i = 0; i < 0x200; i++) { top->nv_we = 1; top->nv_addr = i; top->nv_wdata = rom[0x154000 + i]; tick(); }
     top->nv_we = 0;
+    top->reset = 0;
     // MAME: machine_reset holds the 6502 in reset until the T11 releases it
     // (first SRST write in the log); the log's time base starts at the
     // machine's, ours starts here
@@ -50,6 +54,12 @@ int main(int argc, char **argv) {
     size_t ei = 0;
     std::vector<int16_t> wav; uint32_t acc = 0; const uint32_t INC = (uint32_t)(4294967296.0 * 48000.0 / CLK);
     long n_cmd = 0, n_resp = 0, n_rrd = 0;
+    // the coin switch is on the 6502's port: press it over the frames the MAME
+    // capture did (tools/trace_sound.lua COIN=frame, held 10 frames)
+    int coin_frame = getenv("COIN_FRAME") ? atoi(getenv("COIN_FRAME")) : 600;
+    // the steering counter jumps to WHEEL at WHEEL_FRAME (dumpstate.lua / trace_sound.lua: START+60)
+    int wheel_frame = getenv("WHEEL_FRAME") ? atoi(getenv("WHEEL_FRAME")) : 760;
+    int wheel_val = getenv("WHEEL") ? strtol(getenv("WHEEL"), nullptr, 0) : 0x30;
     uint64_t end_cyc = t0 + (uint64_t)(seconds * CLK);
     while (cyc < end_cyc) {
         double now_us = (cyc - t0) / CLK * 1e6;
@@ -60,6 +70,7 @@ int main(int argc, char **argv) {
             if (e.tag == "CMD" && (e.mask & 0xff)) { top->cmd_wr = 1; top->cmd_data = e.data; n_cmd++; }
             else if (e.tag == "SRST" && (e.mask & 0xff)) { top->cpu_reset = e.data & 1; top->snd_reset_pulse = 1; }
             else if (e.tag == "RRD") { top->resp_rd = 1; n_rrd++; }
+            else if (e.tag == "FRAME") { int fr = (int)e.addr; if (fr == coin_frame) top->coins = 1; if (fr == coin_frame + 10) top->coins = 0; if (fr == wheel_frame) top->leta0 = wheel_val; }
         }
         tick();
         double t_us = (cyc - t0) / CLK * 1e6;

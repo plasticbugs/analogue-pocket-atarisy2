@@ -37,9 +37,13 @@ clock-enable pulse from `rtl/clk_enables.sv`:
 A block must never gate `clk`; it samples its `cen`. The T11 is not
 enable-stepped internally: `cen` only counts its per-instruction cycle
 budget, the sequencer runs on every `clk` and bus accesses complete on any
-clock. So nothing in it, in the video engines or in the POKEYs is
-multicycled; `projects/ssprint_pocket.sdc` carries only the SDRAM and T65
-exceptions, each with its argument.
+clock. So nothing in it or in the video engines is multicycled. The T65,
+the jt51 and the two POKEYs are enable-stepped throughout (every register
+in them changes only in an enable clock, the POKEYs' writes included), and
+`projects/ssprint_pocket.sdc` carries an 8/7 multicycle for each of them
+and for the T65 -> POKEY write paths (both ends on `cen_cpu`), plus the
+SDRAM exceptions, each with its argument next to it. The jt51's write port
+samples every clock, so T65 -> jt51 is single-cycle on purpose.
 
 ## Bus and memory interfaces
 

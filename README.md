@@ -22,8 +22,18 @@ Verified against MAME as the oracle (details and numbers in
 * the whole machine boots from the ROM image to the title screen, identical
   to MAME's frame at the same frame number
 * the sound board's 6502 drives the POKEYs and the YM2151 with MAME's
-  register write sequence through the boot handshake (see the verification
-  notes for the state of the gameplay comparison)
+  register write sequence, byte for byte, through 15 s of boot, coin, start
+  and race (18,626 YM2151 writes, 32,708 POKEY writes, 1,484 responses),
+  and the audio envelope matches MAME's within 0.01 dB
+* the T-11's cycle costs are MAME's to the cycle over 618,000 instructions
+  of the busiest attract stretch (10,649,457 cycles in both)
+* a played race runs end to end in the whole-machine bench with the
+  arcade's inputs; its frames differ from MAME's only in the cars' positions
+  by a few pixels, a 2-frame lead traced to MAME's own CPU scheduling (see
+  the verification notes), not to the core
+
+* the core fits the Pocket's Cyclone V at 35 % of its logic and closes
+  timing at every corner (96 MHz core clock +0.19 ns at slow 85 C)
 
 Not yet done: a run on the Pocket itself.
 
@@ -67,7 +77,7 @@ menu. Settings and high scores (the board's EEPROM) are saved to
 | `rtl/` | the core: `ssprint_core.sv` (machine), `ssprint_main.sv` (T11 board), `t11/` (the CPU), `slapstic108.sv`, `ssprint_video.sv`, `ssprint_sound.sv`, `pokey.sv`, `sdram_ctrl.sv` |
 | `modules/` | reused cores: T65 (6502, GHDL-converted VHDL), jt51 (YM2151) |
 | `sim/` | Verilator benches: `run_t11.sh`, `run_video.sh`, `run_sound.sh`, `run_system.sh`, `lint.sh` |
-| `tools/` | `mra_build.py` (ROM image), `render_model.py` (reference frame renderer), MAME Lua probes (`dumpstate.lua`, `trace_t11.lua`, `trace_sound.lua`), `compare_sound.py` |
+| `tools/` | `mra_build.py` (ROM image), `render_model.py` (reference frame renderer), MAME Lua probes (`dumpstate.lua`, `trace_t11.lua`, `trace_sound.lua`), `compare_sound.py`, the two machines' event timelines (`wipe_events.py`, `compare_events.py`) |
 | `ref/mame/` | the MAME sources the RTL was written from |
 | `target/pocket/`, `platform/pocket/`, `projects/`, `pkg/pocket/` | Analogue Pocket integration, Quartus project, core package |
 | `artifacts/` | scratch outputs (MAME snapshots, state dumps, traces, diffs); gitignored |

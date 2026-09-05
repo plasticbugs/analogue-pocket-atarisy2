@@ -239,7 +239,8 @@ module t11 #(
         S_EXEC, S_WR,
         S_JSR_PUSH, S_RTS_POP, S_RTI_POP1, S_RTI_POP2,
         S_INT_PUSH1, S_INT_PUSH2, S_INT_VEC1, S_INT_VEC2,
-        S_PAD, S_WAIT
+        S_PAD, S_WAIT,
+        S_WRR                             // (last: the benches name S_PAD / S_WAIT by index)
     } state_t;
     state_t state;
 
@@ -258,7 +259,17 @@ module t11 #(
     wire  [2:0] cur_mode = opsel ? d_mode : s_mode;
     wire  [2:0] cur_reg  = opsel ? d_reg  : s_reg;
     // autoincrement/decrement amount: 1 for byte accesses through R0-R5, else 2
-    wire  [15:0] step = (is_byte && cur_reg < 3'd6) ? 16'd1 : 16'd2;
+    // every register's autoincrement / autodecrement value, computed ahead of
+    // the selection: the operand engine then picks a sum instead of adding
+    // to a picked register, which keeps opsel -> cur_reg -> r[] to one mux
+    // and an adder off the 96 MHz path (it missed by 0.9 ns with the adder)
+    logic [15:0] r_inc [8], r_dec [8], r_inc2 [8], r_dec2 [8];
+    always_comb for (int i = 0; i < 8; i++) begin
+        r_inc2[i] = r[i] + 16'd2;
+        r_dec2[i] = r[i] - 16'd2;
+        r_inc[i]  = (is_byte && i < 6) ? r[i] + 16'd1 : r_inc2[i];
+        r_dec[i]  = (is_byte && i < 6) ? r[i] - 16'd1 : r_dec2[i];
+    end
     wire  cur_is_byte_mem = is_byte;    // memory operand width for reads/writes
     // a read of the current operand is wanted?
     wire  need_read = opsel ? (dst_read || dummy_read) : 1'b1;
@@ -437,10 +448,12 @@ module t11 #(
                         else begin src_val <= r[cur_reg]; opsel <= 1'b1; end
                     end
                     3'd1: begin ea <= r[cur_reg]; state <= need_read ? S_RD : S_EXEC; end
-                    3'd2: begin ea <= r[cur_reg]; r[cur_reg] <= r[cur_reg] + step; state <= need_read ? S_RD : S_EXEC; end
-                    3'd3: begin ea <= r[cur_reg]; r[cur_reg] <= r[cur_reg] + 16'd2; state <= S_IND; end
-                    3'd4: begin ea <= r[cur_reg] - step; r[cur_reg] <= r[cur_reg] - step; state <= need_read ? S_RD : S_EXEC; end
-                    3'd5: begin ea <= r[cur_reg] - 16'd2; r[cur_reg] <= r[cur_reg] - 16'd2; state <= S_IND; end
+                    // (written per register under its own compare so each r[i] only
+                    // ever takes its own sum, not a mux of all eight)
+                    3'd2: begin ea <= r[cur_reg]; for (int i = 0; i < 8; i++) if (cur_reg == 3'(i)) r[i] <= r_inc[i];  state <= need_read ? S_RD : S_EXEC; end
+                    3'd3: begin ea <= r[cur_reg]; for (int i = 0; i < 8; i++) if (cur_reg == 3'(i)) r[i] <= r_inc2[i]; state <= S_IND; end
+                    3'd4: begin ea <= r_dec[cur_reg];  for (int i = 0; i < 8; i++) if (cur_reg == 3'(i)) r[i] <= r_dec[i];  state <= need_read ? S_RD : S_EXEC; end
+                    3'd5: begin ea <= r_dec2[cur_reg]; for (int i = 0; i < 8; i++) if (cur_reg == 3'(i)) r[i] <= r_dec2[i]; state <= S_IND; end
                     default: state <= S_IDX;           // 6, 7: index word follows
                 endcase
             end
@@ -484,16 +497,12 @@ module t11 #(
                             if (alu_upd[1]) psw[1] <= alu_nzvc[1];
                             if (alu_upd[0]) psw[0] <= alu_nzvc[0];
                             if (dst_write) begin
-                                if (d_mode == 3'd0) begin
-                                    // register destination
-                                    if (aop == A_MFPS)          r[d_reg] <= alu_res;                 // sign-extended PSW
-                                    else if (aop == A_MOV && is_byte) r[d_reg] <= {{8{alu_res[7]}}, alu_res[7:0]};  // MOVB sign-extends
-                                    else if (is_byte)           r[d_reg][7:0] <= alu_res[7:0];
-                                    else                        r[d_reg] <= alu_res;
-                                end else begin
-                                    wr_val <= alu_res;
-                                    state  <= S_WR;
-                                end
+                                // the result is registered (wr_val) before it reaches a
+                                // register or the bus: ALU -> register file in one clock
+                                // missed 96 MHz by 0.5 ns, and the cycle budget pays for
+                                // the extra clock anyway
+                                wr_val <= alu_res;
+                                state  <= (d_mode == 3'd0) ? S_WRR : S_WR;
                             end
                         end
                     end
@@ -523,6 +532,13 @@ module t11 #(
             S_WR: begin
                 if (!bus_wr) `BUS_WRITE(ea, is_byte, wr_val)
                 else if (bus_ack) state <= S_PAD;
+            end
+            S_WRR: begin                                    // register destination
+                if (aop == A_MFPS)                r[d_reg] <= wr_val;                              // sign-extended PSW
+                else if (aop == A_MOV && is_byte) r[d_reg] <= {{8{wr_val[7]}}, wr_val[7:0]};      // MOVB sign-extends
+                else if (is_byte)                 r[d_reg][7:0] <= wr_val[7:0];
+                else                              r[d_reg] <= wr_val;
+                state <= S_PAD;
             end
 
             // JSR: write R[s] at the decremented SP, then R[s] = PC, PC = ea

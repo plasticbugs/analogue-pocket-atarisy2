@@ -1,4 +1,6 @@
--- MAME debugger trace of the T11 for the RTL CPU bench (sim/run_t11.sh).
+-- MAME debugger trace of the T11 for the RTL CPU bench (sim/run_t11.sh):
+-- registers and PSW before every instruction plus the CPU's total cycle
+-- count (CYC), so the bench compares the cycle cost of every instruction.
 -- Run with:  mame ssprint -debug -debugger none -autoboot_script tools/trace_t11.lua
 --   OUT=file       trace file (default artifacts/traces/t11.txt)
 --   START=frame    frame to start tracing at (0 = from reset, default)
@@ -74,7 +76,7 @@ local coin_f  = tonumber(os.getenv("COIN") or "-1")
 local startb_f = tonumber(os.getenv("STARTBTN") or "-1")
 local pedal   = tonumber(os.getenv("PEDAL") or "-1")
 local wheel   = tonumber(os.getenv("WHEEL") or "-1")
-local fmt = string.format("trace %s,:maincpu,noloop,{tracelog \"R0=%%04X R1=%%04X R2=%%04X R3=%%04X R4=%%04X R5=%%04X SP=%%04X PSW=%%02X \",r0,r1,r2,r3,r4,r5,sp,psw}", out)
+local fmt = string.format("trace %s,:maincpu,noloop,{tracelog \"R0=%%04X R1=%%04X R2=%%04X R3=%%04X R4=%%04X R5=%%04X SP=%%04X PSW=%%02X CYC=%%d \",r0,r1,r2,r3,r4,r5,sp,psw,totalcycles}", out)
 if start_f == 0 then dbg:command(fmt); tracing = true end
 dbg:command("go")
 emu.register_frame_done(function()

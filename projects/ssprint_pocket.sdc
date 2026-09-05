@@ -138,3 +138,42 @@ set_multicycle_path -hold  2 -from [get_registers {*|sdram_ctrl:*|last[*]}] -to 
 # ==============================================================================
 set_multicycle_path -setup 8 -from [get_registers {*|T65:*|*}] -to [get_registers {*|T65:*|*}]
 set_multicycle_path -hold  7 -from [get_registers {*|T65:*|*}] -to [get_registers {*|T65:*|*}]
+
+# ==============================================================================
+# jt51 (YM2151). Every state register advances on cen (cen_ym, 3.58 MHz = one
+# pulse per ~26.8 clocks) or cen_p1 (half that): jt51_reg_ch, jt51_reg and
+# jt51_pg are all `always @(posedge clk) if(cen)` blocks (checked in the
+# sources for the failing kf -> keycode_II cone, 14.7 ns in the first fit).
+# The only per-clock writes are the MMR / CSR register-file commits, driven
+# exclusively by ym_wr_p/ym_a0_p/ym_d_p, which ssprint_sound registers ONLY on
+# cen_cpu -- so even those change solely in the clock after a cen boundary,
+# >=26 clocks before the next cen-gated capture. Every jt51-internal path
+# therefore has a full cen period; 8 is a third of the provable margin (the
+# same argument and the same figure as the S.T.U.N. Runner core's).
+# ==============================================================================
+set_multicycle_path -setup 8 -from [get_registers {*|jt51:*|*}] -to [get_registers {*|jt51:*|*}]
+set_multicycle_path -hold  7 -from [get_registers {*|jt51:*|*}] -to [get_registers {*|jt51:*|*}]
+
+# The two POKEYs (rtl/pokey.sv) step on the same 1.79 MHz enable as the
+# 6502 (cen_cpu, one pulse per 53-54 clocks), and their register writes are
+# gated on it too (`we` is cen_cpu & wr & select in ssprint_sound), so every
+# register in the block -- the AUDF/AUDC/AUDCTL/SKCTL registers, the four
+# counters, the polynomial counters, the prescalers and the summed output --
+# changes only in a cen_cpu clock and is captured only in the next one, 53
+# clocks later. The whole MAME step_one_clock (four counters, four LFSRs,
+# the filters and the 6-bit sum) is one combinational chain inside that
+# window; it measured 14.7 ns (counter -> sum, -4.30 ns at 96 MHz), so 8/7
+# as for the T65 is conservative. The read mux (rdata, combinational) and
+# the reset are cross-block and stay single-cycle.
+set_multicycle_path -setup 8 -from [get_registers {*|pokey:*|*}] -to [get_registers {*|pokey:*|*}]
+set_multicycle_path -hold  7 -from [get_registers {*|pokey:*|*}] -to [get_registers {*|pokey:*|*}]
+# ... and from the 6502 into the POKEYs: their we / addr / wdata are the T65's
+# registers (address, data out, R/W) through the board decode, and every T65
+# register changes only in a cen_cpu clock, the same enable the POKEY captures
+# on -- so the write decode that gates the step (a STIMER or SKCTL write in
+# the cen clock takes precedence over the step) has the same 53-clock window.
+# It measured 10.9 ns (T65 address -> we -> step -> borrow, -0.55 ns). The
+# jt51 is NOT covered by anything like this: its write interface samples
+# cs_n / wr_n on every clock, so T65 -> jt51 stays single-cycle (and passes).
+set_multicycle_path -setup 8 -from [get_registers {*|T65:*|*}] -to [get_registers {*|pokey:*|*}]
+set_multicycle_path -hold  7 -from [get_registers {*|T65:*|*}] -to [get_registers {*|pokey:*|*}]

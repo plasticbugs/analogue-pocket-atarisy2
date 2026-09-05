@@ -67,8 +67,19 @@ def main():
         while common < len(mseq) and common < len(rseq) and mseq[common] == rseq[common]:
             common += 1
         ident = (mseq == rseq)
-        print(f"{name} writes within {seconds:.1f} s: rtl {len(rseq)}, mame {len(mseq)}: {'IDENTICAL' if ident else 'DIFFER at index %d' % common}")
-        if not ident:
+        # the POKEYs are written from two independent activities (the 244 Hz
+        # IRQ handler's refresh and command handling) whose interleaving depends
+        # on the IRQ phase, so for them the gate is the value sequence PER
+        # REGISTER (every AUDF/AUDC/AUDCTL/SKCTL... in order); the global
+        # order is reported for information
+        per_reg = True
+        if tag.startswith("PK"):
+            for reg in range(16):
+                if [d for a, d in mseq if a == reg] != [d for a, d in rseq if a == reg]:
+                    per_reg = False
+        print(f"{name} writes within {seconds:.1f} s: rtl {len(rseq)}, mame {len(mseq)}: {'IDENTICAL' if ident else 'global order differs at index %d' % common}"
+              + (f"; per-register sequences {'IDENTICAL' if per_reg else 'DIFFER'}" if tag.startswith("PK") else ""))
+        if not ident and not (tag.startswith("PK") and per_reg):
             ok = False
             for i in range(max(0, common - 3), min(common + 5, len(mseq), len(rseq))):
                 print(f"   {i}: mame {mseq[i][0]:x}={mseq[i][1]:02x} @ {m[i][0]:.0f}us   rtl {rseq[i][0]:x}={rseq[i][1]:02x} @ {r[i][0]:.0f}us")

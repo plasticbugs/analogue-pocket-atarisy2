@@ -18,12 +18,14 @@
 #include <vector>
 #include <string>
 #include <deque>
+#include <map>
+#include <algorithm>
 
 static Vtb_t11_top *top;
 static uint64_t cyc = 0;
 static inline void tick() { top->clk = 0; top->eval(); top->clk = 1; top->eval(); cyc++; }
 
-struct TraceLine { uint16_t r[8]; uint8_t psw; uint16_t pc; std::string dis; int irq; };
+struct TraceLine { uint16_t r[8]; uint8_t psw; uint16_t pc; std::string dis; int irq; long cyc; };
 
 static std::vector<TraceLine> load_trace(const char *path) {
     std::vector<TraceLine> out;
@@ -34,8 +36,10 @@ static std::vector<TraceLine> load_trace(const char *path) {
         // MAME logs "(interrupted at PC, IRQ n)" between the instruction after
         // which it took the interrupt and the handler's first instruction
         if (sscanf(line, " (interrupted at %o, IRQ %u)", &at, &code) == 2) { pending_irq = code; continue; }
-        if (sscanf(line, "R0=%x R1=%x R2=%x R3=%x R4=%x R5=%x SP=%x PSW=%x %o:", &r0, &r1, &r2, &r3, &r4, &r5, &sp, &psw, &pc) != 9) continue;
-        t.irq = pending_irq; pending_irq = 0;
+        long cy = -1;   // MAME's totalcycles before the instruction (traces without CYC= still load)
+        if (sscanf(line, "R0=%x R1=%x R2=%x R3=%x R4=%x R5=%x SP=%x PSW=%x CYC=%ld %o:", &r0, &r1, &r2, &r3, &r4, &r5, &sp, &psw, &cy, &pc) != 10 &&
+            sscanf(line, "R0=%x R1=%x R2=%x R3=%x R4=%x R5=%x SP=%x PSW=%x %o:", &r0, &r1, &r2, &r3, &r4, &r5, &sp, &psw, &pc) != 9) continue;
+        t.irq = pending_irq; pending_irq = 0; t.cyc = cy;
         t.r[0] = r0; t.r[1] = r1; t.r[2] = r2; t.r[3] = r3; t.r[4] = r4; t.r[5] = r5; t.r[6] = sp; t.r[7] = pc; t.psw = psw; t.pc = pc;
         const char *colon = strchr(line, ':'); t.dis = colon ? std::string(colon + 1) : ""; while (!t.dis.empty() && (t.dis.back() == '\n' || t.dis.back() == '\r')) t.dis.pop_back();
         out.push_back(t);
@@ -145,6 +149,8 @@ int main(int argc, char **argv) {
       if (!same(trace[0], r, psw, &w)) { printf("start state differs from trace line 0 (field %d)\n", w); }
       k = 1; }
     long mismatches = 0;
+    // cycle accounting: the core's cen ticks at every matched trace line, against MAME's CYC
+    long cens = 0; std::vector<long> rtl_cyc(trace.size(), -1); rtl_cyc[0] = 0;
     while (k < trace.size() && (long)k < maxi) {
         // arm the interrupt MAME took after the instruction about to run (trace[k-1]):
         // CP is held at MAME's code from that instruction's fetch until the core enters the handler
@@ -170,6 +176,7 @@ int main(int argc, char **argv) {
             wr_seen = 1;
         } else wr_seen = 0;
         tick();
+        if (top->cen) cens++;
         if (top->io_ack) ioi++;
         if (top->dbg_done) {
             steps++;
@@ -198,9 +205,28 @@ int main(int argc, char **argv) {
                 for (int i = 0; i < 8; i++) top->rootp->tb_t11_top__DOT__cpu__DOT__r[i] = t.r[i];
                 top->rootp->tb_t11_top__DOT__cpu__DOT__psw = t.psw;
             }
+            rtl_cyc[k] = cens;
             k++;
         }
         if (cyc - t0 > 4000000000ULL) { printf("timeout\n"); break; }
+    }
+    // cycle costs: trace line j's CYC delta to line j+1 is instruction j's cost (plus 114 for an
+    // interrupt entry MAME took after it); the core's is its cen count between the two matches
+    if (trace[0].cyc >= 0 && k > 1) {
+        long tm = 0, tr = 0, shown = 0; std::map<std::string, std::pair<long, long>> by_op;
+        for (size_t j = 1; j < k; j++) {
+            if (trace[j].cyc < 0 || trace[j - 1].cyc < 0 || rtl_cyc[j] < 0 || rtl_cyc[j - 1] < 0) continue;
+            long m = trace[j].cyc - trace[j - 1].cyc, r = rtl_cyc[j] - rtl_cyc[j - 1];
+            tm += m; tr += r;
+            std::string op = trace[j - 1].dis.substr(0, trace[j - 1].dis.find_first_of(" \t"));
+            if (trace[j].irq) op += "+IRQ";
+            auto &e = by_op[op]; e.first++; e.second += r - m;
+            if (r != m && shown < 20) { shown++; printf("   cycles differ at line %zu: mame %ld rtl %ld  %06o(%04x): %s%s\n", j - 1, m, r, trace[j - 1].pc, trace[j - 1].pc, trace[j - 1].dis.c_str(), trace[j].irq ? "  (+interrupt entry)" : ""); }
+        }
+        printf("CYCLES: mame %ld, rtl %ld (%+.3f %%)\n", tm, tr, tm ? 100.0 * (tr - tm) / tm : 0.0);
+        std::vector<std::pair<std::string, std::pair<long, long>>> v(by_op.begin(), by_op.end());
+        std::sort(v.begin(), v.end(), [](auto &a, auto &b) { return labs(a.second.second) > labs(b.second.second); });
+        for (size_t i = 0; i < v.size() && i < 24; i++) if (v[i].second.second) printf("   %-10s %8ld x, rtl-mame %+ld cycles (%+.2f per instruction)\n", v[i].first.c_str(), v[i].second.first, v[i].second.second, (double)v[i].second.second / v[i].second.first);
     }
     double secs = (cyc - t0) / 96e6;
     printf("matched %zu of %zu trace lines, %ld instructions, %zu of %zu io reads consumed, %.4f s simulated at 10 MHz pacing, %ld mismatches\n",

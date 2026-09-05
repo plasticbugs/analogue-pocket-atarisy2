@@ -1,5 +1,5 @@
 cd projects
-project_open stunrun_pocket -revision stunrun_pocket
+project_open ssprint_pocket -revision ssprint_pocket
 create_timing_netlist -model slow -temperature 0 -voltage 1100
 read_sdc
 update_timing_netlist
