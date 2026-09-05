@@ -3,8 +3,11 @@
 // wheel's quadrature counter as an 8-bit position (LETA), so this is a
 // counter that turns while a direction is held. The rate is menu-selectable
 // (counts per second); a dock pad's stick turns it in proportion to its
-// deflection. Measured in MAME on the track-select wheel: an INCREASING
-// count turns counter-clockwise, so right counts down.
+// deflection. Direction: on the Pocket, D-pad right must count UP (the
+// core first counted down, as MAME's track-select pointer had suggested,
+// and the car steered the wrong way -- docs/hardware.md). The stick keeps
+// the 0.1.0 mapping (stick right counts down) until a dock pad has been
+// tried; `stick_rev` (a core-settings toggle) flips it without a rebuild.
 //------------------------------------------------------------------------------
 `default_nettype none
 
@@ -15,6 +18,7 @@ module steer_wheel (
     input  wire       left, right,    // D-pad
     input  wire       stick_active,   // an analog stick is off centre (framework's own detection)
     input  wire [7:0] stick_x,        // 0x80 centre
+    input  wire       stick_rev,      // reverse the stick's direction (menu: Analog Stick Steering)
     output reg  [7:0] pos
 );
     // The inputs arrive from the framework's synchronisers (which Quartus
@@ -25,10 +29,10 @@ module steer_wheel (
     wire [19:0] period = (rate == 2'd0) ? 20'd800000 : (rate == 2'd1) ? 20'd533333 : (rate == 2'd2) ? 20'd355555 : 20'd240000;
     // the stick scales the period by its deflection (7 bits): period * 127 / |x - 0x80|
     wire [7:0] defl = stick_x[7] ? (stick_x - 8'h80) : (8'h80 - stick_x);
-    reg        dir_right, moving;
+    reg        count_up, moving;
     reg [27:0] step, limit;
     always @(posedge clk) begin
-        dir_right <= stick_active ? stick_x[7] : right;
+        count_up  <= stick_active ? (~stick_x[7] ^ stick_rev) : right;   // D-pad right = up; stick right = down unless reversed
         moving    <= stick_active ? (defl > 8'd8) : (left ^ right);
         // one count every `period` clocks at full deflection; the stick adds
         // defl/127 of a count per clock-of-period instead
@@ -41,7 +45,7 @@ module steer_wheel (
         else if (moving) begin
             if (acc + step >= limit) begin
                 acc <= acc + step - limit;
-                pos <= dir_right ? pos - 8'd1 : pos + 8'd1;
+                pos <= count_up ? pos + 8'd1 : pos - 8'd1;
             end else acc <= acc + step;
         end else acc <= '0;
     end

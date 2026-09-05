@@ -59,6 +59,26 @@
         ]
       },
       {
+        "name": "Analog Stick Steering",
+        "id": 65,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF2000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFFFE",
+        "options": [
+          {
+            "name": "Standard",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Reversed",
+            "value": "0x00000001"
+          }
+        ]
+      },
+      {
         "name": "Scanlines",
         "id": 61,
         "type": "list",

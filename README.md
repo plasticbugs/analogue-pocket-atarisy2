@@ -9,7 +9,7 @@ is gateware; nothing is emulated in software.
 > **ROMs are not included and never will be.** You supply your own MAME
 > `ssprint` romset; the core reads one image built from it.
 
-## Status (0.1.0)
+## Status (0.1.1)
 
 Verified against MAME as the oracle (details and numbers in
 `docs/verification.md`):
@@ -35,7 +35,9 @@ Verified against MAME as the oracle (details and numbers in
 * the core fits the Pocket's Cyclone V at 35 % of its logic and closes
   timing at every corner (96 MHz core clock +0.19 ns at slow 85 C)
 
-Not yet done: a run on the Pocket itself.
+* runs on the Pocket: boots, attract mode, coin, start and races with sound;
+  0.1.1 reverses the D-pad steering direction the first hardware run showed
+  wrong (the analog stick keeps its mapping, with a menu toggle to reverse it)
 
 ## Installing
 
@@ -62,7 +64,11 @@ Not yet done: a run on the Pocket itself.
 | dock pads 2 and 3 | players 2 and 3 (their own wheel, pedal, coin and start) |
 
 The wheel turns while a direction is held; its speed is set from the
-Pocket's core settings menu ("Steering Speed"). The DIP switches (coinage,
+Pocket's core settings menu ("Steering Speed"). A dock pad's left stick
+turns it in proportion to its deflection; if the stick steers the wrong way
+set "Analog Stick Steering" to Reversed in the same menu (the D-pad's
+direction was checked on hardware, the stick's has not been yet). The DIP
+switches (coinage,
 difficulty, obstacles, wrenches) and the self-test switch are in the same
 menu. Settings and high scores (the board's EEPROM) are saved to
 `Saves/ssprint/plasticbugs.ssprint/ssprint.sav`.
