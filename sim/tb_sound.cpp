@@ -7,6 +7,7 @@
 //   Vtb_sound_top <ssprint.rom> <mame_log.txt> <seconds> <rtl_log.txt> <rtl.wav>
 #include "Vtb_sound_top.h"
 #include "verilated.h"
+#include "img_layout.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstdint>
@@ -37,14 +38,17 @@ int main(int argc, char **argv) {
 
     top = new Vtb_sound_top;
     top->reset = 1; top->cpu_reset = 1; top->snd_reset_pulse = 0; top->cmd_wr = 0; top->cmd_data = 0; top->resp_rd = 0;
-    top->coins = 0; top->test = 0; top->dsw0 = 0x00; top->dsw1 = 0xc0; top->leta0 = 0; top->rom_we = 0; top->nv_we = 0;
+    top->coins = 0; top->test = 0; top->leta0 = 0; top->rom_we = 0; top->nv_we = 0;
+    top->dsw0 = getenv("DSW0") ? strtol(getenv("DSW0"), nullptr, 16) : 0x00;   // MAME's defaults: Super Sprint 00 / c0
+    top->dsw1 = getenv("DSW1") ? strtol(getenv("DSW1"), nullptr, 16) : 0xc0;
+    top->cfg_tms = rom[7] & 1;   // the image header: a TMS5220 is fitted
     for (int i = 0; i < 8; i++) tick();
     // load the ROM and the EEPROM with the board still in reset, so that the
     // clock enables (the 244 Hz IRQ divider in particular) start at t0 as
     // MAME's timers do
-    for (int i = 0; i < 0x8000; i++) { top->rom_we = 1; top->rom_waddr = i; top->rom_wdata = rom[0x88000 + i]; tick(); }
+    for (int i = 0; i < 0xc000; i++) { top->rom_we = 1; top->rom_waddr = i; top->rom_wdata = rom[IMG_SOUND + i]; tick(); }
     top->rom_we = 0;
-    for (int i = 0; i < 0x200; i++) { top->nv_we = 1; top->nv_addr = i; top->nv_wdata = rom[0x154000 + i]; tick(); }
+    for (int i = 0; i < 0x200; i++) { top->nv_we = 1; top->nv_addr = i; top->nv_wdata = rom[IMG_EEPROM + i]; tick(); }
     top->nv_we = 0;
     top->reset = 0;
     // MAME: machine_reset holds the 6502 in reset until the T11 releases it
@@ -70,7 +74,12 @@ int main(int argc, char **argv) {
             if (e.tag == "CMD" && (e.mask & 0xff)) { top->cmd_wr = 1; top->cmd_data = e.data; n_cmd++; }
             else if (e.tag == "SRST" && (e.mask & 0xff)) { top->cpu_reset = e.data & 1; top->snd_reset_pulse = 1; }
             else if (e.tag == "RRD") { top->resp_rd = 1; n_rrd++; }
-            else if (e.tag == "FRAME") { int fr = (int)e.addr; if (fr == coin_frame) top->coins = 1; if (fr == coin_frame + 10) top->coins = 0; if (fr == wheel_frame) top->leta0 = wheel_val; }
+            else if (e.tag == "FRAME") {
+                int fr = (int)e.addr;
+                static int ncoins = getenv("COINS") ? atoi(getenv("COINS")) : 1;   // as tools/trace_sound.lua: COINS coins, 20 frames apart
+                for (int k = 0; k < ncoins; k++) { if (fr == coin_frame + 20 * k) top->coins = 1; if (fr == coin_frame + 20 * k + 10) top->coins = 0; }
+                if (fr == wheel_frame) top->leta0 = wheel_val;
+            }
         }
         tick();
         double t_us = (cyc - t0) / CLK * 1e6;
@@ -78,7 +87,7 @@ int main(int argc, char **argv) {
         if (top->dbg_pk_wr) fprintf(lf, "%.3f %s %04x %02x\n", t_us, top->dbg_pk_sel ? "PK2" : "PK1", (top->dbg_pk_sel ? 0x1830 : 0x1800) + top->dbg_pk_reg, top->dbg_d);
         if (top->dbg_io_wr) {
             static const char *names[8] = {"TMS", "TMSS", "RESP", "COIN", "ACK", "MIX", "SW", "SEN"};
-            fprintf(lf, "%.3f %s %04x %02x\n", t_us, names[top->dbg_io_reg], 0x1870 + top->dbg_io_reg * 2, top->dbg_d);
+            fprintf(lf, "%.3f %s %04x %02x\n", t_us, names[top->dbg_io_reg], 0x1870 + top->dbg_io_reg * 2 + (top->dbg_io_reg == 1 ? top->dbg_io_a0 : 0), top->dbg_d);   // the strobe's address bit 0 is the /WS level
             if (top->dbg_io_reg == 2) n_resp++;
         }
         uint64_t na = (uint64_t)acc + INC; if (na >> 32) wav.push_back((int16_t)top->audio_l); acc = (uint32_t)na;

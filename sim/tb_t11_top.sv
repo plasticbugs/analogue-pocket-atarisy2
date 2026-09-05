@@ -14,6 +14,7 @@ module tb_t11_top (
     input  logic        init_en,
     input  logic  [5:0] init_bank1, init_bank2,
     input  logic  [1:0] init_slap,
+    input  logic  [7:0] slap_chip,
     // I/O page 1400-1fff reads: level while the read is pending; the C++
     // drives io_rdata before the ack edge; io_ack pulses when it was consumed
     output logic        io_rd,
@@ -79,7 +80,7 @@ module tb_t11_top (
     logic req_d;
     always_ff @(posedge clk) req_d <= req & ~bus_ack;      // rises once per access
     assign bus_strobe = req && !req_d && !bus_ack;         // first clock of a request
-    slapstic108 slap (.clk(clk), .reset(reset), .strobe(bus_strobe), .addr(bus_addr), .bank(slap_bank), .init_en(init_en), .init_bank(init_slap));
+    slapstic slap (.clk(clk), .reset(reset), .chip(slap_chip), .strobe(bus_strobe), .addr(bus_addr), .bank(slap_bank), .init_en(init_en), .init_bank(init_slap));
     assign bus_addr_o = bus_addr;
     assign bus_wr_o = bus_wr;
 

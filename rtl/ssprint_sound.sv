@@ -3,7 +3,9 @@
 // section 7): a 6502 (T65) at 1.789772 MHz with 4 KB RAM, a 32 KB program
 // ROM, the 2804 EEPROM, two POKEYs (rtl/pokey.sv) at the CPU clock, a
 // YM2151 (jt51) at 3.579545 MHz, the command/response latches to the T11,
-// the steering (LETA) and input ports, and the mixer. No TMS5220 on this game.
+// the steering (LETA) and input ports, the mixer, and the TMS5220 speech chip
+// on the games that fit one (cfg_tms from the image header; Super Sprint and
+// Championship Sprint leave the socket empty).
 //
 // Clocking as in the S.T.U.N. Runner JSA II board: the 6502 enable is every
 // other YM2151 enable, so the CPU, the POKEYs and the FM chip stay phase
@@ -22,7 +24,10 @@ module ssprint_sound (
     input  logic        clk,
     input  logic        reset,          // core reset
     input  logic        cen_ym,         // 3.579545 MHz
-    input  logic        irq_tick,       // one-clock pulses at 244.14 Hz (the timed 6502 IRQ)
+    input  logic        irq_tick,
+    input  logic        cen_tms625,     // TMS5220 oscillator enables (625 kHz, 833 kHz)
+    input  logic        cen_tms833,
+    input  logic        cfg_tms,        // a TMS5220 is fitted (image header flags bit 0)       // one-clock pulses at 244.14 Hz (the timed 6502 IRQ)
     input  logic        cpu_reset,      // level from the T11's 15a0 bit 0 (1 = hold the 6502 in reset)
     input  logic        snd_reset_pulse,// T11 wrote 15a0: puts the YM2151 into reset (sndrst_6502_w(0))
 
@@ -44,7 +49,7 @@ module ssprint_sound (
 
     // program ROM load (32 KB, 8000-ffff)
     input  logic        rom_we,
-    input  logic [14:0] rom_waddr,
+    input  logic [15:0] rom_waddr,      // 0x0000-0xbfff = 6502 0x4000-0xffff
     input  logic  [7:0] rom_wdata,
 
     // EEPROM external port (load / save), 512 bytes
@@ -66,6 +71,7 @@ module ssprint_sound (
     output logic  [3:0] dbg_pk_reg,
     output logic        dbg_io_wr,      // 1874/1876/1878/187a/187c/187e: dbg_io_reg = A[3:1]
     output logic  [2:0] dbg_io_reg,
+    output logic        dbg_io_a0,      // the write's A0 (the TMS5220 strobe pair 1872 / 1873)
     output logic  [7:0] dbg_d,
     output logic        dbg_sync,
     output logic [15:0] dbg_addr
@@ -130,7 +136,7 @@ module ssprint_sound (
     wire sel_ram  = (A[15:14] == 2'b00) && (A[12] == 1'b0);                 // 0000-0fff, 2000-2fff
     wire sel_eep  = (A[15:14] == 2'b00) && (A[12] == 1'b1) && (A[11] == 1'b0);  // 1000-17ff mirrors
     wire sel_io   = (A[15:14] == 2'b00) && (A[12] == 1'b1) && (A[11] == 1'b1);  // 1800-1fff mirrors
-    wire sel_rom  = A[15];                                                   // 8000-ffff
+    wire sel_rom  = A[15] | A[14];                                           // 4000-ffff (48 KB; Super Sprint fits 8000-ffff)
     wire [6:0] io = A[6:0];
     wire sel_pk1  = sel_io && (io[6:4] == 3'b000);                          // 00-0f
     wire sel_leta = sel_io && (io[6:4] == 3'b001);                          // 10-1f
@@ -150,11 +156,12 @@ module ssprint_sound (
         if (cen_cpu && wr && sel_ram) ram[A[11:0]] <= cpu_do;
         ram_q <= ram[A[11:0]];
     end
-    logic [7:0] rom [32768];
+    logic [7:0] rom [49152];
     logic [7:0] rom_q;
+    wire [15:0] rom_ra = A - 16'h4000;
     always_ff @(posedge clk) begin
         if (rom_we) rom[rom_waddr] <= rom_wdata;
-        rom_q <= rom[A[14:0]];
+        rom_q <= rom[rom_ra];
     end
     // EEPROM: no lock on this board (MAME's 2804 without lock_after_write).
     // 256 x 16 in a true dual-port block RAM (dpram_be) so the 6502 and the
@@ -211,24 +218,71 @@ module ssprint_sound (
     // mixer / sound enable / misc latches
     // -------------------------------------------------------------------------
     logic [2:0] ym_vol;
+    logic [2:0] tms_vol;
+    // ---- TMS5220 (docs/hardware.md 7.6): data latch, /WS, clock select, reset ----
+    // MAME resets the chip on the sound-reset 0->1 edge (in place of the stream
+    // of 0xff the board really feeds it); the chip resets when /WS and /RS are
+    // both low, so both are held low for 16 chip clocks then.
+    logic [7:0] tms_d;
+    logic       tms_wsn, tms_freq;
+    logic [3:0] tms_rst_n;
+    logic       tms_rdyn;
+    wire        cen_tms = tms_freq ? cen_tms833 : cen_tms625;
+    wire        tms_rst_req = wr_sen && (cpu_do[0] != snd_state) && cpu_do[0];   // MAME: tms5220->reset() on the sound-reset 0->1 edge
+    always_ff @(posedge clk) begin
+        if (reset) begin tms_d <= 8'hff; tms_wsn <= 1'b1; tms_freq <= 1'b0; tms_rst_n <= 4'd15; end
+        else begin
+            if (wr_tmsd) tms_d   <= cpu_do;
+            if (wr_tmss) tms_wsn <= ~A[0];
+            if (wr_swt)  tms_freq <= cpu_do[5];
+            if (tms_rst_req) tms_rst_n <= 4'd15;
+            else if (cen_tms && tms_rst_n != 4'd0) tms_rst_n <= tms_rst_n - 4'd1;
+        end
+    end
+    wire tms_in_rst = (tms_rst_n != 4'd0);
+    wire  [7:0] tms_dbo;
+    wire        tms_intn, tms_m0, tms_m1, tms_a8, tms_a4, tms_a2, tms_a1, tms_romclk, tms_t11, tms_io, tms_prm;
+    wire signed [13:0] tms_spk;
+    TMS5220 u_tms (
+        .I_OSC(clk), .I_ENA(cen_tms),
+        .I_WSn(tms_in_rst ? 1'b0 : tms_wsn), .I_RSn(tms_in_rst ? 1'b0 : 1'b1),     // /RS tied high on the board (init_apb)
+        .I_DATA(1'b0), .I_TEST(1'b0), .I_DBUS(tms_d),
+        .O_DBUS(tms_dbo), .O_RDYn(tms_rdyn_chip), .O_INTn(tms_intn),
+        .O_M0(tms_m0), .O_M1(tms_m1), .O_ADD8(tms_a8), .O_ADD4(tms_a4), .O_ADD2(tms_a2), .O_ADD1(tms_a1), .O_ROMCLK(tms_romclk),
+        .O_T11(tms_t11), .O_IO(tms_io), .O_PRMOUT(tms_prm), .O_SPKR(tms_spk)
+    );
+    wire tms_rdyn_chip;
+    assign tms_rdyn = cfg_tms ? tms_rdyn_chip : 1'b1;
+    wire unused_tms = &{1'b0, tms_dbo, tms_intn, tms_m0, tms_m1, tms_a8, tms_a4, tms_a2, tms_a1, tms_romclk, tms_t11, tms_io, tms_prm};
+    // MAME clip_analog: the lattice output clipped to 12 bits, low 4 bits
+    // dropped, upshifted to 16 with range extension
+    // = {c[11:4], c[10:4], c[10]} for the clipped 12-bit c
+    function automatic logic signed [15:0] tms_clip(input logic signed [13:0] u);
+        logic [11:4] c;                                 // the low 4 bits are dropped (MAME's & ~0xF)
+        c = (u > 14'sd2047) ? 8'h7f : (u < -14'sd2048) ? 8'h80 : u[11:4];
+        tms_clip = {c[11:4], c[10:4], c[10]};
+    endfunction
     logic [1:0] pk_vol;
     logic       snd_state;          // MAME m_sound_reset_state
     logic       ym_reset_n;         // YM2151 reset line (0 = held in reset)
     wire wr_mix = cen_cpu && wr && sel_wr7 && io7 == 3'd5;
     wire wr_sen = cen_cpu && wr && sel_wr7 && io7 == 3'd7;
+    wire wr_tmsd = cen_cpu && wr && sel_wr7 && io7 == 3'd0;                  // 1870: TMS5220 data latch
+    wire wr_tmss = cen_cpu && wr && sel_wr7 && io7 == 3'd1;                  // 1872/1873: /WS high / low (MAME: wsq_w(1 - (offset & 1)))
+    wire wr_swt  = cen_cpu && wr && sel_wr7 && io7 == 3'd6;                  // 187c: misc (bit 5 TMS clock select)
     always_ff @(posedge clk) begin
         if (reset) begin
-            ym_vol <= 3'd7; pk_vol <= 2'd3;            // gains 1.0 until the program writes the mixer
+            ym_vol <= 3'd7; pk_vol <= 2'd3; tms_vol <= 3'd7;   // gains 1.0 until the program writes the mixer
             snd_state <= 1'b0; ym_reset_n <= 1'b1;    // MAME: the chip starts out of reset, the state bit at 0
         end else begin
-            if (wr_mix) begin ym_vol <= cpu_do[2:0]; pk_vol <= cpu_do[4:3]; end
+            if (wr_mix) begin ym_vol <= cpu_do[2:0]; pk_vol <= cpu_do[4:3]; tms_vol <= cpu_do[7:5]; end
             if (snd_reset_pulse) begin                 // sndrst_6502_w(0)
                 if (snd_state) begin snd_state <= 1'b0; ym_reset_n <= 1'b0; end
             end
             if (wr_sen && cpu_do[0] != snd_state) begin
                 snd_state  <= cpu_do[0];
                 ym_reset_n <= cpu_do[0];
-                if (cpu_do[0]) begin ym_vol <= 3'd0; pk_vol <= 2'd0; end   // mixer_w(0) on the 0->1 edge
+                if (cpu_do[0]) begin ym_vol <= 3'd0; pk_vol <= 2'd0; tms_vol <= 3'd0; end   // mixer_w(0) on the 0->1 edge (and the TMS5220 reset, below)
             end
         end
     end
@@ -279,7 +333,7 @@ module ssprint_sound (
     // CPU read mux
     // -------------------------------------------------------------------------
     // IN1: coins (active low) 7:5, self-test 4 (1 = off), 3 = 0, 2 = 1 (no TMS), 1 = P2TALK, 0 = P1TALK
-    wire [7:0] in1 = {~coins[2], ~coins[1], ~coins[0], ~test, 1'b0, 1'b1, resp_full, cmd_full};
+    wire [7:0] in1 = {~coins[2], ~coins[1], ~coins[0], ~test, 1'b0, tms_rdyn, resp_full, cmd_full};   // bit 2: TMS5220 /READY (MAME readyq_r; 1 with no chip)
     wire [7:0] leta_q = (A[1:0] == 2'd0) ? leta0 : (A[1:0] == 2'd1) ? leta1 : (A[1:0] == 2'd2) ? leta2 : 8'hff;
     always_comb begin
         if      (sel_rom)  cpu_di = rom_q;
@@ -303,6 +357,7 @@ module ssprint_sound (
         dbg_pk_reg <= A[3:0];
         dbg_io_wr  <= cen_cpu && wr && sel_wr7;
         dbg_io_reg <= io7;
+        dbg_io_a0  <= A[0];
         dbg_d      <= cpu_do;
     end
 
@@ -318,32 +373,39 @@ module ssprint_sound (
     function automatic logic [12:0] k_pk(input logic [1:0] v);
         case (v) 2'd0: k_pk = 13'd1275; 2'd1: k_pk = 13'd1690; 2'd2: k_pk = 13'd2679; default: k_pk = 13'd5530; endcase
     endfunction
+    // tms: 0.75 x gain(tms_vol), bits 7:5 with 100k / 47k / 22k
+    function automatic logic [12:0] k_tms(input logic [2:0] v);
+        case (v) 3'd0: k_tms = 13'd635; 3'd1: k_tms = 13'd708; 3'd2: k_tms = 13'd814; 3'd3: k_tms = 13'd939;
+                 3'd4: k_tms = 13'd1198; 3'd5: k_tms = 13'd1488; 3'd6: k_tms = 13'd2048; default: k_tms = 13'd3072; endcase
+    endfunction
     function automatic logic signed [15:0] pk_sample(input logic [5:0] s);
         logic [15:0] p;
         p = 16'(s) * 16'd745;
         pk_sample = (p > 16'd32767) ? 16'sd32767 : 16'(p);
     endfunction
     logic signed [15:0] pk1_s, pk2_s;
-    logic signed [29:0] yl, yr, pl, pr;
+    logic signed [29:0] yl, yr, pl, pr, tt;
+    logic signed [15:0] tms_s;
     logic signed [19:0] ml, mr;
     logic [2:0] ph;
     always_ff @(posedge clk) begin
         if (reset) begin
-            pk1_s <= '0; pk2_s <= '0; yl <= '0; yr <= '0; pl <= '0; pr <= '0; ml <= '0; mr <= '0;
+            pk1_s <= '0; pk2_s <= '0; yl <= '0; yr <= '0; pl <= '0; pr <= '0; ml <= '0; mr <= '0; tt <= '0; tms_s <= '0;
             audio_l <= '0; audio_r <= '0; audio_valid <= 1'b0; ph <= '0;
         end else begin
             audio_valid <= 1'b0;
             ph <= {ph[1:0], cen_ym};
-            if (cen_ym) begin pk1_s <= pk_sample(pk1_sum); pk2_s <= pk_sample(pk2_sum); end
+            if (cen_ym) begin pk1_s <= pk_sample(pk1_sum); pk2_s <= pk_sample(pk2_sum); tms_s <= cfg_tms ? tms_clip(tms_spk) : 16'sd0; end
             if (ph[0]) begin
                 yl <= ym_l * $signed({1'b0, k_ym(ym_vol)});
                 yr <= ym_r * $signed({1'b0, k_ym(ym_vol)});
                 pl <= pk1_s * $signed({1'b0, k_pk(pk_vol)});
                 pr <= pk2_s * $signed({1'b0, k_pk(pk_vol)});
+                tt <= tms_s * $signed({1'b0, k_tms(tms_vol)});
             end
             if (ph[2]) begin
-                ml <= 20'(yl >>> 12) + 20'(pl >>> 12);
-                mr <= 20'(yr >>> 12) + 20'(pr >>> 12);
+                ml <= 20'(yl >>> 12) + 20'(pl >>> 12) + 20'(tt >>> 12);
+                mr <= 20'(yr >>> 12) + 20'(pr >>> 12) + 20'(tt >>> 12);
                 audio_valid <= 1'b1;
             end
             if (audio_valid) begin

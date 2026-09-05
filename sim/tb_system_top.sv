@@ -35,11 +35,14 @@ module tb_system_top (
     wire   [1:0] sba;
     wire         dqml, dqmh, cs_n, we_n, ras_n, cas_n, cke, sclk;
 
+    logic [7:0] cfg_game, cfg_slapstic, cfg_flags, cfg_pf_bits, cfg_mo_bits;
+    wire unused_cfg = &{1'b0, cfg_game, cfg_slapstic, cfg_flags, cfg_pf_bits, cfg_mo_bits};
     ssprint_core #(.DBG_OVERLAY(0)) core (
         .clk(clk), .clk_sdram(clk), .hw_reset(hw_reset), .reset(reset), .rd_late(1'b1), .burst_slow(1'b0), .overlay(1'b0),
         .dl_active(dl_active), .dl_addr(dl_addr), .dl_data(dl_data), .dl_we(dl_we),
+        .cfg_game(cfg_game), .cfg_slapstic(cfg_slapstic), .cfg_flags(cfg_flags), .cfg_pf_bits(cfg_pf_bits), .cfg_mo_bits(cfg_mo_bits),
         .nv_addr(nv_addr), .nv_we(nv_we), .nv_wdata(nv_wdata), .nv_rdata(nv_rdata), .nv_dirty(nv_dirty),
-        .coin(coin), .start(start), .service(service),
+        .coin(coin), .start(start), .btn2(1'b0), .btn3(1'b0), .service(service),
         .pedal0(pedal0), .pedal1(pedal1), .pedal2(pedal2), .wheel0(wheel0), .wheel1(wheel1), .wheel2(wheel2), .dsw0(dsw0), .dsw1(dsw1),
         .cen_pix(cen_pix), .r(r), .g(g), .b(b), .hsync(hsync), .vsync(vsync), .hblank(hblank), .vblank(vblank), .de(de),
         .audio_l(audio_l), .audio_r(audio_r), .audio_valid(audio_valid),

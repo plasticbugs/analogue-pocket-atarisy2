@@ -13,19 +13,23 @@ module clk_enables (
     output logic cen_pix,      // 16.000 MHz pixel clock            96 / 6
     output logic cen_10m,      // 10.000 MHz T11                    phase accumulator
     output logic cen_ym,       // 3.579545 MHz YM2151 (6502 = /2)   phase accumulator
-    output logic irq_tick      // 244.140625 Hz sound IRQ           96e6 / 393216
+    output logic irq_tick,     // 244.140625 Hz sound IRQ           96e6 / 393216
+    output logic cen_tms625,   // 625.000 kHz TMS5220 oscillator (20 MHz / 32)      phase accumulator
+    output logic cen_tms833    // 833.333 kHz TMS5220 oscillator (20 MHz / 24; "frequency control" set)
 );
     localparam logic [31:0] INC_10M = 32'd447392427;   // 2^32 * 10.000000 / 96
     localparam logic [31:0] INC_YM  = 32'd160154226;   // 2^32 * 3.579545 / 96
+    localparam logic [31:0] INC_T625 = 32'd27962027;   // 2^32 * 0.625 / 96
+    localparam logic [31:0] INC_T833 = 32'd37282702;   // 2^32 * 0.833333 / 96
 
     logic [2:0]  div6;
-    logic [32:0] acc_10m, acc_ym;
+    logic [32:0] acc_10m, acc_ym, acc_t625, acc_t833;
     logic [18:0] irq_div;
 
     always_ff @(posedge clk) begin
         if (reset) begin
-            div6 <= '0; acc_10m <= '0; acc_ym <= '0; irq_div <= '0;
-            cen_pix <= 1'b0; cen_10m <= 1'b0; cen_ym <= 1'b0; irq_tick <= 1'b0;
+            div6 <= '0; acc_10m <= '0; acc_ym <= '0; irq_div <= '0; acc_t625 <= '0; acc_t833 <= '0;
+            cen_pix <= 1'b0; cen_10m <= 1'b0; cen_ym <= 1'b0; irq_tick <= 1'b0; cen_tms625 <= 1'b0; cen_tms833 <= 1'b0;
         end else begin
             div6    <= (div6 == 3'd5) ? 3'd0 : div6 + 3'd1;
             cen_pix <= (div6 == 3'd5);
@@ -33,6 +37,10 @@ module clk_enables (
             cen_10m <= acc_10m[32];
             acc_ym  <= {1'b0, acc_ym[31:0]} + {1'b0, INC_YM};
             cen_ym  <= acc_ym[32];
+            acc_t625 <= {1'b0, acc_t625[31:0]} + {1'b0, INC_T625};
+            cen_tms625 <= acc_t625[32];
+            acc_t833 <= {1'b0, acc_t833[31:0]} + {1'b0, INC_T833};
+            cen_tms833 <= acc_t833[32];
             irq_div  <= (irq_div == 19'd393215) ? 19'd0 : irq_div + 19'd1;
             irq_tick <= (irq_div == 19'd393215);
         end

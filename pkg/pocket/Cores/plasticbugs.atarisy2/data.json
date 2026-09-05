@@ -3,23 +3,33 @@
         "magic": "APF_VER_1",
         "data_slots": [
             {
-                "name": "ROM Set",
+                "name": "Arcade Game",
                 "id": 0,
                 "required": true,
-                "parameters": "0x8",
-                "filename": "ssprint.rom",
+                "parameters": "0x113",
+                "extensions": [
+                    "json"
+                ],
+                "address": "",
+                "nonvolatile": false
+            },
+            {
+                "name": "ROM",
+                "id": 1,
+                "required": true,
+                "parameters": "0x108",
                 "extensions": [
                     "rom"
                 ],
-                "address": "0x00000000"
+                "address": "0x00000000",
+                "nonvolatile": false
             },
             {
                 "name": "Settings & High Scores",
-                "id": 1,
+                "id": 2,
                 "required": false,
                 "parameters": "0x22",
                 "nonvolatile": true,
-                "filename": "ssprint.sav",
                 "extensions": [
                     "sav"
                 ],

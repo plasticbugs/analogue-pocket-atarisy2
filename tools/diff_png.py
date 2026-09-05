@@ -6,9 +6,9 @@ frame against a MAME snapshot), optionally writing a diff image.
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from render_model import read_png, write_png
+from render_model import read_png, write_png, unrotate
 
-a, b = read_png(sys.argv[1]), read_png(sys.argv[2])
+a, b = unrotate(read_png(sys.argv[1])), unrotate(read_png(sys.argv[2]))
 h, w = min(len(a), len(b)), min(len(a[0]), len(b[0]))
 n, img = 0, []
 for y in range(h):

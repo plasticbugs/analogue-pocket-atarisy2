@@ -1,0 +1,124 @@
+<misterromdescription>
+    <name>APB - All Points Bulletin</name>
+    <setname>apb</setname>
+    <year>1987</year>
+    <manufacturer>Atari Games</manufacturer>
+    <category>Arcade</category>
+    <rbf>atarisy2</rbf>
+
+    <!-- Image format 2 (docs/hardware.md section 9): a 512-byte header, then
+         fixed regions sized for the largest Atari System 2 game so one core
+         reads every image the same way. Each region is laid out as MAME's
+         memory region (gaps read 0x00 there and here), except that a
+         region smaller than its slot is placed so that its two bit-plane
+         halves sit where the full-size region's would (RGN_FRAC(1,2) of the
+         SLOT), and the header's code widths say where the tile codes wrap.
+
+           0x000000     512  header: "ASY2", format 2, game id, slapstic type,
+                             flags (bit 0 TMS5220 fitted, bit 1 vertical screen),
+                             playfield code bits, motion object code bits, name
+           0x000200   32768  T11 fixed program 0x8000-0xffff (7l even byte, 7n odd)
+           0x008200  524288  T11 banked program, MAME region 0x10000-0x8ffff (64 banks of 8 KB)
+           0x088200   49152  6502 program 0x4000-0xffff
+           0x094200  524288  playfield tiles, MAME "tiles" region
+           0x114200 1048576  motion object tiles, MAME "sprites" region (as dumped; the core inverts)
+           0x214200   16384  alphanumerics, MAME "chars" region
+           0x218200     512  2804 EEPROM factory contents
+           0x218400          total
+    -->
+    <rom index="0" zip="apb.zip" md5="3d607d1431c499f600e1551398f2973c">
+
+        <!-- header: magic, format, game 2, slapstic 110, flags 0x03, pf/mo code bits 14/13, name -->
+        <part>41 53 59 32 02 02 6e 03 0e 0d 00 00 00 00 00 00 41 50 42 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</part>
+        <part repeat="464">00</part>
+
+        <!-- T11 fixed program: little-endian words, 7l on the even byte -->
+        <interleave output="16">
+            <part name="136051-2126.7l" crc="8edf4726" map="10"/>
+            <part name="136051-2127.7n" crc="e2b2aff2" map="01"/>
+        </interleave>
+
+        <!-- banked program, MAME region 0x10000-0x8ffff: 64 KB pairs at
+             0x10000, 0x30000 and 0x70000; 0x50000-0x6ffff not fitted -->
+        <interleave output="16">
+            <part name="136051-7128.6f" crc="c08504d2" map="10"/>
+            <part name="136051-7129.6n" crc="79adb57f" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136051-1130.6j" crc="f64c752e" map="10"/>
+            <part name="136051-1131.6p" crc="0a506e04" map="01"/>
+        </interleave>
+        <part repeat="131072">00</part>
+        <interleave output="16">
+            <part name="136051-1132.6l" crc="6d0e7a4e" map="10"/>
+            <part name="136051-1133.6s" crc="af88d429" map="01"/>
+        </interleave>
+
+        <!-- 6502 program 0x4000-0xffff -->
+        <part name="136051-5134.2a" crc="1c8bdeed"/>
+        <part name="136051-5135.2bc" crc="ed6adb91"/>
+        <part name="136051-5136.2d" crc="341f8486"/>
+
+        <!-- playfield tiles: MAME "tiles" region, 0x80000. The 64 KB ROMs
+             load second half first (ROM_CONTINUE); 0x20000 and 0x60000 empty -->
+        <part name="136051-1118.6a" crc="93752c49"/>
+        <part name="136051-1120.6bc" crc="043086f8" offset="0x8000" length="0x8000"/>
+        <part name="136051-1122.7a" crc="5ee79481" offset="0x8000" length="0x8000"/>
+        <part name="136051-1124.7bc" crc="27760395" offset="0x8000" length="0x8000"/>
+        <part repeat="32768">00</part>
+        <part name="136051-1120.6bc" crc="043086f8" offset="0x0000" length="0x8000"/>
+        <part name="136051-1122.7a" crc="5ee79481" offset="0x0000" length="0x8000"/>
+        <part name="136051-1124.7bc" crc="27760395" offset="0x0000" length="0x8000"/>
+        <part name="136051-1117.6cd" crc="cfc3f8a3"/>
+        <part name="136051-1119.6de" crc="68850612" offset="0x8000" length="0x8000"/>
+        <part name="136051-1121.7de" crc="c7977062" offset="0x8000" length="0x8000"/>
+        <part name="136051-1123.7cd" crc="3c96c848" offset="0x8000" length="0x8000"/>
+        <part repeat="32768">00</part>
+        <part name="136051-1119.6de" crc="68850612" offset="0x0000" length="0x8000"/>
+        <part name="136051-1121.7de" crc="c7977062" offset="0x0000" length="0x8000"/>
+        <part name="136051-1123.7cd" crc="3c96c848" offset="0x0000" length="0x8000"/>
+
+        <!-- motion objects: MAME "sprites" region, the full 1 MB slot
+             (as dumped; the core inverts). Each 64 KB ROM's second half
+             sits 0x20000 below its first (ROM_CONTINUE). -->
+        <part name="136051-1105.6t" crc="9b78a88e" offset="0x8000" length="0x8000"/>
+        <part name="136051-1106.6rs" crc="4787ff58" offset="0x8000" length="0x8000"/>
+        <part name="136051-1107.6pr" crc="0e85f2ac" offset="0x8000" length="0x8000"/>
+        <part name="136051-1108.6n" crc="70ff9308" offset="0x8000" length="0x8000"/>
+        <part name="136051-1105.6t" crc="9b78a88e" offset="0x0000" length="0x8000"/>
+        <part name="136051-1106.6rs" crc="4787ff58" offset="0x0000" length="0x8000"/>
+        <part name="136051-1107.6pr" crc="0e85f2ac" offset="0x0000" length="0x8000"/>
+        <part name="136051-1108.6n" crc="70ff9308" offset="0x0000" length="0x8000"/>
+        <part name="136051-1113.6m" crc="4a445356" offset="0x8000" length="0x8000"/>
+        <part name="136051-1114.6kl" crc="b9b27f3c" offset="0x8000" length="0x8000"/>
+        <part name="136051-1115.6jk" crc="a7671dd8" offset="0x8000" length="0x8000"/>
+        <part name="136051-1116.6h" crc="879fc7de" offset="0x8000" length="0x8000"/>
+        <part name="136051-1113.6m" crc="4a445356" offset="0x0000" length="0x8000"/>
+        <part name="136051-1114.6kl" crc="b9b27f3c" offset="0x0000" length="0x8000"/>
+        <part name="136051-1115.6jk" crc="a7671dd8" offset="0x0000" length="0x8000"/>
+        <part name="136051-1116.6h" crc="879fc7de" offset="0x0000" length="0x8000"/>
+        <part name="136051-1101.5t" crc="0ef13513" offset="0x8000" length="0x8000"/>
+        <part name="136051-1102.5rs" crc="401e06fd" offset="0x8000" length="0x8000"/>
+        <part name="136051-1103.5pr" crc="50d820e8" offset="0x8000" length="0x8000"/>
+        <part name="136051-1104.5n" crc="912d878f" offset="0x8000" length="0x8000"/>
+        <part name="136051-1101.5t" crc="0ef13513" offset="0x0000" length="0x8000"/>
+        <part name="136051-1102.5rs" crc="401e06fd" offset="0x0000" length="0x8000"/>
+        <part name="136051-1103.5pr" crc="50d820e8" offset="0x0000" length="0x8000"/>
+        <part name="136051-1104.5n" crc="912d878f" offset="0x0000" length="0x8000"/>
+        <part name="136051-1109.5m" crc="6716a408" offset="0x8000" length="0x8000"/>
+        <part name="136051-1110.5kl" crc="7e184981" offset="0x8000" length="0x8000"/>
+        <part name="136051-1111.5jk" crc="353a14fd" offset="0x8000" length="0x8000"/>
+        <part name="136051-1112.5h" crc="3af7c50f" offset="0x8000" length="0x8000"/>
+        <part name="136051-1109.5m" crc="6716a408" offset="0x0000" length="0x8000"/>
+        <part name="136051-1110.5kl" crc="7e184981" offset="0x0000" length="0x8000"/>
+        <part name="136051-1111.5jk" crc="353a14fd" offset="0x0000" length="0x8000"/>
+        <part name="136051-1112.5h" crc="3af7c50f" offset="0x0000" length="0x8000"/>
+
+        <!-- alphanumerics -->
+        <part name="136051-1125.4t" crc="05a0341c"/>
+
+        <!-- EEPROM: no factory image for this set; a blank 2804 reads 0xff
+             and the game initialises it on first boot -->
+        <part repeat="512">FF</part>
+    </rom>
+</misterromdescription>

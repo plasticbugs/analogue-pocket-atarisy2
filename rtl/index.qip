@@ -9,7 +9,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "
 set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "pokey.sv"]
 set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "sdpram.sv"]
 set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "sdram_ctrl.sv"]
-set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "slapstic108.sv"]
+set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "slapstic.sv"]
 set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "ssprint_core.sv"]
 set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "ssprint_main.sv"]
 set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "ssprint_sound.sv"]
@@ -18,6 +18,8 @@ set_global_assignment -name SYSTEMVERILOG_FILE [file join $::quartus(qip_path) "
 
 # T65 6502 (BSD, Daniel Wallner / MikeJ), GHDL-converted
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "../modules/cpu-t65/gen/t65.v"]
+# TMS5220 speech (GPL-3, d18c7db), GHDL-converted VHDL
+set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "../modules/sound-tms5220/gen/tms5220.v"]
 # jt51 YM2151 (GPL-3, Jose Tejada)
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "../modules/sound-jt51/hdl/jt51_acc.v"]
 set_global_assignment -name VERILOG_FILE [file join $::quartus(qip_path) "../modules/sound-jt51/hdl/jt51_csr_op.v"]

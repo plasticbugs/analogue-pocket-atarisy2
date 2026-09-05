@@ -1,0 +1,618 @@
+{
+  "interact": {
+    "magic": "APF_VER_1",
+    "variables": [
+      {
+        "name": "Reset Core",
+        "id": 0,
+        "type": "action",
+        "enabled": true,
+        "address": "0xF0000000",
+        "value": 1
+      },
+      {
+        "name": "Screen Shape",
+        "id": 60,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF2000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFFF9",
+        "options": [
+          {
+            "name": "Arcade 4:3",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Wide 16:10",
+            "value": "0x00000002"
+          }
+        ]
+      },
+      {
+        "name": "Steering Speed",
+        "id": 64,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF2000000",
+        "defaultval": 1,
+        "mask": "0xFFFFFFE7",
+        "options": [
+          {
+            "name": "Slow",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Normal",
+            "value": "0x00000008"
+          },
+          {
+            "name": "Fast",
+            "value": "0x00000010"
+          },
+          {
+            "name": "Fastest",
+            "value": "0x00000018"
+          }
+        ]
+      },
+      {
+        "name": "Analog Stick Steering",
+        "id": 65,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF2000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFFFE",
+        "options": [
+          {
+            "name": "Standard",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Reversed",
+            "value": "0x00000001"
+          }
+        ]
+      },
+      {
+        "name": "Analog Sensitivity",
+        "id": 67,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF2000000",
+        "defaultval": 1,
+        "mask": "0xFFFFF3FF",
+        "options": [
+          {
+            "name": "Less reactive",
+            "value": "0x00000400"
+          },
+          {
+            "name": "Default",
+            "value": "0x00000000"
+          },
+          {
+            "name": "More reactive",
+            "value": "0x00000800"
+          }
+        ]
+      },
+      {
+        "name": "Scanlines",
+        "id": 61,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF3000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFFFC",
+        "options": [
+          {
+            "name": "Off",
+            "value": "0x00000000"
+          },
+          {
+            "name": "25%",
+            "value": "0x00000001"
+          },
+          {
+            "name": "50%",
+            "value": "0x00000002"
+          },
+          {
+            "name": "75%",
+            "value": "0x00000003"
+          }
+        ]
+      },
+      {
+        "name": "Shadow Mask",
+        "id": 62,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF3000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFF8F",
+        "options": [
+          {
+            "name": "Off",
+            "value": "0x00000000"
+          },
+          {
+            "name": "On",
+            "value": "0x00000010"
+          },
+          {
+            "name": "On, rotated",
+            "value": "0x00000030"
+          },
+          {
+            "name": "On, 2x",
+            "value": "0x00000050"
+          }
+        ]
+      },
+      {
+        "name": "Service Mode",
+        "id": 63,
+        "type": "check",
+        "enabled": true,
+        "persist": false,
+        "address": "0xF0000010",
+        "defaultval": 0,
+        "mask": "0xFFFFFFFE",
+        "value": "0x00000001"
+      },
+      {
+        "name": "Super Sprint: Coinage",
+        "id": 70,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFFFC",
+        "options": [
+          {
+            "name": "1 Coin / 1 Credit",
+            "value": "0x00000000"
+          },
+          {
+            "name": "2 Coins / 1 Credit",
+            "value": "0x00000001"
+          },
+          {
+            "name": "3 Coins / 1 Credit",
+            "value": "0x00000002"
+          },
+          {
+            "name": "4 Coins / 1 Credit",
+            "value": "0x00000003"
+          }
+        ]
+      },
+      {
+        "name": "Super Sprint: Coin Multiplier",
+        "id": 71,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFFE3",
+        "options": [
+          {
+            "name": "x1",
+            "value": "0x00000000"
+          },
+          {
+            "name": "x2",
+            "value": "0x00000004"
+          },
+          {
+            "name": "x3",
+            "value": "0x00000008"
+          },
+          {
+            "name": "x4",
+            "value": "0x0000000C"
+          },
+          {
+            "name": "x5",
+            "value": "0x00000010"
+          },
+          {
+            "name": "x6",
+            "value": "0x00000014"
+          },
+          {
+            "name": "x7",
+            "value": "0x00000018"
+          },
+          {
+            "name": "x8",
+            "value": "0x0000001C"
+          }
+        ]
+      },
+      {
+        "name": "Super Sprint: Bonus Coins",
+        "id": 72,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFF1F",
+        "options": [
+          {
+            "name": "None",
+            "value": "0x00000000"
+          },
+          {
+            "name": "1 each 5",
+            "value": "0x00000080"
+          },
+          {
+            "name": "1 each 4",
+            "value": "0x00000040"
+          },
+          {
+            "name": "1 each 3",
+            "value": "0x000000A0"
+          },
+          {
+            "name": "2 each 4",
+            "value": "0x00000060"
+          },
+          {
+            "name": "1 each 2",
+            "value": "0x00000020"
+          },
+          {
+            "name": "Free Play",
+            "value": "0x000000E0"
+          }
+        ]
+      },
+      {
+        "name": "Super Sprint: Difficulty",
+        "id": 73,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 1,
+        "mask": "0xFFFFFCFF",
+        "options": [
+          {
+            "name": "Easy",
+            "value": "0x00000100"
+          },
+          {
+            "name": "Medium",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Medium Hard",
+            "value": "0x00000200"
+          },
+          {
+            "name": "Hard",
+            "value": "0x00000300"
+          }
+        ]
+      },
+      {
+        "name": "Super Sprint: Obstacles",
+        "id": 74,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 1,
+        "mask": "0xFFFFF3FF",
+        "options": [
+          {
+            "name": "Easy",
+            "value": "0x00000400"
+          },
+          {
+            "name": "Medium",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Medium Hard",
+            "value": "0x00000800"
+          },
+          {
+            "name": "Hard",
+            "value": "0x00000C00"
+          }
+        ]
+      },
+      {
+        "name": "Super Sprint: Wrenches",
+        "id": 75,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 1,
+        "mask": "0xFFFFCFFF",
+        "options": [
+          {
+            "name": "2",
+            "value": "0x00001000"
+          },
+          {
+            "name": "3",
+            "value": "0x00000000"
+          },
+          {
+            "name": "4",
+            "value": "0x00002000"
+          },
+          {
+            "name": "5",
+            "value": "0x00003000"
+          }
+        ]
+      },
+      {
+        "name": "APB: Coinage",
+        "id": 80,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 0,
+        "mask": "0xFFFCFFFF",
+        "options": [
+          {
+            "name": "1 Coin / 1 Credit",
+            "value": "0x00000000"
+          },
+          {
+            "name": "2 Coins / 1 Credit",
+            "value": "0x00010000"
+          },
+          {
+            "name": "3 Coins / 1 Credit",
+            "value": "0x00020000"
+          },
+          {
+            "name": "4 Coins / 1 Credit",
+            "value": "0x00030000"
+          }
+        ]
+      },
+      {
+        "name": "APB: Coin Multiplier",
+        "id": 81,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 0,
+        "mask": "0xFFE3FFFF",
+        "options": [
+          {
+            "name": "x1",
+            "value": "0x00000000"
+          },
+          {
+            "name": "x2",
+            "value": "0x00040000"
+          },
+          {
+            "name": "x3",
+            "value": "0x00080000"
+          },
+          {
+            "name": "x4",
+            "value": "0x000C0000"
+          },
+          {
+            "name": "x5",
+            "value": "0x00100000"
+          },
+          {
+            "name": "x6",
+            "value": "0x00140000"
+          },
+          {
+            "name": "x7",
+            "value": "0x00180000"
+          },
+          {
+            "name": "x8",
+            "value": "0x001C0000"
+          }
+        ]
+      },
+      {
+        "name": "APB: Bonus Coins",
+        "id": 82,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 0,
+        "mask": "0xFF1FFFFF",
+        "options": [
+          {
+            "name": "None",
+            "value": "0x00000000"
+          },
+          {
+            "name": "1 each 6",
+            "value": "0x00C00000"
+          },
+          {
+            "name": "1 each 5",
+            "value": "0x00A00000"
+          },
+          {
+            "name": "1 each 4",
+            "value": "0x00800000"
+          },
+          {
+            "name": "1 each 3",
+            "value": "0x00600000"
+          },
+          {
+            "name": "1 each 2",
+            "value": "0x00400000"
+          },
+          {
+            "name": "1 each 1",
+            "value": "0x00200000"
+          },
+          {
+            "name": "Free Play",
+            "value": "0x00E00000"
+          }
+        ]
+      },
+      {
+        "name": "APB: Attract Lights",
+        "id": 83,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 0,
+        "mask": "0xFEFFFFFF",
+        "options": [
+          {
+            "name": "On",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Off",
+            "value": "0x01000000"
+          }
+        ]
+      },
+      {
+        "name": "APB: Max Continues",
+        "id": 84,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 2,
+        "mask": "0xF9FFFFFF",
+        "options": [
+          {
+            "name": "3",
+            "value": "0x02000000"
+          },
+          {
+            "name": "10",
+            "value": "0x04000000"
+          },
+          {
+            "name": "25",
+            "value": "0x00000000"
+          },
+          {
+            "name": "199",
+            "value": "0x06000000"
+          }
+        ]
+      },
+      {
+        "name": "APB: Difficulty",
+        "id": 85,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 3,
+        "mask": "0xC7FFFFFF",
+        "options": [
+          {
+            "name": "Easiest",
+            "value": "0x38000000"
+          },
+          {
+            "name": "Very Easy",
+            "value": "0x30000000"
+          },
+          {
+            "name": "Easy",
+            "value": "0x28000000"
+          },
+          {
+            "name": "Medium Easy",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Medium Hard",
+            "value": "0x20000000"
+          },
+          {
+            "name": "Hard",
+            "value": "0x10000000"
+          },
+          {
+            "name": "Very Hard",
+            "value": "0x08000000"
+          },
+          {
+            "name": "Hardest",
+            "value": "0x18000000"
+          }
+        ]
+      },
+      {
+        "name": "APB: Coins Required",
+        "id": 86,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 2,
+        "mask": "0x3FFFFFFF",
+        "options": [
+          {
+            "name": "3 to start, 2 to continue",
+            "value": "0x80000000"
+          },
+          {
+            "name": "3 to start, 1 to continue",
+            "value": "0xC0000000"
+          },
+          {
+            "name": "2 to start, 1 to continue",
+            "value": "0x00000000"
+          },
+          {
+            "name": "1 to start, 1 to continue",
+            "value": "0x40000000"
+          }
+        ]
+      },
+      {
+        "name": "Diagnostic overlay",
+        "id": 66,
+        "type": "check",
+        "enabled": true,
+        "persist": false,
+        "address": "0xF2000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFFDF",
+        "value": "0x00000020"
+      }
+    ],
+    "messages": []
+  }
+}

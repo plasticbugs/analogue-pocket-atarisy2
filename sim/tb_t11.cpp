@@ -11,6 +11,7 @@
 #include "Vtb_t11_top.h"
 #include "Vtb_t11_top___024root.h"
 #include "verilated.h"
+#include "img_layout.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstdint>
@@ -81,8 +82,8 @@ int main(int argc, char **argv) {
 
     top = new Vtb_t11_top;
     // ROM image layout (docs/hardware.md section 9)
-    for (int i = 0; i < 16384; i++) top->rootp->tb_t11_top__DOT__rom[i] = rom[i * 2] | (rom[i * 2 + 1] << 8);
-    for (int i = 0; i < 262144; i++) top->rootp->tb_t11_top__DOT__bankrom[i] = rom[0x8000 + i * 2] | (rom[0x8000 + i * 2 + 1] << 8);
+    for (int i = 0; i < 16384; i++) top->rootp->tb_t11_top__DOT__rom[i] = rom[IMG_MAIN_FIXED + i * 2] | (rom[IMG_MAIN_FIXED + i * 2 + 1] << 8);
+    for (int i = 0; i < 262144; i++) top->rootp->tb_t11_top__DOT__bankrom[i] = rom[IMG_MAIN_BANK + i * 2] | (rom[IMG_MAIN_BANK + i * 2 + 1] << 8);
     // optional frozen state for a non-reset window
     if (state_path) {
         FILE *sf = fopen(state_path, "r"); if (!sf) { perror(state_path); return 2; }
@@ -112,6 +113,7 @@ int main(int argc, char **argv) {
     }
 
     top->reset = 1; top->cen = 0; top->cp = 0; top->io_rdata = 0xffff; top->init_en = 0;
+    top->slap_chip = rom[6];   // the image header's slapstic type
     for (int i = 0; i < 4; i++) tick();
     top->reset = 0;
     bool entry_first = false;

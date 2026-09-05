@@ -14,7 +14,7 @@ mkdir -p ../artifacts/diff
 fail=0
 if [ $# -gt 0 ]; then names="$@"; else names="attract_f00400 attract_f00700 play_f01100 play_f01400 play_f01800"; fi
 for n in $names; do
-    ./obj_video/Vtb_video_top ../artifacts/states/$n.txt ../artifacts/ssprint.rom ../artifacts/diff/${n}_rtl.rgb > ../artifacts/diff/${n}_rtl.log || { echo "$n: bench failed"; cat ../artifacts/diff/${n}_rtl.log; fail=1; continue; }
+    ./obj_video/Vtb_video_top ../artifacts/states/$n.txt ${ROM:-../artifacts/ssprint.rom} ../artifacts/diff/${n}_rtl.rgb > ../artifacts/diff/${n}_rtl.log || { echo "$n: bench failed"; cat ../artifacts/diff/${n}_rtl.log; fail=1; continue; }
     tail -1 ../artifacts/diff/${n}_rtl.log
     python3 ../tools/diff_frames.py ../artifacts/diff/${n}_rtl.rgb ../artifacts/snap/$n.png ../artifacts/diff/${n}_rtldiff.png || fail=1
 done

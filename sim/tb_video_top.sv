@@ -17,6 +17,7 @@ module tb_video_top (
     input  logic [15:0] scroll_wdata,
     input  logic        chr_we,
     input  logic [13:0] chr_waddr,
+    input  logic  [3:0] cfg_pf_bits, cfg_mo_bits,
     input  logic  [7:0] chr_wdata,
     // video out
     output logic        cen_out,
@@ -67,6 +68,7 @@ module tb_video_top (
         .sel_pal(sel_pal), .sel_alpha(sel_alpha), .sel_mob(sel_mob), .sel_pft(sel_pft), .sel_pfb(sel_pfb), .cpu_rdata(cpu_rdata),
         .xscroll_we(xscroll_we), .yscroll_we(yscroll_we), .scroll_wdata(scroll_wdata),
         .chr_we(chr_we), .chr_waddr(chr_waddr), .chr_wdata(chr_wdata),
+        .cfg_pf_bits(cfg_pf_bits), .cfg_mo_bits(cfg_mo_bits),
         .b_addr(b_addr), .b_len(b_len), .b_req(b_req), .b_wr(b_wr), .b_idx(b_idx), .b_data(b_data), .b_done(b_done),
         .r(r), .g(g), .b(b), .hsync(hsync), .vsync(vsync), .hblank(hb), .vblank(vb), .de(de),
         .vcount(vcount), .irq_32v(irq32), .irq_vbl(irqv), .line_late(line_late)

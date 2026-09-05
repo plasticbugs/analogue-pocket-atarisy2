@@ -3,14 +3,14 @@
     "magic": "APF_VER_1",
     "metadata": {
       "platform_ids": [
-        "ssprint"
+        "atarisy2"
       ],
-      "shortname": "ssprint",
-      "description": "Super Sprint (Atari Games, 1986) arcade core",
+      "shortname": "atarisy2",
+      "description": "Atari System 2 arcade core: Super Sprint (APB in progress)",
       "author": "plasticbugs",
       "url": "https://github.com/plasticbugs/analogue-pocket-supersprint",
-      "version": "0.1.2",
-      "date_release": "2026-09-04"
+      "version": "0.2.0",
+      "date_release": "2026-09-05"
     },
     "framework": {
       "target_product": "Analogue Pocket",

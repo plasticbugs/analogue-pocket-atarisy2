@@ -29,6 +29,12 @@ module ssprint_core
     input  logic [24:0] dl_addr,
     input  logic  [7:0] dl_data,
     input  logic        dl_we,
+    // from the image header (valid once the download has passed byte 9)
+    output logic  [7:0] cfg_game,       // 1 Super Sprint, 2 APB, ...
+    output logic  [7:0] cfg_slapstic,   // 105 .. 110
+    output logic  [7:0] cfg_flags,      // bit 0 TMS5220 fitted, bit 1 vertical screen
+    output logic  [7:0] cfg_pf_bits,    // playfield tile code width (codes wrap)
+    output logic  [7:0] cfg_mo_bits,    // motion object code width
 
     // EEPROM external port (save file), 512 bytes
     input  logic  [8:0] nv_addr,
@@ -40,6 +46,7 @@ module ssprint_core
     // controls (active high)
     input  logic  [2:0] coin,           // 1, 2, 3
     input  logic  [2:0] start,          // players 1, 2, 3
+    input  logic        btn2, btn3,     // APB's two buttons
     input  logic        service,        // self-test
     input  logic  [7:0] pedal0, pedal1, pedal2,   // 0xff released .. 0x3f floored
     input  logic  [7:0] wheel0, wheel1, wheel2,   // steering counters
@@ -72,8 +79,8 @@ module ssprint_core
     // ------------------------------------------------------------------------
     // clocks and resets
     // ------------------------------------------------------------------------
-    logic cen_10m, cen_ym, irq_tick;
-    clk_enables cen (.clk(clk), .reset(hw_reset), .cen_pix(cen_pix), .cen_10m(cen_10m), .cen_ym(cen_ym), .irq_tick(irq_tick));
+    logic cen_10m, cen_ym, irq_tick, cen_tms625, cen_tms833;
+    clk_enables cen (.clk(clk), .reset(hw_reset), .cen_pix(cen_pix), .cen_10m(cen_10m), .cen_ym(cen_ym), .irq_tick(irq_tick), .cen_tms625(cen_tms625), .cen_tms833(cen_tms833));
     logic sd_ready, wdog_expired;
     // the watchdog reboots the machine: hold reset for a while after it fires
     logic [11:0] wdog_hold;
@@ -116,7 +123,8 @@ module ssprint_core
     // ------------------------------------------------------------------------
     logic dl_we_d;
     wire  dl_pulse = dl_we && !dl_we_d;
-    wire  dl_fixed   = (dl_addr < IMG_MAIN_BANK);
+    wire  dl_hdr     = (dl_addr < IMG_MAIN_FIXED);
+    wire  dl_fixed   = (dl_addr >= IMG_MAIN_FIXED) && (dl_addr < IMG_MAIN_BANK);
     wire  dl_bank    = (dl_addr >= IMG_MAIN_BANK) && (dl_addr < IMG_SOUND);
     wire  dl_sound   = (dl_addr >= IMG_SOUND)     && (dl_addr < IMG_TILES);
     wire  dl_tiles   = (dl_addr >= IMG_TILES)     && (dl_addr < IMG_SPRITES);
@@ -127,10 +135,23 @@ module ssprint_core
     logic [24:1] dl_sd_word;
     always_comb begin
         if (dl_tiles)        dl_sd_word = tiles_img_to_sd(19'(dl_addr - IMG_TILES));
-        else if (dl_sprites) dl_sd_word = sprites_img_to_sd(18'(dl_addr - IMG_SPRITES));
+        else if (dl_sprites) dl_sd_word = sprites_img_to_sd(20'(dl_addr - IMG_SPRITES));
         else                 dl_sd_word = SD_MAIN_BANK + 24'((dl_addr - IMG_MAIN_BANK) >> 1);
     end
     wire [7:0] dl_byte = dl_sprites ? ~dl_data : dl_data;     // ROMREGION_INVERT
+    // the image header: which game this is and how its parts differ (defaults
+    // are Super Sprint's, for an image that is somehow short of a header)
+    always_ff @(posedge clk) begin
+        if (hw_reset) begin cfg_game <= 8'd1; cfg_slapstic <= 8'd108; cfg_flags <= 8'h00; cfg_pf_bits <= 8'd14; cfg_mo_bits <= 8'd11; end
+        else if (dl_pulse && dl_hdr) case (dl_addr[8:0])
+            9'd5: cfg_game     <= dl_data;
+            9'd6: cfg_slapstic <= dl_data;
+            9'd7: cfg_flags    <= dl_data;
+            9'd8: cfg_pf_bits  <= dl_data;
+            9'd9: cfg_mo_bits  <= dl_data;
+            default: ;
+        endcase
+    end
     logic [32:0] wfifo [0:63];      // {word[24:1], lane, byte}
     logic  [6:0] wf_wp, wf_rp;
     wire         wf_empty = (wf_wp == wf_rp);
@@ -172,8 +193,9 @@ module ssprint_core
     logic  [3:0] cp;
 
     ssprint_main main (
+        .cfg_slapstic(cfg_slapstic),
         .clk(clk), .reset(mreset), .cen_10m(cen_10m),
-        .rom_we(dl_pulse && dl_fixed), .rom_waddr(dl_addr[14:0]), .rom_wdata(dl_data),
+        .rom_we(dl_pulse && dl_fixed), .rom_waddr(15'(dl_addr - IMG_MAIN_FIXED)), .rom_wdata(dl_data),
         .brom_addr(c_addr[0]), .brom_req(c_req[0]), .brom_rdata(sd_rdata), .brom_ack(c_ack[0]),
         .vr_addr(vr_addr), .vr_we(vr_we), .vr_be(vr_be), .vr_wdata(vr_wdata),
         .vr_sel_pal(vr_sel_pal), .vr_sel_alpha(vr_sel_alpha), .vr_sel_mob(vr_sel_mob), .vr_sel_pft(vr_sel_pft), .vr_sel_pfb(vr_sel_pfb),
@@ -182,7 +204,7 @@ module ssprint_core
         .snd_cmd_wr(snd_cmd_wr), .snd_cmd(snd_cmd), .snd_cpu_reset(snd_cpu_reset), .snd_reset_pulse(snd_reset_pulse),
         .snd_cmd_full(snd_cmd_full), .snd_cmd_rd(snd_cmd_rd), .snd_resp_full(snd_resp_full), .snd_resp_wr(snd_resp_wr),
         .snd_resp(snd_resp), .snd_resp_rd(snd_resp_rd),
-        .start(start), .service(service), .pedal0(pedal0), .pedal1(pedal1), .pedal2(pedal2),
+        .start(start), .btn2(btn2), .btn3(btn3), .service(service), .pedal0(pedal0), .pedal1(pedal1), .pedal2(pedal2),
         .wdog_expired(wdog_expired),
         .dbg_pc(dbg_t11_pc), .dbg_done(dbg_t11_done), .dbg_slap_bank(slap_bank), .dbg_cp(cp)
     );
@@ -200,7 +222,8 @@ module ssprint_core
         .sel_pal(vr_sel_pal), .sel_alpha(vr_sel_alpha), .sel_mob(vr_sel_mob), .sel_pft(vr_sel_pft), .sel_pfb(vr_sel_pfb),
         .cpu_rdata(vr_rdata),
         .xscroll_we(xscroll_we), .yscroll_we(yscroll_we), .scroll_wdata(scroll_wdata),
-        .chr_we(dl_pulse && dl_chars), .chr_waddr(dl_addr[13:0]), .chr_wdata(dl_data),
+        .chr_we(dl_pulse && dl_chars), .chr_waddr(14'(dl_addr - IMG_CHARS)), .chr_wdata(dl_data),
+        .cfg_pf_bits(cfg_pf_bits[3:0]), .cfg_mo_bits(cfg_mo_bits[3:0]),
         .b_addr(b_addr), .b_len(b_len), .b_req(b_req), .b_wr(b_wr), .b_idx(b_idx), .b_data(b_data), .b_done(b_done),
         .r(v_r), .g(v_g), .b(v_b), .hsync(hsync), .vsync(vsync), .hblank(hblank), .vblank(vblank), .de(de),
         .vcount(vcount), .irq_32v(irq_32v), .irq_vbl(irq_vbl), .line_late(line_late)
@@ -222,16 +245,17 @@ module ssprint_core
     // ------------------------------------------------------------------------
     // EEPROM: factory defaults from the image share the external port with the save file
     wire       nv_we_m    = (dl_active && dl_eeprom) ? dl_pulse : nv_we;
-    wire [8:0] nv_addr_m  = (dl_active && dl_eeprom) ? dl_addr[8:0] : nv_addr;
+    wire [8:0] nv_addr_m  = (dl_active && dl_eeprom) ? 9'(dl_addr - IMG_EEPROM) : nv_addr;
     wire [7:0] nv_wdata_m = (dl_active && dl_eeprom) ? dl_data : nv_wdata;
 
     ssprint_sound sound (
         .clk(clk), .reset(mreset), .cen_ym(cen_ym), .irq_tick(irq_tick),
+        .cen_tms625(cen_tms625), .cen_tms833(cen_tms833), .cfg_tms(cfg_flags[0]),
         .cpu_reset(snd_cpu_reset), .snd_reset_pulse(snd_reset_pulse),
         .cmd_wr(snd_cmd_wr), .cmd_data(snd_cmd), .cmd_full(snd_cmd_full), .cmd_rd_pulse(snd_cmd_rd),
         .resp_rd(snd_resp_rd), .resp_data(snd_resp), .resp_full(snd_resp_full), .resp_wr_pulse(snd_resp_wr),
         .coins(coin), .test(service), .dsw0(dsw0), .dsw1(dsw1), .leta0(wheel0), .leta1(wheel1), .leta2(wheel2),
-        .rom_we(dl_pulse && dl_sound), .rom_waddr(dl_addr[14:0]), .rom_wdata(dl_data),
+        .rom_we(dl_pulse && dl_sound), .rom_waddr(16'(dl_addr - IMG_SOUND)), .rom_wdata(dl_data),
         .nv_addr(nv_addr_m), .nv_we(nv_we_m), .nv_wdata(nv_wdata_m), .nv_rdata(nv_rdata), .nv_dirty(nv_dirty),
         .audio_l(audio_l), .audio_r(audio_r), .audio_valid(audio_valid),
         .dbg_ym_wr(), .dbg_ym_a0(), .dbg_pk_wr(), .dbg_pk_sel(), .dbg_pk_reg(), .dbg_io_wr(), .dbg_io_reg(), .dbg_d(),

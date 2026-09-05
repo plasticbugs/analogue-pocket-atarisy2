@@ -45,6 +45,10 @@ module ssprint_video
     input  logic        chr_we,
     input  logic [13:0] chr_waddr,
     input  logic  [7:0] chr_wdata,
+    // tile code widths from the image header: a code wraps at 2^bits, as
+    // MAME's gfx element count does (Super Sprint 14 / 11, APB 14 / 13)
+    input  logic  [3:0] cfg_pf_bits,
+    input  logic  [3:0] cfg_mo_bits,
 
     // SDRAM burst port
     output logic [24:1] b_addr,
@@ -115,6 +119,8 @@ module ssprint_video
     // video RAMs (port A = CPU, port B = render / scan-out)
     // ------------------------------------------------------------------------
     logic [15:0] pal_q_a, alpha_q_a, pft_q_a, pfb_q_a;
+    wire [13:0] pf_mask = 14'((15'd1 << cfg_pf_bits) - 15'd1);
+    wire [13:0] mo_mask = 14'((15'd1 << cfg_mo_bits) - 15'd1);
     logic [15:0] mob_q_a [4];
     logic [15:0] pal_q_b, alpha_q_b, pft_q_b, pfb_q_b;
     logic [15:0] mob_q_b [4];
@@ -269,7 +275,7 @@ module ssprint_video
             PA_TRD2: begin
                 // pft for rows 0-31, pfb for rows 32-63
                 automatic logic [15:0] w = py[8] ? pfb_q_b : pft_q_b;
-                pf_baddr <= pf_row_addr({w[10] ? bank1 : bank0, w[9:0]}, py[2:0]);
+                pf_baddr <= pf_row_addr({w[10] ? bank1 : bank0, w[9:0]} & pf_mask, py[2:0]);
                 pf_blen  <= 10'd2;
                 pf_breq  <= 1'b1;
                 colour_cat <= {~w[15:14], w[13:11]};
@@ -358,9 +364,8 @@ module ssprint_video
     wire  [8:0] e_ypos   = 9'd0 - e_y - {e_height, 4'b0000};     // (-Y - height*16) & 511
     wire  [8:0] e_row    = rl - e_ypos;                          // & 511
     wire        e_covers = ({1'b0, e_row[8:4]} < {2'b00, e_height});
-    wire [13:0] e_code_t = e_code + {9'd0, e_row[8:4]};          // tile t of the object; only 2048 tiles exist
+    wire [13:0] e_code_t = e_code + {9'd0, e_row[8:4]};          // tile t of the object (wraps at 2^cfg_mo_bits)
     wire  [9:0] e_xpos   = e_hold ? last_x + 10'd16 : e_x;
-    wire unused_mo = &{1'b0, e_code_t[13:11]};
     // pixel: source column (hflip mirrors), the 4 row bytes
     wire  [3:0] msrc  = mhflip ? 4'd15 - mpx[3:0] : mpx[3:0];
     wire  [7:0] mh0   = msrc[3] ? (msrc[2] ? m1[15:8] : m1[7:0]) : (msrc[2] ? m0[15:8] : m0[7:0]);
@@ -406,7 +411,7 @@ module ssprint_video
                     last_x <= e_xpos;
                     link   <= e_link;
                     if (e_covers) begin
-                        mo_baddr <= mo_row_addr(e_code_t[10:0], e_row[3:0]);
+                        mo_baddr <= mo_row_addr(e_code_t & mo_mask, e_row[3:0]);
                         mo_blen  <= 10'd4;
                         mo_breq  <= 1'b1;
                         mxpos <= e_xpos; mhflip <= e_hflip; mprio <= e_prio; mcolour <= e_colour;

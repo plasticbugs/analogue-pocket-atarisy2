@@ -628,7 +628,7 @@ module core_top
         target_dataslot_read     <= 1'b0;
         target_dataslot_getfile  <= 1'b0;
         target_dataslot_openfile <= 1'b0;
-        target_dataslot_id         <= 16'd1;
+        target_dataslot_id         <= 16'd2;   //! the save slot; slot 0 is the instance JSON, slot 1 the ROM
         target_dataslot_slotoffset <= 32'd0;
         target_dataslot_bridgeaddr <= 32'h2000_0000;
         target_dataslot_length     <= 32'h200;
@@ -963,7 +963,10 @@ module core_top
     wire ss_hw_reset = ~pll_core_locked_s;
 
     //! ROM: one slot with the flat 1,393,152-byte image from tools/mra_build.py.
-    wire        ioctl_isROM = ioctl_download && ioctl_index == 16'h0;
+    // Slot 1, not 0: slot 0 carries the instance JSON that names the game (the
+    // Pocket consumes it, the core never sees it), the image arrives in slot 1
+    // and the save lives in slot 2 (data.json).
+    wire        ioctl_isROM = ioctl_download && ioctl_index == 16'h1;
     wire        dl_we       = ioctl_isROM && ioctl_wr;
     wire [24:0] dl_addr     = ioctl_addr[24:0];
     wire  [7:0] dl_data     = ioctl_data;
@@ -992,14 +995,22 @@ module core_top
     synch_3 #(.WIDTH(32)) sync_c3(cont3_key, c3, clk_sys);
     steer_wheel sw2 (.clk(clk_sys), .reset(ss_reset), .rate(steer_rate), .left(c3[2]), .right(c3[3]),
                      .stick_active(1'b0), .stick_x(8'h80), .stick_rev(1'b0), .stick_sens(2'd0), .pos(wheel2));
-    wire       gas1 = p1_btn_a | p1_btn_b | p1_btn_x | p1_btn_y | p1_btn_l1 | p1_btn_r1;
+    wire       gas1 = g_apb ? (p1_btn_b | p1_btn_x | p1_btn_l1 | p1_btn_r1)          // A and Y are APB's buttons
+                             : (p1_btn_a | p1_btn_b | p1_btn_x | p1_btn_y | p1_btn_l1 | p1_btn_r1);
     wire       gas2 = p2_btn_a | p2_btn_b | p2_btn_x | p2_btn_y | p2_btn_l1 | p2_btn_r1;
     wire       gas3 = c3[4] | c3[5] | c3[6] | c3[7] | c3[8] | c3[9];
     wire [7:0] pedal0 = gas1 ? 8'h3f : 8'hff;
-    wire [7:0] pedal1 = gas2 ? 8'h3f : 8'hff;
+    wire [7:0] pedal1 = (g_apb ? gas1 : gas2) ? 8'h3f : 8'hff;    // APB reads its pedal on ADC 1
     wire [7:0] pedal2 = gas3 ? 8'h3f : 8'hff;
+    //! Per-game wiring (cfg_game from the image header): Super Sprint's three
+    //! players each have a wheel, pedal (ADC 0/1/2), start and coin slot;
+    //! APB (game 2) has one wheel (LETA 0), its pedal on ADC 1, two buttons
+    //! on IN0 (A = button 2, Y = button 3), coins on IN1 bits 6/7.
+    wire       g_apb  = (cfg_game == 8'd2);
     wire [2:0] starts = {c3[15], p2_start, p1_start};
-    wire [2:0] coins  = {c3[14], p2_select, p1_select};
+    wire [2:0] coins  = g_apb ? {p2_select, p1_select, 1'b0} : {c3[14], p2_select, p1_select};
+    wire       btn2   = g_apb & p1_btn_a;
+    wire       btn3   = g_apb & p1_btn_y;
 
     //! Diagnostics from the modifier word: bit 5 overlay, bit 6 SDRAM read
     //! capture alternate, bit 7 slow bursts.
@@ -1016,7 +1027,9 @@ module core_top
     wire        dbg_t11_done, dbg_snd_cmd_wr;
     wire  [7:0] nv_rd_data_core;
 
+    wire [7:0] cfg_game, cfg_slapstic, cfg_flags, cfg_pf_bits, cfg_mo_bits;   // from the image header
     ssprint_core #(.DBG_OVERLAY(1)) ss (
+        .cfg_game(cfg_game), .cfg_slapstic(cfg_slapstic), .cfg_flags(cfg_flags), .cfg_pf_bits(cfg_pf_bits), .cfg_mo_bits(cfg_mo_bits),
         .clk          ( clk_sys        ),
         .clk_sdram    ( clk_sdram      ),
         .hw_reset     ( ss_hw_reset    ),
@@ -1035,6 +1048,8 @@ module core_top
         .nv_dirty     ( po_nv_dirty    ),
         .coin         ( coins          ),
         .start        ( starts         ),
+        .btn2         ( btn2           ),
+        .btn3         ( btn3           ),
         .service      ( svc_sw         ),
         .pedal0       ( pedal0         ),
         .pedal1       ( pedal1         ),
@@ -1042,8 +1057,8 @@ module core_top
         .wheel0       ( wheel0         ),
         .wheel1       ( wheel1         ),
         .wheel2       ( wheel2         ),
-        .dsw0         ( dip_sw0        ),
-        .dsw1         ( dip_sw1        ),
+        .dsw0         ( g_apb ? dip_sw2 : dip_sw0 ),   // the DIP register's upper half holds APB's sheet (interact.json)
+        .dsw1         ( g_apb ? dip_sw3 : dip_sw1 ),
         .cen_pix      ( ss_ce_pix      ),
         .r            ( ss_r           ),
         .g            ( ss_g           ),
@@ -1076,9 +1091,11 @@ module core_top
     );
     assign nv_rd_data = nv_rd_data_core;
 
-    //! Screen shape from the Interact menu (video.json mode 0 = 4:3 = square pixels here, 1 = full width).
+    //! Screen shape from the Interact menu: video.json modes 0 = 4:3 (square
+    //! pixels here), 1 = full width; a vertical game (header flag bit 1, APB)
+    //! uses modes 2 (3:4, rotated) and 3 (full height, rotated).
     wire [1:0] aspect_sel = mod_sw0[2:1];
-    assign video_preset = (aspect_sel == 2'd1) ? 3'd1 : 3'd0;
+    assign video_preset = cfg_flags[1] ? ((aspect_sel == 2'd1) ? 3'd3 : 3'd2) : ((aspect_sel == 2'd1) ? 3'd1 : 3'd0);
 
     //! ------------------------------------------------------------------
     //! Video: the core emits exactly one pixel per clk_vid (16 MHz = clk_sys/6),

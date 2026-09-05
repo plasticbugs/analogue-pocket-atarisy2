@@ -19,6 +19,7 @@ module ssprint_main
 
     // fixed program ROM load (32 KB, 8000-ffff)
     input  logic        rom_we,
+    input  logic  [7:0] cfg_slapstic,       // the image header's slapstic type (105..110)
     input  logic [14:0] rom_waddr,
     input  logic  [7:0] rom_wdata,
 
@@ -53,6 +54,7 @@ module ssprint_main
 
     // inputs (active high)
     input  logic  [2:0] start,                 // players 1, 2, 3
+    input  logic        btn2, btn3,     // APB's buttons (IN0 bits 1 and 3)
     input  logic        service,               // self-test switch on
     input  logic  [7:0] pedal0, pedal1, pedal2,// ADC channels 0-2 (0xff = released)
 
@@ -92,7 +94,7 @@ module ssprint_main
     always_ff @(posedge clk) req_d <= req & ~bus_ack;
     wire  bus_strobe = req && !req_d && !bus_ack;
     logic [1:0] slap_bank;
-    slapstic108 slap (.clk(clk), .reset(reset), .strobe(bus_strobe), .addr(bus_addr), .bank(slap_bank), .init_en(1'b0), .init_bank(2'd0));
+    slapstic slap (.clk(clk), .reset(reset), .chip(cfg_slapstic), .strobe(bus_strobe), .addr(bus_addr), .bank(slap_bank), .init_en(1'b0), .init_bank(2'd0));
     assign dbg_slap_bank = slap_bank;
 
     // ------------------------------------------------------------------------
@@ -178,7 +180,10 @@ module ssprint_main
     assign snd_cmd  = bus_wdata[7:0];
     assign brom_addr = SD_MAIN_BANK + {5'd0, (a[13] ? bank2 : bank1), a[12:1]};
     // IN0: service (1 = off), start 1/2 (active low), P1TALK, P2TALK, start 3 (active low)
-    wire [15:0] in0 = {~service, 7'b1111111, ~start[0], ~start[1], snd_cmd_full, snd_resp_full, ~start[2], 3'b111};
+    // IN0 (MAME atarisy2 "IN0"): bit 15 self-test, 7/6/3 = start 1/2/3 on the
+    // Sprints; APB reads its two buttons on bits 1 and 3 (paperboy's base map
+    // has buttons on 7 and 6, which the core does not fit)
+    wire [15:0] in0 = {~service, 7'b1111111, ~start[0], ~start[1], snd_cmd_full, snd_resp_full, ~(start[2] | btn3), 1'b1, ~btn2, 1'b1};
 
     always_ff @(posedge clk) begin
         bus_ack <= 1'b0; xscroll_we <= 1'b0; yscroll_we <= 1'b0; snd_cmd_wr <= 1'b0; snd_reset_pulse <= 1'b0; snd_resp_rd <= 1'b0;

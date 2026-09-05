@@ -87,7 +87,7 @@ jobs:
       - name: Upload package
         uses: actions/upload-artifact@v4
         with:
-          name: ssprint-pocket
+          name: atarisy2-pocket
           path: release/pocket/
           if-no-files-found: error
 
@@ -103,11 +103,11 @@ jobs:
             echo "release ${GITHUB_REF_NAME} already published; skipping"
             exit 0
           fi
-          cd release/pocket && zip -qr ../../ssprint-pocket-sdcard.zip . && cd ../..
+          cd release/pocket && zip -qr ../../atarisy2-pocket-sdcard.zip . && cd ../..
           gh release create "${GITHUB_REF_NAME}" \
             --title "Super Sprint for Analogue Pocket ${GITHUB_REF_NAME}" \
-            --notes "Unzip onto the Pocket SD card root, overwriting previous files. The ROM image goes in Assets/ssprint/common/." \
-            ssprint-pocket-sdcard.zip
+            --notes "Unzip onto the Pocket SD card root, overwriting previous files. ROM images go in Assets/atarisy2/common/." \
+            atarisy2-pocket-sdcard.zip
 
       - name: Upload reports
         if: always()

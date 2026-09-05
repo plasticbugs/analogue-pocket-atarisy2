@@ -415,6 +415,37 @@ bits are set. POKEY output (MAME `LEGACY_LINEAR`): sum of the four channels'
 volume nibbles (0-60) times `32767/11/4` = 744.7, clipped at 32767 (so 44
 volume units already saturate).
 
+### 7.6 TMS5220 speech (Paperboy, 720, APB; not fitted on the Sprints)
+
+MAME's `atarisy2` base config fits a TMS5220C at MASTER_CLOCK/4/4/2 =
+625 kHz and Super Sprint / Championship Sprint remove it (`device_remove("tms")`).
+The image header's flags bit 0 says whether the board has one; the core
+instantiates it always (`modules/sound-tms5220`, d18c7db's VHDL from MAME's
+`tms5220.cpp`, GHDL-converted) and mutes and ignores it when not fitted.
+
+* **1870** write: the data latch (the chip's D0-7).
+* **1872 / 1873** write: /WS. MAME's `tms5220_strobe_w` does
+  `wsq_w(1 - (offset & 1))`: 1872 raises /WS, 1873 lowers it (the driver's
+  memory-map comment says the opposite; the code is what MAME runs and what
+  the core follows). /RS is tied high (`init_apb`: `rsq_w(1)`).
+* **187a** bits 7:5: the chip's volume, 100k / 47k / 22k against 100k||100k,
+  as the YM and POKEY gains (7.4); MAME routes it at 0.75 to both channels.
+* **187c** bit 5: "frequency control", `divider = 16 - (12 | bit5)`, so the
+  chip clock is 20 MHz / 4 / 4 / 2 = 625 kHz (bit clear) or 20 / 4 / 3 / 2
+  = 833.3 kHz (bit set); the sample rate is the chip clock / 80.
+* **IN1 bit 2** (1840): the chip's /READY (`readyq_r`, 1 = not ready; reads
+  1 with no chip).
+* **sound reset** (T11 15a0) 0->1 edge: MAME calls `tms5220->reset()` in
+  place of the stream of 0xff the board really feeds the chip; the core holds
+  /WS and /RS low for 16 chip clocks, which the chip takes as a reset.
+* output: MAME's `clip_analog`: the 14-bit lattice output clipped to
+  +-2048, low 4 bits dropped, upshifted to 16 bits with range extension
+  (`{c[11:4], c[10:4], c[10]}`), then the mixer gain.
+
+The chip is only ever driven in "Speak External" mode on this board (the
+6502 streams LPC frames through the FIFO); the vendored model implements
+exactly that, plus NOP and RESET, and not the VSM ROM commands.
+
 ### 7.5 POKEY (audio subset used here)
 
 Registers (offset & 15): 0/2/4/6 AUDF1-4, 1/3/5/7 AUDC1-4, 8 AUDCTL, 9
@@ -471,20 +502,45 @@ also drives the chip's state machine, as it does in the RTL.
 
 ---
 
-## 9. ROM image (`ssprint.mra`, `tools/mra_build.py`)
+## 9. The ROM image (format 2)
 
-One flat file, `ssprint.rom`, 1,393,152 bytes, every region laid out exactly
-as MAME's memory regions so the core's decode is MAME's:
+One image per game, built from the MAME romset by `tools/mra_build.py` from
+the game's `.mra` (`ssprint.mra`, `apb.mra`), and checked byte for byte
+against MAME's loaded regions by `tools/check_rom.lua`. The core reads every
+image the same way: a 512-byte header, then fixed slots sized for the largest
+Atari System 2 game. Each slot holds the MAME memory region as loaded (gaps
+read 0x00 in both), except that a graphics region smaller than its slot is
+placed so its two bit-plane halves sit where the full-size region's would
+(`RGN_FRAC(1,2)` of the slot), and the header says where the tile codes wrap.
 
-| offset | size | content |
+| offset | size | contents |
 |---|---|---|
-| 0x000000 | 32 KB | T11 fixed program 8000-ffff, little-endian words (7l even byte, 7n odd) |
-| 0x008000 | 512 KB | T11 banked program = MAME region 0x10000-0x8ffff (64 x 8 KB banks; gaps 0x00) |
-| 0x088000 | 32 KB | 6502 program 8000-ffff |
-| 0x090000 | 512 KB | playfield tiles (MAME "tiles" region, 384 KB present) |
-| 0x110000 | 256 KB | motion object tiles (MAME "sprites" region, as dumped; the core inverts on load) |
-| 0x150000 | 16 KB | alphanumerics |
-| 0x154000 | 512 B | EEPROM factory contents |
+| 0x000000 | 512 | header, below |
+| 0x000200 | 32 KB | T11 fixed program 0x8000-0xffff (7l even byte, 7n odd) |
+| 0x008200 | 512 KB | T11 banked program, MAME region 0x10000-0x8ffff: 64 banks of 8 KB |
+| 0x088200 | 48 KB | 6502 program 0x4000-0xffff (Super Sprint's ROMs start at 0x8000; below is 0x00) |
+| 0x094200 | 512 KB | playfield tiles, MAME "tiles" region, plane halves 0x40000 apart |
+| 0x114200 | 1 MB | motion object tiles, MAME "sprites" region as dumped (the core inverts, ROMREGION_INVERT); plane halves 0x80000 apart |
+| 0x214200 | 16 KB | alphanumerics, MAME "chars" region |
+| 0x218200 | 512 | 2804 EEPROM factory contents (0xff when MAME has none: the game initialises it) |
+| 0x218400 | | total: 2,196,480 bytes |
 
-Verified byte-for-byte against MAME's regions with Lua (all seven regions, 0
-mismatches).
+Header (little-endian bytes; `rtl/ssprint_pkg.sv`, latched by the loader in
+`ssprint_core`):
+
+| byte | field | Super Sprint | APB |
+|---|---|---|---|
+| 0-3 | magic `ASY2` | | |
+| 4 | format | 2 | 2 |
+| 5 | game id | 1 | 2 |
+| 6 | slapstic type | 108 | 110 |
+| 7 | flags: bit 0 TMS5220 fitted, bit 1 vertical screen | 0x00 | 0x03 |
+| 8 | playfield tile code bits (codes wrap at 2^n, MAME's element count) | 14 | 14 |
+| 9 | motion object code bits | 11 | 13 |
+| 16-47 | name, ASCII, zero padded | SUPER SPRINT | APB |
+
+Sizes across the System 2 games (MAME): the T11 regions and the chars are
+the same for all; the 6502 ROM is 32 KB (Super Sprint, Championship Sprint)
+or 48 KB (Paperboy, 720, APB); tiles 512 KB; sprites from 256 KB (Super
+Sprint) to 1 MB (APB). The image slots are those maxima.
+

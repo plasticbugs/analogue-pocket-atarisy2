@@ -175,5 +175,12 @@ set_multicycle_path -hold  7 -from [get_registers {*|pokey:*|*}] -to [get_regist
 # It measured 10.9 ns (T65 address -> we -> step -> borrow, -0.55 ns). The
 # jt51 is NOT covered by anything like this: its write interface samples
 # cs_n / wr_n on every clock, so T65 -> jt51 stays single-cycle (and passes).
+# The TMS5220 (modules/sound-tms5220, GHDL-converted VHDL): all 19 of its
+# clocked processes are gated by I_ENA, the 625 / 833 kHz chip clock enable
+# (one pulse per 115-154 clocks), so its internal paths get the same 8/7. Its
+# inputs are the sound board's data / strobe latches (6502-cycle registers)
+# and stay single-cycle.
+set_multicycle_path -setup 8 -from [get_registers {*|TMS5220:*|*}] -to [get_registers {*|TMS5220:*|*}]
+set_multicycle_path -hold  7 -from [get_registers {*|TMS5220:*|*}] -to [get_registers {*|TMS5220:*|*}]
 set_multicycle_path -setup 8 -from [get_registers {*|T65:*|*}] -to [get_registers {*|pokey:*|*}]
 set_multicycle_path -hold  7 -from [get_registers {*|T65:*|*}] -to [get_registers {*|pokey:*|*}]

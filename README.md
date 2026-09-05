@@ -9,7 +9,14 @@ is gateware; nothing is emulated in software.
 > **ROMs are not included and never will be.** You supply your own MAME
 > `ssprint` romset; the core reads one image built from it.
 
-## Status (0.1.2)
+## Games
+
+| game | MAME set | status |
+|---|---|---|
+| Super Sprint (1986) | `ssprint` | verified and played on hardware (below) |
+| APB - All Points Bulletin (1987) | `apb` | in the benches: boots, attract mode and the high-score table pixel-identical to MAME, the T11 cycle-exact, the sound board's chips written as MAME writes them, speech through the TMS5220; not yet run on a Pocket |
+
+## Status (0.2.0)
 
 Verified against MAME as the oracle (details and numbers in
 `docs/verification.md`):
@@ -32,8 +39,9 @@ Verified against MAME as the oracle (details and numbers in
   by a few pixels, a 2-frame lead traced to MAME's own CPU scheduling (see
   the verification notes), not to the core
 
-* the core fits the Pocket's Cyclone V at 35 % of its logic and closes
-  timing at every corner (96 MHz core clock +0.19 ns at slow 85 C)
+* the core fits the Pocket's Cyclone V and closes timing at every corner
+* one core, listed on the Pocket as "Atari System 2" with each game under
+  its own name (instance files), per-game saves, one image format for all
 
 * runs on the Pocket: boots, attract mode, coin, start and races with sound;
   0.1.1 reverses the D-pad steering direction the first hardware run showed
@@ -43,15 +51,21 @@ Verified against MAME as the oracle (details and numbers in
 
 1. Copy `Cores/`, `Platforms/` and `Assets/` from the release zip onto the
    root of the Pocket's SD card.
-2. Build the ROM image and copy it to `Assets/ssprint/common/ssprint.rom`:
+2. Build the ROM image for each game you have and copy it to
+   `Assets/atarisy2/common/`:
 
    ```sh
-   python3 mra_build.py ssprint.mra ssprint.zip
+   python3 mra_build.py ssprint.mra ssprint.zip     # -> ssprint.rom
+   python3 mra_build.py apb.mra apb.zip             # -> apb.rom
    ```
 
-   Nothing but Python 3 is needed. It checks every ROM's CRC32; the image is
-   1,393,152 bytes. An already-extracted romset works too: pass the directory
-   instead of the zip.
+   Nothing but Python 3 is needed. It checks every ROM's CRC32; every image
+   is 2,196,480 bytes (format 2, `docs/hardware.md` section 9; images from
+   0.1.x must be rebuilt). An already-extracted romset works too: pass the
+   directory instead of the zip.
+
+The Pocket lists the platform as "Atari System 2" and each game under it by
+name; a game whose image is missing simply will not start.
 
 ## Controls
 
@@ -63,6 +77,12 @@ Verified against MAME as the oracle (details and numbers in
 | Start | start |
 | dock pads 2 and 3 | players 2 and 3 (their own wheel, pedal, coin and start) |
 
+APB: D-pad or stick steers, B / X / L / R is the accelerator, A is the
+game's button 2 and Y its button 3 (one of them starts the game, which
+takes two coins by default), Select is coin 1. Its DIP switches are the
+"APB:" entries of the settings menu; Super Sprint's are the "Super Sprint:"
+ones.
+
 The wheel turns while a direction is held; its speed is set from the
 Pocket's core settings menu ("Steering Speed"). A dock pad's left stick
 turns it in proportion to its deflection; "Analog Sensitivity" makes it
@@ -72,7 +92,7 @@ direction was checked on hardware, the stick's has not been yet). The DIP
 switches (coinage,
 difficulty, obstacles, wrenches) and the self-test switch are in the same
 menu. Settings and high scores (the board's EEPROM) are saved to
-`Saves/ssprint/plasticbugs.ssprint/ssprint.sav`.
+`Saves/atarisy2/plasticbugs.atarisy2/<game>.sav`, one file per game.
 
 ## Repository layout
 

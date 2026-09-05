@@ -5,6 +5,7 @@
 #include "Vtb_video_top.h"
 #include "Vtb_video_top___024root.h"
 #include "verilated.h"
+#include "img_layout.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstdint>
@@ -16,9 +17,8 @@ static uint64_t cyc = 0;
 static inline void tick() { top->clk = 0; top->eval(); top->clk = 1; top->eval(); cyc++; }
 
 // the loader's SDRAM layout (rtl/ssprint_pkg.sv)
-static const uint32_t SD_TILES = 0x100000, SD_SPRITES = 0x140000;
 static uint32_t tiles_img_to_sd(uint32_t o)   { return SD_TILES + ((((o >> 4) & 0x3fff) << 4) | (((o >> 1) & 7) << 1) | ((o >> 18) & 1)); }
-static uint32_t sprites_img_to_sd(uint32_t o) { return SD_SPRITES + ((((o >> 6) & 0x7ff) << 6) | (((o >> 2) & 15) << 2) | (((o >> 17) & 1) << 1) | ((o >> 1) & 1)); }
+static uint32_t sprites_img_to_sd(uint32_t o) { return SD_SPRITES + (((o >> 6) & 0x1fff) << 6) + (((o >> 2) & 0xf) << 2) + (((o >> 19) & 1) << 1) + ((o >> 1) & 1); }
 
 int main(int argc, char **argv) {
     Verilated::commandArgs(argc, argv);
@@ -51,11 +51,11 @@ int main(int argc, char **argv) {
     // graphics into the chip model, as the loader lays them out
     auto &mem = top->rootp->tb_video_top__DOT__chip__DOT__mem;
     for (uint32_t o = 0; o < 0x80000; o++) {
-        uint32_t w = tiles_img_to_sd(o); uint8_t v = rom[0x90000 + o];
+        uint32_t w = tiles_img_to_sd(o); uint8_t v = rom[IMG_TILES + o];
         if (o & 1) mem[w] = (mem[w] & 0x00ff) | (v << 8); else mem[w] = (mem[w] & 0xff00) | v;
     }
-    for (uint32_t o = 0; o < 0x40000; o++) {
-        uint32_t w = sprites_img_to_sd(o); uint8_t v = rom[0x110000 + o] ^ 0xff;
+    for (uint32_t o = 0; o < 0x100000; o++) {
+        uint32_t w = sprites_img_to_sd(o); uint8_t v = rom[IMG_SPRITES + o] ^ 0xff;
         if (o & 1) mem[w] = (mem[w] & 0x00ff) | (v << 8); else mem[w] = (mem[w] & 0xff00) | v;
     }
     for (int i = 0; i < 20; i++) tick();
@@ -63,7 +63,8 @@ int main(int argc, char **argv) {
     while (!top->sd_ready) tick();
     // hold the video in reset a little longer, then load through the CPU port
     for (int i = 0; i < 4; i++) tick();
-    for (uint32_t i = 0; i < 0x4000; i++) { top->chr_we = 1; top->chr_waddr = i; top->chr_wdata = rom[0x150000 + i]; tick(); }
+    for (uint32_t i = 0; i < 0x4000; i++) { top->chr_we = 1; top->chr_waddr = i; top->chr_wdata = rom[IMG_CHARS + i]; tick(); }
+    top->cfg_pf_bits = rom[8]; top->cfg_mo_bits = rom[9];   // the image header's code widths
     top->chr_we = 0;
     auto load = [&](std::vector<uint16_t> &v, int which) {
         for (size_t i = 0; i < v.size(); i++) {

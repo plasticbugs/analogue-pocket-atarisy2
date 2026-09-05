@@ -7,11 +7,11 @@ differing pixels, the first few, and writes a diff image.
 """
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from render_model import read_png, write_png
+from render_model import read_png, write_png, unrotate
 
 def main():
     raw = open(sys.argv[1], "rb").read()
-    ref = read_png(sys.argv[2])
+    ref = unrotate(read_png(sys.argv[2]))
     h, w = len(ref), len(ref[0])
     # the RTL frame is always 512x240; a reference with fewer lines (an early
     # boot state with VSBLNK < 0x103) is compared over its own height

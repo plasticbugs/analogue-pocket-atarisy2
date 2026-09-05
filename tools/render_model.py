@@ -17,9 +17,10 @@ import sys, zlib, struct
 
 W, H = 512, 384
 
-ROM_TILES = 0x090000     # 512 KB, playfield
-ROM_MO = 0x110000        # 256 KB, motion objects (inverted)
-ROM_CHARS = 0x150000     # 16 KB, alphanumerics
+# image format 2 (docs/hardware.md section 9): fixed slots after a 512-byte header
+ROM_TILES = 0x094200     # 512 KB slot, playfield (plane halves 0x40000 apart)
+ROM_MO = 0x114200        # 1 MB slot, motion objects (inverted; halves 0x80000 apart)
+ROM_CHARS = 0x214200     # 16 KB, alphanumerics
 
 
 def read_state(path):
@@ -56,14 +57,14 @@ class Gfx:
     byte k of a row covers pixels 4k..4k+3, high nibble = the lower-numbered
     plane, which is the MORE significant pen bit."""
 
-    def __init__(self, rom, base, half, width, height, planes4, invert=False):
+    def __init__(self, rom, base, half, width, height, planes4, invert=False, count=0):
         self.rom, self.base, self.half = rom, base, half
         self.w, self.h = width, height
         self.bpr = width // 4                    # bytes per row per half
         self.tsize = self.bpr * height           # bytes per tile per half
         self.planes4 = planes4
         self.inv = 0xff if invert else 0
-        self.count = half // self.tsize if planes4 else (0x4000 // self.tsize)
+        self.count = count if count else (half // self.tsize if planes4 else (0x4000 // self.tsize))
         self.cache = {}
 
     def tile(self, code):
@@ -100,8 +101,9 @@ class Gfx:
 
 def render(st, rom):
     pal = [pal_rgb(v) for v in st["palette"]]
-    pf_gfx = Gfx(rom, ROM_TILES, 0x40000, 8, 8, True)
-    mo_gfx = Gfx(rom, ROM_MO, 0x20000, 16, 16, True, invert=True)
+    # the header's code widths say where the codes wrap (MAME's element count)
+    pf_gfx = Gfx(rom, ROM_TILES, 0x40000, 8, 8, True, count=1 << rom[8])
+    mo_gfx = Gfx(rom, ROM_MO, 0x80000, 16, 16, True, invert=True, count=1 << rom[9])
     an_gfx = Gfx(rom, ROM_CHARS, 0, 8, 8, False)
     xs, ys = st["xscroll"], st["yscroll"]
     bank = [xs & 0xf, ys & 0xf]
@@ -209,6 +211,16 @@ def render(st, rom):
 
 
 # ---- PNG I/O (8-bit RGB, no numpy) -----------------------------------------
+def unrotate(ref):
+    """A vertical game's MAME snapshot (ROT270: 384 wide, 512 tall) back to the
+    board's 512x384 raster, which is what the core and the renderer produce.
+    MAME rotates the raster 270 degrees clockwise (90 anticlockwise): raster
+    (x, y) lands at snapshot column y, row W-1-x."""
+    if len(ref) == W and len(ref[0]) == H:
+        return [[ref[W - 1 - x][y] for x in range(W)] for y in range(H)]
+    return ref
+
+
 def read_png(path):
     data = open(path, "rb").read()
     assert data[:8] == b"\x89PNG\r\n\x1a\n"
@@ -279,7 +291,7 @@ def main():
         sys.exit(__doc__)
     st = read_state(sys.argv[1])
     rom = open(sys.argv[2], "rb").read()
-    ref = read_png(sys.argv[3])
+    ref = unrotate(read_png(sys.argv[3]))
     prefix = sys.argv[4] if len(sys.argv) > 4 else "model"
     model = render(st, rom)
     write_png(prefix + "_model.png", model)

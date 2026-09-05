@@ -7,6 +7,7 @@
 #include "Vtb_system_top.h"
 #include "Vtb_system_top___024root.h"
 #include "verilated.h"
+#include "img_layout.h"
 #include <cstdio>
 #include <cstdlib>
 #include <cstdint>
@@ -52,7 +53,8 @@ int main(int argc, char **argv) {
     top->hw_reset = 1; top->reset = 1; top->dl_active = 0; top->dl_we = 0; top->nv_we = 0; top->nv_addr = 0; top->nv_wdata = 0;
     top->coin = 0; top->start = 0; top->service = 0;
     top->pedal0 = top->pedal1 = top->pedal2 = 0xff; top->wheel0 = top->wheel1 = top->wheel2 = 0;
-    top->dsw0 = 0x00; top->dsw1 = 0xc0;
+    top->dsw0 = getenv("DSW0") ? strtol(getenv("DSW0"), nullptr, 16) : 0x00;   // MAME's defaults: Super Sprint 00 / c0, APB 00 / 00
+    top->dsw1 = getenv("DSW1") ? strtol(getenv("DSW1"), nullptr, 16) : 0xc0;
     for (int i = 0; i < 20; i++) tick();
     top->hw_reset = 0;
     while (!(top->dbg_flags & 0x80)) tick();
@@ -73,7 +75,7 @@ int main(int argc, char **argv) {
         int bad = 0;
         for (uint32_t i = 0; i < 0x40000; i++) {
             uint16_t got = top->rootp->tb_system_top__DOT__chip__DOT__mem[i];
-            uint16_t want = rom[0x8000 + i * 2] | (rom[0x8000 + i * 2 + 1] << 8);
+            uint16_t want = rom[IMG_MAIN_BANK + i * 2] | (rom[IMG_MAIN_BANK + i * 2 + 1] << 8);
             if (got != want) { if (bad < 5) printf("sdram[%05x] = %04x want %04x\n", i, got, want); bad++; }
         }
         printf("banked ROM in SDRAM: %d bad words of 262144\n", bad);

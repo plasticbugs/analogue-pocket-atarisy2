@@ -16,6 +16,12 @@ verified.
 | Sound board (`rtl/ssprint_sound.sv`, `pokey.sv`, T65, jt51) | `sim/run_sound.sh 15` | MAME command/response/reset log and inputs replayed at their times; the 6502's YM2151 / POKEY / latch writes compared in order; `-wavwrite` envelope | PASS: YM2151 18,626 / 18,626 writes identical (register and data, in order); POKEY 2 16,354 / 16,354 identical; POKEY 1 16,354 / 16,354 identical per register (the global interleaving of the IRQ handler's refresh with command handling differs from index 12,685); responses 1,484 / 1,484 identical; write timing median within 0.05 ms of MAME's; audio envelope ratio median 0.999 (-0.01 dB) over the active windows -- see "Sound board" below |
 | Whole machine (`rtl/ssprint_core.sv`) | `sim/run_system.sh 460 50` | MAME snapshots every 50 frames of the boot, per-frame sound handshake counts | PASS: **pixel-identical to MAME at frames 100, 150, 200, 250, 350, 400 and 450** (title screen, then the high-score table); frame 300 differs by 13,287 pixels because the RTL is inside the title-to-table wipe there and MAME's frame 300 is not yet (see below); boot handshake identical (2 commands and 8 responses in frame 11 in both); 0 SDRAM model errors |
 | Whole machine, a played race | `sim/run_system.sh 1850 100 600 700 760` | MAME's gameplay snapshots with the same inputs at the same frames (coin 600, start 700, pedal floored and wheel to 0x30 at 760) | runs the race end to end: 1,850 frames, 2,858 sound commands, 8,337 responses, the race audio at full level, 0 SDRAM model errors; frames 900, 1100, 1400 and 1800 differ from MAME's by 569, 1,021, 955 and 1,195 pixels -- every differing pixel is a car or a score digit (track, HUD and playfield identical), the cars being a few pixels along their paths from MAME's, the same 2-frame lead the title wipe shows (explained below); re-run unchanged, to the pixel, after the timing fixes to the T11, the EEPROM and the motion-object walk, with `line_late` never set |
+| ROM image, APB (`apb.mra`) | `tools/check_rom.lua` (`GAME=apb`) | MAME's loaded regions | byte-identical: header, maincpu 0x8000 + 0x80000, audiocpu 48 KB, tiles, sprites 1 MB (inverted), chars; EEPROM 0xff (MAME has no factory image) |
+| T-11, APB | `ROM=../artifacts/apb.rom sim/run_t11.sh apb_boot` | MAME's cycle-stamped boot trace (slapstic 110) | PASS: 29,149 of 29,149 instructions, cycle-exact (499,197 cycles in both), 5 I/O reads |
+| Reference renderer, APB | `tools/capture_states.sh` (`GAME=apb`) + `tools/render_model.py` | MAME snapshots at frames 400, 700, 1000, 1500 (vertical game: the snapshot is un-rotated first) | pixel-identical on all 4 (the 1 MB sprite slot, 13-bit codes, the header's code widths) |
+| Video, APB | `ROM=../artifacts/apb.rom sim/run_video.sh apb_attract_f00400 ...` | the same 4 states | PASS: pixel-identical on all 4, `line_late` 0 |
+| Sound board, APB (with the TMS5220) | `GAME=apb COIN_FRAME=300 DSW0=00 DSW1=00 sim/run_sound.sh 15` | MAME's log with a coin at frame 300 | YM2151 20 / 20, POKEY 1 and 2 10,721 / 10,721 per register, responses 12,101 / 12,101, mixer 4 / 4, sound enable 6 / 6, misc switch 31 / 31: all identical; TMS5220 data 4,400 / 4,430 and strobes 8,802 / 8,862: the LPC bytes are the same, the 6502 writes 30 fewer of the 0xff filler bytes it feeds during the chip's reset sequence because the model releases /READY 41 ms after a stop frame where MAME takes 24 ms -- see "APB" below |
+| Whole machine, APB boot | `ROM=../artifacts/apb.rom DSW0=00 DSW1=00 sim/run_system.sh 800 50 300` | MAME snapshots every 50 frames, coin at 300 | **pixel-identical at frames 100-550** (10 of 10 frames, the attract screens and the high-score table; the T11 keeps the 6502 in reset until frame 477 in both); from 600 on the RTL runs ahead of MAME's attract sequence by MAME's scheduler artefact, at this game's rate of ~60 responses per frame: MAME's 8,687 responses in frames 475-805 reach the T11 with 2.34 s of accumulated latency (1,761 of them over 0.3 ms, max 4.3 ms) |
 | Synthesis (Quartus 18.1, 5CEBA4) | `./build-local.sh` | -- | **fits and closes timing**: 6,532 / 18,480 ALMs (35 %), 8,904 registers, block memory 982 kbit / 3,154 kbit (31 %, 140 of 308 M10K), 10 DSP blocks, 2 PLLs; bitstream produced and packaged. Slow 85 C corner: 96 MHz core clock **+0.19 ns** setup (TNS 0), clk_74a +2.78, dram_clk +3.06, 16 MHz video +56.8; every hold, recovery, removal and pulse-width check positive at all four corners. The first fit missed by 4.26 ns; "Timing" below lists the seven paths and fixes it took |
 | Hardware (Pocket) | the 0.1.0 package on a Pocket | playing it | boots, attract, coin, start, races with sound; the only fault seen was the D-pad steering direction, reversed in 0.1.1 (the wheel's count now increases when turning right; MAME's track-select pointer had suggested the opposite). The analog stick is untested on hardware: it keeps the 0.1.0 mapping with a menu toggle ("Analog Stick Steering") to reverse it |
 
@@ -170,6 +176,32 @@ Before the byte-lane fix (lessons above) the same run sat on a black
 screen for ~200 frames: the title came up at ~225 and the table only
 after 450. The first per-frame comparison against MAME made the delay
 obvious; the sound bench found the cause.
+
+## APB (the multi-game branch)
+
+The core reads a format-2 image (docs/hardware.md section 9) whose header
+names the game, its slapstic and what it fits; APB adds slapstic 110 (from
+MAME's table, in the same state machine as 108, `rtl/slapstic.sv`), a 48 KB
+6502 ROM, a 1 MB sprite slot with 13-bit codes, the TMS5220 speech chip
+(vendored VHDL, GHDL-converted, `modules/sound-tms5220`) and a vertical
+screen (the Pocket's scaler rotates; the benches un-rotate MAME's
+snapshots). Every Super Sprint gate was re-run on the new image format and
+is unchanged.
+
+**The speech chip.** The vendored model reproduces MAME's LPC synthesis
+but reported /READY as soon as it had taken a byte; MAME (true timing,
+which this board's strobes select) holds /READY inactive for 16 chip
+clocks after every /WS strobe, services the write then, and keeps it
+inactive while the FIFO is full. With that timing added to the model
+(`TMS5220.vhd`, marked `(plasticbugs)`) the 6502's speech stream matches
+MAME byte for byte through the phrase; what remains is the chip's reaction
+to a stop frame: the 6502 then feeds 0xff bytes (RESET commands) until the
+chip accepts them, and the model accepts the first one 41 ms after the
+stop frame where MAME does after 24 ms, so 30 of the 4,430 filler bytes
+are not written. The attract mode only ever speaks silence frames (energy
+0), so a voiced comparison needs a started game -- still to be captured
+(APB needs two coins after the sound board is up, and its start is one of
+its two buttons).
 
 ## Timing
 

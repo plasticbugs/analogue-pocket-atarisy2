@@ -3,7 +3,7 @@
 -- write (15a0), 6502 command read (1860), response write (1874), YM2151
 -- write (1850/1851), POKEY write (1800-180f, 1830-183f), mixer (187a), sound
 -- enable (187e) and IRQ ack (1878). Run with -wavwrite for the audio.
---   OUT=file FRAMES=n COIN=frame STARTBTN=frame PEDAL=n WHEEL=n
+--   OUT=file FRAMES=n COIN=frame STARTBTN=frame PEDAL=n WHEEL=n START_FIELD=name (the start button, "1 Player Start"; APB has none: its buttons are "P1 Button 2" / "P1 Button 3")
 local m = manager.machine
 local main = m.devices[":maincpu"].spaces["program"]
 local snd = m.devices[":audiocpu"].spaces["program"]
@@ -36,13 +36,17 @@ wtap(snd, 0x187a, 0x187a, "mix",  "MIX")
 wtap(snd, 0x187e, 0x187e, "sen",  "SEN")
 wtap(snd, 0x187c, 0x187c, "sw",   "SW")
 wtap(snd, 0x1878, 0x1878, "ack",  "ACK")
+wtap(snd, 0x1870, 0x1870, "tms",  "TMS")      -- TMS5220 data latch (games with speech)
+wtap(snd, 0x1872, 0x1873, "tmss", "TMSS")     -- TMS5220 /WS: 1872 high, 1873 low (MAME tms5220_strobe_w)
 emu.register_frame_done(function()
   frames = frames + 1
   out:write(string.format("%s FRAME %d\n", us(), frames))
-  if frames == coin_f then ports[":IN1"].fields["Coin 1"]:set_value(1) end
-  if frames == coin_f + 10 then ports[":IN1"].fields["Coin 1"]:clear_value() end
-  if frames == start_f then ports[":IN0"].fields["1 Player Start"]:set_value(1) end
-  if frames == start_f + 10 then ports[":IN0"].fields["1 Player Start"]:clear_value() end
+  for k = 0, tonumber(os.getenv("COINS") or "1") - 1 do   -- COINS=n: n coins, 20 frames apart
+    if frames == coin_f + 20 * k then ports[":IN1"].fields["Coin 1"]:set_value(1) end
+    if frames == coin_f + 20 * k + 10 then ports[":IN1"].fields["Coin 1"]:clear_value() end
+  end
+  if frames == start_f then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:set_value(1) end
+  if frames == start_f + 10 then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:clear_value() end
   if pedal >= 0 and frames == start_f + 60 then for _, fl in pairs(ports[":ADC0"].fields) do fl:set_value(pedal) end end
   if wheel >= 0 and frames == start_f + 60 then for _, fl in pairs(ports[":LETA0"].fields) do fl:set_value(wheel) end end
   if frames >= nframes then out:close(); m:exit() end
