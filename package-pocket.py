@@ -61,6 +61,16 @@ for v in variables:
         problems.append(f'{len(v["options"])} options in "{v["name"]}" (limit 16)')
 if problems:
     sys.exit("refusing to package, interact.json:\n  " + "\n  ".join(problems))
+# The Pocket also reads interact.json into a fixed buffer of about 8 KB: a
+# 7,849-byte file loaded, a 9,462-byte one gave "error in interact". The
+# packaged copy is minified (the pkg/ source stays readable) and capped.
+with open(os.path.join(core_dir, "interact.json")) as f:
+    interact_full = json.load(f)
+minified = json.dumps(interact_full, separators=(",", ":")) + "\n"
+if len(minified) > 7000:
+    sys.exit(f"refusing to package, interact.json is {len(minified)} bytes minified (the Pocket's limit is about 8 KB)")
+with open(os.path.join(core_dir, "interact.json"), "w") as f:
+    f.write(minified)
 
 # Backstop: the instance JSONs are how the Pocket lists the games. Losing one
 # reads as a missing game, which looks like a core bug rather than packaging.

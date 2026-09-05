@@ -66,6 +66,12 @@ verified.
   response timestamps earlier than the read of the previous byte in MAME's
   own log. Compare the CPU's cycle costs and the interrupt positions before
   blaming the core (`sim/run_t11.sh wipe`, `TB_EVLOG`).
+- **The Pocket reads interact.json into a buffer of about 8 KB.** The
+  multi-game menu, pretty-printed at 9,462 bytes, gave "error in interact"
+  at load while a 7,849-byte one loaded; the same entries minified (4.7 KB)
+  are fine. The documented limits (16 entries, 23-character names) are
+  real too but were not the cause. `package-pocket.py` minifies the packaged
+  copy and refuses one over 7,000 bytes.
 - **A game that never scrolls cannot verify the scroll registers.** Super
   Sprint's playfield sits still (its Y scroll register only ever carries
   bank bits), so every gate passed with the RTL taking the Y scroll from
