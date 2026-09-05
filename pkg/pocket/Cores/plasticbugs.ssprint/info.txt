@@ -1,0 +1,29 @@
+Super Sprint (Atari Games, 1986)
+
+Atari's three-player overhead racer
+on the System 2 board, all of it in
+gateware:
+
+* DEC T-11 at 10 MHz, game logic,
+  with the 137412-108 slapstic
+* playfield, alphanumerics and
+  motion objects at 512x384
+* sound board: 6502, two POKEYs,
+  YM2151 stereo
+
+Controls
+  D-pad / stick   steer
+  A, B, X, Y      accelerator
+  Select          coin
+  Start           start
+  Dock pads 2, 3  players 2, 3
+
+ROMs are not included. Build the
+image from your own MAME ssprint
+romset:
+
+  python3 mra_build.py ssprint.mra
+      ssprint.zip
+
+and copy ssprint.rom into
+Assets/ssprint/common/.

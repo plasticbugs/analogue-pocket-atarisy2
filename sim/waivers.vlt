@@ -1,0 +1,7 @@
+`verilator_config
+lint_off -file "*jt51*"
+lint_off -file "*modules/cpu-t65/gen/t65.v"
+lint_off -rule UNUSEDSIGNAL -file "*rtl/t11/t11.sv" -match "*sumb*"
+lint_off -rule UNUSEDPARAM -file "*rtl/ssprint_pkg.sv"
+lint_off -rule UNUSEDSIGNAL -file "*rtl/ssprint_pkg.sv"
+lint_off -rule SYNCASYNCNET -file "*rtl/ssprint_sound.sv"

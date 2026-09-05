@@ -1,0 +1,103 @@
+<misterromdescription>
+    <name>Super Sprint</name>
+    <setname>ssprint</setname>
+    <year>1986</year>
+    <manufacturer>Atari Games</manufacturer>
+    <category>Arcade</category>
+    <rbf>ssprint</rbf>
+
+    <!-- Image layout (docs/hardware.md section 9). Every region is laid out
+         exactly as MAME's memory regions, so the core's address decode is
+         MAME's, gaps included (the gaps read as 0x00 there and here).
+
+           0x000000   32768  T11 fixed program 0x8000-0xffff  (7l = even byte, 7n = odd byte)
+           0x008000  524288  T11 banked program, MAME region 0x10000-0x8ffff:
+                             64 banks of 8 KB. Each 64 KB pair is stored twice
+                             (init_ssprint), banks 16-31 are empty
+           0x088000   32768  6502 program 0x8000-0xffff
+           0x090000  524288  playfield tiles, MAME "tiles" region (384 KB present, gaps 0)
+           0x110000  262144  motion object tiles, MAME "sprites" region (stored inverted, as MAME keeps them)
+           0x150000   16384  alphanumerics, MAME "chars" region
+           0x154000     512  2804 EEPROM factory contents
+           0x154200          total
+    -->
+    <rom index="0" zip="ssprint.zip" md5="none">
+
+        <!-- T11 fixed program: little-endian words, 7l on the even byte -->
+        <interleave output="16">
+            <part name="136042-330.7l" crc="ee312027" map="10"/>
+            <part name="136042-331.7n" crc="2ef15354" map="01"/>
+        </interleave>
+
+        <!-- banked program: region 0x10000-0x2ffff = pair 329/325 twice -->
+        <interleave output="16">
+            <part name="136042-329.6f" crc="ed1d6205" map="10"/>
+            <part name="136042-325.6n" crc="aecaa2bf" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136042-329.6f" crc="ed1d6205" map="10"/>
+            <part name="136042-325.6n" crc="aecaa2bf" map="01"/>
+        </interleave>
+        <!-- region 0x30000-0x4ffff: nothing fitted -->
+        <part repeat="131072">00</part>
+        <!-- region 0x50000-0x6ffff = pair 127/123 twice -->
+        <interleave output="16">
+            <part name="136042-127.6k" crc="de6c4db9" map="10"/>
+            <part name="136042-123.6r" crc="aff23b5a" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136042-127.6k" crc="de6c4db9" map="10"/>
+            <part name="136042-123.6r" crc="aff23b5a" map="01"/>
+        </interleave>
+        <!-- region 0x70000-0x8ffff = pair 126/122 twice -->
+        <interleave output="16">
+            <part name="136042-126.6l" crc="92f5392c" map="10"/>
+            <part name="136042-122.6s" crc="0381f362" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136042-126.6l" crc="92f5392c" map="10"/>
+            <part name="136042-122.6s" crc="0381f362" map="01"/>
+        </interleave>
+
+        <!-- 6502 program 0x8000-0xffff -->
+        <part name="136042-419.2bc" crc="b277915a"/>
+        <part name="136042-420.2d" crc="170b2c53"/>
+
+        <!-- playfield tiles: MAME "tiles" region, 0x80000 bytes. The 64 KB
+             ROMs are loaded second half first (ROM_CONTINUE), so each one is
+             two 32 KB slices at different offsets. -->
+        <part name="136042-105.6a" crc="911499fe" offset="0x8000" length="0x8000"/>   <!-- 00000 -->
+        <part name="136042-106.6b" crc="a39b25ed"/>                                    <!-- 08000 -->
+        <part name="136042-101.7a" crc="6d015c72" offset="0x8000" length="0x8000"/>   <!-- 10000 -->
+        <part name="136042-102.7b" crc="54e21f0a"/>                                    <!-- 18000 -->
+        <part name="136042-105.6a" crc="911499fe" offset="0x0000" length="0x8000"/>   <!-- 20000 -->
+        <part repeat="32768">00</part>                                                 <!-- 28000 -->
+        <part name="136042-101.7a" crc="6d015c72" offset="0x0000" length="0x8000"/>   <!-- 30000 -->
+        <part repeat="32768">00</part>                                                 <!-- 38000 -->
+        <part name="136042-107.6c" crc="b7ded658" offset="0x8000" length="0x8000"/>   <!-- 40000 -->
+        <part name="136042-108.6de" crc="4a804a4c"/>                                   <!-- 48000 -->
+        <part name="136042-104.7de" crc="339644ed" offset="0x8000" length="0x8000"/>  <!-- 50000 -->
+        <part name="136042-103.7c" crc="64d473a8"/>                                    <!-- 58000 -->
+        <part name="136042-107.6c" crc="b7ded658" offset="0x0000" length="0x8000"/>   <!-- 60000 -->
+        <part repeat="32768">00</part>                                                 <!-- 68000 -->
+        <part name="136042-104.7de" crc="339644ed" offset="0x0000" length="0x8000"/>  <!-- 70000 -->
+        <part repeat="32768">00</part>                                                 <!-- 78000 -->
+
+        <!-- motion objects: MAME "sprites" region (ROMREGION_INVERT: the
+             core inverts each byte as it loads; the image holds the ROMs as dumped) -->
+        <part name="136042-113.6l" crc="f869b0fc"/>
+        <part name="136042-112.6k" crc="abcbc114"/>
+        <part name="136042-110.6jh" crc="9e91e734"/>
+        <part name="136042-109.6fh" crc="3a051f36"/>
+        <part name="136042-117.6rs" crc="b15c1b90"/>
+        <part name="136042-116.6pr" crc="1dcdd5aa"/>
+        <part name="136042-115.6n" crc="fb5677d9"/>
+        <part name="136042-114.6m" crc="35e70a8d"/>
+
+        <!-- alphanumerics -->
+        <part name="136042-118.6t" crc="8489d113"/>
+
+        <!-- EEPROM factory contents -->
+        <part name="ssprint-eeprom.bin" crc="9301ed27"/>
+    </rom>
+</misterromdescription>
