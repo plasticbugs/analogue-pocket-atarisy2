@@ -9,7 +9,7 @@ is gateware; nothing is emulated in software.
 > **ROMs are not included and never will be.** You supply your own MAME
 > `ssprint` romset; the core reads one image built from it.
 
-## Status (0.1.1)
+## Status (0.1.2)
 
 Verified against MAME as the oracle (details and numbers in
 `docs/verification.md`):
@@ -65,8 +65,9 @@ Verified against MAME as the oracle (details and numbers in
 
 The wheel turns while a direction is held; its speed is set from the
 Pocket's core settings menu ("Steering Speed"). A dock pad's left stick
-turns it in proportion to its deflection; if the stick steers the wrong way
-set "Analog Stick Steering" to Reversed in the same menu (the D-pad's
+turns it in proportion to its deflection; "Analog Sensitivity" makes it
+half or twice as reactive, and if the stick steers the wrong way set
+"Analog Stick Steering" to Reversed in the same menu (the D-pad's
 direction was checked on hardware, the stick's has not been yet). The DIP
 switches (coinage,
 difficulty, obstacles, wrenches) and the self-test switch are in the same

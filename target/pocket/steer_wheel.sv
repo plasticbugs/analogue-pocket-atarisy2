@@ -19,6 +19,7 @@ module steer_wheel (
     input  wire       stick_active,   // an analog stick is off centre (framework's own detection)
     input  wire [7:0] stick_x,        // 0x80 centre
     input  wire       stick_rev,      // reverse the stick's direction (menu: Analog Stick Steering)
+    input  wire [1:0] stick_sens,     // 0 = as the D-pad at full deflection, 1 = half as reactive, 2 = twice (menu: Analog Sensitivity)
     output reg  [7:0] pos
 );
     // The inputs arrive from the framework's synchronisers (which Quartus
@@ -36,7 +37,10 @@ module steer_wheel (
         moving    <= stick_active ? (defl > 8'd8) : (left ^ right);
         // one count every `period` clocks at full deflection; the stick adds
         // defl/127 of a count per clock-of-period instead
-        step      <= stick_active ? {20'd0, defl} : 28'd127;
+        step      <= !stick_active         ? 28'd127 :
+                     (stick_sens == 2'd1)  ? {21'd0, defl[7:1]} :        // less reactive: half the rate per deflection
+                     (stick_sens == 2'd2)  ? {19'd0, defl, 1'b0} :       // more reactive: double (up to 2x the D-pad rate)
+                                             {20'd0, defl};
         limit     <= {8'd0, period} * 28'd127;
     end
     reg [27:0] acc;

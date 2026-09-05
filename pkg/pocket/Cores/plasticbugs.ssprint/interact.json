@@ -79,6 +79,30 @@
         ]
       },
       {
+        "name": "Analog Sensitivity",
+        "id": 67,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF2000000",
+        "defaultval": 1,
+        "mask": "0xFFFFF3FF",
+        "options": [
+          {
+            "name": "Less reactive",
+            "value": "0x00000400"
+          },
+          {
+            "name": "Default",
+            "value": "0x00000000"
+          },
+          {
+            "name": "More reactive",
+            "value": "0x00000800"
+          }
+        ]
+      },
+      {
         "name": "Scanlines",
         "id": 61,
         "type": "list",

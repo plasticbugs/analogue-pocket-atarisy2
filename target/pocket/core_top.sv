@@ -981,16 +981,17 @@ module core_top
     //! platform joypad numbering: Y/X = m_btn1/4, B/A = m_btn2/3, L1/R1 = m_btn5/6
     wire [1:0] steer_rate = mod_sw0[4:3];
     wire       steer_stick_rev = mod_sw0[0];        // menu: Analog Stick Steering = Reversed
+    wire [1:0] steer_stick_sens = mod_sw1[3:2];     // menu: Analog Sensitivity (0 default, 1 less, 2 more); 0xF2000000 bits 11:10
     wire [7:0] wheel0, wheel1, wheel2;
     steer_wheel sw0 (.clk(clk_sys), .reset(ss_reset), .rate(steer_rate), .left(p1_left), .right(p1_right),
-                     .stick_active(j1_left | j1_right), .stick_x(j1_lx), .stick_rev(steer_stick_rev), .pos(wheel0));
+                     .stick_active(j1_left | j1_right), .stick_x(j1_lx), .stick_rev(steer_stick_rev), .stick_sens(steer_stick_sens), .pos(wheel0));
     steer_wheel sw1 (.clk(clk_sys), .reset(ss_reset), .rate(steer_rate), .left(p2_left), .right(p2_right),
-                     .stick_active(j2_left | j2_right), .stick_x(j2_lx), .stick_rev(steer_stick_rev), .pos(wheel1));
+                     .stick_active(j2_left | j2_right), .stick_x(j2_lx), .stick_rev(steer_stick_rev), .stick_sens(steer_stick_sens), .pos(wheel1));
     // player 3: dock pad 3, raw APF bits (0 up, 1 down, 2 left, 3 right, 4 A, 5 B, 6 X, 7 Y, 8 L1, 9 R1, 14 select, 15 start)
     wire [31:0] c3;
     synch_3 #(.WIDTH(32)) sync_c3(cont3_key, c3, clk_sys);
     steer_wheel sw2 (.clk(clk_sys), .reset(ss_reset), .rate(steer_rate), .left(c3[2]), .right(c3[3]),
-                     .stick_active(1'b0), .stick_x(8'h80), .stick_rev(1'b0), .pos(wheel2));
+                     .stick_active(1'b0), .stick_x(8'h80), .stick_rev(1'b0), .stick_sens(2'd0), .pos(wheel2));
     wire       gas1 = p1_btn_a | p1_btn_b | p1_btn_x | p1_btn_y | p1_btn_l1 | p1_btn_r1;
     wire       gas2 = p2_btn_a | p2_btn_b | p2_btn_x | p2_btn_y | p2_btn_l1 | p2_btn_r1;
     wire       gas3 = c3[4] | c3[5] | c3[6] | c3[7] | c3[8] | c3[9];
