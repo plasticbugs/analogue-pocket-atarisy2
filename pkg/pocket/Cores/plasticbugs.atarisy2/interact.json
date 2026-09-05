@@ -21,12 +21,20 @@
         "mask": "0xFFFFFFF9",
         "options": [
           {
-            "name": "Arcade 4:3",
+            "name": "Arcade (4:3 / 3:4)",
             "value": "0x00000000"
           },
           {
-            "name": "Wide 16:10",
+            "name": "Full screen",
             "value": "0x00000002"
+          },
+          {
+            "name": "Vertical B (4:3 rot)",
+            "value": "0x00000004"
+          },
+          {
+            "name": "Vertical C (10:16)",
+            "value": "0x00000006"
           }
         ]
       },
@@ -95,46 +103,58 @@
         ]
       },
       {
-        "name": "Video Filter",
+        "name": "Scanlines",
         "id": 61,
         "type": "list",
         "enabled": true,
         "persist": true,
         "address": "0xF3000000",
         "defaultval": 0,
-        "mask": "0xFFFFFF8C",
+        "mask": "0xFFFFFFFC",
         "options": [
           {
             "name": "Off",
             "value": "0x00000000"
           },
           {
-            "name": "Scanlines 25%",
+            "name": "25%",
             "value": "0x00000001"
           },
           {
-            "name": "Scanlines 50%",
+            "name": "50%",
             "value": "0x00000002"
           },
           {
-            "name": "Scanlines 75%",
+            "name": "75%",
             "value": "0x00000003"
+          }
+        ]
+      },
+      {
+        "name": "Shadow Mask",
+        "id": 62,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF3000000",
+        "defaultval": 0,
+        "mask": "0xFFFFFF8F",
+        "options": [
+          {
+            "name": "Off",
+            "value": "0x00000000"
           },
           {
-            "name": "Shadow mask",
+            "name": "On",
             "value": "0x00000010"
           },
           {
-            "name": "Shadow mask, rotated",
+            "name": "On, rotated",
             "value": "0x00000030"
           },
           {
-            "name": "Shadow mask 2x",
+            "name": "On, 2x",
             "value": "0x00000050"
-          },
-          {
-            "name": "Mask + scanlines 50%",
-            "value": "0x00000012"
           }
         ]
       },
@@ -242,6 +262,34 @@
           {
             "name": "Hard",
             "value": "0x00000300"
+          }
+        ]
+      },
+      {
+        "name": "SS: Obstacles",
+        "id": 74,
+        "type": "list",
+        "enabled": true,
+        "persist": true,
+        "address": "0xF1000000",
+        "defaultval": 1,
+        "mask": "0xFFFFF3FF",
+        "options": [
+          {
+            "name": "Easy",
+            "value": "0x00000400"
+          },
+          {
+            "name": "Medium",
+            "value": "0x00000000"
+          },
+          {
+            "name": "Medium Hard",
+            "value": "0x00000800"
+          },
+          {
+            "name": "Hard",
+            "value": "0x00000C00"
           }
         ]
       },

@@ -204,7 +204,11 @@ module ssprint_main
             if (adc_cnt != 11'd0) begin
                 if (cen_10m) begin
                     adc_cnt <= adc_cnt - 11'd1;
-                    if (adc_cnt == 11'd1) adc_sar <= adc_in;
+                    // MAME's ADC0808: the SAR takes the input one ADC clock (16 T11
+                    // clocks) after the start and again at the end of the 64-clock
+                    // conversion, so a read during the conversion already sees the
+                    // new channel's sample -- APB reads its pedal that early
+                    if (adc_cnt == 11'd1040 || adc_cnt == 11'd1) adc_sar <= adc_in;
                 end
             end
             // watchdog

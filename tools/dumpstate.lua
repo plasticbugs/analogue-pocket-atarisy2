@@ -62,7 +62,7 @@ emu.register_frame_done(function()
     if frames == start_f + 60 * k then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:set_value(1) end
     if frames == start_f + 60 * k + 10 then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:clear_value() end
   end
-  if pedal >= 0 and frames == start_f + 60 then for _, fl in pairs(ports[":ADC0"].fields) do fl:set_value(pedal) end end
+  if pedal >= 0 and frames == start_f + 60 then for _, p in ipairs({":ADC0", ":ADC1", ":ADC2"}) do if ports[p] then for _, fl in pairs(ports[p].fields) do fl:set_value(pedal) end end end end
   if wheel >= 0 and frames == start_f + 60 then for _, fl in pairs(ports[":LETA0"].fields) do fl:set_value(wheel) end end
   if frames > last + 2 then m:exit() end
 end)

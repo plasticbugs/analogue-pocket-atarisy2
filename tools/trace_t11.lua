@@ -16,6 +16,7 @@ local sp = m.devices[":maincpu"].spaces["program"]
 -- collects locals after their first event).
 local iolog = io.open((os.getenv("OUT") or "artifacts/traces/t11.txt"):gsub("%.txt$", "") .. "_io.txt", "w")
 local slog  = io.open((os.getenv("OUT") or "artifacts/traces/t11.txt"):gsub("%.txt$", "") .. "_slap.txt", "w")
+local alog  = io.open((os.getenv("OUT") or "artifacts/traces/t11.txt"):gsub("%.txt$", "") .. "_adc.txt", "w")   -- ADC start strobes: offset pc
 local tracing = false
 local cpu = m.devices[":maincpu"]
 -- start-of-window state for the bench: work RAM, palette, the video RAMs,
@@ -63,6 +64,9 @@ end)
 taps.sr = sp:install_read_tap(0x8000, 0x81ff, "slr", function(offset, data, mask)
   if tracing then slog:write(string.format("r %04x %04x\n", offset, cpu.state["PC"].value)) end
 end)
+taps.adc = sp:install_write_tap(0x1480, 0x14ff, "adcs", function(offset, data, mask)
+  if tracing then alog:write(string.format("%04x %04x\n", offset, cpu.state["PC"].value)) end
+end)
 taps.sw = sp:install_write_tap(0x8000, 0x81ff, "slw", function(offset, data, mask)
   if tracing then slog:write(string.format("w %04x %04x\n", offset, cpu.state["PC"].value)) end
 end)
@@ -85,11 +89,11 @@ emu.register_frame_done(function()
   if frames == coin_f + 10 then ports[":IN1"].fields["Coin 1"]:clear_value() end
   if frames == startb_f then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:set_value(1) end
   if frames == startb_f + 10 then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:clear_value() end
-  if pedal >= 0 and frames == startb_f + 60 then for _, fl in pairs(ports[":ADC0"].fields) do fl:set_value(pedal) end end
+  if pedal >= 0 and frames == startb_f + 60 then for _, p in ipairs({":ADC0", ":ADC1", ":ADC2"}) do if ports[p] then for _, fl in pairs(ports[p].fields) do fl:set_value(pedal) end end end end
   if wheel >= 0 and frames == startb_f + 60 then for _, fl in pairs(ports[":LETA0"].fields) do fl:set_value(wheel) end end
   if frames == start_f and start_f > 0 then
     dump_state((os.getenv("OUT") or "artifacts/traces/t11.txt"):gsub("traces/", "states/"):gsub("%.txt$", "") .. ".txt")
     dbg:command(fmt); dbg:command("go"); tracing = true
   end
-  if frames == start_f + nframes then dbg:command("trace off,:maincpu"); dbg:command("go"); tracing = false; iolog:close(); slog:close(); m:exit() end
+  if frames == start_f + nframes then dbg:command("trace off,:maincpu"); dbg:command("go"); tracing = false; iolog:close(); slog:close(); alog:close(); m:exit() end
 end)

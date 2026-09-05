@@ -26,9 +26,9 @@ module ssprint_core
 
     // ROM image download (tools/mra_build.py layout, docs/hardware.md 9)
     input  logic        dl_active,
-    input  logic [24:0] dl_addr,
-    input  logic  [7:0] dl_data,
-    input  logic        dl_we,
+    input  logic [24:0] dl_addr_in,
+    input  logic  [7:0] dl_data_in,
+    input  logic        dl_we_in,
     // from the image header (valid once the download has passed byte 9)
     output logic  [7:0] cfg_game,       // 1 Super Sprint, 2 APB, ...
     output logic  [7:0] cfg_slapstic,   // 105 .. 110
@@ -121,6 +121,11 @@ module ssprint_core
     // ------------------------------------------------------------------------
     // loader: image bytes to block RAMs directly, to SDRAM through a FIFO
     // ------------------------------------------------------------------------
+    // the loader's inputs come from the framework's synchronisers (RAM shift
+    // registers, slow to leave) and are registered once here before the
+    // address arithmetic that routes them
+    logic [24:0] dl_addr; logic [7:0] dl_data; logic dl_we;
+    always_ff @(posedge clk) begin dl_addr <= dl_addr_in; dl_data <= dl_data_in; dl_we <= dl_we_in; end
     logic dl_we_d;
     wire  dl_pulse = dl_we && !dl_we_d;
     wire  dl_hdr     = (dl_addr < IMG_MAIN_FIXED);

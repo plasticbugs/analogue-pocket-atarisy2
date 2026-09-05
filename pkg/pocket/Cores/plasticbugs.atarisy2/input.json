@@ -7,32 +7,32 @@
         "mappings": [
           {
             "id": 200,
-            "name": "Accelerator",
+            "name": "Gas",
             "key": "pad_btn_b"
           },
           {
             "id": 201,
-            "name": "Accelerator (alt) / APB siren (start)",
+            "name": "Gas / APB: siren (start)",
             "key": "pad_btn_a"
           },
           {
             "id": 202,
-            "name": "Accelerator (alt)",
+            "name": "Gas",
             "key": "pad_btn_x"
           },
           {
             "id": 203,
-            "name": "Accelerator (alt) / APB button 2",
+            "name": "Gas / APB: button 2",
             "key": "pad_btn_y"
           },
           {
             "id": 204,
-            "name": "Accelerator (alt)",
+            "name": "Gas",
             "key": "pad_trig_r"
           },
           {
             "id": 205,
-            "name": "Accelerator (alt)",
+            "name": "Gas",
             "key": "pad_trig_l"
           },
           {

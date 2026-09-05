@@ -176,7 +176,13 @@ location sense only; the values below are what the 6502 reads.
 **0xff**, fully pressed **0x3f** (MAME `IPT_PEDAL`, `PORT_MINMAX(0,0x3f)
 PORT_INVERT`, measured with Lua). Channels 3-7 read 0xff. A conversion takes
 `1 + 1 + 64` ADC clocks (~106 us at 625 kHz) after the start write; the T11
-reads the result at 1400 later.
+reads the result at 1400 later. MAME's ADC0808 loads its SAR with the
+selected input one ADC clock after the start (`STATE_CONVERSION_READY`)
+and again at the end, so a read during the conversion already returns the
+new channel's sample; the core does the same (it first latched only at
+the end, which returns the previous channel's sample -- for APB, whose
+pedal is channel 1, that is channel 0's 0xff, "released"). APB's pedal:
+channel 1 (`ADC1`), Super Sprint's three: channels 0, 1, 2.
 
 **Steering wheels** (LETA channels 0, 1, 2 = players 1, 2, 3, 6502
 1810-1812): free-running 8-bit position counters, one count per encoder step,

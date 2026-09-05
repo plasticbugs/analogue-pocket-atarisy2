@@ -1039,9 +1039,9 @@ module core_top
         .burst_slow   ( ss_burst_slow  ),
         .overlay      ( ss_ovl         ),
         .dl_active    ( ioctl_download ),
-        .dl_addr      ( dl_addr        ),
-        .dl_data      ( dl_data        ),
-        .dl_we        ( dl_we          ),
+        .dl_addr_in   ( dl_addr        ),
+        .dl_data_in   ( dl_data        ),
+        .dl_we_in     ( dl_we          ),
         .nv_addr      ( po_nv_addr     ),
         .nv_we        ( po_nv_we       ),
         .nv_wdata     ( nv_dl_data     ),
@@ -1098,11 +1098,14 @@ module core_top
     );
     assign nv_rd_data = nv_rd_data_core;
 
-    //! Screen shape from the Interact menu: video.json modes 0 = 4:3 (square
-    //! pixels here), 1 = full width; a vertical game (header flag bit 1, APB)
-    //! uses modes 2 (3:4, rotated) and 3 (full height, rotated).
+    //! Screen shape from the Interact menu (video.json scaler modes). A
+    //! horizontal game: 0 = 4:3 (square pixels here), 1 = full width. A
+    //! vertical game (header flag bit 1, APB), rotated 270 by the scaler:
+    //! 2 = 3:4 (aspect given after rotation), 3 = the Pocket's 10:9 (fills),
+    //! 4 = 4:3 given before rotation, 5 = 10:16 -- the four Screen Shape
+    //! choices, until hardware says which aspect convention the scaler uses.
     wire [1:0] aspect_sel = mod_sw0[2:1];
-    assign video_preset = cfg_flags[1] ? ((aspect_sel == 2'd1) ? 3'd3 : 3'd2) : ((aspect_sel == 2'd1) ? 3'd1 : 3'd0);
+    assign video_preset = cfg_flags[1] ? {1'b0, 2'd2 + aspect_sel} : ((aspect_sel == 2'd1) ? 3'd1 : 3'd0);
 
     //! ------------------------------------------------------------------
     //! Video: the core emits exactly one pixel per clk_vid (16 MHz = clk_sys/6),
