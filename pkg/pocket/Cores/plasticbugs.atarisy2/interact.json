@@ -21,20 +21,12 @@
         "mask": "0xFFFFFFF9",
         "options": [
           {
-            "name": "Arcade (4:3 / 3:4)",
+            "name": "Arcade",
             "value": "0x00000000"
           },
           {
-            "name": "Full screen",
+            "name": "Wide / Vertical B",
             "value": "0x00000002"
-          },
-          {
-            "name": "Vertical B (4:3 rot)",
-            "value": "0x00000004"
-          },
-          {
-            "name": "Vertical C (10:16)",
-            "value": "0x00000006"
           }
         ]
       },
