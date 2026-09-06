@@ -61,16 +61,29 @@ for v in variables:
         problems.append(f'{len(v["options"])} options in "{v["name"]}" (limit 16)')
 if problems:
     sys.exit("refusing to package, interact.json:\n  " + "\n  ".join(problems))
-# The Pocket also reads interact.json into a fixed buffer of about 8 KB: a
-# 7,849-byte file loaded, a 9,462-byte one gave "error in interact". The
-# packaged copy is minified (the pkg/ source stays readable) and capped.
+# The Pocket also reads interact.json through two fixed buffers, measured
+# on the device: about 8 KB for the file (a 7,849-byte pretty-printed file
+# loaded, a 9,462-byte one gave "error in interact") and about 5 KB for one
+# line (minified to a single line, 5,119 characters loaded and 5,232 did
+# not). The packaged copy is compact with one menu entry per line -- every
+# line short, the file small -- and both are capped here; pkg/ keeps the
+# readable source.
 with open(os.path.join(core_dir, "interact.json")) as f:
     interact_full = json.load(f)
-minified = json.dumps(interact_full, separators=(",", ":")) + "\n"
-if len(minified) > 7000:
-    sys.exit(f"refusing to package, interact.json is {len(minified)} bytes minified (the Pocket's limit is about 8 KB)")
+head = {k: v for k, v in interact_full["interact"].items() if k != "variables"}
+lines = ['{"interact":{' + ",".join(json.dumps(k, separators=(",", ":")) + ":" + json.dumps(v, separators=(",", ":")) for k, v in head.items()) + ',"variables":[']
+vars_ = interact_full["interact"]["variables"]
+for i, v in enumerate(vars_):
+    lines.append(json.dumps(v, separators=(",", ":")) + ("," if i < len(vars_) - 1 else ""))
+lines.append("]}}")
+compact = "\n".join(lines) + "\n"
+json.loads(compact)   # must still be the same document
+assert json.loads(compact) == interact_full
+longest = max(len(l) for l in lines)
+if len(compact) > 7000 or longest > 3000:
+    sys.exit(f"refusing to package, interact.json is {len(compact)} bytes with a {longest}-character line (the Pocket's limits are about 8 KB and 5 KB)")
 with open(os.path.join(core_dir, "interact.json"), "w") as f:
-    f.write(minified)
+    f.write(compact)
 
 # Backstop: the instance JSONs are how the Pocket lists the games. Losing one
 # reads as a missing game, which looks like a core bug rather than packaging.
