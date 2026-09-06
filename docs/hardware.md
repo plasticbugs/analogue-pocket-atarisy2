@@ -173,8 +173,16 @@ location sense only; the values below are what the 6502 reads.
 | | | 7:6 unused | 1 |
 
 **Pedals** (ADC0809 channels 0, 1, 2 = players 1, 2, 3): released reads
-**0xff**, fully pressed **0x3f** (MAME `IPT_PEDAL`, `PORT_MINMAX(0,0x3f)
-PORT_INVERT`, measured with Lua). Channels 3-7 read 0xff. A conversion takes
+**0xff**, fully pressed **0xc0**. MAME's field is `IPT_PEDAL`,
+`PORT_MINMAX(0,0x3f) PORT_INVERT`: a key press ramps the raw value 0 -> 0x3f
+and the port inverts it, 0xff -> 0xc0, so the game never sees less than
+0xc0. (An earlier note here said 0x3f, measured with Lua's `set_value(63)`
+-- which writes the port's final value with no inversion, so the traces
+and benches that use `PEDAL=63` feed the game 0x3f. Super Sprint takes
+that as pressed; APB, which reads the pedal as a throttle, takes anything
+below 0xc0 as a hard brake and creeps on its own at 0xff, which is how the
+Pocket showed the mistake. `PEDAL=192` is the faithful floored value for
+new captures.) Channels 3-7 read 0xff. A conversion takes
 `1 + 1 + 64` ADC clocks (~106 us at 625 kHz) after the start write; the T11
 reads the result at 1400 later. MAME's ADC0808 loads its SAR with the
 selected input one ADC clock after the start (`STATE_CONVERSION_READY`)

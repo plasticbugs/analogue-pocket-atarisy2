@@ -105,6 +105,8 @@ int main(int argc, char **argv) {
                 if (top->dbg_snd_cmd_wr) printf("EV %12.1f f=%4d l=%6.1f CMD  %02x\n", t_us, frame, l, top->dbg_snd_cmd);
                 if (top->rootp->tb_system_top__DOT__core__DOT__snd_resp_wr) printf("EV %12.1f f=%4d l=%6.1f RESP --\n", t_us, frame, l);
                 if (top->rootp->tb_system_top__DOT__core__DOT__snd_resp_rd) printf("EV %12.1f f=%4d l=%6.1f RRD  --\n", t_us, frame, l);
+                if (top->rootp->tb_system_top__DOT__core__DOT__main__DOT__dbg_adc_st) printf("EV %12.1f f=%4d l=%6.1f ADCS %02x\n", t_us, frame, l, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__adc_chan);
+                if (top->rootp->tb_system_top__DOT__core__DOT__main__DOT__dbg_adc_rd) printf("EV %12.1f f=%4d l=%6.1f ADCR %02x cnt=%d\n", t_us, frame, l, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__adc_sar, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__adc_cnt);
             }
             prev_state = st;
         }
@@ -124,7 +126,10 @@ int main(int argc, char **argv) {
                 frame_start = cyc; frame++; y = -1; audio_max = 0;
                 for (int k = 0; k < ncoins; k++) { if (frame == coin_frame + 20 * k) top->coin = 1; if (frame == coin_frame + 20 * k + 10) top->coin = 0; }
                 for (int k = 0; k < nstarts; k++) { if (frame == start_frame + 60 * k) { top->start = 1; top->btn3 = 1; } if (frame == start_frame + 60 * k + 10) { top->start = 0; top->btn3 = 0; } }
-                if (frame == pedal_frame) { top->pedal0 = 0x3f; top->wheel0 = 0x30; }   // as tools/dumpstate.lua's PEDAL/WHEEL
+                static int pedal_val = getenv("PEDAL_VAL") ? strtol(getenv("PEDAL_VAL"), nullptr, 0) : 0x3f;   // 0x3f matches the existing MAME captures (PEDAL=63); a real floored pedal is 0xc0
+                if (frame == pedal_frame) { top->pedal0 = pedal_val; top->pedal1 = pedal_val; top->wheel0 = 0x30; }   // as tools/dumpstate.lua's PEDAL/WHEEL (APB's pedal is channel 1)
+                static int pedal_off = getenv("PEDAL_OFF") ? atoi(getenv("PEDAL_OFF")) : -1;
+                if (frame == pedal_off) { top->pedal0 = 0xff; top->pedal1 = 0xff; }
             }
             if (top->de && !prev_de) { y++; x = 0; }
             if (top->de && y >= 0 && y < 384 && x < 512) {

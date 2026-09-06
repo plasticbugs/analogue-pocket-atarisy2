@@ -999,9 +999,15 @@ module core_top
                              : (p1_btn_a | p1_btn_b | p1_btn_x | p1_btn_y | p1_btn_l1 | p1_btn_r1);
     wire       gas2 = p2_btn_a | p2_btn_b | p2_btn_x | p2_btn_y | p2_btn_l1 | p2_btn_r1;
     wire       gas3 = c3[4] | c3[5] | c3[6] | c3[7] | c3[8] | c3[9];
-    wire [7:0] pedal0 = gas1 ? 8'h3f : 8'hff;
-    wire [7:0] pedal1 = (g_apb ? gas1 : gas2) ? 8'h3f : 8'hff;    // APB reads its pedal on ADC 1
-    wire [7:0] pedal2 = gas3 ? 8'h3f : 8'hff;
+    //! A floored pedal reads 0xc0, released 0xff: MAME's port is PORT_MINMAX
+    //! (0, 0x3f) PORT_INVERT, so a player's key press ramps the value from
+    //! 0xff down to 0xc0 and never below. (0x3f, which the core sent before,
+    //! is what Lua's set_value(63) writes into the port with no inversion;
+    //! APB takes anything below 0xc0 as a hard brake, and the car creeps on
+    //! its own at 0xff -- docs/hardware.md.)
+    wire [7:0] pedal0 = gas1 ? 8'hc0 : 8'hff;
+    wire [7:0] pedal1 = (g_apb ? gas1 : gas2) ? 8'hc0 : 8'hff;    // APB reads its pedal on ADC 1
+    wire [7:0] pedal2 = gas3 ? 8'hc0 : 8'hff;
     //! Per-game wiring (cfg_game from the image header): Super Sprint's three
     //! players each have a wheel, pedal (ADC 0/1/2), start and coin slot;
     //! APB (game 2) has one wheel (LETA 0), its pedal on ADC 1, two buttons

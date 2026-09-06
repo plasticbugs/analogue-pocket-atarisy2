@@ -151,9 +151,12 @@ module ssprint_main
     // ADC0809: channel latched on the start write, result 66 ADC clocks later
     // (625 kHz = cen_10m / 16)
     // ------------------------------------------------------------------------
-    logic [2:0]  adc_chan;
-    logic [7:0]  adc_sar;
-    logic [10:0] adc_cnt;           // conversion countdown in cen_10m ticks (66 x 16 = 1056)
+    logic [2:0]  adc_chan /* verilator public_flat_rd */;
+    logic [7:0]  adc_sar  /* verilator public_flat_rd */;
+    logic [10:0] adc_cnt  /* verilator public_flat_rd */;   // conversion countdown in cen_10m ticks (66 x 16 = 1056)
+    // bench probes: the T11's ADC strobe and data read cycles
+    wire dbg_adc_st /* verilator public_flat_rd */ = bus_strobe && bus_wr && io_adcs && bus_be[0];
+    wire dbg_adc_rd /* verilator public_flat_rd */ = bus_strobe && !bus_wr && io_adc;
     wire  [7:0]  adc_in = (adc_chan == 3'd0) ? pedal0 : (adc_chan == 3'd1) ? pedal1 : (adc_chan == 3'd2) ? pedal2 : 8'hff;
 
     // ------------------------------------------------------------------------

@@ -74,6 +74,14 @@ verified.
   names) are real too but were not the cause. `package-pocket.py` writes
   the packaged copy compact with one entry per line and refuses a file over
   7,000 bytes or a line over 3,000 characters.
+- **Lua's `set_value` on an analog field writes the port's final value,
+  bypassing PORT_INVERT.** The pedal's "fully pressed" value was measured
+  that way as 0x3f and built into the core; a real key press in MAME gives
+  0xc0 (0xff at rest, inverted from the 0..0x3f raw range). Super Sprint
+  takes 0x3f as pressed all the same, so every gate passed; APB reads the
+  pedal as a throttle, takes anything below 0xc0 as a hard brake and creeps
+  at 0xff, and the Pocket showed it: the car drove itself and stopped when
+  the gas was held. Measure an input the way the player produces it.
 - **A game that never scrolls cannot verify the scroll registers.** Super
   Sprint's playfield sits still (its Y scroll register only ever carries
   bank bits), so every gate passed with the RTL taking the Y scroll from
