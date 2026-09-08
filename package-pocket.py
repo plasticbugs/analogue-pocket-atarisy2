@@ -17,7 +17,7 @@ OUT = os.path.join(ROOT, "release", "pocket")
 CORE_ID = "plasticbugs.atarisy2"
 PLATFORM_ID = "atarisy2"
 # the games the core lists: one instance JSON each (Assets/<platform>/<core>/)
-INSTANCES = ["Super Sprint.json", "APB - All Points Bulletin.json", "Championship Sprint.json"]
+INSTANCES = ["Super Sprint.json", "APB - All Points Bulletin.json", "Championship Sprint.json", "Paperboy.json", "720 Degrees.json"]
 
 if not os.path.exists(RBF):
     sys.exit(f"missing {RBF} - run the Quartus compile first "
@@ -37,7 +37,7 @@ with open(os.path.join(core_dir, "bitstream.rbf_r"), "wb") as f:
 
 # Ship the ROM recipe and its builder alongside the core, so a downloaded
 # release contains everything needed to produce ssprint.rom.
-for extra in ("ssprint.mra", "apb.mra", "csprint.mra", "README.md", os.path.join("tools", "mra_build.py")):
+for extra in ("ssprint.mra", "apb.mra", "csprint.mra", "paperboy.mra", "720.mra", "README.md", os.path.join("tools", "mra_build.py")):
     src = os.path.join(ROOT, extra)
     if os.path.exists(src):
         shutil.copy(src, os.path.join(OUT, os.path.basename(extra)))
@@ -101,4 +101,4 @@ if strays:
 print(f"packaged -> {OUT}")
 print("copy Cores/, Platforms/ and Assets/ from that folder onto the SD card root")
 print(f"games listed: {', '.join(n[:-5] for n in INSTANCES)}  (ROM images go in Assets/{PLATFORM_ID}/common/)")
-print("build the ROMs with:  python3 mra_build.py <game>.mra <game>.zip  for ssprint, apb, csprint")
+print("build the ROMs with:  python3 mra_build.py <game>.mra <game>.zip  for ssprint, apb, csprint, paperboy, 720")

@@ -33,16 +33,18 @@ module tb_sound_top (
     output logic  [2:0] dbg_io_reg,
     output logic        dbg_io_a0,
     output logic  [7:0] dbg_d,
+    output logic        dbg_in1_rd,
+    output logic  [7:0] dbg_in1,
     output logic        dbg_sync,
     output logic [15:0] dbg_addr,
     output logic        cen_ym
 );
-    logic cen_pix, cen_10m, irq_tick, cen_tms625, cen_tms833;
-    clk_enables cen (.clk(clk), .reset(reset), .cen_pix(cen_pix), .cen_10m(cen_10m), .cen_ym(cen_ym), .irq_tick(irq_tick), .cen_tms625(cen_tms625), .cen_tms833(cen_tms833));
+    logic cen_pix, cen_10m, irq_tick, irq_sync, cen_tms625, cen_tms833;
+    clk_enables cen (.clk(clk), .reset(reset), .cen_pix(cen_pix), .cen_10m(cen_10m), .cen_ym(cen_ym), .irq_sync(irq_sync), .irq_tick(irq_tick), .cen_tms625(cen_tms625), .cen_tms833(cen_tms833));
     wire unused_ok = &{1'b0, cen_pix, cen_10m};
     logic [7:0] nv_rdata; logic nv_dirty;
     ssprint_sound dut (
-        .clk(clk), .reset(reset), .cen_ym(cen_ym), .irq_tick(irq_tick), .cen_tms625(cen_tms625), .cen_tms833(cen_tms833), .cfg_tms(cfg_tms), .cpu_reset(cpu_reset), .snd_reset_pulse(snd_reset_pulse),
+        .clk(clk), .reset(reset), .cen_ym(cen_ym), .irq_tick(irq_tick), .irq_sync(irq_sync), .cen_tms625(cen_tms625), .cen_tms833(cen_tms833), .cfg_tms(cfg_tms), .cpu_reset(cpu_reset), .snd_reset_pulse(snd_reset_pulse),
         .cmd_wr(cmd_wr), .cmd_data(cmd_data), .cmd_full(cmd_full), .cmd_rd_pulse(cmd_rd_pulse),
         .resp_rd(resp_rd), .resp_data(resp_data), .resp_full(resp_full), .resp_wr_pulse(resp_wr_pulse),
         .coins(coins), .test(test), .dsw0(dsw0), .dsw1(dsw1), .leta0(leta0), .leta1(8'h00), .leta2(8'h00),
@@ -50,7 +52,7 @@ module tb_sound_top (
         .nv_addr(nv_addr), .nv_we(nv_we), .nv_wdata(nv_wdata), .nv_rdata(nv_rdata), .nv_dirty(nv_dirty),
         .audio_l(audio_l), .audio_r(audio_r), .audio_valid(audio_valid),
         .dbg_ym_wr(dbg_ym_wr), .dbg_ym_a0(dbg_ym_a0), .dbg_pk_wr(dbg_pk_wr), .dbg_pk_sel(dbg_pk_sel), .dbg_pk_reg(dbg_pk_reg),
-        .dbg_io_wr(dbg_io_wr), .dbg_io_reg(dbg_io_reg), .dbg_io_a0(dbg_io_a0), .dbg_d(dbg_d), .dbg_sync(dbg_sync), .dbg_addr(dbg_addr)
+        .dbg_io_wr(dbg_io_wr), .dbg_io_reg(dbg_io_reg), .dbg_io_a0(dbg_io_a0), .dbg_d(dbg_d), .dbg_in1_rd(dbg_in1_rd), .dbg_in1(dbg_in1), .dbg_sync(dbg_sync), .dbg_addr(dbg_addr)
     );
     wire unused_nv = &{1'b0, nv_rdata, nv_dirty};
 endmodule

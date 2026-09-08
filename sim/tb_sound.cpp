@@ -20,7 +20,7 @@ static uint64_t cyc = 0;
 static inline void tick() { top->clk = 0; top->eval(); top->clk = 1; top->eval(); cyc++; }
 static const double CLK = 96e6;
 
-struct Ev { double us; std::string tag; unsigned addr, data, mask; };
+struct Ev { double us; std::string tag; unsigned addr, data, mask; long need = -1; };   // need: for an RRD, the index of the response it consumed in MAME (-1: a stale read)
 
 int main(int argc, char **argv) {
     Verilated::commandArgs(argc, argv);
@@ -57,7 +57,30 @@ int main(int argc, char **argv) {
     uint64_t t0 = cyc;
     size_t ei = 0;
     std::vector<int16_t> wav; uint32_t acc = 0; const uint32_t INC = (uint32_t)(4294967296.0 * 48000.0 / CLK);
-    long n_cmd = 0, n_resp = 0, n_rrd = 0;
+    // The T11's reads of the response latch (RRD) are paired with the 6502's
+    // responses (RESP) they consumed in MAME's log, in order, matched by value:
+    // MAME stamps each CPU's accesses with its own timeslice clock, so a read
+    // is logged up to a slice after (or before) the write it took, and the
+    // 6502 sees the latch emptied before the read's logged time. Replaying a
+    // read at its logged time can therefore land before the RTL's write of
+    // that response (the RTL's 6502 has no such lead), leaving it unread and
+    // the 6502 waiting on P2TALK forever. So a read that consumed the k-th
+    // response is replayed once the RTL's 6502 has written its k-th response
+    // (as the T11 polls P2TALK for it), never before; a read that found the
+    // latch empty (stale) is replayed at its logged time, on an empty latch.
+    long n_stale = 0, n_skew = 0, n_consume = 0;
+    {
+        std::vector<size_t> resp_idx; for (size_t i = 0; i < ev.size(); i++) if (ev[i].tag == "RESP") resp_idx.push_back(i);
+        size_t head = 0; unsigned last_val = 0xff;
+        for (size_t i = 0; i < ev.size(); i++) if (ev[i].tag == "RRD") {
+            bool match = head < resp_idx.size() && ev[resp_idx[head]].data == ev[i].data;
+            if (match && (ev[i].data != last_val || ev[resp_idx[head]].us <= ev[i].us + 1000)) {
+                if (ev[resp_idx[head]].us > ev[i].us) n_skew++;
+                ev[i].need = (long)head; last_val = ev[i].data; head++; n_consume++;
+            } else n_stale++;
+        }
+    }
+    long n_cmd = 0, n_resp = 0, n_rrd = 0, n_waited = 0, n_forced = 0, n_skipped = 0; double max_wait = 0;
     // the coin switch is on the 6502's port: press it over the frames the MAME
     // capture did (tools/trace_sound.lua COIN=frame, held 10 frames)
     int coin_frame = getenv("COIN_FRAME") ? atoi(getenv("COIN_FRAME")) : 600;
@@ -65,15 +88,23 @@ int main(int argc, char **argv) {
     int wheel_frame = getenv("WHEEL_FRAME") ? atoi(getenv("WHEEL_FRAME")) : 760;
     int wheel_val = getenv("WHEEL") ? strtol(getenv("WHEEL"), nullptr, 0) : 0x30;
     uint64_t end_cyc = t0 + (uint64_t)(seconds * CLK);
+    // IN1_FROM_US / IN1_TO_US: log the 6502's IN1 reads (bit 2 = TMS5220 /READY) in that window
+    double in1_from = getenv("IN1_FROM_US") ? atof(getenv("IN1_FROM_US")) : -1, in1_to = getenv("IN1_TO_US") ? atof(getenv("IN1_TO_US")) : -1;
     while (cyc < end_cyc) {
         double now_us = (cyc - t0) / CLK * 1e6;
         top->cmd_wr = 0; top->snd_reset_pulse = 0; top->resp_rd = 0;
         while (ei < ev.size() && ev[ei].us <= now_us) {
-            const Ev &e = ev[ei++];
+            const Ev &e = ev[ei];
+            if (e.tag == "RRD" && e.need >= 0 && n_resp <= e.need) {   // the T11 waits for the RTL's response
+                if (now_us - e.us < 20000) break;
+                n_forced++;                                               // 20 ms without it: a real divergence, read anyway
+            }
+            if (e.tag == "RRD" && e.need >= 0 && now_us - e.us > 1) { n_waited++; if (now_us - e.us > max_wait) max_wait = now_us - e.us; }
+            ei++;
             // 8-bit registers on the even byte: a write covering only the odd byte is not a write to them
             if (e.tag == "CMD" && (e.mask & 0xff)) { top->cmd_wr = 1; top->cmd_data = e.data; n_cmd++; }
             else if (e.tag == "SRST" && (e.mask & 0xff)) { top->cpu_reset = e.data & 1; top->snd_reset_pulse = 1; }
-            else if (e.tag == "RRD") { top->resp_rd = 1; n_rrd++; }
+            else if (e.tag == "RRD") { if (e.need >= 0 || !top->resp_full) { top->resp_rd = 1; n_rrd++; } else n_skipped++; }
             else if (e.tag == "FRAME") {
                 int fr = (int)e.addr;
                 static int ncoins = getenv("COINS") ? atoi(getenv("COINS")) : 1;   // as tools/trace_sound.lua: COINS coins, 20 frames apart
@@ -91,6 +122,7 @@ int main(int argc, char **argv) {
             fprintf(lf, "%.3f %s %04x %02x\n", t_us, names[top->dbg_io_reg], 0x1870 + top->dbg_io_reg * 2 + (top->dbg_io_reg == 1 ? top->dbg_io_a0 : 0), top->dbg_d);   // the strobe's address bit 0 is the /WS level
             if (top->dbg_io_reg == 2) n_resp++;
         }
+        if (top->dbg_in1_rd && t_us >= in1_from && t_us < in1_to) fprintf(lf, "%.3f IN1 1840 %02x\n", t_us, top->dbg_in1);
         uint64_t na = (uint64_t)acc + INC; if (na >> 32) wav.push_back((int16_t)top->audio_l); acc = (uint32_t)na;
     }
     fclose(lf);
@@ -102,5 +134,6 @@ int main(int argc, char **argv) {
     fwrite(&brate, 4, 1, wf); fwrite(&align, 2, 1, wf); fwrite(&bits, 2, 1, wf); fwrite("data", 1, 4, wf); fwrite(&datasz, 4, 1, wf);
     fwrite(wav.data(), 2, wav.size(), wf); fclose(wf);
     printf("replayed %ld commands, %ld response reads; 6502 wrote %ld responses; %zu samples\n", n_cmd, n_rrd, n_resp, wav.size());
+    printf("response reads: %ld consumed a response in MAME (%ld logged before its write), %ld stale; %ld waited for the RTL's response (max %.3f ms), %ld forced after 20 ms, %ld stale reads skipped on a full latch\n", n_consume, n_skew, n_stale, n_waited, max_wait / 1000.0, n_forced, n_skipped);
     return 0;
 }

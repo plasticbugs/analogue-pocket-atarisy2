@@ -38,6 +38,13 @@ wtap(snd, 0x187c, 0x187c, "sw",   "SW")
 wtap(snd, 0x1878, 0x1878, "ack",  "ACK")
 wtap(snd, 0x1870, 0x1870, "tms",  "TMS")      -- TMS5220 data latch (games with speech)
 wtap(snd, 0x1872, 0x1873, "tmss", "TMSS")     -- TMS5220 /WS: 1872 high, 1873 low (MAME tms5220_strobe_w)
+-- IN1_FROM=frame IN1_TO=frame: also log the 6502's IN1 reads (1840: bit 2
+-- is the TMS5220's /READY) between those frames, to see the chip's handshake
+local in1_from, in1_to = tonumber(os.getenv("IN1_FROM") or "-1"), tonumber(os.getenv("IN1_TO") or "-1")
+if in1_from >= 0 then
+  taps[#taps+1] = snd:install_read_tap(0x1840, 0x1840, "in1", function(offset, data, mask)
+    if frames >= in1_from and frames < in1_to then out:write(string.format("%s IN1 %04x %02x\n", us(), offset, data & 0xff)) end end)
+end
 emu.register_frame_done(function()
   frames = frames + 1
   out:write(string.format("%s FRAME %d\n", us(), frames))

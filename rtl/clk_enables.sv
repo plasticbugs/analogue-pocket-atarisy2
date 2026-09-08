@@ -13,6 +13,7 @@ module clk_enables (
     output logic cen_pix,      // 16.000 MHz pixel clock            96 / 6
     output logic cen_10m,      // 10.000 MHz T11                    phase accumulator
     output logic cen_ym,       // 3.579545 MHz YM2151 (6502 = /2)   phase accumulator
+    input  logic irq_sync,     // restart the sound IRQ period (the 6502 leaving reset: MAME's periodic interrupt restarts on the device reset)
     output logic irq_tick,     // 244.140625 Hz sound IRQ           96e6 / 393216
     output logic cen_tms625,   // 625.000 kHz TMS5220 oscillator (20 MHz / 32)      phase accumulator
     output logic cen_tms833    // 833.333 kHz TMS5220 oscillator (20 MHz / 24; "frequency control" set)
@@ -41,8 +42,8 @@ module clk_enables (
             cen_tms625 <= acc_t625[32];
             acc_t833 <= {1'b0, acc_t833[31:0]} + {1'b0, INC_T833};
             cen_tms833 <= acc_t833[32];
-            irq_div  <= (irq_div == 19'd393215) ? 19'd0 : irq_div + 19'd1;
-            irq_tick <= (irq_div == 19'd393215);
+            irq_div  <= (irq_sync || irq_div == 19'd393215) ? 19'd0 : irq_div + 19'd1;
+            irq_tick <= ~irq_sync && (irq_div == 19'd393215);
         end
     end
 endmodule

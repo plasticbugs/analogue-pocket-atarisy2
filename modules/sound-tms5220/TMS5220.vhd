@@ -162,6 +162,7 @@ architecture RTL of TMS5220 is
 	signal m_wr_busy : integer range 0 to 16 := 0;
 	signal m_wr_srv  : std_logic := '0';   -- one chip clock: the latched write is serviced now
 	signal m_wr_data : std_logic := '0';   -- the latched write was data (speak external), not a command
+	signal m_CMD_reg : std_logic_vector(2 downto 0) := "000";   -- the latched command (bits 6:4)
 
 	signal
 		m_cycA,
@@ -549,6 +550,13 @@ begin
 			elsif (m_IC = 0) and (m_PC = 12) and (m_SPEN = '0') then
 					m_TALK <= '0';
 			end if;
+			-- (plasticbugs) MAME's FAST_START_HACK (tms5220.cpp data_write): TALK
+			-- goes active together with SPEN, at the write that takes the FIFO
+			-- past half full, not at the next RESETL4 -- so TALKD latches it one
+			-- frame (25 ms) earlier than the original model, as MAME does.
+			if (m_RST = '0') and (m_buffer_low_last = '1') and (m_buffer_low = '0') and (m_SPEN = '0') then
+				m_TALK <= '1';
+			end if;
 		end if;
 	end process;
 
@@ -652,32 +660,39 @@ begin
 	end process;
 
 	-- command processing
+	-- (plasticbugs) as MAME (tms5220.cpp, true timing): a command is latched
+	-- at the /WS falling edge and takes effect when p_READY services the
+	-- write, 16 chip clocks later (process_command from the ready timer),
+	-- and each command flag is one chip clock wide. The original decoded at
+	-- the edge and left the flags set until the next write, so a RESET
+	-- command held the chip in reset -- and /READY active -- until then,
+	-- and the next write never saw /READY drop.
 	p_CMD : process
 	begin
 		wait until rising_edge(m_CLK);
 		if (m_ENA = '1') then
-			if ((m_WSn_last = '1') and (m_WSn = '0') and (m_RSn = '1')) then
-				m_RDB_cmd  <= '0';
-				m_RST_cmd  <= '0';
-				m_SXT_cmd  <= '0';
-				if (m_DDIS = '0') then
-					-- FIXME implement all commands
-					-- command mode
-					case m_DBI(6 downto 4) is
-						when "000" => -- NOP
-						when "001" => -- Read Byte
-							m_RDB_cmd <= '1';
-						when "010" => -- NOP
-						when "011" => -- Read and Branch
-						when "100" => -- Load Address
-						when "101" => -- Speak
-						when "110" => -- Speak External
-							m_SXT_cmd <= '1';
-						when "111" => -- Reset
-							m_RST_cmd <= '1';
-						when others => null;
-					end case;
-				end if;
+			m_RDB_cmd  <= '0';
+			m_RST_cmd  <= '0';
+			m_SXT_cmd  <= '0';
+			if ((m_WSn_last = '1') and (m_WSn = '0') and (m_RSn = '1')) and (m_DDIS = '0') then
+				m_CMD_reg <= m_DBI(6 downto 4);
+			end if;
+			if (m_wr_srv = '1') and (m_wr_data = '0') then
+				-- FIXME implement all commands
+				case m_CMD_reg is
+					when "000" => -- NOP
+					when "001" => -- Read Byte
+						m_RDB_cmd <= '1';
+					when "010" => -- NOP
+					when "011" => -- Read and Branch
+					when "100" => -- Load Address
+					when "101" => -- Speak
+					when "110" => -- Speak External
+						m_SXT_cmd <= '1';
+					when "111" => -- Reset
+						m_RST_cmd <= '1';
+					when others => null;
+				end case;
 			end if;
 		end if;
 	end process;

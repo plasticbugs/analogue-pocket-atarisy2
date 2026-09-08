@@ -15,9 +15,19 @@ is gateware; nothing is emulated in software.
 |---|---|---|
 | Super Sprint (1986) | `ssprint` | verified and played on hardware (below) |
 | APB - All Points Bulletin (1987) | `apb` | played on hardware: the sound, speech and screen shape confirmed; in the benches the boot, attract mode and the start of a game are pixel-identical to MAME and the T11 cycle-exact (the in-game music order on the sound board is still being matched) |
-| Championship Sprint (1986) | `csprint` | Super Sprint's two-player sequel on the same board (slapstic 109): in the benches the image, the T11 (cycle-exact), the video and the boot are MAME's; the sound board's YM2151 and POKEY 1 streams match over 15 s with a late-window difference still open; not yet run on a Pocket |
+| Championship Sprint (1986) | `csprint` | played on hardware; in the benches the image, the T11 (cycle-exact), the video and the boot are MAME's, the sound board's YM2151 and POKEY 1 streams match over 15 s with a late-window difference still open |
+| Paperboy (1984) | `paperboy` | slapstic 105, speech, handlebars on two ADC channels: image byte-exact, T11 cycle-exact, video and boot pixel-identical, the sound board's 15 s identical to MAME's log; not yet run on a Pocket |
+| 720 Degrees (1986) | `720` | slapstic 107, speech, the rotating joystick on two LETA counters: image byte-exact, T11 cycle-exact over the boot and a park demo, attract frames pixel-identical; sound bench in progress; not yet run on a Pocket |
 
-## Status (0.2.0)
+## Status (0.3.0)
+
+0.3.0 adds 720 Degrees and three sound-board fixes found while matching
+Paperboy's speech against MAME: the TMS5220's /READY now stays inactive for
+16 chip clocks after every write (a RESET command used to let it return at
+once, so the idle stream fed the chip a third faster), speech starts a frame
+earlier as in MAME, and the sound IRQ's phase follows the 6502's reset as
+MAME's does (every sound event was 0.6-1.8 ms late on the games that reset
+the sound board late in their boot).
 
 Verified against MAME as the oracle (details and numbers in
 `docs/verification.md`):
@@ -59,6 +69,8 @@ Verified against MAME as the oracle (details and numbers in
    python3 mra_build.py ssprint.mra ssprint.zip     # -> ssprint.rom
    python3 mra_build.py apb.mra apb.zip             # -> apb.rom
    python3 mra_build.py csprint.mra csprint.zip     # -> csprint.rom
+   python3 mra_build.py paperboy.mra paperboy.zip   # -> paperboy.rom
+   python3 mra_build.py 720.mra 720.zip             # -> 720.rom
    ```
 
    Nothing but Python 3 is needed. It checks every ROM's CRC32; every image
@@ -85,8 +97,15 @@ Y is the game's other button, Select is coin 1. Championship Sprint is
 Super Sprint for two players on the same controls (dock pad 2 is player
 2) and shares its "Sprint:" switches. Every game is one coin per play:
 the coinage switches are not in the menu, APB starts and continues on one
-coin with 199 continues, and the service switch is not in the menu either;
-what is left are the difficulty switches (and the Sprints' obstacles and
+coin with 199 continues, and the service switch is not in the menu either.
+Paperboy: the D-pad or stick is the handlebars (left / right steer, up /
+down for speed), A and B throw papers left and right (A also starts the
+game), Select is coin 1, and its difficulty is the "Paperboy:" entry;
+720 Degrees: the D-pad or stick points the rotating joystick (it turns
+toward that direction at the "Steering Speed" rate), L and R spin it left
+and right for the game's spins, A and B are its two buttons (A also starts
+the game), Select is coin 1; its difficulty and bonus life are the "720:"
+entries. What is left are the difficulty switches (and the Sprints' obstacles and
 wrenches), the steering and screen settings. APB's screen is vertical
 and the Pocket's scaler rotates it. "Screen Shape" is "Wide" (the cabinet's
 4:3, or 3:4 rotated) or "Tall" (the Pocket's 10:9) for either game.

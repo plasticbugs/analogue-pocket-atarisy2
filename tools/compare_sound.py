@@ -57,6 +57,12 @@ def main():
     # replaying, so MAME time - first machine time... the bench replays at
     # MAME's absolute times, so both are on the same base already
     limit = seconds * 1e6
+    # MAME's log ends at its last FRAME line (the capture's frame count); the
+    # RTL runs the full `seconds`, so only compare up to where both have data
+    mame_end = max((float(l.split()[0]) for l in open(mame_path) if " FRAME " in l), default=limit)
+    if mame_end < limit:
+        limit = mame_end
+        print(f"MAME's log ends at {mame_end / 1e6:.3f} s: comparing up to there")
     ok = True
     for tag, name in (("YM", "YM2151"), ("PK1", "POKEY 1"), ("PK2", "POKEY 2"), ("RESP", "responses"), ("MIX", "mixer"), ("SEN", "sound enable"), ("TMS", "TMS5220 data"), ("TMSS", "TMS5220 strobes"), ("SW", "misc switch")):
         m = [(e[0], e[2] & 0xf if tag.startswith("PK") else e[2] & 1, e[3]) for e in mame if e[1] == tag and e[0] <= limit]

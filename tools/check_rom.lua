@@ -31,7 +31,19 @@ if magic ~= "ASY2" or img:byte(5) ~= 2 then total = total + 1; print("header: ba
 cmp(":maincpu", IMG.fixed, 0x8000, 0x8000)
 cmp(":maincpu", IMG.bank, 0x10000, 0x80000)
 cmp(":audiocpu", IMG.sound, 0x4000, 0xc000)
-cmp(":tiles", IMG.tiles, 0, 0x80000)
+local tl = m.memory.regions[":tiles"].size
+if tl >= 0x80000 then
+  cmp(":tiles", IMG.tiles, 0, 0x80000)
+else
+  -- a smaller region: its two plane halves at slot offsets 0 and 0x40000, zeros between (as the sprites)
+  cmp(":tiles", IMG.tiles, 0, tl // 2)
+  cmp(":tiles", IMG.tiles + 0x40000, tl // 2, tl // 2)
+  local pad = 0
+  for i = tl // 2, 0x3ffff do if img:byte(IMG.tiles + i + 1) ~= 0 then pad = pad + 1 end end
+  for i = 0x40000 + tl // 2, 0x7ffff do if img:byte(IMG.tiles + i + 1) ~= 0 then pad = pad + 1 end end
+  total = total + pad
+  print(string.format(":tiles padding: %d nonzero bytes", pad))
+end
 local spr = m.memory.regions[":sprites"]
 local sprlen = spr.size
 if sprlen >= 0x100000 then
@@ -46,7 +58,15 @@ else
   total = total + pad
   print(string.format(":sprites padding: %d nonzero bytes", pad))
 end
-cmp(":chars", IMG.chars, 0, 0x4000)
+local cl = m.memory.regions[":chars"].size
+cmp(":chars", IMG.chars, 0, cl)
+if cl < 0x4000 then
+  -- an 8 KB character ROM is stored twice so codes wrap at 512 as MAME's do
+  local bad = 0
+  for i = 0, 0x3fff - cl do if img:byte(IMG.chars + cl + i + 1) ~= img:byte(IMG.chars + (i % cl) + 1) then bad = bad + 1 end end
+  total = total + bad
+  print(string.format(":chars mirror: %d mismatches", bad))
+end
 if m.memory.regions[":eeprom"] then cmp(":eeprom", IMG.eeprom, 0, 0x200)
 else
   local bad = 0

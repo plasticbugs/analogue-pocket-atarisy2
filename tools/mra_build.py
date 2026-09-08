@@ -10,7 +10,7 @@ verifies the finished image against the md5 recorded in the .mra.
 Supported MRA elements (the standard MiSTer subset):
 
   <part name="x" crc="y" [offset="0x1000" length="0x800"]/>
-        a ROM, or a slice of one.
+        a ROM, or a slice of one; crc="a|b" accepts either checksum.
   <part repeat="N">FF</part>
         a run of literal bytes.
   <interleave output="16"> <part name=.. crc=.. map="01"/> ... </interleave>
@@ -74,7 +74,8 @@ def get_part(parts, node):
     crc = node.get('crc')
     if crc:
         actual = zlib.crc32(data) & 0xffffffff
-        if actual != int(crc, 16):
+        # "a|b" accepts either (an EEPROM factory image dumped two ways)
+        if actual not in (int(c, 16) for c in crc.split('|')):
             sys.exit(f'error: {name} has crc {actual:08x}, expected {crc}')
     offset = int(node.get('offset', '0'), 0)
     length = node.get('length')

@@ -1,0 +1,104 @@
+<misterromdescription>
+    <name>720 Degrees</name>
+    <setname>720</setname>
+    <year>1986</year>
+    <manufacturer>Atari Games</manufacturer>
+    <category>Arcade</category>
+    <rbf>atarisy2</rbf>
+
+    <!-- Image format 2 (docs/hardware.md section 9); the layout notes are in
+         paperboy.mra. 720 is the Paperboy board with slapstic 107, the
+         TMS5220 fitted, a horizontal screen, 256 KB of tiles (8192 codes,
+         13 bits) and 1 MB of motion objects (8192 codes, 13 bits). -->
+    <rom index="0" zip="720.zip" md5="d05bcc6d193818d1cbfdab8526b4ad68">
+
+        <!-- header: magic, format, game 5, slapstic 107, flags 0x01, pf/mo code bits 13/13, name -->
+        <part>41 53 59 32 02 05 6b 01 0d 0d 00 00 00 00 00 00 37 32 30 20 44 45 47 52 45 45 53 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</part>
+        <part repeat="464">00</part>
+
+        <!-- T11 fixed program: little-endian words, 7lm on the even byte -->
+        <interleave output="16">
+            <part name="136047-3126.7lm" crc="43abd367" map="10"/>
+            <part name="136047-3127.7mn" crc="772e1e5b" map="01"/>
+        </interleave>
+
+        <!-- banked program, MAME region 0x10000-0x8ffff: three 64 KB pairs at
+             0x10000, 0x30000 and 0x50000; 0x70000-0x8ffff is empty -->
+        <interleave output="16">
+            <part name="136047-3128.6fh" crc="bf6f425b" map="10"/>
+            <part name="136047-4131.6mn" crc="2ea8a20f" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136047-1129.6hj" crc="eabf0b01" map="10"/>
+            <part name="136047-1132.6p" crc="a24f333e" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="136047-1130.6k" crc="93fba845" map="10"/>
+            <part name="136047-1133.6r" crc="53c177be" map="01"/>
+        </interleave>
+        <part repeat="131072">00</part>
+
+        <!-- 6502 program 0x4000-0xffff -->
+        <part name="136047-2134.2a" crc="0db4ca28"/>
+        <part name="136047-1135.2b" crc="b1f157d0"/>
+        <part name="136047-2136.2cd" crc="00b06bec"/>
+
+        <!-- playfield tiles: MAME's 256 KB region, each 128 KB bit-plane half
+             placed at the 512 KB slot's half (0 and 0x40000) -->
+        <part name="136047-1121.6a" crc="7adb5f9a"/>
+        <part name="136047-1122.6b" crc="41b60141"/>
+        <part name="136047-1123.7a" crc="501881d5"/>
+        <part name="136047-1124.7b" crc="096f2574"/>
+        <part repeat="131072">00</part>
+        <part name="136047-1117.6c" crc="5a55f149"/>
+        <part name="136047-1118.6d" crc="9bb2429e"/>
+        <part name="136047-1119.7d" crc="8f7b20e5"/>
+        <part name="136047-1120.7c" crc="46af6d35"/>
+        <part repeat="131072">00</part>
+
+        <!-- motion objects: MAME's 1 MB region as dumped (the core inverts);
+             every ROM's second 32 KB loads first (ROM_CONTINUE to the lower address) -->
+        <!-- region 0x0: second halves of the four ROMs, then their first halves (ROM_CONTINUE) -->
+        <part name="136047-1109.6t" crc="0a46b693" offset="0x8000" length="0x8000"/>
+        <part name="136047-1110.6sr" crc="457d7e38" offset="0x8000" length="0x8000"/>
+        <part name="136047-1111.6p" crc="ffad0a5b" offset="0x8000" length="0x8000"/>
+        <part name="136047-1112.6n" crc="06664580" offset="0x8000" length="0x8000"/>
+        <part name="136047-1109.6t" crc="0a46b693" offset="0" length="0x8000"/>
+        <part name="136047-1110.6sr" crc="457d7e38" offset="0" length="0x8000"/>
+        <part name="136047-1111.6p" crc="ffad0a5b" offset="0" length="0x8000"/>
+        <part name="136047-1112.6n" crc="06664580" offset="0" length="0x8000"/>
+        <!-- region 0x40000: second halves of the four ROMs, then their first halves (ROM_CONTINUE) -->
+        <part name="136047-1113.6m" crc="7445dc0f" offset="0x8000" length="0x8000"/>
+        <part name="136047-1114.6l" crc="23eaceb0" offset="0x8000" length="0x8000"/>
+        <part name="136047-1115.6kj" crc="0cc8de53" offset="0x8000" length="0x8000"/>
+        <part name="136047-1116.6jh" crc="2d8f1369" offset="0x8000" length="0x8000"/>
+        <part name="136047-1113.6m" crc="7445dc0f" offset="0" length="0x8000"/>
+        <part name="136047-1114.6l" crc="23eaceb0" offset="0" length="0x8000"/>
+        <part name="136047-1115.6kj" crc="0cc8de53" offset="0" length="0x8000"/>
+        <part name="136047-1116.6jh" crc="2d8f1369" offset="0" length="0x8000"/>
+        <!-- region 0x80000: second halves of the four ROMs, then their first halves (ROM_CONTINUE) -->
+        <part name="136047-1101.5t" crc="2ac77b80" offset="0x8000" length="0x8000"/>
+        <part name="136047-1102.5sr" crc="f19c3b06" offset="0x8000" length="0x8000"/>
+        <part name="136047-1103.5p" crc="78f9ab90" offset="0x8000" length="0x8000"/>
+        <part name="136047-1104.5n" crc="77ce4a7f" offset="0x8000" length="0x8000"/>
+        <part name="136047-1101.5t" crc="2ac77b80" offset="0" length="0x8000"/>
+        <part name="136047-1102.5sr" crc="f19c3b06" offset="0" length="0x8000"/>
+        <part name="136047-1103.5p" crc="78f9ab90" offset="0" length="0x8000"/>
+        <part name="136047-1104.5n" crc="77ce4a7f" offset="0" length="0x8000"/>
+        <!-- region 0xc0000: second halves of the four ROMs, then their first halves (ROM_CONTINUE) -->
+        <part name="136047-1105.5m" crc="bef5a025" offset="0x8000" length="0x8000"/>
+        <part name="136047-1106.5l" crc="92a159c8" offset="0x8000" length="0x8000"/>
+        <part name="136047-1107.5kj" crc="0a94a3ef" offset="0x8000" length="0x8000"/>
+        <part name="136047-1108.5jh" crc="9815eda6" offset="0x8000" length="0x8000"/>
+        <part name="136047-1105.5m" crc="bef5a025" offset="0" length="0x8000"/>
+        <part name="136047-1106.5l" crc="92a159c8" offset="0" length="0x8000"/>
+        <part name="136047-1107.5kj" crc="0a94a3ef" offset="0" length="0x8000"/>
+        <part name="136047-1108.5jh" crc="9815eda6" offset="0" length="0x8000"/>
+
+        <!-- alphanumerics -->
+        <part name="136047-1125.4t" crc="6b7e2328"/>
+
+        <!-- 2804 EEPROM: MAME's factory image, or the one shipped in the romset -->
+        <part name="720-eeprom.bin" crc="5d2acf11|cfe1c24e"/>
+    </rom>
+</misterromdescription>

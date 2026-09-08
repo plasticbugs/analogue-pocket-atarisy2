@@ -1,0 +1,147 @@
+<misterromdescription>
+    <name>Paperboy</name>
+    <setname>paperboy</setname>
+    <year>1984</year>
+    <manufacturer>Atari Games</manufacturer>
+    <category>Arcade</category>
+    <rbf>atarisy2</rbf>
+
+    <!-- Image format 2 (docs/hardware.md section 9): a 512-byte header, then
+         fixed regions sized for the largest Atari System 2 game so one core
+         reads every image the same way. Each region is laid out as MAME's
+         memory region (gaps read 0x00 there and here), except that a
+         region smaller than its slot is placed so that its two bit-plane
+         halves sit where the full-size region's would (RGN_FRAC(1,2) of the
+         SLOT), and the header's code widths say where the tile codes wrap.
+
+           0x000000     512  header: "ASY2", format 2, game id, slapstic type,
+                             flags (bit 0 TMS5220 fitted, bit 1 vertical screen),
+                             playfield code bits, motion object code bits, name
+           0x000200   32768  T11 fixed program 0x8000-0xffff (7l even byte, 7n odd)
+           0x008200  524288  T11 banked program, MAME region 0x10000-0x8ffff (64 banks of 8 KB)
+           0x088200   49152  6502 program 0x4000-0xffff
+           0x094200  524288  playfield tiles, MAME "tiles" region
+           0x114200 1048576  motion object tiles, MAME "sprites" region (as dumped; the core inverts)
+           0x214200   16384  alphanumerics, MAME "chars" region
+           0x218200     512  2804 EEPROM factory contents
+           0x218400          total
+    -->
+    <rom index="0" zip="paperboy.zip" md5="f0f99b43c5a641d575490157e40e10f7">
+
+        <!-- header: magic, format, game 4, slapstic 105, flags 0x01, pf/mo code bits 12/11, name -->
+        <part>41 53 59 32 02 04 69 01 0c 0b 00 00 00 00 00 00 50 41 50 45 52 42 4f 59 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00</part>
+        <part repeat="464">00</part>
+
+        <!-- T11 fixed program: little-endian words, 7l on the even byte -->
+        <interleave output="16">
+            <part name="cpu_l07.rv3" crc="4024bb9b" map="10"/>
+            <part name="cpu_n07.rv3" crc="0260901a" map="01"/>
+        </interleave>
+
+        <!-- banked program, MAME region 0x10000-0x8ffff: 16 KB pairs at
+             0x10000, 0x30000, 0x50000 and 0x70000, each stored four times
+             (init_paperboy expands them to 128 KB chunks) -->
+        <interleave output="16">
+            <part name="cpu_f06.rv2" crc="3fea86ac" map="10"/>
+            <part name="cpu_n06.rv2" crc="711b17ba" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_f06.rv2" crc="3fea86ac" map="10"/>
+            <part name="cpu_n06.rv2" crc="711b17ba" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_f06.rv2" crc="3fea86ac" map="10"/>
+            <part name="cpu_n06.rv2" crc="711b17ba" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_f06.rv2" crc="3fea86ac" map="10"/>
+            <part name="cpu_n06.rv2" crc="711b17ba" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_j06.rv1" crc="a754b12d" map="10"/>
+            <part name="cpu_p06.rv1" crc="89a1ff9c" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_j06.rv1" crc="a754b12d" map="10"/>
+            <part name="cpu_p06.rv1" crc="89a1ff9c" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_j06.rv1" crc="a754b12d" map="10"/>
+            <part name="cpu_p06.rv1" crc="89a1ff9c" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_j06.rv1" crc="a754b12d" map="10"/>
+            <part name="cpu_p06.rv1" crc="89a1ff9c" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_k06.rv1" crc="290bb034" map="10"/>
+            <part name="cpu_r06.rv1" crc="826993de" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_k06.rv1" crc="290bb034" map="10"/>
+            <part name="cpu_r06.rv1" crc="826993de" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_k06.rv1" crc="290bb034" map="10"/>
+            <part name="cpu_r06.rv1" crc="826993de" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_k06.rv1" crc="290bb034" map="10"/>
+            <part name="cpu_r06.rv1" crc="826993de" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_l06.rv2" crc="8a754466" map="10"/>
+            <part name="cpu_s06.rv2" crc="224209f9" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_l06.rv2" crc="8a754466" map="10"/>
+            <part name="cpu_s06.rv2" crc="224209f9" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_l06.rv2" crc="8a754466" map="10"/>
+            <part name="cpu_s06.rv2" crc="224209f9" map="01"/>
+        </interleave>
+        <interleave output="16">
+            <part name="cpu_l06.rv2" crc="8a754466" map="10"/>
+            <part name="cpu_s06.rv2" crc="224209f9" map="01"/>
+        </interleave>
+
+        <!-- 6502 program 0x4000-0xffff -->
+        <part name="cpu_a02.rv3" crc="ba251bc4"/>
+        <part name="cpu_b02.rv2" crc="e4e7a8b9"/>
+        <part name="cpu_c02.rv2" crc="d44c2aa2"/>
+
+        <!-- playfield tiles: MAME "tiles" region is 0x20000, plane halves
+             0x10000 apart; in the 512 KB slot half 0 sits at 0 and half 1
+             at 0x40000 (the header's 12 code bits wrap codes at 4096) -->
+        <part name="vid_a06.rv1" crc="b32ffddf"/>                  <!-- 00000 -->
+        <part repeat="16384">00</part>                             <!-- 08000 -->
+        <part name="vid_b06.rv1" crc="301b849d"/>                  <!-- 0c000 -->
+        <part repeat="196608">00</part>                            <!-- 10000-3ffff -->
+        <part name="vid_c06.rv1" crc="7bb59d68"/>                  <!-- 40000 -->
+        <part repeat="16384">00</part>                             <!-- 48000 -->
+        <part name="vid_d06.rv1" crc="1a1d4ba8"/>                  <!-- 4c000 -->
+        <part repeat="196608">00</part>                            <!-- 50000-7ffff -->
+
+        <!-- motion objects: MAME "sprites" region, 256 KB of a 1 MB slot
+             (as dumped; the core inverts): half 0 at 0, half 1 at 0x80000 -->
+        <part name="vid_l06.rv1" crc="067ef202"/>
+        <part name="vid_k06.rv1" crc="76b977c4"/>
+        <part name="vid_j06.rv1" crc="2a3cc8d0"/>
+        <part name="vid_h06.rv1" crc="6763a321"/>
+        <part repeat="393216">00</part>
+        <part name="vid_s06.rv1" crc="0a321b7b"/>
+        <part name="vid_p06.rv1" crc="5bd089ee"/>
+        <part name="vid_n06.rv1" crc="c34a517d"/>
+        <part name="vid_m06.rv1" crc="df723956"/>
+        <part repeat="393216">00</part>
+
+        <!-- alphanumerics: an 8 KB ROM (512 characters) stored twice in the
+             16 KB slot, so codes wrap at 512 as MAME's do -->
+        <part name="vid_t06.rv1" crc="60d7aebb"/>
+        <part name="vid_t06.rv1" crc="60d7aebb"/>
+
+        <!-- EEPROM factory contents -->
+        <part name="paperboy-eeprom.bin" crc="1bbf9b07|756b90cc"/>   <!-- MAME's dump, or the one in some sets -->
+    </rom>
+</misterromdescription>

@@ -1,62 +1,62 @@
 {
-  "input": {
-    "magic": "APF_VER_1",
-    "controllers": [
-      {
-        "type": "default",
-        "mappings": [
-          {
-            "id": 200,
-            "name": "Gas",
-            "key": "pad_btn_b"
-          },
-          {
-            "id": 201,
-            "name": "Gas / APB: siren (start)",
-            "key": "pad_btn_a"
-          },
-          {
-            "id": 202,
-            "name": "Gas",
-            "key": "pad_btn_x"
-          },
-          {
-            "id": 203,
-            "name": "Gas / APB: button 2",
-            "key": "pad_btn_y"
-          },
-          {
-            "id": 204,
-            "name": "Gas",
-            "key": "pad_trig_r"
-          },
-          {
-            "id": 205,
-            "name": "Gas",
-            "key": "pad_trig_l"
-          },
-          {
-            "id": 206,
-            "name": "Coin",
-            "key": "pad_btn_select"
-          },
-          {
-            "id": 207,
-            "name": "Start",
-            "key": "pad_btn_start"
-          },
-          {
-            "id": 208,
-            "name": "Steer left",
-            "key": "pad_dpad_left"
-          },
-          {
-            "id": 209,
-            "name": "Steer right",
-            "key": "pad_dpad_right"
-          }
+    "input": {
+        "magic": "APF_VER_1",
+        "controllers": [
+            {
+                "type": "default",
+                "mappings": [
+                    {
+                        "id": 200,
+                        "name": "Gas / button 2 (PB, 720)",
+                        "key": "pad_btn_b"
+                    },
+                    {
+                        "id": 201,
+                        "name": "Gas / start (APB,PB,720)",
+                        "key": "pad_btn_a"
+                    },
+                    {
+                        "id": 202,
+                        "name": "Gas",
+                        "key": "pad_btn_x"
+                    },
+                    {
+                        "id": 203,
+                        "name": "Gas / APB: button 2",
+                        "key": "pad_btn_y"
+                    },
+                    {
+                        "id": 204,
+                        "name": "Gas / 720: spin right",
+                        "key": "pad_trig_r"
+                    },
+                    {
+                        "id": 205,
+                        "name": "Gas / 720: spin left",
+                        "key": "pad_trig_l"
+                    },
+                    {
+                        "id": 206,
+                        "name": "Coin",
+                        "key": "pad_btn_select"
+                    },
+                    {
+                        "id": 207,
+                        "name": "Start",
+                        "key": "pad_btn_start"
+                    },
+                    {
+                        "id": 208,
+                        "name": "Steer left",
+                        "key": "pad_dpad_left"
+                    },
+                    {
+                        "id": 209,
+                        "name": "Steer right",
+                        "key": "pad_dpad_right"
+                    }
+                ]
+            }
         ]
-      }
-    ]
-  }
+    }
 }

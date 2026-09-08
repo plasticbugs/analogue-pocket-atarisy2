@@ -995,6 +995,11 @@ module core_top
     synch_3 #(.WIDTH(32)) sync_c3(cont3_key, c3, clk_sys);
     steer_wheel sw2 (.clk(clk_sys), .reset(ss_reset), .rate(steer_rate), .left(c3[2]), .right(c3[3]),
                      .stick_active(1'b0), .stick_x(8'h80), .stick_rev(1'b0), .stick_sens(2'd0), .pos(wheel2));
+    // 720 Degrees: the rotating joystick on LETA 0 (centre) and LETA 1 (rotate)
+    wire [7:0] rot720, ctr720;
+    ctrl_720 c720 (.clk(clk_sys), .reset(ss_reset), .rate(steer_rate), .up(p1_up), .down(p1_down), .left(p1_left), .right(p1_right),
+                   .spin_ccw(p1_btn_l1), .spin_cw(p1_btn_r1), .stick_active(j1_up | j1_down | j1_left | j1_right),
+                   .stick_x(j1_lx), .stick_y(j1_ly), .rotate(rot720), .center(ctr720));
     wire       gas1 = g_apb ? (p1_btn_b | p1_btn_x | p1_btn_l1 | p1_btn_r1)          // A and Y are APB's buttons
                              : (p1_btn_a | p1_btn_b | p1_btn_x | p1_btn_y | p1_btn_l1 | p1_btn_r1);
     wire       gas2 = p2_btn_a | p2_btn_b | p2_btn_x | p2_btn_y | p2_btn_l1 | p2_btn_r1;
@@ -1005,11 +1010,19 @@ module core_top
     //! is what Lua's set_value(63) writes into the port with no inversion;
     //! APB takes anything below 0xc0 as a hard brake, and the car creeps on
     //! its own at 0xff -- docs/hardware.md.)
+    //! Paperboy's handlebars: the stick's X/Y when it is off centre, else
+    //! the D-pad as full deflection (MAME's AD_STICK: 0x10 .. 0x80 .. 0xf0)
+    wire [7:0] hb_x = (j1_left | j1_right) ? j1_lx : p1_left ? 8'h10 : p1_right ? 8'hf0 : 8'h80;
+    wire [7:0] hb_y = (j1_up | j1_down)    ? j1_ly : p1_up   ? 8'h10 : p1_down  ? 8'hf0 : 8'h80;
     reg  [7:0] pedal0 = 8'hff, pedal1 = 8'hff, pedal2 = 8'hff;
+    reg  [7:0] leta0_q = 8'hff, leta1_q = 8'hff, leta2_q = 8'hff;    // Paperboy has no LETA counters: its ports read 0xff
     always @(posedge clk_sys) begin
-        pedal0 <= gas1 ? 8'hc0 : 8'hff;
-        pedal1 <= (g_apb ? gas1 : gas2) ? 8'hc0 : 8'hff;    // APB reads its pedal on ADC 1
+        pedal0 <= g_720 ? 8'hff : g_pb ? hb_x : gas1 ? 8'hc0 : 8'hff;    // 720's ADCs are unused (read 0xff)
+        pedal1 <= g_720 ? 8'hff : g_pb ? hb_y : (g_apb ? gas1 : gas2) ? 8'hc0 : 8'hff;    // APB reads its pedal on ADC 1
         pedal2 <= gas3 ? 8'hc0 : 8'hff;
+        leta0_q <= g_720 ? ctr720 : g_pb ? 8'hff : wheel0;    // 720: the joystick's centre and rotate discs
+        leta1_q <= g_720 ? rot720 : g_pb ? 8'hff : wheel1;
+        leta2_q <= (g_pb | g_720) ? 8'hff : wheel2;
     end
     //! Per-game wiring (cfg_game from the image header): Super Sprint's three
     //! players each have a wheel, pedal (ADC 0/1/2), start and coin slot;
@@ -1021,14 +1034,20 @@ module core_top
     //! (the game selects and the muxes they steer are registered: the
     //! header byte -> compare -> mux -> the 6502's input port read missed
     //! 96 MHz by 0.23 ns as one chain, and every input here is quasi-static)
-    reg        g_apb = 1'b0, g_cs = 1'b0;
+    //! Paperboy (game 4): handlebars on ADC 0 (X) and ADC 1 (Y), its two
+    //! buttons (throw) on IN0 bits 7/6 -- the bits the Sprints' start
+    //! buttons use, so they arrive as starts[0]/[1] -- coins on IN1 bits
+    //! 6/7, no start button (a button starts the game).
+    reg        g_apb = 1'b0, g_cs = 1'b0, g_pb = 1'b0, g_720 = 1'b0;
     reg  [2:0] starts = 3'b000, coins = 3'b000;
     reg        btn2 = 1'b0, btn3 = 1'b0;
     always @(posedge clk_sys) begin
         g_apb  <= (cfg_game == 8'd2);
         g_cs   <= (cfg_game == 8'd3);
-        starts <= {c3[15], p2_start, p1_start};
-        coins  <= (g_apb | g_cs) ? {p2_select, p1_select, 1'b0} : {c3[14], p2_select, p1_select};
+        g_pb   <= (cfg_game == 8'd4);
+        g_720  <= (cfg_game == 8'd5);
+        starts <= (g_pb | g_720) ? {1'b0, p1_btn_b, p1_btn_a} : {c3[15], p2_start, p1_start};
+        coins  <= (g_apb | g_cs | g_pb | g_720) ? {p2_select, p1_select, 1'b0} : {c3[14], p2_select, p1_select};
         btn2   <= g_apb & p1_btn_y;
         btn3   <= g_apb & p1_btn_a;                         // siren / start
     end
@@ -1075,9 +1094,9 @@ module core_top
         .pedal0       ( pedal0         ),
         .pedal1       ( pedal1         ),
         .pedal2       ( pedal2         ),
-        .wheel0       ( wheel0         ),
-        .wheel1       ( wheel1         ),
-        .wheel2       ( wheel2         ),
+        .wheel0       ( leta0_q        ),
+        .wheel1       ( leta1_q        ),
+        .wheel2       ( leta2_q        ),
         // DSW0 bits 4:0 (coinage, multiplier) are the same on every System 2
         // game and come from the menu's shared entries; bonus coins (7:5) and
         // DSW1 are per game. APB's live in the DIP register's bits 26:16
@@ -1090,8 +1109,10 @@ module core_top
         //! its "max continues" (bits 2:1) at 11 = 199, its attract lights on.
         //! Only the difficulty switches (and the Sprints' obstacles and
         //! wrenches) are in the menu.
-        .dsw0         ( g_apb ? {dip_sw3[2:0], 5'b00000} : {dip_sw0[7:5], 5'b00000} ),
-        .dsw1         ( g_apb ? {2'b01, dip_sw2[5:3], 2'b11, 1'b0} : dip_sw1 ),
+        //! Paperboy: DSW0 all factory (1 coin / 1 credit, no bonus coins),
+        //! DSW1 difficulty (bits 1:0) from the menu's bits 15:14, the rest factory.
+        .dsw0         ( g_apb ? {dip_sw3[2:0], 5'b00000} : (g_pb | g_720) ? 8'h00 : {dip_sw0[7:5], 5'b00000} ),
+        .dsw1         ( g_apb ? {2'b01, dip_sw2[5:3], 2'b11, 1'b0} : g_pb ? {2'b11, 4'b0000, dip_sw1[7:6]} : g_720 ? {2'b01, 2'b01, dip_sw2[1:0], dip_sw2[7:6]} : dip_sw1 ),
         .cen_pix      ( ss_ce_pix      ),
         .r            ( ss_r           ),
         .g            ( ss_g           ),

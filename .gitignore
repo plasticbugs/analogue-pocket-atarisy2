@@ -1,6 +1,12 @@
 # --- never commit ROMs, romsets or derived images ---
+# every romset directory, not just the first one that existed
 /ssprint/
-/ssprint.zip
+/apb/
+/csprint/
+/paperboy/
+/720/
+/mame-romset/
+/*.zip
 *.rom
 /build/
 

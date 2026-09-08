@@ -282,483 +282,483 @@ module t65_alu_Brtl
   wire [7:0] n3473;
   assign p_out = n3473; //(module output)
   assign q = n3471; //(module output)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:73:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:73:15 */
   assign adc_z = n3149; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:74:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:74:15 */
   assign adc_c = n3200; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:75:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:75:15 */
   assign adc_v = n3183; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:76:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:76:15 */
   assign adc_n = n3175; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:77:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:77:15 */
   assign adc_q = n3205; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:78:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:78:15 */
   assign sbc_z = n3269; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:79:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:79:15 */
   assign sbc_c = n3271; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:80:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:80:15 */
   assign sbc_v = n3278; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:81:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:81:15 */
   assign sbc_n = n3279; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:82:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:82:15 */
   assign sbc_q = n3319; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:83:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:83:15 */
   assign sbx_q = n3282; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:92:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:92:31 */
   assign n3122 = busa[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:92:50 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:92:50 */
   assign n3123 = p_in[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:92:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:92:44 */
   assign n3124 = {n3122, n3123};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:92:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:92:11 */
   assign n3125 = {2'b0, n3124};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:92:86 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:92:86 */
   assign n3126 = busb[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:92:99 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:92:99 */
   assign n3128 = {n3126, 1'b1};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:92:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:92:66 */
   assign n3129 = {2'b0, n3128};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:92:64 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:92:64 */
   assign n3130 = n3125 + n3129;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:93:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:93:31 */
   assign n3131 = busa[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:93:48 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:93:48 */
   assign n3132 = n3130[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:93:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:93:44 */
   assign n3133 = {n3131, n3132};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:93:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:93:11 */
   assign n3134 = {2'b0, n3133};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:93:79 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:93:79 */
   assign n3135 = busb[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:93:92 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:93:92 */
   assign n3137 = {n3135, 1'b1};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:93:59 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:93:59 */
   assign n3138 = {2'b0, n3137};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:93:57 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:93:57 */
   assign n3139 = n3134 + n3138;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:100:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:100:10 */
   assign n3140 = n3130[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:100:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:100:23 */
   assign n3142 = n3140 == 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:100:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:100:33 */
   assign n3143 = n3139[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:100:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:100:46 */
   assign n3145 = n3143 == 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:100:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:100:27 */
   assign n3146 = n3145 & n3142;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:100:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:100:5 */
   assign n3149 = n3146 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:106:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:106:10 */
   assign n3150 = n3130[5:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:106:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:106:23 */
   assign n3152 = $unsigned(n3150) > $unsigned(5'b01001);
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:106:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:106:35 */
   assign n3153 = p_in[3]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:106:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:106:27 */
   assign n3154 = n3153 & n3152;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:106:50 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:106:50 */
   assign n3155 = bcd_en & n3154;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:107:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:107:27 */
   assign n3156 = n3130[6:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:107:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:107:40 */
   assign n3158 = n3156 + 6'b000110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:88:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:88:14 */
   assign n3159 = n3130[6:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:106:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:106:5 */
   assign n3160 = n3155 ? n3158 : n3159;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:88:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:88:14 */
   assign n3161 = n3130[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:88:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:88:14 */
   assign n3162 = {n3160, n3161};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:110:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:110:12 */
   assign n3163 = n3162[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:88:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:88:14 */
   assign n3164 = {n3160, n3161};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:110:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:110:21 */
   assign n3165 = n3164[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:110:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:110:16 */
   assign n3166 = n3163 | n3165;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:111:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:111:31 */
   assign n3167 = busa[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:111:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:111:44 */
   assign n3168 = {n3167, n3166};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:111:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:111:11 */
   assign n3169 = {2'b0, n3168};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:111:75 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:111:75 */
   assign n3170 = busb[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:111:88 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:111:88 */
   assign n3172 = {n3170, 1'b1};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:111:55 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:111:55 */
   assign n3173 = {2'b0, n3172};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:111:53 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:111:53 */
   assign n3174 = n3169 + n3173;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:113:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:113:16 */
   assign n3175 = n3174[4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:114:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:114:17 */
   assign n3176 = n3174[4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:114:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:114:29 */
   assign n3177 = busa[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:114:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:114:21 */
   assign n3178 = n3176 ^ n3177;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:114:47 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:114:47 */
   assign n3179 = busa[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:114:59 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:114:59 */
   assign n3180 = busb[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:114:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:114:51 */
   assign n3181 = n3179 ^ n3180;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:114:38 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:114:38 */
   assign n3182 = ~n3181;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:114:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:114:34 */
   assign n3183 = n3178 & n3182;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:120:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:120:10 */
   assign n3184 = n3174[5:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:120:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:120:23 */
   assign n3186 = $unsigned(n3184) > $unsigned(5'b01001);
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:120:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:120:35 */
   assign n3187 = p_in[3]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:120:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:120:27 */
   assign n3188 = n3187 & n3186;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:120:50 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:120:50 */
   assign n3189 = bcd_en & n3188;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:121:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:121:27 */
   assign n3190 = n3174[6:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:121:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:121:40 */
   assign n3192 = n3190 + 6'b000110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:89:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:89:14 */
   assign n3193 = n3174[6:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:120:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:120:5 */
   assign n3194 = n3189 ? n3192 : n3193;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:89:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:89:14 */
   assign n3195 = n3174[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:89:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:89:14 */
   assign n3196 = {n3194, n3195};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:124:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:124:16 */
   assign n3197 = n3196[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:89:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:89:14 */
   assign n3198 = {n3194, n3195};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:124:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:124:25 */
   assign n3199 = n3198[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:124:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:124:20 */
   assign n3200 = n3197 | n3199;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:89:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:89:14 */
   assign n3201 = {n3194, n3195};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:126:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:126:33 */
   assign n3202 = n3201[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:88:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:88:14 */
   assign n3203 = {n3160, n3161};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:126:50 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:126:50 */
   assign n3204 = n3203[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:126:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:126:46 */
   assign n3205 = {n3202, n3204};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:136:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:136:12 */
   assign n3216 = op == 5'b00001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:137:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:137:12 */
   assign n3218 = op == 5'b00011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:136:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:136:24 */
   assign n3219 = n3216 | n3218;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:138:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:138:12 */
   assign n3221 = op == 5'b00101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:137:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:137:24 */
   assign n3222 = n3219 | n3221;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:139:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:139:12 */
   assign n3224 = op == 5'b00111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:138:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:138:24 */
   assign n3225 = n3222 | n3224;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:140:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:140:12 */
   assign n3227 = op == 5'b01001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:139:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:139:24 */
   assign n3228 = n3225 | n3227;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:141:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:141:12 */
   assign n3230 = op == 5'b01011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:140:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:140:24 */
   assign n3231 = n3228 | n3230;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:143:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:143:12 */
   assign n3233 = op == 5'b01110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:141:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:141:24 */
   assign n3234 = n3231 | n3233;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:136:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:136:5 */
   assign n3237 = n3234 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:148:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:148:14 */
   assign n3239 = p_in[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:148:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:148:26 */
   assign n3240 = ~n3237;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:148:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:148:23 */
   assign n3241 = n3239 | n3240;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:149:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:149:31 */
   assign n3242 = busa[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:149:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:149:44 */
   assign n3243 = {n3242, n3241};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:149:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:149:11 */
   assign n3244 = {2'b0, n3243};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:149:75 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:149:75 */
   assign n3245 = busb[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:149:88 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:149:88 */
   assign n3247 = {n3245, 1'b1};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:149:55 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:149:55 */
   assign n3248 = {1'b0, n3247};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:149:53 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:149:53 */
   assign n3249 = {1'b0, n3248};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:149:53 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:149:53 */
   assign n3250 = n3244 - n3249;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:150:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:150:31 */
   assign n3251 = busa[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:150:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:150:44 */
   assign n3253 = {n3251, 1'b0};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:150:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:150:11 */
   assign n3254 = {1'b0, n3253};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:150:77 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:150:77 */
   assign n3255 = busb[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:150:94 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:150:94 */
   assign n3256 = n3250[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:150:90 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:150:90 */
   assign n3257 = {n3255, n3256};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:150:57 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:150:57 */
   assign n3258 = {1'b0, n3257};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:150:55 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:150:55 */
   assign n3259 = n3254 - n3258;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:157:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:157:10 */
   assign n3260 = n3250[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:157:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:157:23 */
   assign n3262 = n3260 == 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:157:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:157:33 */
   assign n3263 = n3259[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:157:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:157:46 */
   assign n3265 = n3263 == 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:157:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:157:27 */
   assign n3266 = n3265 & n3262;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:157:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:157:5 */
   assign n3269 = n3266 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:163:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:163:20 */
   assign n3270 = n3259[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:163:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:163:14 */
   assign n3271 = ~n3270;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:164:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:164:17 */
   assign n3272 = n3259[4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:164:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:164:29 */
   assign n3273 = busa[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:164:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:164:21 */
   assign n3274 = n3272 ^ n3273;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:164:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:164:43 */
   assign n3275 = busa[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:164:55 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:164:55 */
   assign n3276 = busb[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:164:47 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:164:47 */
   assign n3277 = n3275 ^ n3276;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:164:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:164:34 */
   assign n3278 = n3274 & n3277;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:165:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:165:16 */
   assign n3279 = n3259[4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:167:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:167:33 */
   assign n3280 = n3259[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:167:50 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:167:50 */
   assign n3281 = n3250[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:167:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:167:46 */
   assign n3282 = {n3280, n3281};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:169:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:169:12 */
   assign n3283 = p_in[3]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:169:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:169:27 */
   assign n3284 = bcd_en & n3283;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:170:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:170:12 */
   assign n3285 = n3250[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:171:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:171:29 */
   assign n3286 = n3250[5:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:171:42 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:171:42 */
   assign n3288 = n3286 - 5'b00110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:130:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:130:14 */
   assign n3289 = n3250[5:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:170:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:170:7 */
   assign n3290 = n3285 ? n3288 : n3289;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:173:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:173:33 */
   assign n3291 = busa[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:173:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:173:46 */
   assign n3293 = {n3291, 1'b0};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:173:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:173:13 */
   assign n3294 = {1'b0, n3293};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:173:79 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:173:79 */
   assign n3295 = busb[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:130:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:130:14 */
   assign n3296 = n3250[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:130:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:130:14 */
   assign n3297 = n3250[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:130:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:130:14 */
   assign n3298 = {n3297, n3290, n3296};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:173:96 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:173:96 */
   assign n3299 = n3298[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:173:92 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:173:92 */
   assign n3300 = {n3295, n3299};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:173:59 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:173:59 */
   assign n3301 = {1'b0, n3300};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:173:57 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:173:57 */
   assign n3302 = n3294 - n3301;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:174:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:174:12 */
   assign n3303 = n3302[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:175:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:175:29 */
   assign n3304 = n3302[5:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:175:42 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:175:42 */
   assign n3306 = n3304 - 5'b00110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:131:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:131:14 */
   assign n3307 = n3302[5:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:174:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:174:7 */
   assign n3308 = n3303 ? n3306 : n3307;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:131:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:131:14 */
   assign n3309 = n3302[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:130:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:130:14 */
   assign n3310 = n3250[5:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:169:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:169:5 */
   assign n3311 = n3284 ? n3290 : n3310;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:130:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:130:14 */
   assign n3312 = n3250[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:130:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:130:14 */
   assign n3313 = n3250[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:169:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:169:5 */
   assign n3314 = {n3308, n3309};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:169:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:169:5 */
   assign n3315 = n3284 ? n3314 : n3259;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:179:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:179:33 */
   assign n3316 = n3315[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:130:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:130:14 */
   assign n3317 = {n3312, n3311, n3313};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:179:50 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:179:50 */
   assign n3318 = n3317[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:179:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:179:46 */
   assign n3319 = {n3316, n3318};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:196:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:196:21 */
   assign n3326 = busa | busb;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:195:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:195:7 */
   assign n3328 = op == 5'b00000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:198:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:198:21 */
   assign n3329 = busa & busb;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:197:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:197:7 */
   assign n3331 = op == 5'b00001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:200:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:200:21 */
   assign n3332 = busa ^ busb;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:199:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:199:7 */
   assign n3334 = op == 5'b00010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:201:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:201:7 */
   assign n3336 = op == 5'b00011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:205:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:205:7 */
   assign n3338 = op == 5'b00110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:207:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:207:7 */
   assign n3340 = op == 5'b10001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:210:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:210:7 */
   assign n3342 = op == 5'b00111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:215:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:215:20 */
   assign n3343 = busa[6:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:215:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:215:33 */
   assign n3345 = {n3343, 1'b0};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:216:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:216:30 */
   assign n3346 = busa[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:214:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:214:7 */
   assign n3348 = op == 5'b01000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:218:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:218:20 */
   assign n3349 = busa[6:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:218:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:218:39 */
   assign n3350 = p_in[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:218:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:218:33 */
   assign n3351 = {n3349, n3350};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:219:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:219:30 */
   assign n3352 = busa[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:217:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:217:7 */
   assign n3354 = op == 5'b01001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:221:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:221:26 */
   assign n3355 = busa[7:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:221:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:221:20 */
   assign n3357 = {1'b0, n3355};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:222:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:222:30 */
   assign n3358 = busa[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:220:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:220:7 */
   assign n3360 = op == 5'b01010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:224:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:224:20 */
   assign n3361 = p_in[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:224:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:224:35 */
   assign n3362 = busa[7:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:224:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:224:29 */
   assign n3363 = {n3361, n3362};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:225:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:225:30 */
   assign n3364 = busa[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:223:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:223:7 */
   assign n3366 = op == 5'b01011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:227:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:227:20 */
   assign n3367 = p_in[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:227:36 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:227:36 */
   assign n3368 = busa[7:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:227:57 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:227:57 */
   assign n3369 = busb[7:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:227:49 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:227:49 */
   assign n3370 = n3368 & n3369;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:227:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:227:29 */
   assign n3371 = {n3367, n3370};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:228:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:228:29 */
   assign n3372 = n3371[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:228:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:228:40 */
   assign n3373 = n3371[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:228:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:228:33 */
   assign n3374 = n3372 ^ n3373;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:230:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:230:16 */
   assign n3375 = p_in[3]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:230:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:230:29 */
   assign n3376 = bcd_en & n3375;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:231:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:231:19 */
   assign n3377 = busa[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:231:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:231:40 */
   assign n3378 = busb[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:231:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:231:32 */
   assign n3379 = n3377 & n3378;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:231:54 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:231:54 */
   assign n3381 = $unsigned(n3379) > $unsigned(4'b0100);
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:232:62 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:232:62 */
   assign n3382 = n3371[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:232:76 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:232:76 */
   assign n3384 = n3382 + 4'b0110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:187:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:187:14 */
   assign n3385 = n3371[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:231:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:231:11 */
   assign n3386 = n3381 ? n3384 : n3385;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:234:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:234:19 */
   assign n3387 = busa[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:234:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:234:40 */
   assign n3388 = busb[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:234:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:234:32 */
   assign n3389 = n3387 & n3388;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:234:54 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:234:54 */
   assign n3391 = $unsigned(n3389) > $unsigned(4'b0100);
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:235:62 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:235:62 */
   assign n3392 = n3371[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:235:76 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:235:76 */
   assign n3394 = n3392 + 4'b0110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:234:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:234:11 */
   assign n3397 = n3391 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:187:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:187:14 */
   assign n3398 = n3371[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:234:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:234:11 */
   assign n3399 = n3391 ? n3394 : n3398;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:241:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:241:31 */
   assign n3400 = n3371[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:230:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:230:9 */
   assign n3401 = n3376 ? n3397 : n3400;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:230:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:230:9 */
   assign n3402 = {n3399, n3386};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:230:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:230:9 */
   assign n3403 = n3376 ? n3402 : n3371;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:226:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:226:7 */
   assign n3405 = op == 5'b01111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:244:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:244:30 */
   assign n3406 = busb[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:243:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:243:7 */
   assign n3408 = op == 5'b01100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:246:48 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:246:48 */
   assign n3410 = busa - 8'b00000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:245:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:245:7 */
   assign n3412 = op == 5'b01101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:248:48 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:248:48 */
   assign n3414 = busa + 8'b00000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:247:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:247:7 */
   assign n3416 = op == 5'b01110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:194:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:194:5 */
   assign n3417 = {n3416, n3412, n3408, n3405, n3366, n3360, n3354, n3348, n3342, n3340, n3338, n3336, n3334, n3331, n3328};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:65:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:65:5 */
   assign n3418 = p_in[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:194:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:194:5 */
   always @*
     case (n3417)
       15'b100000000000000: n3419 = n3418;
@@ -778,9 +778,9 @@ module t65_alu_Brtl
       15'b000000000000001: n3419 = n3418;
       default: n3419 = n3418;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:65:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:65:5 */
   assign n3420 = p_in[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:194:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:194:5 */
   always @*
     case (n3417)
       15'b100000000000000: n3421 = n3420;
@@ -800,9 +800,9 @@ module t65_alu_Brtl
       15'b000000000000001: n3421 = n3420;
       default: n3421 = n3420;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:65:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:65:5 */
   assign n3423 = p_in[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:194:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:194:5 */
   always @*
     case (n3417)
       15'b100000000000000: n3425 = n3414;
@@ -822,7 +822,7 @@ module t65_alu_Brtl
       15'b000000000000001: n3425 = n3326;
       default: n3425 = busa;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:194:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:194:5 */
   always @*
     case (n3417)
       15'b100000000000000: n3426 = busa;
@@ -842,49 +842,49 @@ module t65_alu_Brtl
       15'b000000000000001: n3426 = busa;
       default: n3426 = busa;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:255:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:255:7 */
   assign n3428 = op == 5'b00011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:258:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:258:7 */
   assign n3430 = op == 5'b00110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:258:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:258:22 */
   assign n3432 = op == 5'b00111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:258:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:258:22 */
   assign n3433 = n3430 | n3432;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:258:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:258:33 */
   assign n3435 = op == 5'b10001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:258:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:258:33 */
   assign n3436 = n3433 | n3435;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:261:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:261:7 */
   assign n3438 = op == 5'b00100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:263:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:263:30 */
   assign n3439 = busb[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:264:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:264:18 */
   assign n3440 = busa & busb;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:264:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:264:28 */
   assign n3442 = n3440 == 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:264:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:264:9 */
   assign n3445 = n3442 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:262:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:262:7 */
   assign n3447 = op == 5'b01100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:270:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:270:29 */
   assign n3448 = n3425[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:271:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:271:29 */
   assign n3449 = n3425[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:272:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:272:16 */
   assign n3451 = n3425 == 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:272:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:272:9 */
   assign n3454 = n3451 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:269:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:269:7 */
   assign n3456 = op == 5'b10000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:278:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:278:29 */
   assign n3457 = n3425[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:279:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:279:16 */
   assign n3459 = n3425 == 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:279:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:279:9 */
   assign n3462 = n3459 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:254:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:254:5 */
   assign n3463 = {n3456, n3447, n3438, n3436, n3428};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:254:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:254:5 */
   always @*
     case (n3463)
       5'b10000: n3464 = n3449;
@@ -894,9 +894,9 @@ module t65_alu_Brtl
       5'b00001: n3464 = n3419;
       default: n3464 = n3419;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:65:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:65:5 */
   assign n3465 = p_in[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:254:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:254:5 */
   always @*
     case (n3463)
       5'b10000: n3466 = n3454;
@@ -906,7 +906,7 @@ module t65_alu_Brtl
       5'b00001: n3466 = adc_z;
       default: n3466 = n3462;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:254:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:254:5 */
   always @*
     case (n3463)
       5'b10000: n3467 = n3448;
@@ -916,13 +916,13 @@ module t65_alu_Brtl
       5'b00001: n3467 = adc_n;
       default: n3467 = n3457;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:65:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:65:5 */
   assign n3468 = p_in[5:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:286:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:286:10 */
   assign n3470 = op == 5'b01111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:286:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:286:5 */
   assign n3471 = n3470 ? n3426 : n3425;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_ALU.vhd:65:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_ALU.vhd:65:5 */
   assign n3473 = {n3467, n3421, n3468, n3466, n3464};
 endmodule
 
@@ -2069,53 +2069,53 @@ module t65_mcode_Brtl
   assign ldbah = n2871; //(module output)
   assign savep = n2874; //(module output)
   assign write = n2877; //(module output)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:96:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:96:10 */
   assign branch = n952; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:97:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:97:10 */
   assign alumore = n2880; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:101:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:101:10 */
   assign n924 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:102:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:102:20 */
   assign n925 = p[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:102:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:102:15 */
   assign n926 = ~n925;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:102:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:102:29 */
   assign n928 = n924 == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:103:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:103:20 */
   assign n929 = p[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:103:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:103:29 */
   assign n931 = n924 == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:104:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:104:20 */
   assign n932 = p[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:104:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:104:15 */
   assign n933 = ~n932;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:104:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:104:29 */
   assign n935 = n924 == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:105:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:105:20 */
   assign n936 = p[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:105:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:105:29 */
   assign n938 = n924 == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:106:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:106:20 */
   assign n939 = p[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:106:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:106:15 */
   assign n940 = ~n939;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:106:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:106:29 */
   assign n942 = n924 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:107:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:107:20 */
   assign n943 = p[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:107:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:107:29 */
   assign n945 = n924 == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:108:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:108:20 */
   assign n946 = p[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:108:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:108:15 */
   assign n947 = ~n946;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:108:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:108:29 */
   assign n949 = n924 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:109:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:109:20 */
   assign n950 = p[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:101:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:101:3 */
   assign n951 = {n949, n945, n942, n938, n935, n931, n928};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:101:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:101:3 */
   always @*
     case (n951)
       7'b1000000: n952 = n947;
@@ -2127,69 +2127,69 @@ module t65_mcode_Brtl
       7'b0000001: n952 = n926;
       default: n952 = n950;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:140:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:140:12 */
   assign n955 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:142:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:142:16 */
   assign n956 = ir[1:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:145:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:145:18 */
   assign n957 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:145:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:145:30 */
   assign n959 = n957 == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:146:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:146:26 */
   assign n960 = ~rdy_mod;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:146:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:146:15 */
   assign n963 = n960 ? 4'b1011 : 4'b0011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:145:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:145:13 */
   assign n965 = n959 ? n963 : 4'b0011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:143:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:143:11 */
   assign n967 = n956 == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:156:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:156:18 */
   assign n968 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:156:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:156:30 */
   assign n970 = n968 == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:157:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:157:26 */
   assign n971 = ~rdy_mod;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:157:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:157:15 */
   assign n974 = n971 ? 4'b1010 : 4'b0010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:156:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:156:13 */
   assign n976 = n970 ? n974 : 4'b0010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:154:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:154:11 */
   assign n978 = n956 == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:166:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:166:18 */
   assign n979 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:166:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:166:30 */
   assign n981 = n979 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:166:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:166:13 */
   assign n984 = n981 ? 4'b1001 : 4'b0001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:166:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:166:13 */
   assign n987 = n981 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:18 */
   assign n988 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:30 */
   assign n990 = n988 == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:42 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:42 */
   assign n991 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:54 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:54 */
   assign n993 = n991 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:37 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:37 */
   assign n994 = n990 | n993;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:66 */
   assign n995 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:78 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:78 */
   assign n997 = n995 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:61 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:61 */
   assign n998 = n994 | n997;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:173:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:173:26 */
   assign n999 = ~rdy_mod;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:173:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:173:15 */
   assign n1002 = n999 ? 4'b1001 : 4'b1000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:172:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:172:13 */
   assign n1004 = n998 ? n1002 : 4'b1000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:165:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:165:11 */
   assign n1006 = n956 == 2'b11;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:142:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:142:9 */
   assign n1007 = {n1006, n978, n967};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:142:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:142:9 */
   always @*
     case (n1007)
       3'b100: n1011 = n984;
@@ -2197,7 +2197,7 @@ module t65_mcode_Brtl
       3'b001: n1011 = 4'b0011;
       default: n1011 = 4'b0001;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:142:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:142:9 */
   always @*
     case (n1007)
       3'b100: n1013 = n1004;
@@ -2205,7 +2205,7 @@ module t65_mcode_Brtl
       3'b001: n1013 = n965;
       default: n1013 = 4'b0001;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:142:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:142:9 */
   always @*
     case (n1007)
       3'b100: n1015 = n987;
@@ -2213,39 +2213,39 @@ module t65_mcode_Brtl
       3'b001: n1015 = 1'b0;
       default: n1015 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:141:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:141:7 */
   assign n1017 = n955 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:186:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:186:16 */
   assign n1018 = ir[1:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:188:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:188:18 */
   assign n1019 = ir[4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:188:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:188:22 */
   assign n1021 = n1019 != 1'b1;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:188:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:188:34 */
   assign n1022 = ir[2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:188:38 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:188:38 */
   assign n1024 = n1022 != 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:188:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:188:29 */
   assign n1025 = n1021 | n1024;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:188:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:188:13 */
   assign n1028 = n1025 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:187:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:187:11 */
   assign n1030 = n1018 == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:191:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:191:11 */
   assign n1032 = n1018 == 2'b01;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:193:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:193:11 */
   assign n1034 = n1018 == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:198:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:198:18 */
   assign n1035 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:198:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:198:30 */
   assign n1037 = n1035 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:198:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:198:13 */
   assign n1040 = n1037 ? 4'b0100 : 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:198:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:198:13 */
   assign n1043 = n1037 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:186:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:186:9 */
   assign n1044 = {n1034, n1032, n1030};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:186:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:186:9 */
   always @*
     case (n1044)
       3'b100: n1046 = 4'b0000;
@@ -2253,7 +2253,7 @@ module t65_mcode_Brtl
       3'b001: n1046 = 4'b0000;
       default: n1046 = n1040;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:186:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:186:9 */
   always @*
     case (n1044)
       3'b100: n1051 = 1'b0;
@@ -2261,7 +2261,7 @@ module t65_mcode_Brtl
       3'b001: n1051 = 1'b0;
       default: n1051 = 1'b1;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:186:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:186:9 */
   always @*
     case (n1044)
       3'b100: n1055 = 1'b1;
@@ -2269,7 +2269,7 @@ module t65_mcode_Brtl
       3'b001: n1055 = 1'b0;
       default: n1055 = 1'b1;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:186:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:186:9 */
   always @*
     case (n1044)
       3'b100: n1057 = 1'b0;
@@ -2277,7 +2277,7 @@ module t65_mcode_Brtl
       3'b001: n1057 = n1028;
       default: n1057 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:186:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:186:9 */
   always @*
     case (n1044)
       3'b100: n1059 = 1'b0;
@@ -2285,59 +2285,59 @@ module t65_mcode_Brtl
       3'b001: n1059 = 1'b0;
       default: n1059 = n1043;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:184:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:184:7 */
   assign n1061 = n955 == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:204:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:204:16 */
   assign n1062 = ir[1:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:206:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:206:18 */
   assign n1063 = ir[4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:206:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:206:22 */
   assign n1064 = ~n1063;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:206:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:206:13 */
   assign n1067 = n1064 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:205:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:205:11 */
   assign n1069 = n1062 == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:204:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:204:9 */
   always @*
     case (n1069)
       1'b1: n1072 = 4'b0011;
       default: n1072 = 4'b0001;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:204:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:204:9 */
   always @*
     case (n1069)
       1'b1: n1074 = n1067;
       default: n1074 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:203:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:203:7 */
   assign n1076 = n955 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:214:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:214:16 */
   assign n1077 = ir[1:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:216:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:216:16 */
   assign n1078 = ir[4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:216:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:216:20 */
   assign n1079 = ~n1078;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:216:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:216:11 */
   assign n1082 = n1079 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:215:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:215:9 */
   assign n1084 = n1077 == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:214:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:214:9 */
   always @*
     case (n1084)
       1'b1: n1087 = 4'b0010;
       default: n1087 = 4'b0001;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:214:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:214:9 */
   always @*
     case (n1084)
       1'b1: n1089 = n1082;
       default: n1089 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:213:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:213:7 */
   assign n1091 = n955 == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:140:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:140:5 */
   assign n1092 = {n1091, n1076, n1061, n1017};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:140:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:140:5 */
   always @*
     case (n1092)
       4'b1000: n1094 = n1087;
@@ -2346,7 +2346,7 @@ module t65_mcode_Brtl
       4'b0001: n1094 = n1011;
       default: n1094 = 4'b0001;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:140:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:140:5 */
   always @*
     case (n1092)
       4'b1000: n1097 = 4'b0000;
@@ -2355,7 +2355,7 @@ module t65_mcode_Brtl
       4'b0001: n1097 = n1013;
       default: n1097 = 4'b0000;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:140:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:140:5 */
   always @*
     case (n1092)
       4'b1000: n1100 = 1'b0;
@@ -2364,7 +2364,7 @@ module t65_mcode_Brtl
       4'b0001: n1100 = 1'b0;
       default: n1100 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:140:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:140:5 */
   always @*
     case (n1092)
       4'b1000: n1103 = n1089;
@@ -2373,7 +2373,7 @@ module t65_mcode_Brtl
       4'b0001: n1103 = 1'b0;
       default: n1103 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:140:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:140:5 */
   always @*
     case (n1092)
       4'b1000: n1106 = 1'b0;
@@ -2382,7 +2382,7 @@ module t65_mcode_Brtl
       4'b0001: n1106 = 1'b0;
       default: n1106 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:140:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:140:5 */
   always @*
     case (n1092)
       4'b1000: n1109 = 1'b0;
@@ -2391,47 +2391,47 @@ module t65_mcode_Brtl
       4'b0001: n1109 = n1015;
       default: n1109 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:10 */
   assign n1111 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:23 */
   assign n1113 = n1111 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:37 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:37 */
   assign n1114 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:31 */
   assign n1115 = n1114 & n1113;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:56 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:56 */
   assign n1117 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:67 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:67 */
   assign n1118 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:70 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:70 */
   assign n1119 = ~n1118;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:62 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:62 */
   assign n1120 = n1117 | n1119;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:47 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:47 */
   assign n1121 = n1120 & n1115;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:227:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:227:12 */
   assign n1123 = ir == 8'b11101011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:227:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:227:7 */
   assign n1126 = n1123 ? 4'b0001 : 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:226:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:226:5 */
   assign n1127 = n1121 ? n1126 : n1094;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:12 */
   assign n1128 = ir[4:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:247:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:247:15 */
   assign n1130 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:251:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:251:15 */
   assign n1132 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:256:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:256:15 */
   assign n1134 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:261:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:261:15 */
   assign n1136 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:264:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:264:15 */
   assign n1138 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:267:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:267:15 */
   assign n1140 = mcycle == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:246:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:246:13 */
   assign n1141 = {n1140, n1138, n1136, n1134, n1132, n1130};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:246:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:246:13 */
   always @*
     case (n1141)
       6'b100000: n1148 = 2'b00;
@@ -2442,7 +2442,7 @@ module t65_mcode_Brtl
       6'b000001: n1148 = 2'b01;
       default: n1148 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:246:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:246:13 */
   always @*
     case (n1141)
       6'b100000: n1152 = n1097;
@@ -2453,7 +2453,7 @@ module t65_mcode_Brtl
       6'b000001: n1152 = 4'b0111;
       default: n1152 = n1097;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:246:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:246:13 */
   always @*
     case (n1141)
       6'b100000: n1155 = 2'b10;
@@ -2464,7 +2464,7 @@ module t65_mcode_Brtl
       6'b000001: n1155 = 2'b00;
       default: n1155 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:246:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:246:13 */
   always @*
     case (n1141)
       6'b100000: n1160 = 1'b0;
@@ -2475,7 +2475,7 @@ module t65_mcode_Brtl
       6'b000001: n1160 = 1'b0;
       default: n1160 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:246:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:246:13 */
   always @*
     case (n1141)
       6'b100000: n1163 = 1'b0;
@@ -2486,7 +2486,7 @@ module t65_mcode_Brtl
       6'b000001: n1163 = 1'b0;
       default: n1163 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:246:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:246:13 */
   always @*
     case (n1141)
       6'b100000: n1168 = 1'b0;
@@ -2497,21 +2497,21 @@ module t65_mcode_Brtl
       6'b000001: n1168 = 1'b1;
       default: n1168 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:243:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:243:11 */
   assign n1170 = ir == 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:274:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:274:15 */
   assign n1172 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:278:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:278:15 */
   assign n1174 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:282:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:282:15 */
   assign n1176 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:287:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:287:15 */
   assign n1178 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:289:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:289:15 */
   assign n1180 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:273:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:273:13 */
   assign n1181 = {n1180, n1178, n1176, n1174, n1172};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:273:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:273:13 */
   always @*
     case (n1181)
       5'b10000: n1186 = 2'b00;
@@ -2521,7 +2521,7 @@ module t65_mcode_Brtl
       5'b00001: n1186 = 2'b01;
       default: n1186 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:273:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:273:13 */
   always @*
     case (n1181)
       5'b10000: n1189 = n1097;
@@ -2531,7 +2531,7 @@ module t65_mcode_Brtl
       5'b00001: n1189 = n1097;
       default: n1189 = n1097;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:273:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:273:13 */
   always @*
     case (n1181)
       5'b10000: n1193 = 2'b10;
@@ -2541,7 +2541,7 @@ module t65_mcode_Brtl
       5'b00001: n1193 = 2'b01;
       default: n1193 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:273:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:273:13 */
   always @*
     case (n1181)
       5'b10000: n1197 = 1'b0;
@@ -2551,7 +2551,7 @@ module t65_mcode_Brtl
       5'b00001: n1197 = 1'b0;
       default: n1197 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:273:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:273:13 */
   always @*
     case (n1181)
       5'b10000: n1200 = 1'b0;
@@ -2561,7 +2561,7 @@ module t65_mcode_Brtl
       5'b00001: n1200 = 1'b1;
       default: n1200 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:273:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:273:13 */
   always @*
     case (n1181)
       5'b10000: n1204 = 1'b0;
@@ -2571,21 +2571,21 @@ module t65_mcode_Brtl
       5'b00001: n1204 = 1'b0;
       default: n1204 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:271:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:271:11 */
   assign n1206 = ir == 8'b00100000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:296:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:296:15 */
   assign n1208 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:298:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:298:15 */
   assign n1210 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:301:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:301:15 */
   assign n1212 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:305:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:305:15 */
   assign n1214 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:310:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:310:15 */
   assign n1216 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:295:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:295:15 */
   assign n1217 = {n1216, n1214, n1212, n1210, n1208};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:295:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:295:15 */
   always @*
     case (n1217)
       5'b10000: n1219 = n1127;
@@ -2595,7 +2595,7 @@ module t65_mcode_Brtl
       5'b00001: n1219 = n1127;
       default: n1219 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:295:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:295:15 */
   always @*
     case (n1217)
       5'b10000: n1225 = 2'b00;
@@ -2605,7 +2605,7 @@ module t65_mcode_Brtl
       5'b00001: n1225 = 2'b01;
       default: n1225 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:295:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:295:15 */
   always @*
     case (n1217)
       5'b10000: n1228 = 2'b10;
@@ -2615,7 +2615,7 @@ module t65_mcode_Brtl
       5'b00001: n1228 = 2'b00;
       default: n1228 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:295:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:295:15 */
   always @*
     case (n1217)
       5'b10000: n1233 = 1'b0;
@@ -2625,7 +2625,7 @@ module t65_mcode_Brtl
       5'b00001: n1233 = 1'b0;
       default: n1233 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:295:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:295:15 */
   always @*
     case (n1217)
       5'b10000: n1236 = 1'b0;
@@ -2635,7 +2635,7 @@ module t65_mcode_Brtl
       5'b00001: n1236 = 1'b0;
       default: n1236 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:295:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:295:15 */
   always @*
     case (n1217)
       5'b10000: n1239 = 1'b0;
@@ -2645,21 +2645,21 @@ module t65_mcode_Brtl
       5'b00001: n1239 = 1'b0;
       default: n1239 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:293:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:293:13 */
   assign n1241 = ir == 8'b01000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:317:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:317:15 */
   assign n1243 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:319:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:319:15 */
   assign n1245 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:322:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:322:15 */
   assign n1247 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:326:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:326:15 */
   assign n1249 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:328:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:328:15 */
   assign n1251 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:316:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:316:13 */
   assign n1252 = {n1251, n1249, n1247, n1245, n1243};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:316:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:316:13 */
   always @*
     case (n1252)
       5'b10000: n1257 = 2'b00;
@@ -2669,7 +2669,7 @@ module t65_mcode_Brtl
       5'b00001: n1257 = 2'b01;
       default: n1257 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:316:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:316:13 */
   always @*
     case (n1252)
       5'b10000: n1261 = 2'b01;
@@ -2679,7 +2679,7 @@ module t65_mcode_Brtl
       5'b00001: n1261 = 2'b00;
       default: n1261 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:316:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:316:13 */
   always @*
     case (n1252)
       5'b10000: n1265 = 1'b0;
@@ -2689,7 +2689,7 @@ module t65_mcode_Brtl
       5'b00001: n1265 = 1'b0;
       default: n1265 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:316:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:316:13 */
   always @*
     case (n1252)
       5'b10000: n1268 = 1'b0;
@@ -2699,49 +2699,49 @@ module t65_mcode_Brtl
       5'b00001: n1268 = 1'b0;
       default: n1268 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:314:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:314:11 */
   assign n1270 = ir == 8'b01100000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:334:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:334:23 */
   assign n1272 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:334:36 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:334:36 */
   assign n1273 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:334:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:334:30 */
   assign n1274 = n1273 & n1272;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:334:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:334:15 */
   assign n1277 = n1274 ? 3'b001 : 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:339:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:339:24 */
   assign n1280 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:339:36 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:339:36 */
   assign n1281 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:339:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:339:39 */
   assign n1282 = ~n1281;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:339:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:339:31 */
   assign n1283 = n1280 | n1282;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:341:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:341:26 */
   assign n1284 = ir[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:342:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:342:19 */
   assign n1286 = n1284 == 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:344:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:344:19 */
   assign n1288 = n1284 == 4'b0100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:347:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:347:29 */
   assign n1290 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:347:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:347:21 */
   assign n1292 = n1290 ? 4'b0011 : n1097;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:347:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:347:21 */
   assign n1295 = n1290 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:346:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:346:19 */
   assign n1297 = n1284 == 4'b0101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:353:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:353:29 */
   assign n1299 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:353:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:353:21 */
   assign n1301 = n1299 ? 4'b0010 : n1097;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:353:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:353:21 */
   assign n1304 = n1299 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:352:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:352:19 */
   assign n1306 = n1284 == 4'b1101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:341:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:341:19 */
   assign n1307 = {n1306, n1297, n1288, n1286};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:341:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:341:19 */
   always @*
     case (n1307)
       4'b1000: n1310 = n1301;
@@ -2750,7 +2750,7 @@ module t65_mcode_Brtl
       4'b0001: n1310 = 4'b0101;
       default: n1310 = n1097;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:341:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:341:19 */
   always @*
     case (n1307)
       4'b1000: n1312 = n1304;
@@ -2759,89 +2759,89 @@ module t65_mcode_Brtl
       4'b0001: n1312 = 1'b1;
       default: n1312 = 1'b1;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:339:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:339:17 */
   assign n1316 = n1283 ? 2'b01 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:339:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:339:17 */
   assign n1317 = n1283 ? n1310 : n1097;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:339:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:339:17 */
   assign n1319 = n1283 ? n1312 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:338:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:338:15 */
   assign n1321 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:362:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:362:15 */
   assign n1323 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:337:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:337:15 */
   assign n1324 = {n1323, n1321};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:337:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:337:15 */
   always @*
     case (n1324)
       2'b10: n1326 = 2'b00;
       2'b01: n1326 = n1316;
       default: n1326 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:337:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:337:15 */
   always @*
     case (n1324)
       2'b10: n1327 = n1097;
       2'b01: n1327 = n1317;
       default: n1327 = n1097;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:337:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:337:15 */
   always @*
     case (n1324)
       2'b10: n1330 = 1'b1;
       2'b01: n1330 = 1'b0;
       default: n1330 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:337:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:337:15 */
   always @*
     case (n1324)
       2'b10: n1332 = 1'b0;
       2'b01: n1332 = n1319;
       default: n1332 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:332:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:332:13 */
   assign n1334 = ir == 8'b00001000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:332:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:332:24 */
   assign n1336 = ir == 8'b01001000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:332:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:332:24 */
   assign n1337 = n1334 | n1336;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:332:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:332:32 */
   assign n1339 = ir == 8'b01011010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:332:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:332:32 */
   assign n1340 = n1337 | n1339;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:332:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:332:40 */
   assign n1342 = ir == 8'b11011010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:332:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:332:40 */
   assign n1343 = n1340 | n1342;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:368:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:368:21 */
   assign n1345 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:368:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:368:34 */
   assign n1346 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:368:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:368:28 */
   assign n1347 = n1346 & n1345;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:368:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:368:13 */
   assign n1350 = n1347 ? 3'b001 : 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:371:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:371:20 */
   assign n1352 = ir[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:372:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:372:15 */
   assign n1354 = n1352 == 4'b0010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:374:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:374:15 */
   assign n1356 = n1352 == 4'b0110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:377:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:377:25 */
   assign n1358 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:377:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:377:17 */
   assign n1360 = n1358 ? 1'b1 : n1106;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:376:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:376:15 */
   assign n1362 = n1352 == 4'b0111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:381:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:381:25 */
   assign n1364 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:381:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:381:17 */
   assign n1366 = n1364 ? 1'b1 : n1103;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:380:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:380:15 */
   assign n1368 = n1352 == 4'b1111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:371:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:371:13 */
   assign n1369 = {n1368, n1362, n1356, n1354};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:371:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:371:13 */
   always @*
     case (n1369)
       4'b1000: n1371 = n1100;
@@ -2850,7 +2850,7 @@ module t65_mcode_Brtl
       4'b0001: n1371 = n1100;
       default: n1371 = n1100;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:371:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:371:13 */
   always @*
     case (n1369)
       4'b1000: n1374 = 1'b0;
@@ -2859,7 +2859,7 @@ module t65_mcode_Brtl
       4'b0001: n1374 = 1'b1;
       default: n1374 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:371:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:371:13 */
   always @*
     case (n1369)
       4'b1000: n1375 = n1366;
@@ -2868,7 +2868,7 @@ module t65_mcode_Brtl
       4'b0001: n1375 = n1103;
       default: n1375 = n1103;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:371:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:371:13 */
   always @*
     case (n1369)
       4'b1000: n1376 = n1106;
@@ -2877,39 +2877,39 @@ module t65_mcode_Brtl
       4'b0001: n1376 = n1106;
       default: n1376 = n1106;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:388:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:388:25 */
   assign n1378 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:388:38 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:388:38 */
   assign n1379 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:388:42 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:388:42 */
   assign n1380 = ~n1379;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:388:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:388:33 */
   assign n1381 = n1378 | n1380;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:388:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:388:17 */
   assign n1384 = n1381 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:387:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:387:15 */
   assign n1386 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:392:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:392:25 */
   assign n1388 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:392:38 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:392:38 */
   assign n1389 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:392:42 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:392:42 */
   assign n1390 = ~n1389;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:392:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:392:33 */
   assign n1391 = n1388 | n1390;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:392:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:392:17 */
   assign n1394 = n1391 ? 2'b01 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:392:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:392:17 */
   assign n1396 = n1391 ? 1'b0 : n1374;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:391:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:391:15 */
   assign n1398 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:396:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:396:15 */
   assign n1400 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:400:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:400:15 */
   assign n1402 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:386:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:386:13 */
   assign n1403 = {n1402, n1400, n1398, n1386};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:386:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:386:13 */
   always @*
     case (n1403)
       4'b1000: n1405 = 4'b0000;
@@ -2918,7 +2918,7 @@ module t65_mcode_Brtl
       4'b0001: n1405 = n1127;
       default: n1405 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:386:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:386:13 */
   always @*
     case (n1403)
       4'b1000: n1408 = 2'b00;
@@ -2927,7 +2927,7 @@ module t65_mcode_Brtl
       4'b0001: n1408 = 2'b00;
       default: n1408 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:386:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:386:13 */
   always @*
     case (n1403)
       4'b1000: n1411 = 1'b0;
@@ -2936,7 +2936,7 @@ module t65_mcode_Brtl
       4'b0001: n1411 = 1'b0;
       default: n1411 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:386:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:386:13 */
   always @*
     case (n1403)
       4'b1000: n1413 = n1374;
@@ -2945,7 +2945,7 @@ module t65_mcode_Brtl
       4'b0001: n1413 = n1374;
       default: n1413 = n1374;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:386:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:386:13 */
   always @*
     case (n1403)
       4'b1000: n1415 = 1'b0;
@@ -2954,170 +2954,170 @@ module t65_mcode_Brtl
       4'b0001: n1415 = n1384;
       default: n1415 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:366:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:366:11 */
   assign n1417 = ir == 8'b00101000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:366:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:366:23 */
   assign n1419 = ir == 8'b01101000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:366:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:366:23 */
   assign n1420 = n1417 | n1419;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:366:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:366:31 */
   assign n1422 = ir == 8'b01111010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:366:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:366:31 */
   assign n1423 = n1420 | n1422;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:366:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:366:39 */
   assign n1425 = ir == 8'b11111010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:366:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:366:39 */
   assign n1426 = n1423 | n1425;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:407:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:407:15 */
   assign n1428 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:408:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:408:15 */
   assign n1430 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:406:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:406:13 */
   assign n1431 = {n1430, n1428};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:406:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:406:13 */
   always @*
     case (n1431)
       2'b10: n1434 = 2'b01;
       2'b01: n1434 = 2'b00;
       default: n1434 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:404:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:404:11 */
   assign n1436 = ir == 8'b10100000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:404:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:404:22 */
   assign n1438 = ir == 8'b11000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:404:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:404:22 */
   assign n1439 = n1436 | n1438;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:404:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:404:30 */
   assign n1441 = ir == 8'b11100000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:404:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:404:30 */
   assign n1442 = n1439 | n1441;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:415:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:415:15 */
   assign n1444 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:416:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:416:15 */
   assign n1446 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:414:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:414:13 */
   assign n1447 = {n1446, n1444};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:414:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:414:13 */
   always @*
     case (n1447)
       2'b10: n1449 = 4'b0011;
       2'b01: n1449 = n1127;
       default: n1449 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:412:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:412:11 */
   assign n1451 = ir == 8'b10001000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:423:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:423:15 */
   assign n1453 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:424:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:424:15 */
   assign n1455 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:422:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:422:13 */
   assign n1456 = {n1455, n1453};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:422:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:422:13 */
   always @*
     case (n1456)
       2'b10: n1458 = 4'b0010;
       2'b01: n1458 = n1127;
       default: n1458 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:420:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:420:11 */
   assign n1460 = ir == 8'b11001010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:429:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:429:21 */
   assign n1462 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:429:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:429:13 */
   assign n1464 = n1462 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:435:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:435:15 */
   assign n1466 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:436:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:436:15 */
   assign n1468 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:434:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:434:13 */
   assign n1469 = {n1468, n1466};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:434:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:434:13 */
   always @*
     case (n1469)
       2'b10: n1471 = 4'b0100;
       2'b01: n1471 = n1127;
       default: n1471 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:428:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:428:11 */
   assign n1473 = ir == 8'b00011010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:428:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:428:22 */
   assign n1475 = ir == 8'b00111010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:428:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:428:22 */
   assign n1476 = n1473 | n1475;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:440:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:440:11 */
   assign n1483 = ir == 8'b00001010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:440:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:440:22 */
   assign n1485 = ir == 8'b00101010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:440:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:440:22 */
   assign n1486 = n1483 | n1485;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:440:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:440:30 */
   assign n1488 = ir == 8'b01001010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:440:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:440:30 */
   assign n1489 = n1486 | n1488;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:440:38 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:440:38 */
   assign n1491 = ir == 8'b01101010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:440:38 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:440:38 */
   assign n1492 = n1489 | n1491;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:448:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:448:11 */
   assign n1499 = ir == 8'b10001010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:448:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:448:22 */
   assign n1501 = ir == 8'b10011000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:448:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:448:22 */
   assign n1502 = n1499 | n1501;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:457:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:457:15 */
   assign n1504 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:458:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:458:15 */
   assign n1506 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:456:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:456:13 */
   assign n1507 = {n1506, n1504};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:456:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:456:13 */
   always @*
     case (n1507)
       2'b10: n1509 = 4'b0001;
       2'b01: n1509 = n1127;
       default: n1509 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:455:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:455:11 */
   assign n1511 = ir == 8'b10101010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:455:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:455:22 */
   assign n1513 = ir == 8'b10101000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:455:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:455:22 */
   assign n1514 = n1511 | n1513;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:462:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:462:11 */
   assign n1516 = ir == 8'b10011010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:467:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:467:15 */
   assign n1518 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:468:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:468:15 */
   assign n1520 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:466:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:466:13 */
   assign n1521 = {n1520, n1518};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:466:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:466:13 */
   always @*
     case (n1521)
       2'b10: n1523 = 4'b0100;
       2'b01: n1523 = n1127;
       default: n1523 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:464:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:464:11 */
   assign n1525 = ir == 8'b10111010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:474:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:474:15 */
   assign n1527 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:475:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:475:15 */
   assign n1529 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:473:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:473:13 */
   assign n1530 = {n1529, n1527};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:473:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:473:13 */
   always @*
     case (n1530)
       2'b10: n1533 = 2'b01;
       2'b01: n1533 = 2'b00;
       default: n1533 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:472:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:472:11 */
   assign n1535 = ir == 8'b10000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   assign n1538 = {n1535, n1525, n1516, n1514, n1502, n1492, n1476, n1460, n1451, n1442, n1426, n1343, n1270, n1241, n1206, n1170};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1544 = 3'b001;
@@ -3138,7 +3138,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1544 = 3'b110;
       default: n1544 = 3'b001;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1546 = n1127;
@@ -3159,7 +3159,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1546 = n1127;
       default: n1546 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1548 = 2'b00;
@@ -3180,7 +3180,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1548 = n1148;
       default: n1548 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1549 = n1097;
@@ -3201,7 +3201,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1549 = n1152;
       default: n1549 = n1097;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1551 = n1533;
@@ -3222,7 +3222,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1551 = n1155;
       default: n1551 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1553 = 1'b0;
@@ -3243,7 +3243,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1553 = 1'b0;
       default: n1553 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1555 = 1'b0;
@@ -3264,7 +3264,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1555 = n1160;
       default: n1555 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1558 = n1100;
@@ -3285,7 +3285,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1558 = n1100;
       default: n1558 = n1100;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1560 = 1'b0;
@@ -3306,7 +3306,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1560 = 1'b0;
       default: n1560 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1563 = n1103;
@@ -3327,7 +3327,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1563 = n1103;
       default: n1563 = n1103;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1565 = n1106;
@@ -3348,7 +3348,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1565 = n1106;
       default: n1565 = n1106;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1567 = n1109;
@@ -3369,7 +3369,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1567 = n1109;
       default: n1567 = n1109;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1569 = 1'b0;
@@ -3390,7 +3390,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1569 = n1163;
       default: n1569 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1571 = 1'b0;
@@ -3411,7 +3411,7 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1571 = 1'b0;
       default: n1571 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:242:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:242:9 */
   always @*
     case (n1538)
       16'b1000000000000000: n1573 = 1'b0;
@@ -3432,81 +3432,81 @@ module t65_mcode_Brtl
       16'b0000000000000001: n1573 = n1168;
       default: n1573 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:7 */
   assign n1575 = n1128 == 5'b00000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:20 */
   assign n1577 = n1128 == 5'b01000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:20 */
   assign n1578 = n1575 | n1577;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:30 */
   assign n1580 = n1128 == 5'b01010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:30 */
   assign n1581 = n1578 | n1580;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:40 */
   assign n1583 = n1128 == 5'b11000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:40 */
   assign n1584 = n1581 | n1583;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:50 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:50 */
   assign n1586 = n1128 == 5'b11010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:240:50 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:240:50 */
   assign n1587 = n1584 | n1586;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:491:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:491:14 */
   assign n1588 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:491:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:491:27 */
   assign n1590 = n1588 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:493:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:493:18 */
   assign n1592 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:493:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:493:30 */
   assign n1593 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:493:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:493:24 */
   assign n1594 = n1593 & n1592;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:493:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:493:11 */
   assign n1597 = n1594 ? 3'b111 : 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:491:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:491:9 */
   assign n1599 = n1590 ? n1597 : 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:491:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:491:9 */
   assign n1602 = n1590 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:498:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:498:11 */
   assign n1604 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:502:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:502:11 */
   assign n1606 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:505:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:505:11 */
   assign n1608 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:511:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:511:18 */
   assign n1609 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:511:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:511:31 */
   assign n1611 = n1609 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:511:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:511:13 */
   assign n1614 = n1611 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:509:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:509:11 */
   assign n1616 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:20 */
   assign n1618 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:32 */
   assign n1619 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:26 */
   assign n1620 = n1619 & n1618;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:46 */
   assign n1621 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:58 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:58 */
   assign n1623 = n1621 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:40 */
   assign n1624 = n1623 & n1620;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:13 */
   assign n1627 = n1624 ? 2'b11 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:13 */
   assign n1630 = n1624 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:516:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:516:13 */
   assign n1633 = n1624 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:515:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:515:11 */
   assign n1635 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:521:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:521:11 */
   assign n1637 = mcycle == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:526:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:526:11 */
   assign n1639 = mcycle == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   assign n1640 = {n1639, n1637, n1635, n1616, n1608, n1606, n1604};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1642 = 4'b0001;
@@ -3518,7 +3518,7 @@ module t65_mcode_Brtl
       7'b0000001: n1642 = n1127;
       default: n1642 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1649 = 2'b00;
@@ -3530,7 +3530,7 @@ module t65_mcode_Brtl
       7'b0000001: n1649 = 2'b10;
       default: n1649 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1652 = 2'b00;
@@ -3542,7 +3542,7 @@ module t65_mcode_Brtl
       7'b0000001: n1652 = 2'b01;
       default: n1652 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1655 = 2'b00;
@@ -3554,7 +3554,7 @@ module t65_mcode_Brtl
       7'b0000001: n1655 = 2'b00;
       default: n1655 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1658 = 1'b0;
@@ -3566,7 +3566,7 @@ module t65_mcode_Brtl
       7'b0000001: n1658 = 1'b0;
       default: n1658 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1660 = 1'b0;
@@ -3578,7 +3578,7 @@ module t65_mcode_Brtl
       7'b0000001: n1660 = 1'b0;
       default: n1660 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1663 = 1'b0;
@@ -3590,7 +3590,7 @@ module t65_mcode_Brtl
       7'b0000001: n1663 = 1'b0;
       default: n1663 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1666 = 1'b0;
@@ -3602,7 +3602,7 @@ module t65_mcode_Brtl
       7'b0000001: n1666 = 1'b1;
       default: n1666 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1669 = 1'b0;
@@ -3614,7 +3614,7 @@ module t65_mcode_Brtl
       7'b0000001: n1669 = 1'b0;
       default: n1669 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1672 = 1'b0;
@@ -3626,7 +3626,7 @@ module t65_mcode_Brtl
       7'b0000001: n1672 = 1'b0;
       default: n1672 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1675 = 1'b0;
@@ -3638,7 +3638,7 @@ module t65_mcode_Brtl
       7'b0000001: n1675 = 1'b0;
       default: n1675 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1678 = 1'b0;
@@ -3650,7 +3650,7 @@ module t65_mcode_Brtl
       7'b0000001: n1678 = 1'b0;
       default: n1678 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:497:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:497:9 */
   always @*
     case (n1640)
       7'b1000000: n1681 = 1'b1;
@@ -3662,55 +3662,55 @@ module t65_mcode_Brtl
       7'b0000001: n1681 = 1'b0;
       default: n1681 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:488:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:488:7 */
   assign n1683 = n1128 == 5'b00001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:488:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:488:20 */
   assign n1685 = n1128 == 5'b00011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:488:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:488:20 */
   assign n1686 = n1683 | n1685;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:535:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:535:14 */
   assign n1687 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:535:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:535:26 */
   assign n1689 = n1687 != 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:535:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:535:9 */
   assign n1691 = n1689 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:539:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:539:11 */
   assign n1693 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:538:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:538:9 */
   always @*
     case (n1693)
       1'b1: n1696 = 2'b01;
       default: n1696 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:533:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:533:7 */
   assign n1698 = n1128 == 5'b01001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:546:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:546:16 */
   assign n1700 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:548:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:548:18 */
   assign n1701 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:549:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:549:13 */
   assign n1703 = n1701 == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:549:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:549:23 */
   assign n1705 = n1701 == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:549:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:549:23 */
   assign n1706 = n1703 | n1705;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:549:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:549:29 */
   assign n1708 = n1701 == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:549:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:549:29 */
   assign n1709 = n1706 | n1708;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:549:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:549:35 */
   assign n1711 = n1701 == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:549:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:549:35 */
   assign n1712 = n1709 | n1711;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:552:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:552:13 */
   assign n1714 = n1701 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:555:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:555:13 */
   assign n1716 = n1701 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:558:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:558:13 */
   assign n1718 = n1701 == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:548:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:548:11 */
   assign n1719 = {n1718, n1716, n1714, n1712};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:548:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:548:11 */
   always @*
     case (n1719)
       4'b1000: n1724 = 4'b0111;
@@ -3719,7 +3719,7 @@ module t65_mcode_Brtl
       4'b0001: n1724 = 4'b0110;
       default: n1724 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:548:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:548:11 */
   always @*
     case (n1719)
       4'b1000: n1729 = 1'b1;
@@ -3728,7 +3728,7 @@ module t65_mcode_Brtl
       4'b0001: n1729 = 1'b1;
       default: n1729 = 1'b1;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:548:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:548:11 */
   always @*
     case (n1719)
       4'b1000: n1731 = n1103;
@@ -3737,95 +3737,95 @@ module t65_mcode_Brtl
       4'b0001: n1731 = n1103;
       default: n1731 = n1103;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:565:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:565:13 */
   assign n1733 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:564:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:564:11 */
   always @*
     case (n1733)
       1'b1: n1736 = 2'b01;
       default: n1736 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:546:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:546:9 */
   assign n1737 = n1700 ? n1724 : n1127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:546:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:546:9 */
   assign n1739 = n1700 ? n1736 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:546:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:546:9 */
   assign n1740 = n1700 ? n1729 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:546:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:546:9 */
   assign n1741 = n1700 ? n1731 : n1103;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:545:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:545:7 */
   assign n1743 = n1128 == 5'b01011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:576:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:576:11 */
   assign n1745 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:578:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:578:19 */
   assign n1747 = ir == 8'b10100010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:21 */
   assign n1748 = ir[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:33 */
   assign n1750 = n1748 == 4'b1000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:46 */
   assign n1751 = ir[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:58 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:58 */
   assign n1753 = n1751 == 4'b1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:41 */
   assign n1754 = n1750 | n1753;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:71 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:71 */
   assign n1755 = ir[7:4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:83 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:83 */
   assign n1757 = n1755 == 4'b1110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:66 */
   assign n1758 = n1754 | n1757;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:582:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:582:13 */
   assign n1761 = n1758 ? 2'b01 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:578:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:578:13 */
   assign n1763 = n1747 ? 2'b01 : n1761;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:578:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:578:13 */
   assign n1765 = n1747 ? 1'b1 : n1103;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:577:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:577:11 */
   assign n1767 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:575:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:575:9 */
   assign n1768 = {n1767, n1745};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:575:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:575:9 */
   always @*
     case (n1768)
       2'b10: n1770 = n1763;
       2'b01: n1770 = 2'b00;
       default: n1770 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:575:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:575:9 */
   always @*
     case (n1768)
       2'b10: n1771 = n1765;
       2'b01: n1771 = n1103;
       default: n1771 = n1103;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:573:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:573:7 */
   assign n1773 = n1128 == 5'b00010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:573:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:573:20 */
   assign n1775 = n1128 == 5'b10010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:573:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:573:20 */
   assign n1776 = n1773 | n1775;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:597:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:597:18 */
   assign n1777 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:597:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:597:31 */
   assign n1779 = n1777 == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:597:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:597:13 */
   assign n1782 = n1779 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:596:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:596:11 */
   assign n1784 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:603:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:603:18 */
   assign n1785 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:603:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:603:31 */
   assign n1787 = n1785 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:603:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:603:13 */
   assign n1790 = n1787 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:600:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:600:11 */
   assign n1792 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:607:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:607:11 */
   assign n1794 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:595:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:595:9 */
   assign n1795 = {n1794, n1792, n1784};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:595:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:595:9 */
   always @*
     case (n1795)
       3'b100: n1798 = 2'b00;
@@ -3833,7 +3833,7 @@ module t65_mcode_Brtl
       3'b001: n1798 = 2'b00;
       default: n1798 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:595:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:595:9 */
   always @*
     case (n1795)
       3'b100: n1801 = 2'b00;
@@ -3841,7 +3841,7 @@ module t65_mcode_Brtl
       3'b001: n1801 = 2'b00;
       default: n1801 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:595:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:595:9 */
   always @*
     case (n1795)
       3'b100: n1804 = 1'b0;
@@ -3849,7 +3849,7 @@ module t65_mcode_Brtl
       3'b001: n1804 = 1'b0;
       default: n1804 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:595:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:595:9 */
   always @*
     case (n1795)
       3'b100: n1806 = 1'b0;
@@ -3857,7 +3857,7 @@ module t65_mcode_Brtl
       3'b001: n1806 = n1782;
       default: n1806 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:595:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:595:9 */
   always @*
     case (n1795)
       3'b100: n1808 = 1'b0;
@@ -3865,61 +3865,61 @@ module t65_mcode_Brtl
       3'b001: n1808 = 1'b0;
       default: n1808 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:592:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:592:7 */
   assign n1810 = n1128 == 5'b00100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:14 */
   assign n1811 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:27 */
   assign n1813 = n1811 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:41 */
   assign n1814 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:35 */
   assign n1815 = n1814 & n1813;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:60 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:60 */
   assign n1817 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:71 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:71 */
   assign n1818 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:74 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:74 */
   assign n1819 = ~n1818;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:66 */
   assign n1820 = n1817 | n1819;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:51 */
   assign n1821 = n1820 & n1815;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:619:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:619:18 */
   assign n1823 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:619:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:619:30 */
   assign n1824 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:619:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:619:24 */
   assign n1825 = n1824 & n1823;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:619:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:619:11 */
   assign n1827 = n1825 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:623:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:623:13 */
   assign n1829 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:629:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:629:22 */
   assign n1831 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:629:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:629:15 */
   assign n1834 = n1831 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:627:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:627:13 */
   assign n1836 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:633:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:633:13 */
   assign n1838 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:639:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:639:22 */
   assign n1840 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:639:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:639:34 */
   assign n1841 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:639:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:639:28 */
   assign n1842 = n1841 & n1840;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:639:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:639:15 */
   assign n1844 = n1842 ? 4'b0001 : n1127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:639:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:639:15 */
   assign n1847 = n1842 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:639:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:639:15 */
   assign n1850 = n1842 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:638:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:638:13 */
   assign n1852 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   assign n1853 = {n1852, n1838, n1836, n1829};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1854 = n1844;
@@ -3928,7 +3928,7 @@ module t65_mcode_Brtl
       4'b0001: n1854 = n1127;
       default: n1854 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1859 = 2'b00;
@@ -3937,7 +3937,7 @@ module t65_mcode_Brtl
       4'b0001: n1859 = 2'b10;
       default: n1859 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1862 = 2'b00;
@@ -3946,7 +3946,7 @@ module t65_mcode_Brtl
       4'b0001: n1862 = 2'b01;
       default: n1862 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1865 = n1847;
@@ -3955,7 +3955,7 @@ module t65_mcode_Brtl
       4'b0001: n1865 = 1'b0;
       default: n1865 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1868 = 1'b0;
@@ -3964,7 +3964,7 @@ module t65_mcode_Brtl
       4'b0001: n1868 = 1'b0;
       default: n1868 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1871 = 1'b0;
@@ -3973,7 +3973,7 @@ module t65_mcode_Brtl
       4'b0001: n1871 = 1'b1;
       default: n1871 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1874 = 1'b0;
@@ -3982,7 +3982,7 @@ module t65_mcode_Brtl
       4'b0001: n1874 = 1'b0;
       default: n1874 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1877 = 1'b0;
@@ -3991,7 +3991,7 @@ module t65_mcode_Brtl
       4'b0001: n1877 = 1'b0;
       default: n1877 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:622:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:622:11 */
   always @*
     case (n1853)
       4'b1000: n1879 = n1850;
@@ -4000,27 +4000,27 @@ module t65_mcode_Brtl
       4'b0001: n1879 = 1'b0;
       default: n1879 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:648:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:648:16 */
   assign n1880 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:648:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:648:29 */
   assign n1882 = n1880 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:648:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:648:11 */
   assign n1884 = n1882 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:652:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:652:13 */
   assign n1886 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:656:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:656:20 */
   assign n1887 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:656:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:656:33 */
   assign n1889 = n1887 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:656:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:656:15 */
   assign n1892 = n1889 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:653:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:653:13 */
   assign n1894 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:660:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:660:13 */
   assign n1896 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:651:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:651:11 */
   assign n1897 = {n1896, n1894, n1886};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:651:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:651:11 */
   always @*
     case (n1897)
       3'b100: n1900 = 2'b00;
@@ -4028,7 +4028,7 @@ module t65_mcode_Brtl
       3'b001: n1900 = 2'b00;
       default: n1900 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:651:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:651:11 */
   always @*
     case (n1897)
       3'b100: n1903 = 2'b00;
@@ -4036,7 +4036,7 @@ module t65_mcode_Brtl
       3'b001: n1903 = 2'b00;
       default: n1903 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:651:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:651:11 */
   always @*
     case (n1897)
       3'b100: n1906 = 1'b0;
@@ -4044,7 +4044,7 @@ module t65_mcode_Brtl
       3'b001: n1906 = 1'b0;
       default: n1906 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:651:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:651:11 */
   always @*
     case (n1897)
       3'b100: n1908 = 1'b0;
@@ -4052,99 +4052,99 @@ module t65_mcode_Brtl
       3'b001: n1908 = 1'b0;
       default: n1908 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1911 = n1821 ? 3'b100 : 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1912 = n1821 ? n1854 : n1127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1913 = n1821 ? n1859 : n1900;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1914 = n1821 ? n1862 : n1903;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1915 = n1821 ? n1827 : n1884;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1917 = n1821 ? n1865 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1919 = n1821 ? n1868 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1920 = n1821 ? n1871 : n1906;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1922 = n1821 ? n1874 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1923 = n1821 ? n1877 : n1908;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:616:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:616:9 */
   assign n1925 = n1821 ? n1879 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:614:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:614:7 */
   assign n1927 = n1128 == 5'b00101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:614:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:614:20 */
   assign n1929 = n1128 == 5'b00110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:614:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:614:20 */
   assign n1930 = n1927 | n1929;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:614:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:614:30 */
   assign n1932 = n1128 == 5'b00111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:614:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:614:30 */
   assign n1933 = n1930 | n1932;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:14 */
   assign n1934 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:27 */
   assign n1936 = n1934 == 2'b01;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:40 */
   assign n1937 = ir[4:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:53 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:53 */
   assign n1939 = n1937 == 5'b01100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:34 */
   assign n1940 = n1939 & n1936;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:16 */
   assign n1941 = ir[5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:20 */
   assign n1942 = ~n1941;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:672:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:672:15 */
   assign n1944 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:675:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:675:15 */
   assign n1946 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:671:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:671:13 */
   assign n1947 = {n1946, n1944};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:671:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:671:13 */
   always @*
     case (n1947)
       2'b10: n1951 = 2'b10;
       2'b01: n1951 = 2'b01;
       default: n1951 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:671:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:671:13 */
   always @*
     case (n1947)
       2'b10: n1954 = 1'b0;
       2'b01: n1954 = 1'b1;
       default: n1954 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:682:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:682:15 */
   assign n1956 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:688:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:688:25 */
   assign n1958 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:688:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:688:17 */
   assign n1961 = n1958 ? 2'b10 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:691:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:691:25 */
   assign n1963 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:691:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:691:17 */
   assign n1966 = n1963 ? 2'b11 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:686:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:686:15 */
   assign n1968 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:696:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:696:25 */
   assign n1970 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:696:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:696:17 */
   assign n1973 = n1970 ? 2'b11 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:696:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:696:17 */
   assign n1976 = n1970 ? 2'b00 : 2'b01;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:696:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:696:17 */
   assign n1979 = n1970 ? 2'b01 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:694:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:694:15 */
   assign n1981 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:702:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:702:15 */
   assign n1983 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:681:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:681:13 */
   assign n1984 = {n1983, n1981, n1968, n1956};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:681:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:681:13 */
   always @*
     case (n1984)
       4'b1000: n1986 = 2'b00;
@@ -4153,7 +4153,7 @@ module t65_mcode_Brtl
       4'b0001: n1986 = 2'b00;
       default: n1986 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:681:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:681:13 */
   always @*
     case (n1984)
       4'b1000: n1990 = 2'b10;
@@ -4162,7 +4162,7 @@ module t65_mcode_Brtl
       4'b0001: n1990 = 2'b01;
       default: n1990 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:681:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:681:13 */
   always @*
     case (n1984)
       4'b1000: n1992 = 2'b00;
@@ -4171,7 +4171,7 @@ module t65_mcode_Brtl
       4'b0001: n1992 = 2'b00;
       default: n1992 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:681:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:681:13 */
   always @*
     case (n1984)
       4'b1000: n1996 = 1'b0;
@@ -4180,7 +4180,7 @@ module t65_mcode_Brtl
       4'b0001: n1996 = 1'b1;
       default: n1996 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:681:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:681:13 */
   always @*
     case (n1984)
       4'b1000: n1999 = 1'b0;
@@ -4189,7 +4189,7 @@ module t65_mcode_Brtl
       4'b0001: n1999 = 1'b1;
       default: n1999 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:681:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:681:13 */
   always @*
     case (n1984)
       4'b1000: n2002 = 1'b0;
@@ -4198,43 +4198,43 @@ module t65_mcode_Brtl
       4'b0001: n2002 = 1'b0;
       default: n2002 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:11 */
   assign n2005 = n1942 ? 3'b010 : 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:11 */
   assign n2007 = n1942 ? 2'b00 : n1986;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:11 */
   assign n2008 = n1942 ? n1951 : n1990;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:11 */
   assign n2010 = n1942 ? 2'b00 : n1992;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:11 */
   assign n2011 = n1942 ? n1954 : n1996;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:11 */
   assign n2013 = n1942 ? 1'b0 : n1999;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:669:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:669:11 */
   assign n2015 = n1942 ? 1'b0 : n2002;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:711:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:711:20 */
   assign n2016 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:711:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:711:33 */
   assign n2018 = n2016 == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:711:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:711:15 */
   assign n2021 = n2018 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:710:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:710:13 */
   assign n2023 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:714:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:714:13 */
   assign n2025 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:720:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:720:20 */
   assign n2026 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:720:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:720:33 */
   assign n2028 = n2026 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:720:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:720:15 */
   assign n2031 = n2028 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:717:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:717:13 */
   assign n2033 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:724:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:724:13 */
   assign n2035 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:709:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:709:11 */
   assign n2036 = {n2035, n2033, n2025, n2023};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:709:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:709:11 */
   always @*
     case (n2036)
       4'b1000: n2039 = 2'b00;
@@ -4243,7 +4243,7 @@ module t65_mcode_Brtl
       4'b0001: n2039 = 2'b00;
       default: n2039 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:709:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:709:11 */
   always @*
     case (n2036)
       4'b1000: n2043 = 2'b00;
@@ -4252,7 +4252,7 @@ module t65_mcode_Brtl
       4'b0001: n2043 = 2'b00;
       default: n2043 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:709:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:709:11 */
   always @*
     case (n2036)
       4'b1000: n2046 = 1'b0;
@@ -4261,7 +4261,7 @@ module t65_mcode_Brtl
       4'b0001: n2046 = 1'b0;
       default: n2046 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:709:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:709:11 */
   always @*
     case (n2036)
       4'b1000: n2049 = 1'b0;
@@ -4270,7 +4270,7 @@ module t65_mcode_Brtl
       4'b0001: n2049 = 1'b0;
       default: n2049 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:709:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:709:11 */
   always @*
     case (n2036)
       4'b1000: n2051 = 1'b0;
@@ -4279,7 +4279,7 @@ module t65_mcode_Brtl
       4'b0001: n2051 = n2021;
       default: n2051 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:709:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:709:11 */
   always @*
     case (n2036)
       4'b1000: n2053 = 1'b0;
@@ -4288,79 +4288,79 @@ module t65_mcode_Brtl
       4'b0001: n2053 = 1'b0;
       default: n2053 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2055 = n1940 ? n2005 : 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2056 = n1940 ? n2007 : n2039;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2057 = n1940 ? n2008 : n2043;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2059 = n1940 ? n2010 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2061 = n1940 ? n2011 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2062 = n1940 ? n2013 : n2046;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2063 = n1940 ? n2015 : n2049;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2065 = n1940 ? 1'b0 : n2051;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:668:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:668:9 */
   assign n2067 = n1940 ? 1'b0 : n2053;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:666:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:666:7 */
   assign n2069 = n1128 == 5'b01100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:14 */
   assign n2070 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:27 */
   assign n2072 = n2070 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:41 */
   assign n2073 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:35 */
   assign n2074 = n2073 & n2072;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:60 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:60 */
   assign n2076 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:71 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:71 */
   assign n2077 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:74 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:74 */
   assign n2078 = ~n2077;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:66 */
   assign n2079 = n2076 | n2078;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:51 */
   assign n2080 = n2079 & n2074;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:737:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:737:18 */
   assign n2082 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:737:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:737:30 */
   assign n2083 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:737:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:737:24 */
   assign n2084 = n2083 & n2082;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:737:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:737:11 */
   assign n2086 = n2084 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:741:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:741:13 */
   assign n2088 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:744:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:744:13 */
   assign n2090 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:750:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:750:22 */
   assign n2092 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:750:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:750:15 */
   assign n2095 = n2092 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:748:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:748:13 */
   assign n2097 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:754:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:754:13 */
   assign n2099 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:760:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:760:22 */
   assign n2101 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:760:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:760:34 */
   assign n2102 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:760:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:760:28 */
   assign n2103 = n2102 & n2101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:760:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:760:15 */
   assign n2105 = n2103 ? 4'b0001 : n1127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:760:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:760:15 */
   assign n2108 = n2103 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:759:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:759:13 */
   assign n2110 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   assign n2111 = {n2110, n2099, n2097, n2090, n2088};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2112 = n2105;
@@ -4370,7 +4370,7 @@ module t65_mcode_Brtl
       5'b00001: n2112 = n1127;
       default: n2112 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2117 = 2'b00;
@@ -4380,7 +4380,7 @@ module t65_mcode_Brtl
       5'b00001: n2117 = 2'b00;
       default: n2117 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2121 = 2'b00;
@@ -4390,7 +4390,7 @@ module t65_mcode_Brtl
       5'b00001: n2121 = 2'b01;
       default: n2121 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2124 = 1'b0;
@@ -4400,7 +4400,7 @@ module t65_mcode_Brtl
       5'b00001: n2124 = 1'b0;
       default: n2124 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2127 = 1'b0;
@@ -4410,7 +4410,7 @@ module t65_mcode_Brtl
       5'b00001: n2127 = 1'b0;
       default: n2127 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2130 = 1'b0;
@@ -4420,7 +4420,7 @@ module t65_mcode_Brtl
       5'b00001: n2130 = 1'b1;
       default: n2130 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2133 = 1'b0;
@@ -4430,7 +4430,7 @@ module t65_mcode_Brtl
       5'b00001: n2133 = 1'b0;
       default: n2133 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2136 = 1'b0;
@@ -4440,7 +4440,7 @@ module t65_mcode_Brtl
       5'b00001: n2136 = 1'b0;
       default: n2136 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2139 = 1'b0;
@@ -4450,7 +4450,7 @@ module t65_mcode_Brtl
       5'b00001: n2139 = 1'b0;
       default: n2139 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:740:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:740:11 */
   always @*
     case (n2111)
       5'b10000: n2141 = n2108;
@@ -4460,29 +4460,29 @@ module t65_mcode_Brtl
       5'b00001: n2141 = 1'b0;
       default: n2141 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:768:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:768:16 */
   assign n2142 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:768:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:768:29 */
   assign n2144 = n2142 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:768:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:768:11 */
   assign n2146 = n2144 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:772:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:772:13 */
   assign n2148 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:773:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:773:13 */
   assign n2150 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:779:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:779:20 */
   assign n2151 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:779:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:779:33 */
   assign n2153 = n2151 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:779:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:779:15 */
   assign n2156 = n2153 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:776:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:776:13 */
   assign n2158 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:783:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:783:13 */
   assign n2160 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:771:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:771:11 */
   assign n2161 = {n2160, n2158, n2150, n2148};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:771:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:771:11 */
   always @*
     case (n2161)
       4'b1000: n2164 = 2'b00;
@@ -4491,7 +4491,7 @@ module t65_mcode_Brtl
       4'b0001: n2164 = 2'b00;
       default: n2164 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:771:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:771:11 */
   always @*
     case (n2161)
       4'b1000: n2168 = 2'b00;
@@ -4500,7 +4500,7 @@ module t65_mcode_Brtl
       4'b0001: n2168 = 2'b00;
       default: n2168 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:771:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:771:11 */
   always @*
     case (n2161)
       4'b1000: n2171 = 1'b0;
@@ -4509,7 +4509,7 @@ module t65_mcode_Brtl
       4'b0001: n2171 = 1'b0;
       default: n2171 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:771:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:771:11 */
   always @*
     case (n2161)
       4'b1000: n2174 = 1'b0;
@@ -4518,7 +4518,7 @@ module t65_mcode_Brtl
       4'b0001: n2174 = 1'b0;
       default: n2174 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:771:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:771:11 */
   always @*
     case (n2161)
       4'b1000: n2176 = 1'b0;
@@ -4527,51 +4527,51 @@ module t65_mcode_Brtl
       4'b0001: n2176 = 1'b0;
       default: n2176 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2179 = n2080 ? 3'b101 : 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2180 = n2080 ? n2112 : n1127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2181 = n2080 ? n2117 : n2164;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2182 = n2080 ? n2121 : n2168;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2183 = n2080 ? n2086 : n2146;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2185 = n2080 ? n2124 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2187 = n2080 ? n2127 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2188 = n2080 ? n2130 : n2171;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2189 = n2080 ? n2133 : n2174;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2191 = n2080 ? n2136 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2192 = n2080 ? n2139 : n2176;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:734:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:734:9 */
   assign n2194 = n2080 ? n2141 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:732:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:732:7 */
   assign n2196 = n1128 == 5'b01101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:732:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:732:20 */
   assign n2198 = n1128 == 5'b01110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:732:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:732:20 */
   assign n2199 = n2196 | n2198;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:732:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:732:30 */
   assign n2201 = n1128 == 5'b01111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:732:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:732:30 */
   assign n2202 = n2199 | n2201;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:795:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:795:9 */
   assign n2205 = branch ? 3'b011 : 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:809:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:809:11 */
   assign n2207 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:820:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:820:11 */
   assign n2209 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:829:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:829:11 */
   assign n2211 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:804:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:804:9 */
   assign n2212 = {n2211, n2209, n2207};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:804:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:804:9 */
   always @*
     case (n2212)
       3'b100: n2216 = 2'b00;
@@ -4579,7 +4579,7 @@ module t65_mcode_Brtl
       3'b001: n2216 = 2'b01;
       default: n2216 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:804:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:804:9 */
   always @*
     case (n2212)
       3'b100: n2219 = 1'b0;
@@ -4587,7 +4587,7 @@ module t65_mcode_Brtl
       3'b001: n2219 = 1'b0;
       default: n2219 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:804:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:804:9 */
   always @*
     case (n2212)
       3'b100: n2222 = 1'b0;
@@ -4595,85 +4595,85 @@ module t65_mcode_Brtl
       3'b001: n2222 = 1'b1;
       default: n2222 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:789:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:789:7 */
   assign n2224 = n1128 == 5'b10000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:837:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:837:14 */
   assign n2225 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:837:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:837:27 */
   assign n2227 = n2225 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:839:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:839:18 */
   assign n2229 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:839:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:839:30 */
   assign n2230 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:839:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:839:24 */
   assign n2231 = n2230 & n2229;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:839:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:839:11 */
   assign n2234 = n2231 ? 3'b111 : 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:837:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:837:9 */
   assign n2236 = n2227 ? n2234 : 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:837:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:837:9 */
   assign n2239 = n2227 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:844:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:844:11 */
   assign n2241 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:848:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:848:11 */
   assign n2243 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:852:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:852:11 */
   assign n2245 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:859:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:859:18 */
   assign n2246 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:859:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:859:31 */
   assign n2248 = n2246 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:861:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:861:20 */
   assign n2249 = ir[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:861:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:861:33 */
   assign n2251 = n2249 == 4'b0011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:861:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:861:15 */
   assign n2254 = n2251 ? 2'b10 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:864:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:864:21 */
   assign n2255 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:864:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:864:24 */
   assign n2256 = ~n2255;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:864:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:864:34 */
   assign n2258 = ir == 8'b10110011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:864:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:864:29 */
   assign n2259 = n2256 | n2258;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:864:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:864:13 */
   assign n2262 = n2259 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:859:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:859:13 */
   assign n2264 = n2248 ? n2254 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:859:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:859:13 */
   assign n2266 = n2248 ? 1'b0 : n2262;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:859:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:859:13 */
   assign n2269 = n2248 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:857:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:857:11 */
   assign n2271 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:20 */
   assign n2273 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:32 */
   assign n2274 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:26 */
   assign n2275 = n2274 & n2273;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:46 */
   assign n2276 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:58 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:58 */
   assign n2278 = n2276 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:40 */
   assign n2279 = n2278 & n2275;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:13 */
   assign n2282 = n2279 ? 2'b11 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:13 */
   assign n2285 = n2279 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:869:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:869:13 */
   assign n2288 = n2279 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:868:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:868:11 */
   assign n2290 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:874:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:874:11 */
   assign n2292 = mcycle == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:879:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:879:11 */
   assign n2294 = mcycle == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   assign n2295 = {n2294, n2292, n2290, n2271, n2245, n2243, n2241};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2298 = 4'b0001;
@@ -4685,7 +4685,7 @@ module t65_mcode_Brtl
       7'b0000001: n2298 = n1127;
       default: n2298 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2305 = 2'b00;
@@ -4697,7 +4697,7 @@ module t65_mcode_Brtl
       7'b0000001: n2305 = 2'b10;
       default: n2305 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2308 = 2'b00;
@@ -4709,7 +4709,7 @@ module t65_mcode_Brtl
       7'b0000001: n2308 = 2'b01;
       default: n2308 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2313 = 2'b00;
@@ -4721,7 +4721,7 @@ module t65_mcode_Brtl
       7'b0000001: n2313 = 2'b00;
       default: n2313 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2315 = 2'b00;
@@ -4733,7 +4733,7 @@ module t65_mcode_Brtl
       7'b0000001: n2315 = 2'b00;
       default: n2315 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2317 = 1'b0;
@@ -4745,7 +4745,7 @@ module t65_mcode_Brtl
       7'b0000001: n2317 = 1'b0;
       default: n2317 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2319 = 1'b0;
@@ -4757,7 +4757,7 @@ module t65_mcode_Brtl
       7'b0000001: n2319 = 1'b0;
       default: n2319 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2322 = 1'b0;
@@ -4769,7 +4769,7 @@ module t65_mcode_Brtl
       7'b0000001: n2322 = 1'b0;
       default: n2322 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2325 = 1'b0;
@@ -4781,7 +4781,7 @@ module t65_mcode_Brtl
       7'b0000001: n2325 = 1'b1;
       default: n2325 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2328 = 1'b0;
@@ -4793,7 +4793,7 @@ module t65_mcode_Brtl
       7'b0000001: n2328 = 1'b0;
       default: n2328 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2331 = 1'b0;
@@ -4805,7 +4805,7 @@ module t65_mcode_Brtl
       7'b0000001: n2331 = 1'b0;
       default: n2331 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2334 = 1'b0;
@@ -4817,7 +4817,7 @@ module t65_mcode_Brtl
       7'b0000001: n2334 = 1'b0;
       default: n2334 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2337 = 1'b0;
@@ -4829,7 +4829,7 @@ module t65_mcode_Brtl
       7'b0000001: n2337 = 1'b0;
       default: n2337 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:843:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:843:9 */
   always @*
     case (n2295)
       7'b1000000: n2340 = 1'b1;
@@ -4841,73 +4841,73 @@ module t65_mcode_Brtl
       7'b0000001: n2340 = 1'b0;
       default: n2340 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:835:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:835:7 */
   assign n2342 = n1128 == 5'b10001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:835:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:835:20 */
   assign n2344 = n1128 == 5'b10011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:835:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:835:20 */
   assign n2345 = n2342 | n2344;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:14 */
   assign n2346 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:27 */
   assign n2348 = n2346 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:41 */
   assign n2349 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:35 */
   assign n2350 = n2349 & n2348;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:60 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:60 */
   assign n2352 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:71 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:71 */
   assign n2353 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:74 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:74 */
   assign n2354 = ~n2353;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:66 */
   assign n2355 = n2352 | n2354;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:51 */
   assign n2356 = n2355 & n2350;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:893:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:893:18 */
   assign n2358 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:893:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:893:30 */
   assign n2359 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:893:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:893:24 */
   assign n2360 = n2359 & n2358;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:893:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:893:11 */
   assign n2362 = n2360 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:898:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:898:13 */
   assign n2364 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:902:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:902:13 */
   assign n2366 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:907:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:907:22 */
   assign n2368 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:907:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:907:15 */
   assign n2371 = n2368 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:905:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:905:13 */
   assign n2373 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:916:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:916:22 */
   assign n2375 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:916:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:916:34 */
   assign n2376 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:916:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:916:28 */
   assign n2377 = n2376 & n2375;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:916:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:916:15 */
   assign n2380 = n2377 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:911:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:911:13 */
   assign n2382 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:920:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:920:22 */
   assign n2384 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:920:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:920:34 */
   assign n2385 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:920:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:920:28 */
   assign n2386 = n2385 & n2384;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:920:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:920:15 */
   assign n2388 = n2386 ? 4'b0001 : n1127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:920:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:920:15 */
   assign n2391 = n2386 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:919:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:919:13 */
   assign n2393 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   assign n2394 = {n2393, n2382, n2373, n2366, n2364};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2395 = n2388;
@@ -4917,7 +4917,7 @@ module t65_mcode_Brtl
       5'b00001: n2395 = n1127;
       default: n2395 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2401 = 2'b00;
@@ -4927,7 +4927,7 @@ module t65_mcode_Brtl
       5'b00001: n2401 = 2'b10;
       default: n2401 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2404 = 2'b00;
@@ -4937,7 +4937,7 @@ module t65_mcode_Brtl
       5'b00001: n2404 = 2'b01;
       default: n2404 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2407 = 1'b0;
@@ -4947,7 +4947,7 @@ module t65_mcode_Brtl
       5'b00001: n2407 = 1'b0;
       default: n2407 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2410 = 1'b0;
@@ -4957,7 +4957,7 @@ module t65_mcode_Brtl
       5'b00001: n2410 = 1'b0;
       default: n2410 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2413 = 1'b0;
@@ -4967,7 +4967,7 @@ module t65_mcode_Brtl
       5'b00001: n2413 = 1'b0;
       default: n2413 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2416 = 1'b0;
@@ -4977,7 +4977,7 @@ module t65_mcode_Brtl
       5'b00001: n2416 = 1'b1;
       default: n2416 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2419 = 1'b0;
@@ -4987,7 +4987,7 @@ module t65_mcode_Brtl
       5'b00001: n2419 = 1'b0;
       default: n2419 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2422 = 1'b0;
@@ -4997,7 +4997,7 @@ module t65_mcode_Brtl
       5'b00001: n2422 = 1'b0;
       default: n2422 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:897:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:897:11 */
   always @*
     case (n2394)
       5'b10000: n2424 = n2391;
@@ -5007,39 +5007,39 @@ module t65_mcode_Brtl
       5'b00001: n2424 = 1'b0;
       default: n2424 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:928:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:928:16 */
   assign n2425 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:928:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:928:29 */
   assign n2427 = n2425 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:928:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:928:43 */
   assign n2428 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:928:37 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:928:37 */
   assign n2429 = n2428 & n2427;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:928:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:928:11 */
   assign n2431 = n2429 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:932:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:932:13 */
   assign n2433 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:933:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:933:13 */
   assign n2435 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:940:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:940:21 */
   assign n2436 = ir[3:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:940:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:940:34 */
   assign n2438 = n2436 == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:940:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:940:15 */
   assign n2441 = n2438 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:943:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:943:20 */
   assign n2442 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:943:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:943:33 */
   assign n2444 = n2442 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:943:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:943:15 */
   assign n2447 = n2444 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:937:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:937:13 */
   assign n2449 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:947:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:947:13 */
   assign n2451 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:931:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:931:11 */
   assign n2452 = {n2451, n2449, n2435, n2433};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:931:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:931:11 */
   always @*
     case (n2452)
       4'b1000: n2456 = 2'b00;
@@ -5048,7 +5048,7 @@ module t65_mcode_Brtl
       4'b0001: n2456 = 2'b00;
       default: n2456 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:931:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:931:11 */
   always @*
     case (n2452)
       4'b1000: n2459 = 2'b00;
@@ -5057,7 +5057,7 @@ module t65_mcode_Brtl
       4'b0001: n2459 = 2'b00;
       default: n2459 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:931:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:931:11 */
   always @*
     case (n2452)
       4'b1000: n2462 = 1'b0;
@@ -5066,7 +5066,7 @@ module t65_mcode_Brtl
       4'b0001: n2462 = 1'b0;
       default: n2462 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:931:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:931:11 */
   always @*
     case (n2452)
       4'b1000: n2464 = 1'b0;
@@ -5075,7 +5075,7 @@ module t65_mcode_Brtl
       4'b0001: n2464 = 1'b0;
       default: n2464 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:931:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:931:11 */
   always @*
     case (n2452)
       4'b1000: n2467 = 1'b0;
@@ -5084,7 +5084,7 @@ module t65_mcode_Brtl
       4'b0001: n2467 = 1'b0;
       default: n2467 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:931:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:931:11 */
   always @*
     case (n2452)
       4'b1000: n2469 = 1'b0;
@@ -5093,121 +5093,121 @@ module t65_mcode_Brtl
       4'b0001: n2469 = 1'b0;
       default: n2469 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2472 = n2356 ? 3'b101 : 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2473 = n2356 ? n2395 : n1127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2474 = n2356 ? n2401 : n2456;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2475 = n2356 ? n2404 : n2459;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2476 = n2356 ? n2407 : n2462;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2478 = n2356 ? 1'b0 : n2464;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2479 = n2356 ? n2362 : n2431;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2481 = n2356 ? n2410 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2483 = n2356 ? n2413 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2484 = n2356 ? n2416 : n2467;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2486 = n2356 ? n2419 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2487 = n2356 ? n2422 : n2469;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:891:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:891:9 */
   assign n2489 = n2356 ? n2424 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:889:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:889:7 */
   assign n2491 = n1128 == 5'b10100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:889:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:889:20 */
   assign n2493 = n1128 == 5'b10101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:889:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:889:20 */
   assign n2494 = n2491 | n2493;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:889:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:889:30 */
   assign n2496 = n1128 == 5'b10110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:889:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:889:30 */
   assign n2497 = n2494 | n2496;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:889:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:889:40 */
   assign n2499 = n1128 == 5'b10111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:889:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:889:40 */
   assign n2500 = n2497 | n2499;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:957:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:957:14 */
   assign n2501 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:957:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:957:27 */
   assign n2503 = n2501 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:959:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:959:18 */
   assign n2505 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:959:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:959:30 */
   assign n2506 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:959:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:959:24 */
   assign n2507 = n2506 & n2505;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:959:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:959:11 */
   assign n2510 = n2507 ? 3'b110 : 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:957:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:957:9 */
   assign n2512 = n2503 ? n2510 : 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:957:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:957:9 */
   assign n2515 = n2503 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:964:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:964:11 */
   assign n2517 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:967:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:967:11 */
   assign n2519 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:975:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:975:18 */
   assign n2520 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:975:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:975:31 */
   assign n2522 = n2520 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:977:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:977:20 */
   assign n2523 = ir[3:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:977:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:977:33 */
   assign n2525 = n2523 == 4'b1011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:977:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:977:15 */
   assign n2528 = n2525 ? 2'b01 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:980:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:980:21 */
   assign n2529 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:980:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:980:24 */
   assign n2530 = ~n2529;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:980:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:980:34 */
   assign n2532 = ir == 8'b10111011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:980:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:980:29 */
   assign n2533 = n2530 | n2532;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:980:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:980:13 */
   assign n2536 = n2533 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:975:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:975:13 */
   assign n2538 = n2522 ? n2528 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:975:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:975:13 */
   assign n2540 = n2522 ? 1'b0 : n2536;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:975:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:975:13 */
   assign n2543 = n2522 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:973:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:973:11 */
   assign n2545 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:20 */
   assign n2547 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:32 */
   assign n2548 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:26 */
   assign n2549 = n2548 & n2547;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:46 */
   assign n2550 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:58 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:58 */
   assign n2552 = n2550 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:40 */
   assign n2553 = n2552 & n2549;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:13 */
   assign n2556 = n2553 ? 2'b11 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:13 */
   assign n2559 = n2553 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:985:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:985:13 */
   assign n2562 = n2553 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:984:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:984:11 */
   assign n2564 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:990:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:990:11 */
   assign n2566 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:995:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:995:11 */
   assign n2568 = mcycle == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   assign n2569 = {n2568, n2566, n2564, n2545, n2519, n2517};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2572 = 4'b0001;
@@ -5218,7 +5218,7 @@ module t65_mcode_Brtl
       6'b000001: n2572 = n1127;
       default: n2572 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2577 = 2'b00;
@@ -5229,7 +5229,7 @@ module t65_mcode_Brtl
       6'b000001: n2577 = 2'b00;
       default: n2577 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2581 = 2'b00;
@@ -5240,7 +5240,7 @@ module t65_mcode_Brtl
       6'b000001: n2581 = 2'b01;
       default: n2581 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2585 = 2'b00;
@@ -5251,7 +5251,7 @@ module t65_mcode_Brtl
       6'b000001: n2585 = 2'b00;
       default: n2585 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2587 = 2'b00;
@@ -5262,7 +5262,7 @@ module t65_mcode_Brtl
       6'b000001: n2587 = 2'b00;
       default: n2587 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2589 = 1'b0;
@@ -5273,7 +5273,7 @@ module t65_mcode_Brtl
       6'b000001: n2589 = 1'b0;
       default: n2589 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2591 = 1'b0;
@@ -5284,7 +5284,7 @@ module t65_mcode_Brtl
       6'b000001: n2591 = 1'b0;
       default: n2591 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2594 = 1'b0;
@@ -5295,7 +5295,7 @@ module t65_mcode_Brtl
       6'b000001: n2594 = 1'b0;
       default: n2594 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2597 = 1'b0;
@@ -5306,7 +5306,7 @@ module t65_mcode_Brtl
       6'b000001: n2597 = 1'b1;
       default: n2597 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2600 = 1'b0;
@@ -5317,7 +5317,7 @@ module t65_mcode_Brtl
       6'b000001: n2600 = 1'b0;
       default: n2600 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2603 = 1'b0;
@@ -5328,7 +5328,7 @@ module t65_mcode_Brtl
       6'b000001: n2603 = 1'b0;
       default: n2603 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2606 = 1'b0;
@@ -5339,7 +5339,7 @@ module t65_mcode_Brtl
       6'b000001: n2606 = 1'b0;
       default: n2606 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:963:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:963:9 */
   always @*
     case (n2569)
       6'b100000: n2609 = 1'b1;
@@ -5350,67 +5350,67 @@ module t65_mcode_Brtl
       6'b000001: n2609 = 1'b0;
       default: n2609 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:954:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:954:7 */
   assign n2611 = n1128 == 5'b11001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:954:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:954:20 */
   assign n2613 = n1128 == 5'b11011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:954:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:954:20 */
   assign n2614 = n2611 | n2613;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:14 */
   assign n2615 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:27 */
   assign n2617 = n2615 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:41 */
   assign n2618 = ir[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:35 */
   assign n2619 = n2618 & n2617;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:60 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:60 */
   assign n2621 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:71 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:71 */
   assign n2622 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:74 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:74 */
   assign n2623 = ~n2622;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:66 */
   assign n2624 = n2621 | n2623;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:51 */
   assign n2625 = n2624 & n2619;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1010:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1010:18 */
   assign n2627 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1010:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1010:30 */
   assign n2628 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1010:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1010:24 */
   assign n2629 = n2628 & n2627;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1010:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1010:11 */
   assign n2631 = n2629 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1014:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1014:13 */
   assign n2633 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1017:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1017:13 */
   assign n2635 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1023:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1023:13 */
   assign n2637 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1028:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1028:22 */
   assign n2639 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1028:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1028:15 */
   assign n2642 = n2639 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1026:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1026:13 */
   assign n2644 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1032:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1032:13 */
   assign n2646 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1038:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1038:22 */
   assign n2648 = mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1038:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1038:34 */
   assign n2649 = ir[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1038:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1038:28 */
   assign n2650 = n2649 & n2648;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1038:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1038:15 */
   assign n2652 = n2650 ? 4'b0001 : n1127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1038:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1038:15 */
   assign n2655 = n2650 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1037:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1037:13 */
   assign n2657 = mcycle == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   assign n2658 = {n2657, n2646, n2644, n2637, n2635, n2633};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2660 = n2652;
@@ -5421,7 +5421,7 @@ module t65_mcode_Brtl
       6'b000001: n2660 = n1127;
       default: n2660 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2666 = 2'b00;
@@ -5432,7 +5432,7 @@ module t65_mcode_Brtl
       6'b000001: n2666 = 2'b00;
       default: n2666 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2670 = 2'b00;
@@ -5443,7 +5443,7 @@ module t65_mcode_Brtl
       6'b000001: n2670 = 2'b01;
       default: n2670 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2674 = 2'b00;
@@ -5454,7 +5454,7 @@ module t65_mcode_Brtl
       6'b000001: n2674 = 2'b00;
       default: n2674 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2677 = 1'b0;
@@ -5465,7 +5465,7 @@ module t65_mcode_Brtl
       6'b000001: n2677 = 1'b0;
       default: n2677 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2680 = 1'b0;
@@ -5476,7 +5476,7 @@ module t65_mcode_Brtl
       6'b000001: n2680 = 1'b0;
       default: n2680 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2683 = 1'b0;
@@ -5487,7 +5487,7 @@ module t65_mcode_Brtl
       6'b000001: n2683 = 1'b1;
       default: n2683 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2686 = 1'b0;
@@ -5498,7 +5498,7 @@ module t65_mcode_Brtl
       6'b000001: n2686 = 1'b0;
       default: n2686 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2689 = 1'b0;
@@ -5509,7 +5509,7 @@ module t65_mcode_Brtl
       6'b000001: n2689 = 1'b0;
       default: n2689 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2692 = 1'b0;
@@ -5520,7 +5520,7 @@ module t65_mcode_Brtl
       6'b000001: n2692 = 1'b0;
       default: n2692 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1013:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1013:11 */
   always @*
     case (n2658)
       6'b100000: n2694 = n2655;
@@ -5531,82 +5531,82 @@ module t65_mcode_Brtl
       6'b000001: n2694 = 1'b0;
       default: n2694 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1046:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1046:16 */
   assign n2695 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1046:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1046:29 */
   assign n2697 = n2695 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1047:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1047:20 */
   assign n2699 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1047:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1047:32 */
   assign n2700 = ir[4]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1047:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1047:35 */
   assign n2701 = ~n2700;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1047:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1047:27 */
   assign n2702 = n2699 | n2701;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1047:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1047:45 */
   assign n2703 = ir[1:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1047:57 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1047:57 */
   assign n2705 = n2703 != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1047:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1047:40 */
   assign n2706 = n2702 | n2705;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1046:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1046:11 */
   assign n2708 = n2709 ? 1'b1 : n1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1046:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1046:11 */
   assign n2709 = n2706 & n2697;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1052:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1052:13 */
   assign n2711 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1053:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1053:13 */
   assign n2713 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1059:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1059:20 */
   assign n2714 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1059:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1059:32 */
   assign n2716 = n2714 == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1059:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1059:44 */
   assign n2717 = ir[4:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1059:56 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1059:56 */
   assign n2719 = n2717 == 4'b1111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1059:38 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1059:38 */
   assign n2720 = n2719 & n2716;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1059:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1059:15 */
   assign n2723 = n2720 ? 4'b0011 : 4'b0010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1056:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1056:13 */
   assign n2725 = mcycle == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1069:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1069:20 */
   assign n2726 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1069:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1069:33 */
   assign n2728 = n2726 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1071:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1071:24 */
   assign n2729 = ir[1:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1072:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1072:17 */
   assign n2731 = n2729 == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1072:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1072:26 */
   assign n2733 = n2729 == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1072:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1072:26 */
   assign n2734 = n2731 | n2733;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1073:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1073:17 */
   assign n2736 = n2729 == 2'b11;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1071:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1071:17 */
   assign n2737 = {n2736, n2734};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1071:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1071:17 */
   always @*
     case (n2737)
       2'b10: n2741 = 2'b10;
       2'b01: n2741 = 2'b01;
       default: n2741 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1069:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1069:15 */
   assign n2743 = n2728 ? n2741 : 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1069:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1069:15 */
   assign n2746 = n2728 ? 1'b0 : 1'b1;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1069:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1069:15 */
   assign n2749 = n2728 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1067:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1067:13 */
   assign n2751 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1080:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1080:13 */
   assign n2753 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   assign n2754 = {n2753, n2751, n2725, n2713, n2711};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2755 = n1127;
@@ -5616,7 +5616,7 @@ module t65_mcode_Brtl
       5'b00001: n2755 = n1127;
       default: n2755 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2759 = 2'b00;
@@ -5626,7 +5626,7 @@ module t65_mcode_Brtl
       5'b00001: n2759 = 2'b00;
       default: n2759 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2763 = 2'b00;
@@ -5636,7 +5636,7 @@ module t65_mcode_Brtl
       5'b00001: n2763 = 2'b00;
       default: n2763 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2767 = 2'b00;
@@ -5646,7 +5646,7 @@ module t65_mcode_Brtl
       5'b00001: n2767 = 2'b00;
       default: n2767 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2769 = 2'b00;
@@ -5656,7 +5656,7 @@ module t65_mcode_Brtl
       5'b00001: n2769 = 2'b00;
       default: n2769 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2771 = 1'b0;
@@ -5666,7 +5666,7 @@ module t65_mcode_Brtl
       5'b00001: n2771 = 1'b0;
       default: n2771 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2774 = 1'b0;
@@ -5676,7 +5676,7 @@ module t65_mcode_Brtl
       5'b00001: n2774 = 1'b0;
       default: n2774 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2777 = 1'b0;
@@ -5686,7 +5686,7 @@ module t65_mcode_Brtl
       5'b00001: n2777 = 1'b0;
       default: n2777 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1051:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1051:11 */
   always @*
     case (n2754)
       5'b10000: n2779 = 1'b0;
@@ -5696,53 +5696,53 @@ module t65_mcode_Brtl
       5'b00001: n2779 = 1'b0;
       default: n2779 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2782 = n2625 ? 3'b110 : 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2783 = n2625 ? n2660 : n2755;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2784 = n2625 ? n2666 : n2759;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2785 = n2625 ? n2670 : n2763;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2786 = n2625 ? n2674 : n2767;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2788 = n2625 ? 2'b00 : n2769;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2790 = n2625 ? 1'b0 : n2771;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2791 = n2625 ? n2631 : n2708;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2793 = n2625 ? n2677 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2795 = n2625 ? n2680 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2796 = n2625 ? n2683 : n2774;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2797 = n2625 ? n2686 : n2777;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2799 = n2625 ? n2689 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2800 = n2625 ? n2692 : n2779;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1007:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1007:9 */
   assign n2802 = n2625 ? n2694 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1005:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1005:7 */
   assign n2804 = n1128 == 5'b11100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1005:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1005:20 */
   assign n2806 = n1128 == 5'b11101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1005:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1005:20 */
   assign n2807 = n2804 | n2806;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1005:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1005:30 */
   assign n2809 = n1128 == 5'b11110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1005:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1005:30 */
   assign n2810 = n2807 | n2809;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1005:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1005:40 */
   assign n2812 = n1128 == 5'b11111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1005:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1005:40 */
   assign n2813 = n2810 | n2812;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   assign n2814 = {n2813, n2614, n2500, n2345, n2224, n2202, n2069, n1933, n1810, n1776, n1743, n1698, n1686, n1587};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2817 = n2782;
@@ -5761,7 +5761,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2817 = n1544;
       default: n2817 = 3'b001;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2819 = n2783;
@@ -5780,7 +5780,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2819 = n1546;
       default: n2819 = n1127;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2821 = n2784;
@@ -5799,7 +5799,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2821 = n1548;
       default: n2821 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2823 = n1097;
@@ -5818,7 +5818,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2823 = n1549;
       default: n2823 = n1097;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2825 = n2785;
@@ -5837,7 +5837,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2825 = n1551;
       default: n2825 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2828 = n2786;
@@ -5856,7 +5856,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2828 = 2'b00;
       default: n2828 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2831 = n2788;
@@ -5875,7 +5875,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2831 = 2'b00;
       default: n2831 = 2'b00;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2834 = n2790;
@@ -5894,7 +5894,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2834 = 1'b0;
       default: n2834 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2837 = 1'b0;
@@ -5913,7 +5913,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2837 = 1'b0;
       default: n2837 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2840 = 1'b0;
@@ -5932,7 +5932,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2840 = 1'b0;
       default: n2840 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2843 = 1'b0;
@@ -5951,7 +5951,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2843 = 1'b0;
       default: n2843 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2846 = 1'b0;
@@ -5970,7 +5970,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2846 = n1553;
       default: n2846 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2849 = 1'b0;
@@ -5989,7 +5989,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2849 = n1555;
       default: n2849 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2851 = n2791;
@@ -6008,7 +6008,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2851 = n1558;
       default: n2851 = n1100;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2853 = 1'b0;
@@ -6027,7 +6027,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2853 = n1560;
       default: n2853 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2855 = n1103;
@@ -6046,7 +6046,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2855 = n1563;
       default: n2855 = n1103;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2856 = n1106;
@@ -6065,7 +6065,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2856 = n1565;
       default: n2856 = n1106;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2857 = n1109;
@@ -6084,7 +6084,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2857 = n1567;
       default: n2857 = n1109;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2859 = n2793;
@@ -6103,7 +6103,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2859 = n1569;
       default: n2859 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2862 = n2795;
@@ -6122,7 +6122,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2862 = 1'b0;
       default: n2862 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2865 = 1'b0;
@@ -6141,7 +6141,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2865 = 1'b0;
       default: n2865 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2868 = n2796;
@@ -6160,7 +6160,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2868 = 1'b0;
       default: n2868 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2871 = n2797;
@@ -6179,7 +6179,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2871 = 1'b0;
       default: n2871 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2874 = n2799;
@@ -6198,7 +6198,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2874 = n1571;
       default: n2874 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2877 = n2800;
@@ -6217,7 +6217,7 @@ module t65_mcode_Brtl
       14'b00000000000001: n2877 = n1573;
       default: n2877 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:234:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:234:5 */
   always @*
     case (n2814)
       14'b10000000000000: n2880 = n2802;
@@ -6236,25 +6236,25 @@ module t65_mcode_Brtl
       14'b00000000000001: n2880 = 1'b0;
       default: n2880 = 1'b0;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1092:12 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1092:12 */
   assign n2885 = ir[1:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1094:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1094:16 */
   assign n2886 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1099:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1099:18 */
   assign n2887 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1100:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1100:13 */
   assign n2889 = n2887 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1100:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1100:24 */
   assign n2891 = n2887 == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1100:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1100:24 */
   assign n2892 = n2889 | n2891;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1102:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1102:13 */
   assign n2894 = n2887 == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1104:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1104:13 */
   assign n2896 = n2887 == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1099:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1099:11 */
   assign n2897 = {n2896, n2894, n2892};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1099:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1099:11 */
   always @*
     case (n2897)
       3'b100: n2902 = 5'b01100;
@@ -6262,62 +6262,62 @@ module t65_mcode_Brtl
       3'b001: n2902 = 5'b00110;
       default: n2902 = 5'b00100;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1098:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1098:9 */
   assign n2904 = n2886 == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1098:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1098:20 */
   assign n2906 = n2886 == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1098:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1098:20 */
   assign n2907 = n2904 | n2906;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1098:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1098:28 */
   assign n2909 = n2886 == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1098:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1098:28 */
   assign n2910 = n2907 | n2909;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1112:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1112:18 */
   assign n2911 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1113:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1113:13 */
   assign n2913 = n2911 == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1113:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1113:24 */
   assign n2915 = n2911 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1113:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1113:24 */
   assign n2916 = n2913 | n2915;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1115:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1115:13 */
   assign n2918 = n2911 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1112:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1112:11 */
   assign n2919 = {n2918, n2916};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1112:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1112:11 */
   always @*
     case (n2919)
       2'b10: n2923 = 5'b01101;
       2'b01: n2923 = 5'b01110;
       default: n2923 = 5'b00101;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1111:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1111:9 */
   assign n2925 = n2886 == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1123:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1123:18 */
   assign n2926 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1124:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1124:13 */
   assign n2928 = n2926 == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1123:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1123:11 */
   always @*
     case (n2928)
       1'b1: n2931 = 5'b00101;
       default: n2931 = 5'b00100;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1122:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1122:9 */
   assign n2933 = n2886 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1134:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1134:18 */
   assign n2934 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1135:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1135:13 */
   assign n2936 = n2934 == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1134:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1134:11 */
   always @*
     case (n2936)
       1'b1: n2939 = 5'b00101;
       default: n2939 = 5'b00100;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1094:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1094:9 */
   assign n2940 = {n2933, n2925, n2910};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1094:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1094:9 */
   always @*
     case (n2940)
       3'b100: n2941 = n2931;
@@ -6325,29 +6325,29 @@ module t65_mcode_Brtl
       3'b001: n2941 = n2902;
       default: n2941 = n2939;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1093:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1093:7 */
   assign n2943 = n2885 == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1143:36 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1143:36 */
   assign n2944 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1143:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1143:14 */
   assign n2945 = {28'b0, n2944};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1144:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1144:11 */
   assign n2947 = n2945 == 31'b0000000000000000000000000000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1146:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1146:11 */
   assign n2949 = n2945 == 31'b0000000000000000000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1148:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1148:11 */
   assign n2951 = n2945 == 31'b0000000000000000000000000000010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1150:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1150:11 */
   assign n2953 = n2945 == 31'b0000000000000000000000000000011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1152:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1152:11 */
   assign n2955 = n2945 == 31'b0000000000000000000000000000100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1154:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1154:11 */
   assign n2957 = n2945 == 31'b0000000000000000000000000000101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1156:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1156:11 */
   assign n2959 = n2945 == 31'b0000000000000000000000000000110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1143:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1143:9 */
   assign n2960 = {n2959, n2957, n2955, n2953, n2951, n2949, n2947};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1143:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1143:9 */
   always @*
     case (n2960)
       7'b1000000: n2969 = 5'b00110;
@@ -6359,55 +6359,55 @@ module t65_mcode_Brtl
       7'b0000001: n2969 = 5'b00000;
       default: n2969 = 5'b00111;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1142:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1142:7 */
   assign n2971 = n2885 == 2'b01;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1163:36 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1163:36 */
   assign n2972 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1163:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1163:14 */
   assign n2973 = {28'b0, n2972};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1166:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1166:18 */
   assign n2974 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1166:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1166:31 */
   assign n2976 = n2974 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1166:47 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1166:47 */
   assign n2978 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1166:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1166:39 */
   assign n2979 = n2978 & n2976;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1166:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1166:13 */
   assign n2982 = n2979 ? 5'b01110 : 5'b01000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1164:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1164:11 */
   assign n2985 = n2973 == 31'b0000000000000000000000000000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1171:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1171:18 */
   assign n2986 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1171:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1171:31 */
   assign n2988 = n2986 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1171:47 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1171:47 */
   assign n2990 = mode != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1171:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1171:39 */
   assign n2991 = n2990 & n2988;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1171:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1171:13 */
   assign n2994 = n2991 ? 5'b01101 : 5'b01001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1169:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1169:11 */
   assign n2997 = n2973 == 31'b0000000000000000000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1174:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1174:11 */
   assign n2999 = n2973 == 31'b0000000000000000000000000000010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1176:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1176:11 */
   assign n3001 = n2973 == 31'b0000000000000000000000000000011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1180:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1180:18 */
   assign n3002 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1180:31 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1180:31 */
   assign n3004 = n3002 == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1180:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1180:13 */
   assign n3007 = n3004 ? 5'b00101 : 5'b00100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1178:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1178:11 */
   assign n3010 = n2973 == 31'b0000000000000000000000000000100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1185:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1185:11 */
   assign n3012 = n2973 == 31'b0000000000000000000000000000101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1187:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1187:11 */
   assign n3014 = n2973 == 31'b0000000000000000000000000000110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1163:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1163:9 */
   assign n3015 = {n3014, n3012, n3010, n3001, n2999, n2997, n2985};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1163:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1163:9 */
   always @*
     case (n3015)
       7'b1000000: n3021 = 5'b01101;
@@ -6419,51 +6419,51 @@ module t65_mcode_Brtl
       7'b0000001: n3021 = n2982;
       default: n3021 = 5'b01110;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1162:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1162:7 */
   assign n3023 = n2885 == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1194:36 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1194:36 */
   assign n3024 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1194:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1194:14 */
   assign n3025 = {28'b0, n3024};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1197:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1197:18 */
   assign n3027 = ir == 8'b10111011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1197:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1197:13 */
   assign n3030 = n3027 ? 5'b00001 : 5'b00101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1196:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1196:11 */
   assign n3032 = n3025 == 31'b0000000000000000000000000000101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1211:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1211:18 */
   assign n3034 = ir == 8'b01101011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1213:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1213:21 */
   assign n3036 = ir == 8'b10001011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1215:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1215:21 */
   assign n3038 = ir == 8'b00001011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1215:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1215:33 */
   assign n3040 = ir == 8'b00101011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1215:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1215:28 */
   assign n3041 = n3038 | n3040;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1217:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1217:21 */
   assign n3043 = ir == 8'b11101011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1220:42 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1220:42 */
   assign n3044 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1220:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1220:20 */
   assign n3045 = {28'b0, n3044};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1221:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1221:17 */
   assign n3047 = n3045 == 31'b0000000000000000000000000000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1223:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1223:17 */
   assign n3049 = n3045 == 31'b0000000000000000000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1225:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1225:17 */
   assign n3051 = n3045 == 31'b0000000000000000000000000000010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1227:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1227:17 */
   assign n3053 = n3045 == 31'b0000000000000000000000000000011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1229:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1229:17 */
   assign n3055 = n3045 == 31'b0000000000000000000000000000100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1231:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1231:17 */
   assign n3057 = n3045 == 31'b0000000000000000000000000000101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1233:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1233:17 */
   assign n3059 = n3045 == 31'b0000000000000000000000000000110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1220:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1220:15 */
   assign n3060 = {n3059, n3057, n3055, n3053, n3051, n3049, n3047};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1220:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1220:15 */
   always @*
     case (n3060)
       7'b1000000: n3069 = 5'b00110;
@@ -6475,33 +6475,33 @@ module t65_mcode_Brtl
       7'b0000001: n3069 = 5'b00000;
       default: n3069 = 5'b00111;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1239:42 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1239:42 */
   assign n3070 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1239:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1239:20 */
   assign n3071 = {28'b0, n3070};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1240:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1240:17 */
   assign n3073 = n3071 == 31'b0000000000000000000000000000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1242:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1242:17 */
   assign n3075 = n3071 == 31'b0000000000000000000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1244:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1244:17 */
   assign n3077 = n3071 == 31'b0000000000000000000000000000010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1246:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1246:17 */
   assign n3079 = n3071 == 31'b0000000000000000000000000000011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1248:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1248:17 */
   assign n3081 = n3071 == 31'b0000000000000000000000000000100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1250:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1250:17 */
   assign n3083 = n3071 == 31'b0000000000000000000000000000101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1254:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1254:24 */
   assign n3084 = ir[4:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1254:36 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1254:36 */
   assign n3086 = n3084 == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1254:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1254:19 */
   assign n3089 = n3086 ? 5'b10001 : 5'b01101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1252:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1252:17 */
   assign n3092 = n3071 == 31'b0000000000000000000000000000110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1239:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1239:15 */
   assign n3093 = {n3092, n3083, n3081, n3079, n3077, n3075, n3073};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1239:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1239:15 */
   always @*
     case (n3093)
       7'b1000000: n3101 = n3089;
@@ -6513,25 +6513,25 @@ module t65_mcode_Brtl
       7'b0000001: n3101 = 5'b01000;
       default: n3101 = 5'b01110;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1219:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1219:13 */
   assign n3102 = alumore ? n3069 : n3101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1217:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1217:13 */
   assign n3104 = n3043 ? 5'b00111 : n3102;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1215:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1215:13 */
   assign n3106 = n3041 ? 5'b10000 : n3104;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1213:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1213:13 */
   assign n3108 = n3036 ? 5'b10010 : n3106;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1211:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1211:13 */
   assign n3110 = n3034 ? 5'b01111 : n3108;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1194:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1194:9 */
   always @*
     case (n3032)
       1'b1: n3111 = n3030;
       default: n3111 = n3110;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1092:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1092:5 */
   assign n3112 = {n3023, n2971, n2943};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65_MCode.vhd:1092:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65_MCode.vhd:1092:5 */
   always @*
     case (n3112)
       3'b100: n3113 = n3021;
@@ -7163,188 +7163,188 @@ module T65
   assign \DEBUG[S]  = n17; //(module output)
   assign \DEBUG[P]  = n18; //(module output)
   assign NMI_ack = nmiact; //(module output)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:134:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:134:8 */
   assign n13 = n804[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:134:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:134:8 */
   assign n14 = n804[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:134:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:134:8 */
   assign n15 = n804[23:16]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:134:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:134:8 */
   assign n16 = n804[31:24]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:134:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:134:8 */
   assign n17 = n804[39:32]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:134:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:134:8 */
   assign n18 = n804[47:40]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:10 */
   assign abc = n799; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:15 */
   assign x = n801; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:18 */
   assign y = n803; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:170:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:170:10 */
   always @*
     p = n820; // (isignal)
   initial
     p = 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:170:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:170:13 */
   always @*
     ad = n822; // (isignal)
   initial
     ad = 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:170:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:170:17 */
   always @*
     dl = n824; // (isignal)
   initial
     dl = 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:171:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:171:10 */
   assign pwithb = n680; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:172:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:172:10 */
   assign bah = n826; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:173:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:173:10 */
   assign bal = n828; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:174:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:174:10 */
   assign pbr = n830; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:175:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:175:10 */
   assign dbr = n832; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:176:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:176:10 */
   assign pc = n834; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:177:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:177:10 */
   assign s = n836; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:178:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:178:10 */
   assign ef_i = n838; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:179:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:179:10 */
   assign mf_i = n840; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:180:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:180:10 */
   assign xf_i = n842; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:182:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:182:10 */
   assign ir = n844; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:183:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:183:10 */
   assign mcycle = n846; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:185:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:185:10 */
   assign do_r = n727; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:187:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:187:10 */
   assign mode_r = n848; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:188:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:188:10 */
   assign bcd_en_r = n850; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:189:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:189:10 */
   assign alu_op_r = n852; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:190:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:190:10 */
   assign write_data_r = n854; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:191:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:191:10 */
   assign set_addr_to_r = n856; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:192:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:192:10 */
   assign pcadder = n325; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:194:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:194:10 */
   assign rstcycle = n858; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:195:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:195:10 */
   assign irqcycle = n860; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:196:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:196:10 */
   assign nmicycle = n862; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:197:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:197:10 */
   assign irqreq = n864; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:198:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:198:10 */
   assign nmireq = n866; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:200:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:200:10 */
   assign so_n_o = n869; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:201:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:201:10 */
   assign irq_n_o = n873; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:202:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:202:10 */
   assign nmi_n_o = n877; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:203:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:203:10 */
   assign nmiact = n879; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:205:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:205:10 */
   assign break = n606; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:208:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:208:10 */
   assign busa = n651; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:209:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:209:10 */
   assign busa_r = n881; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:210:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:210:10 */
   assign busb = n883; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:211:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:211:10 */
   assign busb_r = n885; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:243:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:243:10 */
   assign res_n_i = n886; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:244:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:244:10 */
   assign res_n_d = n887; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:246:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:246:10 */
   assign rdy_mod = n891; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:247:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:247:10 */
   assign really_rdy = n24; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:248:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:248:10 */
   assign wrn_i = n893; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:250:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:250:10 */
   assign nmi_entered = n897; // (signal)
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:256:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:256:24 */
   assign n23 = ~wrn_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:256:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:256:21 */
   assign n24 = Rdy | n23;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:257:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:257:27 */
   assign n27 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:257:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:257:15 */
   assign n28 = n27 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:22 */
   assign n31 = ir[7:6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:35 */
   assign n33 = n31 != 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:49 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:49 */
   assign n34 = ir[2:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:62 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:62 */
   assign n36 = n34 == 2'b11;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:43 */
   assign n37 = n36 & n33;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:79 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:79 */
   assign n38 = mcycle[2:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:92 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:92 */
   assign n40 = n38 != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:69 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:69 */
   assign n41 = n40 & n37;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:262:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:262:15 */
   assign n42 = n41 ? 1'b0 : 1'b1;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:263:47 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:263:47 */
   assign n46 = mcycle == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:263:65 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:263:65 */
   assign n48 = mcycle == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:263:55 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:263:55 */
   assign n49 = n46 | n48;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:263:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:263:35 */
   assign n50 = n49 & irqcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:263:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:263:15 */
   assign n51 = n50 ? 1'b0 : 1'b1;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:264:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:264:33 */
   assign n55 = set_addr_to_r != 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:264:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:264:14 */
   assign n56 = n55 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:265:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:265:23 */
   assign n59 = jump[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:265:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:265:27 */
   assign n60 = ~n59;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:265:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:265:14 */
   assign n61 = n60 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:269:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:269:17 */
   assign n63 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:270:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:270:15 */
   assign n64 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:271:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:271:15 */
   assign n65 = y[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:272:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:272:32 */
   assign n66 = s[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:275:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:275:32 */
   assign n67 = {pc, s};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:275:53 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:275:53 */
   assign n68 = {n67, p};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:275:60 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:275:60 */
   assign n69 = y[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:275:57 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:275:57 */
   assign n70 = {n68, n69};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:275:76 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:275:76 */
   assign n71 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:275:73 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:275:73 */
   assign n72 = {n70, n71};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:275:94 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:275:94 */
   assign n73 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:275:89 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:275:89 */
   assign n74 = {n72, n73};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:277:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:277:3 */
   t65_mcode_Brtl mcode (
     .mode(mode_r),
     .ir(ir),
@@ -7377,7 +7377,7 @@ module T65
     .ldbah(ldbah),
     .savep(savep),
     .write(write));
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:314:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:314:3 */
   t65_alu_Brtl alu (
     .mode(mode_r),
     .bcd_en(bcd_en_r),
@@ -7387,149 +7387,149 @@ module T65
     .p_in(p),
     .p_out(p_out),
     .q(alu_q));
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:330:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:330:14 */
   assign n105 = ~Res_n;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:341:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:341:16 */
   assign n117 = ~res_n_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:365:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:365:20 */
   assign n120 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:24 */
   assign n122 = mcycle == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:39 */
   assign n124 = ir != 8'b10010011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:32 */
   assign n125 = n124 & n122;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:60 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:60 */
   assign n127 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:75 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:75 */
   assign n129 = ir == 8'b10010011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:68 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:68 */
   assign n130 = n129 & n127;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:49 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:49 */
   assign n131 = n125 | n130;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:93 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:93 */
   assign n132 = ~Rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:85 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:85 */
   assign n133 = n132 & n131;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:367:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:367:9 */
   assign n135 = n133 ? 1'b1 : rdy_mod;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:365:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:365:9 */
   assign n137 = n120 ? 1'b0 : n135;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:372:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:372:20 */
   assign n138 = ~write;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:372:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:372:30 */
   assign n139 = n138 | rstcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:380:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:380:22 */
   assign n141 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:384:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:384:23 */
   assign n142 = ~irqreq;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:384:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:384:40 */
   assign n143 = ~nmireq;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:384:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:384:29 */
   assign n144 = n143 & n142;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:385:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:385:24 */
   assign n146 = pc + 16'b0000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:380:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:380:11 */
   assign n147 = n163 ? n146 : pc;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:388:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:388:29 */
   assign n148 = irqreq | nmireq;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:388:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:388:13 */
   assign n150 = n148 ? 8'b00000000 : DI;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:398:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:398:13 */
   assign n153 = irqreq ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:396:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:396:13 */
   assign n155 = nmireq ? 1'b0 : n153;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:396:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:396:13 */
   assign n159 = nmireq ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:177:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:177:10 */
   assign n161 = s[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:380:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:380:11 */
   assign n162 = n165 ? alu_q : n161;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:380:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:380:11 */
   assign n163 = n144 & n141;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:380:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:380:11 */
   assign n165 = lds & n141;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:409:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:409:11 */
   assign n172 = break ? 2'b00 : set_addr_to;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:416:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:416:20 */
   assign n174 = s + 16'b0000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:177:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:177:10 */
   assign n175 = s[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:177:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:177:10 */
   assign n176 = {n175, n162};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:415:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:415:11 */
   assign n177 = inc_s ? n174 : n176;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:418:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:418:40 */
   assign n178 = ~rstcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:418:54 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:418:54 */
   assign n180 = Mode == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:418:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:418:46 */
   assign n181 = n178 | n180;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:418:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:418:26 */
   assign n182 = n181 & dec_s;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:419:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:419:20 */
   assign n184 = s - 16'b0000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:418:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:418:11 */
   assign n185 = n182 ? n184 : n177;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:422:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:422:17 */
   assign n187 = ir == 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:422:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:422:41 */
   assign n189 = mcycle == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:422:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:422:30 */
   assign n190 = n189 & n187;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:422:62 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:422:62 */
   assign n191 = ~irqcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:422:49 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:422:49 */
   assign n192 = n191 & n190;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:422:81 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:422:81 */
   assign n193 = ~nmicycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:422:68 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:422:68 */
   assign n194 = n193 & n192;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:423:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:423:22 */
   assign n196 = pc + 16'b0000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:422:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:422:11 */
   assign n197 = n194 ? n196 : n147;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:430:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:430:24 */
   assign n199 = pc + 16'b0000000000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:429:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:429:13 */
   assign n201 = jump == 2'b01;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:432:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:432:33 */
   assign n202 = {DI, dl};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:431:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:431:13 */
   assign n204 = jump == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:434:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:434:25 */
   assign n205 = pcadder[8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:435:22 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:435:22 */
   assign n206 = dl[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:435:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:435:26 */
   assign n207 = ~n206;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:436:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:436:40 */
   assign n208 = pc[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:436:54 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:436:54 */
   assign n210 = n208 + 8'b00000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:438:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:438:40 */
   assign n211 = pc[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:438:54 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:438:54 */
   assign n213 = n211 - 8'b00000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:435:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:435:17 */
   assign n214 = n207 ? n210 : n213;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:176:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:176:10 */
   assign n215 = n197[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:434:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:434:15 */
   assign n216 = n205 ? n214 : n215;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:441:40 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:441:40 */
   assign n217 = pcadder[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:433:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:433:13 */
   assign n219 = jump == 2'b11;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:428:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:428:11 */
   assign n220 = {n219, n204, n201};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:430:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:430:24 */
   assign n221 = n199[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:432:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:432:33 */
   assign n222 = n202[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:176:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:176:10 */
   assign n223 = n197[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:428:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:428:11 */
   always @*
     case (n220)
       3'b100: n224 = n217;
@@ -7537,13 +7537,13 @@ module T65
       3'b001: n224 = n221;
       default: n224 = n223;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:430:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:430:24 */
   assign n225 = n199[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:432:33 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:432:33 */
   assign n226 = n202[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:176:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:176:10 */
   assign n227 = n197[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:428:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:428:11 */
   always @*
     case (n220)
       3'b100: n228 = n216;
@@ -7551,113 +7551,113 @@ module T65
       3'b001: n228 = n225;
       default: n228 = n227;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:371:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:371:9 */
   assign n234 = {n228, n224};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:371:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:371:9 */
   assign n243 = n141 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:371:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:371:9 */
   assign n244 = n141 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:371:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:371:9 */
   assign n245 = n141 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:371:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:371:9 */
   assign n249 = n141 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:371:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:371:9 */
   assign n250 = n141 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n252 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n253 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n254 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n255 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n256 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n257 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n258 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n259 = n243 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n260 = n244 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n261 = n245 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n262 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n263 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n264 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n265 = n249 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n266 = n250 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:363:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:363:7 */
   assign n268 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:449:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:449:23 */
   assign n320 = pc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:449:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:449:14 */
   assign n321 = {1'b0, n320};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:449:59 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:449:59 */
   assign n322 = dl[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:449:63 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:449:63 */
   assign n323 = {n322, dl};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:449:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:449:39 */
   assign n324 = n321 + n323;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:449:72 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:449:72 */
   assign n325 = pcadd ? n324 : n328;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:450:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:450:23 */
   assign n326 = pc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:450:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:450:19 */
   assign n328 = {1'b0, n326};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:455:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:455:16 */
   assign n332 = ~res_n_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:461:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:461:21 */
   assign n335 = mcycle == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:471:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:471:21 */
   assign n342 = lda | ldx;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:471:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:471:28 */
   assign n343 = n342 | ldy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:461:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:461:11 */
   assign n344 = n351 ? p_out : p;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:461:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:461:11 */
   assign n346 = lda & n335;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:461:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:461:11 */
   assign n348 = ldx & n335;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:461:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:461:11 */
   assign n350 = ldy & n335;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:461:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:461:11 */
   assign n351 = n343 & n335;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:475:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:475:11 */
   assign n352 = savep ? p_out : n344;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:478:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:478:11 */
   assign n353 = ldp ? alu_q : n352;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:481:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:481:16 */
   assign n354 = ir[4:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:481:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:481:29 */
   assign n356 = n354 == 5'b11000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:482:20 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:482:20 */
   assign n357 = ir[7:5]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:483:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:483:13 */
   assign n360 = n357 == 3'b000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:485:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:485:13 */
   assign n363 = n357 == 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:487:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:487:13 */
   assign n366 = n357 == 3'b010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:489:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:489:13 */
   assign n369 = n357 == 3'b011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:491:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:491:13 */
   assign n372 = n357 == 3'b101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:493:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:493:13 */
   assign n375 = n357 == 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:495:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:495:13 */
   assign n378 = n357 == 3'b111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:482:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:482:13 */
   assign n379 = {n378, n375, n372, n369, n366, n363, n360};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n380 = n353[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:482:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:482:13 */
   always @*
     case (n379)
       7'b1000000: n381 = n380;
@@ -7669,9 +7669,9 @@ module T65
       7'b0000001: n381 = 1'b0;
       default: n381 = n380;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n382 = n353[2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:482:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:482:13 */
   always @*
     case (n379)
       7'b1000000: n383 = n382;
@@ -7683,9 +7683,9 @@ module T65
       7'b0000001: n383 = n382;
       default: n383 = n382;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n384 = n353[3]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:482:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:482:13 */
   always @*
     case (n379)
       7'b1000000: n385 = 1'b1;
@@ -7697,9 +7697,9 @@ module T65
       7'b0000001: n385 = n384;
       default: n385 = n384;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n386 = n353[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:482:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:482:13 */
   always @*
     case (n379)
       7'b1000000: n387 = n386;
@@ -7711,121 +7711,121 @@ module T65
       7'b0000001: n387 = n386;
       default: n387 = n386;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:481:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:481:11 */
   assign n388 = {n385, n383};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n389 = n353[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:481:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:481:11 */
   assign n390 = n356 ? n381 : n389;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n391 = n353[3:2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:481:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:481:11 */
   assign n392 = n356 ? n388 : n391;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n393 = n353[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:481:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:481:11 */
   assign n394 = n356 ? n387 : n393;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n397 = n353[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n398 = n353[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:501:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:501:17 */
   assign n403 = ir == 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:501:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:501:41 */
   assign n405 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:501:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:501:30 */
   assign n406 = n405 & n403;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:501:62 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:501:62 */
   assign n407 = ~rstcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:501:49 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:501:49 */
   assign n408 = n407 & n406;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n410 = n392[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:501:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:501:11 */
   assign n411 = n408 ? 1'b1 : n410;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n412 = n392[1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:505:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:505:11 */
   assign n415 = {1'b0, 1'b1};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n416 = {n412, n411};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:505:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:505:11 */
   assign n417 = rstcycle ? n415 : n416;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:453:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:453:14 */
   assign n419 = {n398, n394, 1'b1, 1'b1, n417, n397, n390};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:460:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:460:9 */
   assign n421 = n346 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:460:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:460:9 */
   assign n423 = n348 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:460:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:460:9 */
   assign n425 = n350 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:459:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:459:7 */
   assign n426 = n435 ? n419 : p;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:459:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:459:7 */
   assign n430 = n421 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:459:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:459:7 */
   assign n432 = n423 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:459:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:459:7 */
   assign n434 = n425 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:459:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:459:7 */
   assign n435 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:519:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:519:32 */
   assign n437 = ~SO_n;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:519:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:519:23 */
   assign n438 = n437 & so_n_o;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:170:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:170:10 */
   assign n440 = n426[6]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:519:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:519:7 */
   assign n441 = n438 ? 1'b1 : n440;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:170:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:170:10 */
   assign n442 = n426[7]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:170:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:170:10 */
   assign n443 = n426[5:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   assign n450 = {n442, n441, n443};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:534:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:534:16 */
   assign n467 = ~res_n_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:550:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:550:28 */
   assign n470 = set_addr_to_r == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:550:63 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:550:63 */
   assign n472 = set_addr_to_r == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:550:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:550:46 */
   assign n473 = n470 | n472;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:551:65 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:551:65 */
   assign n475 = DI + 8'b00000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:557:49 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:557:49 */
   assign n478 = ad + 8'b00000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:558:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:558:51 */
   assign n480 = bal + 9'b000000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:555:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:555:11 */
   assign n482 = baadd == 2'b01;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:561:56 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:561:56 */
   assign n483 = bal[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:561:37 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:561:37 */
   assign n484 = {1'b0, n483};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:561:75 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:561:75 */
   assign n485 = {1'b0, busa};  // uext
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:561:73 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:561:73 */
   assign n486 = n484 + n485;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:559:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:559:11 */
   assign n488 = baadd == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:564:19 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:564:19 */
   assign n489 = bal[8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:567:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:567:66 */
   assign n491 = bah + 8'b00000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:567:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:567:15 */
   assign n493 = baquirk == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:568:66 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:568:66 */
   assign n495 = bah + 8'b00000001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:568:71 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:568:71 */
   assign n496 = n495 & do_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:568:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:568:15 */
   assign n498 = baquirk == 2'b01;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:569:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:569:15 */
   assign n500 = baquirk == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:566:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:566:15 */
   assign n501 = {n500, n498, n493};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:566:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:566:15 */
   always @*
     case (n501)
       3'b100: n502 = do_r;
@@ -7833,13 +7833,13 @@ module T65
       3'b001: n502 = n491;
       default: n502 = bah;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:564:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:564:13 */
   assign n503 = n489 ? n502 : bah;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:562:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:562:11 */
   assign n505 = baadd == 2'b11;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:554:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:554:11 */
   assign n506 = {n505, n488, n482};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:554:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:554:11 */
   always @*
     case (n506)
       3'b100: n507 = ad;
@@ -7847,7 +7847,7 @@ module T65
       3'b001: n507 = n478;
       default: n507 = ad;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:554:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:554:11 */
   always @*
     case (n506)
       3'b100: n508 = n503;
@@ -7855,7 +7855,7 @@ module T65
       3'b001: n508 = bah;
       default: n508 = bah;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:554:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:554:11 */
   always @*
     case (n506)
       3'b100: n509 = bal;
@@ -7863,165 +7863,165 @@ module T65
       3'b001: n509 = n480;
       default: n509 = bal;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:579:63 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:579:63 */
   assign n510 = y[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:579:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:579:51 */
   assign n511 = ad + n510;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:581:63 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:581:63 */
   assign n512 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:581:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:581:51 */
   assign n513 = ad + n512;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:578:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:578:13 */
   assign n514 = addy ? n511 : n513;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:577:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:577:11 */
   assign n515 = adadd ? n514 : n507;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:585:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:585:17 */
   assign n517 = ir == 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:590:61 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:590:61 */
   assign n520 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:590:51 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:590:51 */
   assign n521 = n520 & nmiact;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:590:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:590:34 */
   assign n522 = nmicycle | n521;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:590:69 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:590:69 */
   assign n523 = n522 | nmi_entered;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:592:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:592:24 */
   assign n526 = mcycle == 3'b100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:592:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:592:15 */
   assign n529 = n526 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:590:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:590:13 */
   assign n531 = n523 ? 3'b010 : 3'b110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:590:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:590:13 */
   assign n533 = n523 ? n529 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:588:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:588:13 */
   assign n534 = rstcycle ? 3'b100 : n531;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:173:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:173:10 */
   assign n536 = n535[8:3]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:588:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:588:13 */
   assign n538 = rstcycle ? 1'b0 : n533;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:598:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:598:30 */
   assign n540 = set_addr_to_r == 2'b11;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:173:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:173:10 */
   assign n542 = n534[0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:598:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:598:13 */
   assign n543 = n540 ? 1'b1 : n542;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:173:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:173:10 */
   assign n544 = n534[2:1]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:585:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:585:11 */
   assign n546 = n517 ? 8'b11111111 : n508;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:585:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:585:11 */
   assign n547 = {n536, n544, n543};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:585:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:585:11 */
   assign n548 = n517 ? n547 : n509;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:585:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:585:11 */
   assign n550 = n517 ? n538 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:603:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:603:11 */
   assign n552 = lddi ? DI : dl;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:606:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:606:11 */
   assign n553 = ldalu ? alu_q : n552;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:609:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:609:11 */
   assign n554 = ldad ? DI : n515;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:173:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:173:10 */
   assign n555 = n548[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:612:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:612:11 */
   assign n556 = ldbal ? DI : n555;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:173:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:173:10 */
   assign n557 = n548[8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:615:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:615:11 */
   assign n558 = ldbah ? DI : n546;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:544:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:544:9 */
   assign n562 = {n557, n556};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:544:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:544:9 */
   assign n566 = n473 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:543:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:543:7 */
   assign n568 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:543:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:543:7 */
   assign n569 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:543:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:543:7 */
   assign n570 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:543:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:543:7 */
   assign n571 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:543:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:543:7 */
   assign n572 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:543:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:543:7 */
   assign n573 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:543:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:543:7 */
   assign n574 = n566 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:543:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:543:7 */
   assign n575 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:623:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:623:34 */
   assign n600 = bal[8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:623:27 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:623:27 */
   assign n601 = ~n600;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:623:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:623:23 */
   assign n602 = breakatna & n601;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:623:64 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:623:64 */
   assign n603 = pcadder[8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:623:53 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:623:53 */
   assign n604 = ~n603;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:623:49 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:623:49 */
   assign n605 = pcadd & n604;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:623:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:623:39 */
   assign n606 = n602 | n605;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:627:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:627:45 */
   assign n608 = set_busa_to == 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:628:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:628:10 */
   assign n609 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:628:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:628:45 */
   assign n611 = set_busa_to == 4'b0001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:629:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:629:8 */
   assign n612 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:629:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:629:45 */
   assign n614 = set_busa_to == 4'b0010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:630:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:630:8 */
   assign n615 = y[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:630:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:630:45 */
   assign n617 = set_busa_to == 4'b0011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:631:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:631:25 */
   assign n618 = s[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:631:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:631:45 */
   assign n620 = set_busa_to == 4'b0100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:632:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:632:45 */
   assign n622 = set_busa_to == 4'b0101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:633:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:633:10 */
   assign n623 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:633:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:633:23 */
   assign n624 = n623 & DI;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:633:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:633:45 */
   assign n626 = set_busa_to == 4'b0110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:634:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:634:11 */
   assign n627 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:634:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:634:24 */
   assign n629 = n627 | 8'b11101110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:634:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:634:34 */
   assign n630 = n629 & DI;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:634:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:634:45 */
   assign n632 = set_busa_to == 4'b0111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:635:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:635:11 */
   assign n633 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:635:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:635:24 */
   assign n635 = n633 | 8'b11101110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:635:34 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:635:34 */
   assign n636 = n635 & DI;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:635:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:635:46 */
   assign n637 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:635:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:635:41 */
   assign n638 = n636 & n637;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:635:62 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:635:62 */
   assign n640 = set_busa_to == 4'b1000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:636:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:636:10 */
   assign n641 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:636:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:636:28 */
   assign n642 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:636:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:636:23 */
   assign n643 = n641 & n642;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:636:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:636:45 */
   assign n645 = set_busa_to == 4'b1001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:637:45 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:637:45 */
   assign n648 = set_busa_to == 4'b1010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:625:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:625:3 */
   assign n649 = {n648, n645, n640, n632, n626, n622, n620, n617, n614, n611, n608};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:625:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:625:3 */
   always @*
     case (n649)
       11'b10000000000: n651 = 8'bX;
@@ -8037,39 +8037,39 @@ module T65
       11'b00000000001: n651 = DI;
       default: n651 = 8'bX;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:641:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:641:46 */
   assign n652 = s[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:641:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:641:26 */
   assign n654 = {16'b0000000000000001, n652};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:641:87 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:641:87 */
   assign n656 = set_addr_to_r == 2'b01;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:642:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:642:11 */
   assign n658 = {dbr, 8'b00000000};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:642:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:642:24 */
   assign n659 = {n658, ad};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:642:87 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:642:87 */
   assign n661 = set_addr_to_r == 2'b10;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:643:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:643:18 */
   assign n663 = {8'b00000000, bah};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:643:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:643:29 */
   assign n664 = bal[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:643:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:643:24 */
   assign n665 = {n663, n664};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:643:87 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:643:87 */
   assign n667 = set_addr_to_r == 2'b11;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:644:32 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:644:32 */
   assign n668 = pc[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:644:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:644:11 */
   assign n669 = {pbr, n668};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:644:73 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:644:73 */
   assign n670 = pcadder[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:644:47 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:644:47 */
   assign n671 = {n669, n670};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:644:87 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:644:87 */
   assign n673 = set_addr_to_r == 2'b00;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:639:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:639:3 */
   assign n674 = {n673, n667, n661, n656};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:639:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:639:3 */
   always @*
     case (n674)
       4'b1000: n676 = n671;
@@ -8078,75 +8078,75 @@ module T65
       4'b0001: n676 = n654;
       default: n676 = 24'bX;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:647:14 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:647:14 */
   assign n678 = p & 8'b11101111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:647:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:647:44 */
   assign n679 = irqcycle | nmicycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:647:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:647:25 */
   assign n680 = n679 ? n678 : p;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:653:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:653:43 */
   assign n682 = write_data_r == 4'b0000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:654:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:654:10 */
   assign n683 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:654:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:654:43 */
   assign n685 = write_data_r == 4'b0001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:655:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:655:8 */
   assign n686 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:655:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:655:43 */
   assign n688 = write_data_r == 4'b0010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:656:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:656:8 */
   assign n689 = y[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:656:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:656:43 */
   assign n691 = write_data_r == 4'b0011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:657:25 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:657:25 */
   assign n692 = s[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:657:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:657:43 */
   assign n694 = write_data_r == 4'b0100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:658:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:658:43 */
   assign n696 = write_data_r == 4'b0101;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:659:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:659:26 */
   assign n697 = pc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:659:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:659:43 */
   assign n699 = write_data_r == 4'b0110;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:660:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:660:26 */
   assign n700 = pc[15:8]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:660:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:660:43 */
   assign n702 = write_data_r == 4'b0111;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:661:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:661:10 */
   assign n703 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:661:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:661:28 */
   assign n704 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:661:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:661:23 */
   assign n705 = n703 & n704;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:661:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:661:43 */
   assign n707 = write_data_r == 4'b1000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:662:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:662:10 */
   assign n708 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:662:28 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:662:28 */
   assign n709 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:662:23 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:662:23 */
   assign n710 = n708 & n709;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:662:41 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:662:41 */
   assign n711 = n710 & busb_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:662:64 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:662:64 */
   assign n713 = write_data_r == 4'b1001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:663:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:663:8 */
   assign n714 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:663:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:663:21 */
   assign n715 = n714 & busb_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:663:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:663:44 */
   assign n717 = write_data_r == 4'b1010;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:664:8 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:664:8 */
   assign n718 = y[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:664:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:664:21 */
   assign n719 = n718 & busb_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:664:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:664:44 */
   assign n721 = write_data_r == 4'b1011;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:665:43 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:665:43 */
   assign n724 = write_data_r == 4'b1100;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:651:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:651:3 */
   assign n725 = {n724, n721, n717, n713, n707, n702, n699, n696, n694, n691, n688, n685, n682};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:651:3 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:651:3 */
   always @*
     case (n725)
       13'b1000000000000: n727 = 8'bX;
@@ -8164,386 +8164,386 @@ module T65
       13'b0000000000001: n727 = dl;
       default: n727 = 8'bX;
     endcase
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:676:16 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:676:16 */
   assign n730 = ~res_n_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:685:21 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:685:21 */
   assign n732 = mcycle == lcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:685:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:685:30 */
   assign n733 = n732 | break;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:689:57 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:689:57 */
   assign n735 = mcycle + 3'b001;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:685:11 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:685:11 */
   assign n737 = n733 ? 3'b000 : n735;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:692:17 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:692:17 */
   assign n740 = ir[4:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:692:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:692:29 */
   assign n742 = n740 != 5'b10000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:692:46 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:692:46 */
   assign n744 = jump != 2'b11;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:692:39 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:692:39 */
   assign n745 = n742 | n744;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:693:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:693:35 */
   assign n747 = ir != 8'b00000000;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:693:29 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:693:29 */
   assign n748 = n747 & nmiact;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:693:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:693:13 */
   assign n751 = n748 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:698:24 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:698:24 */
   assign n752 = ~irq_n_o;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:698:35 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:698:35 */
   assign n753 = p[2]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:698:44 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:698:44 */
   assign n754 = ~n753;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:698:30 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:698:30 */
   assign n755 = n754 & n752;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:698:13 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:698:13 */
   assign n758 = n755 ? 1'b1 : 1'b0;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:684:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:684:9 */
   assign n762 = n733 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:684:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:684:9 */
   assign n763 = n745 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:684:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:684:9 */
   assign n764 = n745 & really_rdy;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:710:36 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:710:36 */
   assign n765 = ~NMI_n;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:710:26 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:710:26 */
   assign n766 = n765 & nmi_n_o;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:710:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:710:9 */
   assign n768 = n766 ? 1'b1 : nmiact;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:714:9 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:714:9 */
   assign n770 = nmi_entered ? 1'b0 : n768;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:683:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:683:7 */
   assign n771 = really_rdy & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:683:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:683:7 */
   assign n772 = n762 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:683:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:683:7 */
   assign n773 = n763 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:683:7 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:683:7 */
   assign n774 = n764 & Enable;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:10 */
   assign n799 = {8'bZ, n809};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:15 */
   assign n801 = {8'bZ, n814};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:18 */
   assign n803 = {8'bZ, n819};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:161:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:161:5 */
   assign n804 = {p, n66, n65, n64, n63, ir};
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:10 */
   assign n805 = ~n332;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:10 */
   assign n806 = n430 & n805;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   assign n807 = abc[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   assign n808 = n806 ? alu_q : n807;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   always @(posedge Clk)
     n809 <= n808;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:15 */
   assign n810 = ~n332;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:15 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:15 */
   assign n811 = n432 & n810;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   assign n812 = x[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   assign n813 = n811 ? alu_q : n812;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   always @(posedge Clk)
     n814 <= n813;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:18 */
   assign n815 = ~n332;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:169:18 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:169:18 */
   assign n816 = n434 & n815;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   assign n817 = y[7:0]; // extract
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   assign n818 = n816 ? alu_q : n817;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   always @(posedge Clk)
     n819 <= n818;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   always @(posedge Clk or posedge n332)
     if (n332)
       n820 <= 8'b00000000;
     else
       n820 <= n450;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   assign n821 = n568 ? n554 : ad;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   always @(posedge Clk or posedge n467)
     if (n467)
       n822 <= 8'b00000000;
     else
       n822 <= n821;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   assign n823 = n569 ? n553 : dl;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   always @(posedge Clk or posedge n467)
     if (n467)
       n824 <= 8'b00000000;
     else
       n824 <= n823;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   assign n825 = n570 ? n558 : bah;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   always @(posedge Clk or posedge n467)
     if (n467)
       n826 <= 8'b00000000;
     else
       n826 <= n825;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   assign n827 = n571 ? n562 : bal;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   always @(posedge Clk or posedge n467)
     if (n467)
       n828 <= 9'b000000000;
     else
       n828 <= n827;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n829 = n252 ? 8'b11111111 : pbr;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n830 <= 8'b00000000;
     else
       n830 <= n829;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n831 = n253 ? 8'b11111111 : dbr;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n832 <= 8'b00000000;
     else
       n832 <= n831;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n833 = n254 ? n234 : pc;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n834 <= 16'b0000000000000000;
     else
       n834 <= n833;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n835 = n255 ? n185 : s;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n836 <= 16'b0000000000000000;
     else
       n836 <= n835;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n837 = n256 ? 1'b0 : ef_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n838 <= 1'b1;
     else
       n838 <= n837;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n839 = n257 ? 1'b0 : mf_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n840 <= 1'b1;
     else
       n840 <= n839;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n841 = n258 ? 1'b0 : xf_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n842 <= 1'b1;
     else
       n842 <= n841;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n843 = n259 ? n150 : ir;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n844 <= 8'b00000000;
     else
       n844 <= n843;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   assign n845 = n771 ? n737 : mcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   always @(posedge Clk or posedge n730)
     if (n730)
       n846 <= 3'b001;
     else
       n846 <= n845;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n847 = n260 ? Mode : mode_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n848 <= 2'b00;
     else
       n848 <= n847;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n849 = n261 ? BCD_en : bcd_en_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n850 <= 1'b1;
     else
       n850 <= n849;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n851 = n262 ? alu_op : alu_op_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n852 <= 5'b01100;
     else
       n852 <= n851;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n853 = n263 ? write_data : write_data_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n854 <= 4'b0000;
     else
       n854 <= n853;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n855 = n264 ? n172 : set_addr_to_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n856 <= 2'b00;
     else
       n856 <= n855;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   assign n857 = n772 ? 1'b0 : rstcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   always @(posedge Clk or posedge n730)
     if (n730)
       n858 <= 1'b1;
     else
       n858 <= n857;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n859 = n265 ? n155 : irqcycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n860 <= 1'b0;
     else
       n860 <= n859;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n861 = n266 ? n159 : nmicycle;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n862 <= 1'b0;
     else
       n862 <= n861;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   assign n863 = n773 ? n758 : irqreq;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   always @(posedge Clk or posedge n730)
     if (n730)
       n864 <= 1'b0;
     else
       n864 <= n863;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   assign n865 = n774 ? n751 : nmireq;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   always @(posedge Clk or posedge n730)
     if (n730)
       n866 <= 1'b0;
     else
       n866 <= n865;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:200:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:200:10 */
   assign n867 = ~n332;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   assign n868 = n867 ? SO_n : so_n_o;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:457:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:457:5 */
   always @(posedge Clk)
     n869 <= n868;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:201:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:201:10 */
   assign n870 = ~n730;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:201:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:201:10 */
   assign n871 = Enable & n870;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   assign n872 = n871 ? IRQ_n : irq_n_o;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   always @(posedge Clk)
     n873 <= n872;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:202:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:202:10 */
   assign n874 = ~n730;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:202:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:202:10 */
   assign n875 = Enable & n874;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   assign n876 = n875 ? NMI_n : nmi_n_o;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   always @(posedge Clk)
     n877 <= n876;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   assign n878 = Enable ? n770 : nmiact;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:682:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:682:5 */
   always @(posedge Clk or posedge n730)
     if (n730)
       n879 <= 1'b0;
     else
       n879 <= n878;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   assign n880 = n572 ? busa : busa_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   always @(posedge Clk or posedge n467)
     if (n467)
       n881 <= 8'b00000000;
     else
       n881 <= n880;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   assign n882 = n573 ? DI : busb;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   always @(posedge Clk or posedge n467)
     if (n467)
       n883 <= 8'b00000000;
     else
       n883 <= n882;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   assign n884 = n574 ? n475 : busb_r;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   always @(posedge Clk or posedge n467)
     if (n467)
       n885 <= 8'b00000000;
     else
       n885 <= n884;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:333:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:333:5 */
   always @(posedge Clk or posedge n105)
     if (n105)
       n886 <= 1'b0;
     else
       n886 <= res_n_d;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:333:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:333:5 */
   always @(posedge Clk or posedge n105)
     if (n105)
       n887 <= 1'b0;
     else
       n887 <= 1'b1;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:246:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:246:10 */
   assign n888 = ~n117;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:246:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:246:10 */
   assign n889 = Enable & n888;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n890 = n889 ? n137 : rdy_mod;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk)
     n891 <= n890;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   assign n892 = n268 ? n139 : wrn_i;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:362:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:362:5 */
   always @(posedge Clk or posedge n117)
     if (n117)
       n893 <= 1'b1;
     else
       n893 <= n892;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:250:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:250:10 */
   assign n894 = ~n467;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:250:10 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:250:10 */
   assign n895 = n575 & n894;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   assign n896 = n895 ? n550 : nmi_entered;
-  /*# /Users/scottmoschella/work/stunrunner/modules/cpu-t65/T65.vhd:542:5 */
+  /*# /Users/scottmoschella/work/supersprint/modules/cpu-t65/T65.vhd:542:5 */
   always @(posedge Clk)
     n897 <= n896;
 endmodule

@@ -396,9 +396,16 @@ switch views.
 
 ### 7.2 6502 interrupts
 
-* **IRQ**: a free-running timer at 10 MHz / 16 / 16 / 16 / 10 = **244.14 Hz**
+* **IRQ**: a timer at 10 MHz / 16 / 16 / 16 / 10 = **244.14 Hz** (4096 us)
   asserts the line; a write to 1878 clears it. (The YM2151's IRQ pin is not
-  connected in MAME's configuration.)
+  connected in MAME's configuration.) In MAME it is the 6502 device's
+  periodic interrupt, which restarts whenever the device is reset: the first
+  IRQ comes one period after the T11 releases the sound reset (15a0 bit 0
+  1->0), and every later one at that phase. The core restarts its divider
+  at the same edge (`irq_sync`); the phase matters because the 6502 lives
+  in its IRQ handler, so every sound event is stamped by it (before this
+  the benches ran 0.57 ms (Paperboy) and 1.8 ms (720) late, the difference
+  between each game's reset time and the divider's free-running phase).
 * **NMI**: the sound command latch: a T11 write to 1680 raises NMI (the
   6502 takes it on the edge); the 6502's read of 1860 empties the latch.
 * **Reset**: T11 write to 15a0 bit 0. Held in reset at power-up until the
@@ -448,7 +455,14 @@ instantiates it always (`modules/sound-tms5220`, d18c7db's VHDL from MAME's
   chip clock is 20 MHz / 4 / 4 / 2 = 625 kHz (bit clear) or 20 / 4 / 3 / 2
   = 833.3 kHz (bit set); the sample rate is the chip clock / 80.
 * **IN1 bit 2** (1840): the chip's /READY (`readyq_r`, 1 = not ready; reads
-  1 with no chip).
+  1 with no chip). It goes inactive at the /WS falling edge and returns 16 chip clocks
+  later (25.6 us at 625 kHz), when the byte enters the FIFO -- or stays
+  inactive while the FIFO is full -- or the command takes effect (MAME's
+  ready timer; a RESET command included). Paperboy's 6502 leans on this: its
+  sound IRQ handler makes three back-to-back write attempts of its idle
+  0xff stream, each only if /READY is active, and the second always finds
+  the chip busy; a model that let /READY return at once accepted one byte
+  more per interrupt and fed the chip a third faster than MAME.
 * **sound reset** (T11 15a0) 0->1 edge: MAME calls `tms5220->reset()` in
   place of the stream of 0xff the board really feeds the chip; the core holds
   /WS and /RS low for 16 chip clocks, which the chip takes as a reset.
@@ -542,16 +556,23 @@ placed so its two bit-plane halves sit where the full-size region's would
 Header (little-endian bytes; `rtl/ssprint_pkg.sv`, latched by the loader in
 `ssprint_core`):
 
-| byte | field | Super Sprint | APB | Championship Sprint |
-|---|---|---|---|---|
-| 0-3 | magic `ASY2` | | | |
-| 4 | format | 2 | 2 | 2 |
-| 5 | game id | 1 | 2 | 3 |
-| 6 | slapstic type | 108 | 110 | 109 |
-| 7 | flags: bit 0 TMS5220 fitted, bit 1 vertical screen | 0x00 | 0x03 | 0x00 |
-| 8 | playfield tile code bits (codes wrap at 2^n, MAME's element count) | 14 | 14 | 14 |
-| 9 | motion object code bits | 11 | 13 | 11 |
-| 16-47 | name, ASCII, zero padded | SUPER SPRINT | APB | CHAMPIONSHIP SPRINT |
+| byte | field | Super Sprint | APB | Championship Sprint | Paperboy | 720 Degrees |
+|---|---|---|---|---|---|---|
+| 0-3 | magic `ASY2` | | | | | |
+| 4 | format | 2 | 2 | 2 | 2 | 2 |
+| 5 | game id | 1 | 2 | 3 | 4 | 5 |
+| 6 | slapstic type | 108 | 110 | 109 | 105 | 107 |
+| 7 | flags: bit 0 TMS5220 fitted, bit 1 vertical screen | 0x00 | 0x03 | 0x00 | 0x01 | 0x01 |
+| 8 | playfield tile code bits (codes wrap at 2^n, MAME's element count) | 14 | 14 | 14 | 12 | 13 |
+| 9 | motion object code bits | 11 | 13 | 11 | 11 | 13 |
+| 16-47 | name, ASCII, zero padded | SUPER SPRINT | APB | CHAMPIONSHIP SPRINT | PAPERBOY | 720 DEGREES |
+
+Paperboy's 128 KB tile region sits in the 512 KB slot with its plane halves
+at 0 and 0x40000 (as the sprite slot's convention), and its 8 KB character
+ROM is stored twice in the 16 KB slot so codes wrap at 512 as in MAME.
+720's 256 KB tile region is placed the same way (128 KB halves at 0 and
+0x40000); its 1 MB sprite region fills the slot, with each ROM's second
+32 KB placed below its first, as MAME's `ROM_CONTINUE` loads it.
 
 Sizes across the System 2 games (MAME): the T11 regions and the chars are
 the same for all; the 6502 ROM is 32 KB (Super Sprint, Championship Sprint)

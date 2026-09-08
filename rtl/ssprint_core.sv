@@ -79,8 +79,8 @@ module ssprint_core
     // ------------------------------------------------------------------------
     // clocks and resets
     // ------------------------------------------------------------------------
-    logic cen_10m, cen_ym, irq_tick, cen_tms625, cen_tms833;
-    clk_enables cen (.clk(clk), .reset(hw_reset), .cen_pix(cen_pix), .cen_10m(cen_10m), .cen_ym(cen_ym), .irq_tick(irq_tick), .cen_tms625(cen_tms625), .cen_tms833(cen_tms833));
+    logic cen_10m, cen_ym, irq_tick, irq_sync, cen_tms625, cen_tms833;
+    clk_enables cen (.clk(clk), .reset(hw_reset), .cen_pix(cen_pix), .cen_10m(cen_10m), .cen_ym(cen_ym), .irq_sync(irq_sync), .irq_tick(irq_tick), .cen_tms625(cen_tms625), .cen_tms833(cen_tms833));
     logic sd_ready, wdog_expired;
     // the watchdog reboots the machine: hold reset for a while after it fires
     logic [11:0] wdog_hold;
@@ -259,7 +259,7 @@ module ssprint_core
     wire [7:0] nv_wdata_m = (dl_active && dl_eeprom) ? dl_data : nv_wdata_q;
 
     ssprint_sound sound (
-        .clk(clk), .reset(mreset), .cen_ym(cen_ym), .irq_tick(irq_tick),
+        .clk(clk), .reset(mreset), .cen_ym(cen_ym), .irq_tick(irq_tick), .irq_sync(irq_sync),
         .cen_tms625(cen_tms625), .cen_tms833(cen_tms833), .cfg_tms(cfg_flags[0]),
         .cpu_reset(snd_cpu_reset), .snd_reset_pulse(snd_reset_pulse),
         .cmd_wr(snd_cmd_wr), .cmd_data(snd_cmd), .cmd_full(snd_cmd_full), .cmd_rd_pulse(snd_cmd_rd),
@@ -268,7 +268,7 @@ module ssprint_core
         .rom_we(dl_pulse && dl_sound), .rom_waddr(16'(dl_addr - IMG_SOUND)), .rom_wdata(dl_data),
         .nv_addr(nv_addr_m), .nv_we(nv_we_m), .nv_wdata(nv_wdata_m), .nv_rdata(nv_rdata), .nv_dirty(nv_dirty),
         .audio_l(audio_l), .audio_r(audio_r), .audio_valid(audio_valid),
-        .dbg_ym_wr(), .dbg_ym_a0(), .dbg_pk_wr(), .dbg_pk_sel(), .dbg_pk_reg(), .dbg_io_wr(), .dbg_io_reg(), .dbg_d(),
+        .dbg_ym_wr(), .dbg_ym_a0(), .dbg_pk_wr(), .dbg_pk_sel(), .dbg_pk_reg(), .dbg_io_wr(), .dbg_io_reg(), .dbg_d(), .dbg_in1_rd(), .dbg_in1(),
         .dbg_sync(), .dbg_addr(dbg_6502_addr)
     );
 

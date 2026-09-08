@@ -30,6 +30,7 @@ module ssprint_sound (
     input  logic        cfg_tms,        // a TMS5220 is fitted (image header flags bit 0)       // one-clock pulses at 244.14 Hz (the timed 6502 IRQ)
     input  logic        cpu_reset,      // level from the T11's 15a0 bit 0 (1 = hold the 6502 in reset)
     input  logic        snd_reset_pulse,// T11 wrote 15a0: puts the YM2151 into reset (sndrst_6502_w(0))
+    output logic        irq_sync,       // one clock as the T11 releases the 6502's reset: restarts the sound IRQ period (MAME's periodic interrupt does)
 
     // T11 latches
     input  logic        cmd_wr,         // T11 write of 1680
@@ -71,6 +72,8 @@ module ssprint_sound (
     output logic  [3:0] dbg_pk_reg,
     output logic        dbg_io_wr,      // 1874/1876/1878/187a/187c/187e: dbg_io_reg = A[3:1]
     output logic  [2:0] dbg_io_reg,
+    output logic        dbg_in1_rd,     // a 6502 read of IN1 (1840), with dbg_in1: bit 2 is the TMS5220's /READY
+    output logic  [7:0] dbg_in1,
     output logic        dbg_io_a0,      // the write's A0 (the TMS5220 strobe pair 1872 / 1873)
     output logic  [7:0] dbg_d,
     output logic        dbg_sync,
@@ -93,6 +96,8 @@ module ssprint_sound (
         else if (cen_cpu && rst_cnt != 4'd0) rst_cnt <= rst_cnt - 4'd1;
     end
     wire board_rst = reset | cpu_reset | (rst_cnt != 4'd0);
+    logic cpu_reset_q;
+    always_ff @(posedge clk) begin cpu_reset_q <= cpu_reset; irq_sync <= cpu_reset_q & ~cpu_reset; end
 
     // -------------------------------------------------------------------------
     // CPU
@@ -367,6 +372,8 @@ module ssprint_sound (
         dbg_io_reg <= io7;
         dbg_io_a0  <= A[0];
         dbg_d      <= cpu_do;
+        dbg_in1_rd <= cen_cpu && !wr && sel_in1;
+        dbg_in1    <= in1;
     end
 
     // -------------------------------------------------------------------------
