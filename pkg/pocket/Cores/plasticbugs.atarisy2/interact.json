@@ -21,11 +21,11 @@
         "mask": "0xFFFFFFF9",
         "options": [
           {
-            "name": "Arcade",
+            "name": "Wide",
             "value": "0x00000000"
           },
           {
-            "name": "Full screen",
+            "name": "Tall",
             "value": "0x00000002"
           }
         ]

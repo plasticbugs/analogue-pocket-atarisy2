@@ -3,7 +3,7 @@
         "magic": "APF_VER_1",
         "data_slots": [
             {
-                "name": "Arcade Game",
+                "name": "ROM",
                 "id": 0,
                 "required": true,
                 "parameters": "0x113",
@@ -14,7 +14,7 @@
                 "nonvolatile": false
             },
             {
-                "name": "ROM",
+                "name": "ROM Image",
                 "id": 1,
                 "required": true,
                 "parameters": "0x108",

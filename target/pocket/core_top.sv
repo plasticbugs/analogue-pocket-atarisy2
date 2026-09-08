@@ -1105,10 +1105,10 @@ module core_top
     assign nv_rd_data = nv_rd_data_core;
 
     //! Screen shape from the Interact menu (video.json scaler modes):
-    //! "Arcade" is the cabinet's aspect, mode 0 (4:3) for a horizontal game
+    //! "Wide" is the cabinet's aspect, mode 0 (4:3) for a horizontal game
     //! and mode 2 (3:4, rotated 270 -- the scaler takes the aspect after
     //! rotation, as the Pocket showed) for a vertical one (header flag bit
-    //! 1, APB); "Full screen" is the Pocket's own 10:9, modes 1 and 3.
+    //! 1, APB); "Tall" is the Pocket's own 10:9, modes 1 and 3.
     wire [1:0] aspect_sel = mod_sw0[2:1];
     assign video_preset = cfg_flags[1] ? {1'b0, 2'd2 + aspect_sel} : ((aspect_sel == 2'd1) ? 3'd1 : 3'd0);
 

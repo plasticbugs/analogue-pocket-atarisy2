@@ -80,8 +80,8 @@ name; a game whose image is missing simply will not start.
 APB: D-pad or stick steers, B / X / L / R is the accelerator, A is the
 siren (which also starts the game and picks the day; two coins by default),
 Y is the game's other button, Select is coin 1. APB's screen is vertical
-and the Pocket's scaler rotates it. "Screen Shape" is "Arcade" (the
-cabinet's 4:3 or 3:4) or "Full screen" (the Pocket's 10:9) for either game.
+and the Pocket's scaler rotates it. "Screen Shape" is "Wide" (the cabinet's
+4:3, or 3:4 rotated) or "Tall" (the Pocket's 10:9) for either game.
 The settings menu has 16 entries, the Pocket's limit: coinage is shared by
 both games, the other DIP switches are the "SS:" and "APB:" entries, and
 both games' coin multipliers stay at their factory settings.
