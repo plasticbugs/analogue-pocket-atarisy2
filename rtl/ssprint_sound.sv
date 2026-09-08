@@ -98,10 +98,18 @@ module ssprint_sound (
     // CPU
     // -------------------------------------------------------------------------
     wire [23:0] A24;
-    wire [15:0] A = A24[15:0];
-    wire  [7:0] cpu_do;
+    // The 6502's bus is registered once here: the T65 holds address, data
+    // and R/W for the whole 53-clock cycle, so a copy one clock behind is
+    // valid at the enable that clocks the decodes and latches below and
+    // takes the T65's registers off their 96 MHz paths (address -> write
+    // decode -> mixer latch missed by 0.12 ns).
+    logic [15:0] A;
+    wire  [7:0] cpu_do_raw;
+    logic [7:0] cpu_do;
     wire        rw_n;
-    wire        wr = ~rw_n;
+    logic       wr;
+    logic [7:0] cpu_di_q;   // and the read data back to it (block RAM output -> read mux -> DI missed by 0.13 ns)
+    always_ff @(posedge clk) begin A <= A24[15:0]; cpu_do <= cpu_do_raw; wr <= ~rw_n; cpu_di_q <= cpu_di; end
     logic [7:0] cpu_di;
     logic       timed_int;
     wire        sync;
@@ -121,8 +129,8 @@ module ssprint_sound (
         .Sync    (sync),
         .EF      (), .MF (), .XF (), .ML_n (), .VP_n (), .VDA (), .VPA (),
         .A       (A24),
-        .DI      (cpu_di),
-        .DO      (cpu_do),
+        .DI      (cpu_di_q),
+        .DO      (cpu_do_raw),
         .Regs    (),
         .NMI_ack ()
     );

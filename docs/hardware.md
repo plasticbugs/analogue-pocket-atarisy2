@@ -542,16 +542,16 @@ placed so its two bit-plane halves sit where the full-size region's would
 Header (little-endian bytes; `rtl/ssprint_pkg.sv`, latched by the loader in
 `ssprint_core`):
 
-| byte | field | Super Sprint | APB |
-|---|---|---|---|
-| 0-3 | magic `ASY2` | | |
-| 4 | format | 2 | 2 |
-| 5 | game id | 1 | 2 |
-| 6 | slapstic type | 108 | 110 |
-| 7 | flags: bit 0 TMS5220 fitted, bit 1 vertical screen | 0x00 | 0x03 |
-| 8 | playfield tile code bits (codes wrap at 2^n, MAME's element count) | 14 | 14 |
-| 9 | motion object code bits | 11 | 13 |
-| 16-47 | name, ASCII, zero padded | SUPER SPRINT | APB |
+| byte | field | Super Sprint | APB | Championship Sprint |
+|---|---|---|---|---|
+| 0-3 | magic `ASY2` | | | |
+| 4 | format | 2 | 2 | 2 |
+| 5 | game id | 1 | 2 | 3 |
+| 6 | slapstic type | 108 | 110 | 109 |
+| 7 | flags: bit 0 TMS5220 fitted, bit 1 vertical screen | 0x00 | 0x03 | 0x00 |
+| 8 | playfield tile code bits (codes wrap at 2^n, MAME's element count) | 14 | 14 | 14 |
+| 9 | motion object code bits | 11 | 13 | 11 |
+| 16-47 | name, ASCII, zero padded | SUPER SPRINT | APB | CHAMPIONSHIP SPRINT |
 
 Sizes across the System 2 games (MAME): the T11 regions and the chars are
 the same for all; the 6502 ROM is 32 KB (Super Sprint, Championship Sprint)

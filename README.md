@@ -14,7 +14,8 @@ is gateware; nothing is emulated in software.
 | game | MAME set | status |
 |---|---|---|
 | Super Sprint (1986) | `ssprint` | verified and played on hardware (below) |
-| APB - All Points Bulletin (1987) | `apb` | in the benches: boots, attract mode, high-score table and the start of a game pixel-identical to MAME, the T11 cycle-exact, the sound board's chips written as MAME writes them through the attract mode, speech through the TMS5220 (in-game music order still being matched); not yet run on a Pocket |
+| APB - All Points Bulletin (1987) | `apb` | played on hardware: the sound, speech and screen shape confirmed; in the benches the boot, attract mode and the start of a game are pixel-identical to MAME and the T11 cycle-exact (the in-game music order on the sound board is still being matched) |
+| Championship Sprint (1986) | `csprint` | Super Sprint's two-player sequel on the same board (slapstic 109): in the benches the image, the T11 (cycle-exact), the video and the boot are MAME's; the sound board's YM2151 and POKEY 1 streams match over 15 s with a late-window difference still open; not yet run on a Pocket |
 
 ## Status (0.2.0)
 
@@ -57,6 +58,7 @@ Verified against MAME as the oracle (details and numbers in
    ```sh
    python3 mra_build.py ssprint.mra ssprint.zip     # -> ssprint.rom
    python3 mra_build.py apb.mra apb.zip             # -> apb.rom
+   python3 mra_build.py csprint.mra csprint.zip     # -> csprint.rom
    ```
 
    Nothing but Python 3 is needed. It checks every ROM's CRC32; every image
@@ -79,7 +81,13 @@ name; a game whose image is missing simply will not start.
 
 APB: D-pad or stick steers, B / X / L / R is the accelerator, A is the
 siren (which also starts the game and picks the day; two coins by default),
-Y is the game's other button, Select is coin 1. APB's screen is vertical
+Y is the game's other button, Select is coin 1. Championship Sprint is
+Super Sprint for two players on the same controls (dock pad 2 is player
+2) and shares its "Sprint:" switches. Every game is one coin per play:
+the coinage switches are not in the menu, APB starts and continues on one
+coin with 199 continues, and the service switch is not in the menu either;
+what is left are the difficulty switches (and the Sprints' obstacles and
+wrenches), the steering and screen settings. APB's screen is vertical
 and the Pocket's scaler rotates it. "Screen Shape" is "Wide" (the cabinet's
 4:3, or 3:4 rotated) or "Tall" (the Pocket's 10:9) for either game.
 The settings menu has 16 entries, the Pocket's limit: coinage is shared by

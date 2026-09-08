@@ -77,7 +77,8 @@ int main(int argc, char **argv) {
             else if (e.tag == "FRAME") {
                 int fr = (int)e.addr;
                 static int ncoins = getenv("COINS") ? atoi(getenv("COINS")) : 1;   // as tools/trace_sound.lua: COINS coins, 20 frames apart
-                for (int k = 0; k < ncoins; k++) { if (fr == coin_frame + 20 * k) top->coins = 1; if (fr == coin_frame + 20 * k + 10) top->coins = 0; }
+                static int coin_bit = getenv("COIN_BIT") ? atoi(getenv("COIN_BIT")) : 0;   // coins[0] = IN1 bit 5 (Super Sprint's coin 1); APB and Championship Sprint have coin 1 on bit 6 (COIN_BIT=1)
+                for (int k = 0; k < ncoins; k++) { if (fr == coin_frame + 20 * k) top->coins = 1 << coin_bit; if (fr == coin_frame + 20 * k + 10) top->coins = 0; }
                 if (fr == wheel_frame) top->leta0 = wheel_val;
             }
         }

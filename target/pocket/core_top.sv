@@ -1005,19 +1005,33 @@ module core_top
     //! is what Lua's set_value(63) writes into the port with no inversion;
     //! APB takes anything below 0xc0 as a hard brake, and the car creeps on
     //! its own at 0xff -- docs/hardware.md.)
-    wire [7:0] pedal0 = gas1 ? 8'hc0 : 8'hff;
-    wire [7:0] pedal1 = (g_apb ? gas1 : gas2) ? 8'hc0 : 8'hff;    // APB reads its pedal on ADC 1
-    wire [7:0] pedal2 = gas3 ? 8'hc0 : 8'hff;
+    reg  [7:0] pedal0 = 8'hff, pedal1 = 8'hff, pedal2 = 8'hff;
+    always @(posedge clk_sys) begin
+        pedal0 <= gas1 ? 8'hc0 : 8'hff;
+        pedal1 <= (g_apb ? gas1 : gas2) ? 8'hc0 : 8'hff;    // APB reads its pedal on ADC 1
+        pedal2 <= gas3 ? 8'hc0 : 8'hff;
+    end
     //! Per-game wiring (cfg_game from the image header): Super Sprint's three
     //! players each have a wheel, pedal (ADC 0/1/2), start and coin slot;
     //! APB (game 2) has one wheel (LETA 0), its pedal on ADC 1, two buttons
     //! on IN0 -- button 3 is the SIREN, which also starts the game, so it is
     //! A; button 2 is Y -- and coins on IN1 bits 6/7.
-    wire       g_apb  = (cfg_game == 8'd2);
-    wire [2:0] starts = {c3[15], p2_start, p1_start};
-    wire [2:0] coins  = g_apb ? {p2_select, p1_select, 1'b0} : {c3[14], p2_select, p1_select};
-    wire       btn2   = g_apb & p1_btn_y;
-    wire       btn3   = g_apb & p1_btn_a;                   // siren / start
+    //! Championship Sprint (game 3) is Super Sprint with two players: its
+    //! coins are on IN1 bits 6/7 like APB's, everything else Super Sprint's.
+    //! (the game selects and the muxes they steer are registered: the
+    //! header byte -> compare -> mux -> the 6502's input port read missed
+    //! 96 MHz by 0.23 ns as one chain, and every input here is quasi-static)
+    reg        g_apb = 1'b0, g_cs = 1'b0;
+    reg  [2:0] starts = 3'b000, coins = 3'b000;
+    reg        btn2 = 1'b0, btn3 = 1'b0;
+    always @(posedge clk_sys) begin
+        g_apb  <= (cfg_game == 8'd2);
+        g_cs   <= (cfg_game == 8'd3);
+        starts <= {c3[15], p2_start, p1_start};
+        coins  <= (g_apb | g_cs) ? {p2_select, p1_select, 1'b0} : {c3[14], p2_select, p1_select};
+        btn2   <= g_apb & p1_btn_y;
+        btn3   <= g_apb & p1_btn_a;                         // siren / start
+    end
 
     //! Diagnostics from the modifier word: bit 5 overlay, bit 6 SDRAM read
     //! capture alternate, bit 7 slow bursts.
@@ -1070,8 +1084,14 @@ module core_top
         // (interact.json; nothing above bit 30 -- the Pocket rejected option
         // values with bit 31 set): dip_sw2 = its DSW1 bits 7:1 (bit 0, the
         // attract lights, stays 0 = on), dip_sw3[2:0] = its DSW0 bits 7:5.
-        .dsw0         ( g_apb ? {dip_sw3[2:0], dip_sw0[4:0]} : dip_sw0 ),
-        .dsw1         ( g_apb ? {dip_sw2[7:1], 1'b0} : dip_sw1 ),
+        //! One coin per play on every game: DSW0 bits 4:0 (coinage,
+        //! multiplier) are held at 0 = 1 coin / 1 credit; APB's "coins
+        //! required" (its DSW1 bits 7:6) at 01 = 1 to start, 1 to continue,
+        //! its "max continues" (bits 2:1) at 11 = 199, its attract lights on.
+        //! Only the difficulty switches (and the Sprints' obstacles and
+        //! wrenches) are in the menu.
+        .dsw0         ( g_apb ? {dip_sw3[2:0], 5'b00000} : {dip_sw0[7:5], 5'b00000} ),
+        .dsw1         ( g_apb ? {2'b01, dip_sw2[5:3], 2'b11, 1'b0} : dip_sw1 ),
         .cen_pix      ( ss_ce_pix      ),
         .r            ( ss_r           ),
         .g            ( ss_g           ),
