@@ -301,12 +301,16 @@ module ssprint_sound (
     end
 
     // -------------------------------------------------------------------------
-    // POKEYs (1.789772 MHz = the CPU enable)
+    // POKEYs (1.789772 MHz = the CPU enable). Reset with the board, not by the
+    // T11's sound reset: MAME's sound_reset_w resets the 6502, the YM2151 and
+    // the TMS5220 but not the POKEYs, whose polynomial counters keep running
+    // from power-on -- 720 sends RANDOM to the T11 and the bytes only match
+    // MAME's with the counters' phase counted from the same instant.
     // -------------------------------------------------------------------------
     logic [7:0] pk1_q, pk2_q;
     logic [5:0] pk1_sum, pk2_sum;
-    pokey u_pk1 (.clk(clk), .reset(board_rst), .cen(cen_cpu), .addr(A[3:0]), .we(cen_cpu && wr && sel_pk1), .wdata(cpu_do), .rdata(pk1_q), .allpot(dsw0), .sum(pk1_sum));
-    pokey u_pk2 (.clk(clk), .reset(board_rst), .cen(cen_cpu), .addr(A[3:0]), .we(cen_cpu && wr && sel_pk2), .wdata(cpu_do), .rdata(pk2_q), .allpot(dsw1), .sum(pk2_sum));
+    pokey u_pk1 (.clk(clk), .reset(reset), .cen(cen_cpu), .addr(A[3:0]), .we(cen_cpu && wr && sel_pk1), .wdata(cpu_do), .rdata(pk1_q), .allpot(dsw0), .sum(pk1_sum));
+    pokey u_pk2 (.clk(clk), .reset(reset), .cen(cen_cpu), .addr(A[3:0]), .we(cen_cpu && wr && sel_pk2), .wdata(cpu_do), .rdata(pk2_q), .allpot(dsw1), .sum(pk2_sum));
 
     // -------------------------------------------------------------------------
     // YM2151: write strobe held for the whole CPU cycle (the BUSY flag is

@@ -962,7 +962,7 @@ module core_top
     wire ss_reset    = reset_sw_s;
     wire ss_hw_reset = ~pll_core_locked_s;
 
-    //! ROM: one slot with the flat 1,393,152-byte image from tools/mra_build.py.
+    //! ROM: one slot with the 2,196,480-byte format 2 image from tools/mra_build.py (docs/hardware.md section 9).
     // Slot 1, not 0: slot 0 carries the instance JSON that names the game (the
     // Pocket consumes it, the core never sees it), the image arrives in slot 1
     // and the save lives in slot 2 (data.json).

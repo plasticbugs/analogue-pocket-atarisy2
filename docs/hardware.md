@@ -465,7 +465,13 @@ instantiates it always (`modules/sound-tms5220`, d18c7db's VHDL from MAME's
   more per interrupt and fed the chip a third faster than MAME.
 * **sound reset** (T11 15a0) 0->1 edge: MAME calls `tms5220->reset()` in
   place of the stream of 0xff the board really feeds the chip; the core holds
-  /WS and /RS low for 16 chip clocks, which the chip takes as a reset.
+  /WS and /RS low for 16 chip clocks, which the chip takes as a reset. A
+  reset (this one, or the RESET command every idle 0xff becomes once the
+  chip has halted) is MAME's device reset: it restarts the frame timing, so
+  the time a stop frame takes to halt the chip after the next Speak External
+  (one frame plus the remainder of the current one, 25-50 ms) is measured
+  from the last reset, and the model restarts its timing generator the same
+  way.
 * output: MAME's `clip_analog`: the 14-bit lattice output clipped to
   +-2048, low 4 bits dropped, upshifted to 16 bits with range extension
   (`{c[11:4], c[10:4], c[10]}`), then the mixer gain.
@@ -475,6 +481,17 @@ The chip is only ever driven in "Speak External" mode on this board (the
 exactly that, plus NOP and RESET, and not the VSM ROM commands.
 
 ### 7.5 POKEY (audio subset used here)
+
+The POKEYs are reset with the board, not by the T11's sound reset (15a0):
+MAME's `sound_reset_w` resets the 6502, the YM2151 and the TMS5220 and
+leaves the POKEYs running. Their polynomial counters restart when the 6502
+writes SKCTL with bits 1:0 clear (the boot does) and run from its release.
+720 reads RANDOM (180a) and sends two bytes to the T11 (command 0x18); the
+core's bytes are the 17-bit polynomial at the read, but MAME's are not
+reproducible: its POKEY is an executing device whose counters sit wherever
+the scheduler's timeslice left them, and `pokey_device::read` only resyncs
+the scheduler, so the value is stale by up to a slice.
+
 
 Registers (offset & 15): 0/2/4/6 AUDF1-4, 1/3/5/7 AUDC1-4, 8 AUDCTL, 9
 STIMER, 0xa SKREST, 0xb POTGO, 0xd SEROUT, 0xe IRQEN, 0xf SKCTL; reads: 8 =

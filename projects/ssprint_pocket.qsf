@@ -879,4 +879,6 @@ set_instance_assignment -name FAST_OUTPUT_REGISTER ON -to dram_we_n
 set_global_assignment -name OPTIMIZE_HOLD_TIMING "ALL PATHS"
 
 # fitter seed: seed 1 left a 10 ps hold miss at the fast 0 C corner inside the APF bridge (pmp_wr_data_latch -> data table RAM)
-set_global_assignment -name SEED 3
+# seed 3 (0.3.0's first netlists) missed hold by 30 ps at the fast 0 C corner on a jt51 register -> shift-register RAM path once the POKEY reset and TMS5220 timing reset went in
+# seed 4 missed the same kind of path by 49 ps
+set_global_assignment -name SEED 5

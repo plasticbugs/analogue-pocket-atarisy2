@@ -275,10 +275,24 @@ begin
 	m_buffer_empty <= '1' when m_FIFO_ptr = FIFO_bits   else '0';
 
 	-- timing generator, creates the PHI clock phases, the Interval Counter, Parameter Counter, Time Period and cycle A/B flag
+	-- (plasticbugs) restarts on a reset, as MAME's does: tms5220_device::reset()
+	-- -- the RESET command, and the board's sound reset -- is the device reset,
+	-- which puts IP, PC and the subcycle back to their power-on values, so the
+	-- frame phase, and with it how long a stop frame takes to halt the chip
+	-- after the next Speak External, is set by the last reset. The original
+	-- timing generator free-ran from power-on.
 	p_TIMING : process(m_CLK, m_ENA)
 	begin
 		if rising_edge(m_CLK) then
 			if (m_ENA = '1') then
+			if (m_RST = '1') then
+				phictr <= (others => '0');
+				m_T    <= 1;
+				m_cycA <= '1';
+				m_cycB <= '0';
+				m_PC   <= 0;
+				m_IC   <= 0;
+			else
 				phictr <= phictr + 1;
 				if (phictr = "11") then
 					-- time period counter
@@ -308,6 +322,7 @@ begin
 					end if;
 
 				end if;
+			end if;
 			end if;
 		end if;
 	end process;
