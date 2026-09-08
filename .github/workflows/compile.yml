@@ -1,13 +1,13 @@
 ################################################################################
-# Compile the Super Sprint Pocket core and upload the SD-card package.
-# Runs on every push to main, on tags, and on manual dispatch.
+# Compile the Atari System 2 Pocket core and upload the SD-card package.
+# Runs on every push to main or multigame, on tags, and on manual dispatch.
 ################################################################################
 name: Compile Core
 
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, multigame]
     tags: ["v*"]
 
 jobs:
@@ -105,8 +105,8 @@ jobs:
           fi
           cd release/pocket && zip -qr ../../atarisy2-pocket-sdcard.zip . && cd ../..
           gh release create "${GITHUB_REF_NAME}" \
-            --title "Super Sprint for Analogue Pocket ${GITHUB_REF_NAME}" \
-            --notes "Unzip onto the Pocket SD card root, overwriting previous files. ROM images go in Assets/atarisy2/common/." \
+            --title "Atari System 2 for Analogue Pocket ${GITHUB_REF_NAME}" \
+            --notes "Unzip onto the Pocket SD card root, overwriting previous files. Build the ROM images with mra_build.py (ssprint, apb, csprint, paperboy, 720) and put them in Assets/atarisy2/common/." \
             atarisy2-pocket-sdcard.zip
 
       - name: Upload reports
