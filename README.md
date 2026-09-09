@@ -20,7 +20,10 @@ in software.
 | Paperboy (1984) | `paperboy` | plays on the Pocket; slapstic 105, speech, handlebars on two ADC channels: image byte-exact, T11 cycle-exact, the video gate states pixel-identical and the boot too but for one small element, the sound board's 15 s identical to MAME's log |
 | 720 Degrees (1986) | `720` | plays on the Pocket; slapstic 107, speech, the rotating joystick on two LETA counters: image byte-exact, T11 cycle-exact over the boot and a park demo, the attract states in the video gate pixel-identical, the sound board's POKEYs and speech stream identical to MAME's log (the RANDOM bytes it reports differ because MAME's are its scheduler's, not the chip's) |
 
-## Status (0.3.1)
+## Status (0.3.2)
+
+0.3.2 ships the platform's own image on the Pocket (the earlier one was a
+placeholder).
 
 0.3.1 feeds the pedals as MAME's port reads them when a player drives it,
 0x3f up and 0x00 floored (0xff, what an untouched port reads in a headless
