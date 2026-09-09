@@ -25,7 +25,8 @@ in software.
 0.3.1 feeds the pedals as MAME's port reads them when a player drives it,
 0x3f up and 0x00 floored (0xff, what an untouched port reads in a headless
 MAME, made APB's pedal calibration wrap and drive the car by itself at the
-start of a game until the pedal had moved once).
+start of a game until the pedal had moved once), and gives the Sprints and
+APB a half-throttle button: L is half gas, the face buttons and R floor it.
 
 0.3.0 adds Paperboy and 720 Degrees and the sound-board fixes found while
 matching their speech, and APB's, against MAME: the TMS5220's /READY now
@@ -108,7 +109,8 @@ players are dock pads 2 and 3. The Sprints map the cabinet directly:
 | Pocket | Arcade |
 |---|---|
 | D-pad left / right, or the left stick | steering wheel |
-| A, B, X, Y, L or R | accelerator |
+| A, B, X, Y or R | accelerator, floored |
+| L | accelerator, half way |
 | Select | coin |
 | Start | start |
 | dock pads 2 and 3 | players 2 and 3 (their own wheel, pedal, coin and start) |
@@ -118,7 +120,7 @@ Per game:
 * **Super Sprint** -- the table above, for its three players.
 * **Championship Sprint** -- Super Sprint for two players on the same
   controls (dock pad 2 is player 2); it shares the "Sprint:" switches.
-* **APB** -- D-pad or stick steers; B, X, L or R is the accelerator; A is the
+* **APB** -- D-pad or stick steers; B, X or R floor the accelerator and L is half throttle; A is the
   siren, which also starts the game and picks the day; Y is the game's other
   button; Select is the coin.
 * **Paperboy** -- the D-pad or stick is the handlebars (left / right steer,

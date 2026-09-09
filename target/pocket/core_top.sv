@@ -1000,10 +1000,17 @@ module core_top
     ctrl_720 c720 (.clk(clk_sys), .reset(ss_reset), .rate(steer_rate), .up(p1_up), .down(p1_down), .left(p1_left), .right(p1_right),
                    .spin_ccw(p1_btn_l1), .spin_cw(p1_btn_r1), .stick_active(j1_up | j1_down | j1_left | j1_right),
                    .stick_x(j1_lx), .stick_y(j1_ly), .rotate(rot720), .center(ctr720));
-    wire       gas1 = g_apb ? (p1_btn_b | p1_btn_x | p1_btn_l1 | p1_btn_r1)          // A and Y are APB's buttons
-                             : (p1_btn_a | p1_btn_b | p1_btn_x | p1_btn_y | p1_btn_l1 | p1_btn_r1);
-    wire       gas2 = p2_btn_a | p2_btn_b | p2_btn_x | p2_btn_y | p2_btn_l1 | p2_btn_r1;
-    wire       gas3 = c3[4] | c3[5] | c3[6] | c3[7] | c3[8] | c3[9];
+    //! The accelerator: the face buttons and R1 floor it, L1 is half throttle
+    //! (the pedal reads 0x3f up, 0x00 floored, so half is 0x20; a full press
+    //! wins over a half one)
+    wire       gas1 = g_apb ? (p1_btn_b | p1_btn_x | p1_btn_r1)          // A and Y are APB's buttons
+                             : (p1_btn_a | p1_btn_b | p1_btn_x | p1_btn_y | p1_btn_r1);
+    wire       gas2 = p2_btn_a | p2_btn_b | p2_btn_x | p2_btn_y | p2_btn_r1;
+    wire       gas3 = c3[4] | c3[5] | c3[6] | c3[7] | c3[9];
+    wire       half1 = p1_btn_l1, half2 = p2_btn_l1, half3 = c3[8];
+    wire [7:0] ped1 = gas1 ? 8'h00 : half1 ? 8'h20 : 8'h3f;
+    wire [7:0] ped2 = gas2 ? 8'h00 : half2 ? 8'h20 : 8'h3f;
+    wire [7:0] ped3 = gas3 ? 8'h00 : half3 ? 8'h20 : 8'h3f;
     //! Paperboy's handlebars: the stick's X/Y when it is off centre, else
     //! the D-pad as full deflection (MAME's AD_STICK: 0x10 .. 0x80 .. 0xf0)
     wire [7:0] hb_x = (j1_left | j1_right) ? j1_lx : p1_left ? 8'h10 : p1_right ? 8'hf0 : 8'h80;
@@ -1016,9 +1023,9 @@ module core_top
     reg  [7:0] pedal0 = 8'h3f, pedal1 = 8'h3f, pedal2 = 8'h3f;
     reg  [7:0] leta0_q = 8'hff, leta1_q = 8'hff, leta2_q = 8'hff;    // Paperboy has no LETA counters: its ports read 0xff
     always @(posedge clk_sys) begin
-        pedal0 <= g_720 ? 8'hff : g_pb ? hb_x : gas1 ? 8'h00 : 8'h3f;    // 720's ADCs are unused (read 0xff)
-        pedal1 <= g_720 ? 8'hff : g_pb ? hb_y : (g_apb ? gas1 : gas2) ? 8'h00 : 8'h3f;    // APB reads its pedal on ADC 1
-        pedal2 <= gas3 ? 8'h00 : 8'h3f;
+        pedal0 <= g_720 ? 8'hff : g_pb ? hb_x : ped1;    // 720's ADCs are unused (read 0xff)
+        pedal1 <= g_720 ? 8'hff : g_pb ? hb_y : (g_apb ? ped1 : ped2);    // APB reads its pedal on ADC 1
+        pedal2 <= ped3;
         leta0_q <= g_720 ? ctr720 : g_pb ? 8'hff : wheel0;    // 720: the joystick's centre and rotate discs
         leta1_q <= g_720 ? rot720 : g_pb ? 8'hff : wheel1;
         leta2_q <= (g_pb | g_720) ? 8'hff : wheel2;
