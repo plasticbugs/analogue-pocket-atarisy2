@@ -463,6 +463,14 @@ instantiates it always (`modules/sound-tms5220`, d18c7db's VHDL from MAME's
   0xff stream, each only if /READY is active, and the second always finds
   the chip busy; a model that let /READY return at once accepted one byte
   more per interrupt and fed the chip a third faster than MAME.
+* **APB's pedal calibration** (main CPU, `053142` octal: `BISB @#012000`):
+  the game keeps the pedal as 255 - ADC and tracks the smallest and largest
+  values seen since the game started; while that range is empty it writes
+  0xff (full gas) to its throttle, so a car whose pedal has never moved in
+  this game drives itself until the pedal is pressed and released once.
+  MAME with an untouched pedal port does exactly this (the bench's frame
+  1240 shows the demerit card at 48 MPH); a press during the attract mode or
+  after the coins does not count, only one after the game has started.
 * **sound reset** (T11 15a0) 0->1 edge: MAME calls `tms5220->reset()` in
   place of the stream of 0xff the board really feeds the chip; the core holds
   /WS and /RS low for 16 chip clocks, which the chip takes as a reset. A

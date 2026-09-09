@@ -115,7 +115,10 @@ Per game:
   controls (dock pad 2 is player 2); it shares the "Sprint:" switches.
 * **APB** -- D-pad or stick steers; B, X, L or R is the accelerator; A is the
   siren, which also starts the game and picks the day; Y is the game's other
-  button; Select is the coin.
+  button; Select is the coin. Press and release the gas once when a game
+  starts: the game calibrates its pedal from the values it sees, and until it
+  has seen the pedal move it drives the car itself (MAME does the same with
+  an untouched pedal).
 * **Paperboy** -- the D-pad or stick is the handlebars (left / right steer,
   up / down set the speed); A and B throw papers left and right, and A also
   starts the game; Select is the coin.

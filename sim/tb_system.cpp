@@ -107,6 +107,9 @@ int main(int argc, char **argv) {
                 if (top->rootp->tb_system_top__DOT__core__DOT__snd_resp_rd) printf("EV %12.1f f=%4d l=%6.1f RRD  --\n", t_us, frame, l);
                 if (top->rootp->tb_system_top__DOT__core__DOT__main__DOT__dbg_adc_st) printf("EV %12.1f f=%4d l=%6.1f ADCS %02x\n", t_us, frame, l, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__adc_chan);
                 if (top->rootp->tb_system_top__DOT__core__DOT__main__DOT__dbg_adc_rd) printf("EV %12.1f f=%4d l=%6.1f ADCR %02x cnt=%d\n", t_us, frame, l, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__adc_sar, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__adc_cnt);
+                static int ior_pending = -1;   // an I/O read strobe: its data is on bus_rdata the next clock
+                if (ior_pending >= 0) { printf("EV %12.1f f=%4d l=%6.1f IOR  %04x %04x\n", t_us, frame, l, ior_pending, top->rootp->tb_system_top__DOT__core__DOT__main__DOT__bus_rdata); ior_pending = -1; }
+                if (top->rootp->tb_system_top__DOT__core__DOT__main__DOT__dbg_io_rd) ior_pending = top->rootp->tb_system_top__DOT__core__DOT__main__DOT__dbg_io_a;
             }
             prev_state = st;
         }

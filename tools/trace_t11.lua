@@ -85,10 +85,14 @@ if start_f == 0 then dbg:command(fmt); tracing = true end
 dbg:command("go")
 emu.register_frame_done(function()
   frames = frames + 1
-  if frames == coin_f then ports[":IN1"].fields["Coin 1"]:set_value(1) end
-  if frames == coin_f + 10 then ports[":IN1"].fields["Coin 1"]:clear_value() end
-  if frames == startb_f then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:set_value(1) end
-  if frames == startb_f + 10 then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:clear_value() end
+  for k = 0, tonumber(os.getenv("COINS") or "1") - 1 do   -- COINS=n: n coins, 20 frames apart (as trace_sound.lua / dumpstate.lua)
+    if frames == coin_f + 20 * k then ports[":IN1"].fields["Coin 1"]:set_value(1) end
+    if frames == coin_f + 20 * k + 10 then ports[":IN1"].fields["Coin 1"]:clear_value() end
+  end
+  for k = 0, tonumber(os.getenv("STARTS") or "1") - 1 do   -- STARTS=n: n presses, 60 frames apart
+    if frames == startb_f + 60 * k then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:set_value(1) end
+    if frames == startb_f + 60 * k + 10 then ports[":IN0"].fields[os.getenv("START_FIELD") or "1 Player Start"]:clear_value() end
+  end
   if pedal >= 0 and frames == startb_f + 60 then for _, p in ipairs({":ADC0", ":ADC1", ":ADC2"}) do if ports[p] then for _, fl in pairs(ports[p].fields) do fl:set_value(pedal) end end end end
   if wheel >= 0 and frames == startb_f + 60 then for _, fl in pairs(ports[":LETA0"].fields) do fl:set_value(wheel) end end
   if frames == start_f and start_f > 0 then

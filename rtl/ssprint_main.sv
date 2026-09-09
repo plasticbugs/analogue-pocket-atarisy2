@@ -69,7 +69,8 @@ module ssprint_main
     // ------------------------------------------------------------------------
     // CPU
     // ------------------------------------------------------------------------
-    logic [15:0] bus_addr, bus_wdata, bus_rdata;
+    logic [15:0] bus_addr, bus_wdata;
+    logic [15:0] bus_rdata /* verilator public_flat_rd */;
     logic        bus_rd, bus_wr, bus_ack, bus_fetch;
     logic  [1:0] bus_be;
     logic  [3:0] cp /* verilator public_flat_rd */;
@@ -157,6 +158,8 @@ module ssprint_main
     // bench probes: the T11's ADC strobe and data read cycles
     wire dbg_adc_st /* verilator public_flat_rd */ = bus_strobe && bus_wr && io_adcs && bus_be[0];
     wire dbg_adc_rd /* verilator public_flat_rd */ = bus_strobe && !bus_wr && io_adc;
+    wire dbg_io_rd  /* verilator public_flat_rd */ = bus_strobe && !bus_wr && sel_io;   // any T11 read of the I/O page (the bench logs address and data)
+    wire [15:0] dbg_io_a /* verilator public_flat_rd */ = a;
     wire  [7:0]  adc_in = (adc_chan == 3'd0) ? pedal0 : (adc_chan == 3'd1) ? pedal1 : (adc_chan == 3'd2) ? pedal2 : 8'hff;
 
     // ------------------------------------------------------------------------
