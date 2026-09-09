@@ -463,14 +463,20 @@ instantiates it always (`modules/sound-tms5220`, d18c7db's VHDL from MAME's
   0xff stream, each only if /READY is active, and the second always finds
   the chip busy; a model that let /READY return at once accepted one byte
   more per interrupt and fed the chip a third faster than MAME.
-* **APB's pedal calibration** (main CPU, `053142` octal: `BISB @#012000`):
-  the game keeps the pedal as 255 - ADC and tracks the smallest and largest
-  values seen since the game started; while that range is empty it writes
-  0xff (full gas) to its throttle, so a car whose pedal has never moved in
-  this game drives itself until the pedal is pressed and released once.
-  MAME with an untouched pedal port does exactly this (the bench's frame
-  1240 shows the demerit card at 48 MPH); a press during the attract mode or
-  after the coins does not count, only one after the game has started.
+* **The pedals** (ADC 0-2; APB's on ADC 1): MAME's port is `PORT_MINMAX
+  (0x00, 0x3f)` inverted, so as a player drives it the ADC reads **0x3f
+  with the pedal up and 0x00 floored**, and the core feeds those. An
+  untouched port in a headless MAME reads 0xff instead, which is what the
+  Lua-driven captures carry (`PEDAL=63` in a trace sets 0x3f, pressed) and
+  what the core fed before 0.3.1. APB cannot take 0xff: its pedal code
+  (`053142` octal, `BISB @#012000`) keeps 255 - ADC and tracks the smallest
+  and largest values seen since the game started, and with 0xff the pedal is
+  0 and its `pedal - 1` wraps to 0xffff, which reads as "above the minimum",
+  so the game writes full gas until the pedal has moved once -- the car
+  drives itself and crashes (MAME's frame 1240 with an untouched port shows
+  the demerit card at 48 MPH; held at 0x3f or 0x20 it sits parked at 0 MPH,
+  as it does in MAME with a keyboard). A press before the game starts does
+  not count; the range is tracked per game.
 * **sound reset** (T11 15a0) 0->1 edge: MAME calls `tms5220->reset()` in
   place of the stream of 0xff the board really feeds the chip; the core holds
   /WS and /RS low for 16 chip clocks, which the chip takes as a reset. A

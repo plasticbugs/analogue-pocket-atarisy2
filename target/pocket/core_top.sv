@@ -1004,22 +1004,21 @@ module core_top
                              : (p1_btn_a | p1_btn_b | p1_btn_x | p1_btn_y | p1_btn_l1 | p1_btn_r1);
     wire       gas2 = p2_btn_a | p2_btn_b | p2_btn_x | p2_btn_y | p2_btn_l1 | p2_btn_r1;
     wire       gas3 = c3[4] | c3[5] | c3[6] | c3[7] | c3[8] | c3[9];
-    //! A floored pedal reads 0xc0, released 0xff: MAME's port is PORT_MINMAX
-    //! (0, 0x3f) PORT_INVERT, so a player's key press ramps the value from
-    //! 0xff down to 0xc0 and never below. (0x3f, which the core sent before,
-    //! is what Lua's set_value(63) writes into the port with no inversion;
-    //! APB takes anything below 0xc0 as a hard brake, and the car creeps on
-    //! its own at 0xff -- docs/hardware.md.)
     //! Paperboy's handlebars: the stick's X/Y when it is off centre, else
     //! the D-pad as full deflection (MAME's AD_STICK: 0x10 .. 0x80 .. 0xf0)
     wire [7:0] hb_x = (j1_left | j1_right) ? j1_lx : p1_left ? 8'h10 : p1_right ? 8'hf0 : 8'h80;
     wire [7:0] hb_y = (j1_up | j1_down)    ? j1_ly : p1_up   ? 8'h10 : p1_down  ? 8'hf0 : 8'h80;
-    reg  [7:0] pedal0 = 8'hff, pedal1 = 8'hff, pedal2 = 8'hff;
+    //! Pedals: the ADC reads 0x3f with the pedal up and 0x00 floored, MAME's
+    //! analog port (PORT_MINMAX 0x00-0x3f, inverted) as a player drives it.
+    //! Not 0xff: that is only what an untouched port reads in a headless MAME,
+    //! and APB's pedal calibration (docs/hardware.md 7.6) wraps on it and
+    //! drives the car by itself until the pedal has moved once.
+    reg  [7:0] pedal0 = 8'h3f, pedal1 = 8'h3f, pedal2 = 8'h3f;
     reg  [7:0] leta0_q = 8'hff, leta1_q = 8'hff, leta2_q = 8'hff;    // Paperboy has no LETA counters: its ports read 0xff
     always @(posedge clk_sys) begin
-        pedal0 <= g_720 ? 8'hff : g_pb ? hb_x : gas1 ? 8'hc0 : 8'hff;    // 720's ADCs are unused (read 0xff)
-        pedal1 <= g_720 ? 8'hff : g_pb ? hb_y : (g_apb ? gas1 : gas2) ? 8'hc0 : 8'hff;    // APB reads its pedal on ADC 1
-        pedal2 <= gas3 ? 8'hc0 : 8'hff;
+        pedal0 <= g_720 ? 8'hff : g_pb ? hb_x : gas1 ? 8'h00 : 8'h3f;    // 720's ADCs are unused (read 0xff)
+        pedal1 <= g_720 ? 8'hff : g_pb ? hb_y : (g_apb ? gas1 : gas2) ? 8'h00 : 8'h3f;    // APB reads its pedal on ADC 1
+        pedal2 <= gas3 ? 8'h00 : 8'h3f;
         leta0_q <= g_720 ? ctr720 : g_pb ? 8'hff : wheel0;    // 720: the joystick's centre and rotate discs
         leta1_q <= g_720 ? rot720 : g_pb ? 8'hff : wheel1;
         leta2_q <= (g_pb | g_720) ? 8'hff : wheel2;

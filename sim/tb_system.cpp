@@ -54,7 +54,8 @@ int main(int argc, char **argv) {
     top->coin = 0; top->start = 0; top->btn3 = 0; top->service = 0;
     int ncoins = getenv("COINS") ? atoi(getenv("COINS")) : 1;   // coins 20 frames apart from coin_frame (as the MAME scripts)
     int nstarts = getenv("STARTS") ? atoi(getenv("STARTS")) : 1; // start presses 60 frames apart (APB: the siren, on btn3)
-    top->pedal0 = top->pedal1 = top->pedal2 = 0xff; top->wheel0 = top->wheel1 = top->wheel2 = 0;
+    int pedal_idle = getenv("PEDAL_IDLE") ? strtol(getenv("PEDAL_IDLE"), nullptr, 0) : 0xff;   // 0xff = an untouched MAME port (the captures); the core feeds 0x3f, the port as a player drives it
+    top->pedal0 = top->pedal1 = top->pedal2 = pedal_idle; top->wheel0 = top->wheel1 = top->wheel2 = 0;
     top->dsw0 = getenv("DSW0") ? strtol(getenv("DSW0"), nullptr, 16) : 0x00;   // MAME's defaults: Super Sprint 00 / c0, APB 00 / 00
     top->dsw1 = getenv("DSW1") ? strtol(getenv("DSW1"), nullptr, 16) : 0xc0;
     for (int i = 0; i < 20; i++) tick();
@@ -132,7 +133,7 @@ int main(int argc, char **argv) {
                 static int pedal_val = getenv("PEDAL_VAL") ? strtol(getenv("PEDAL_VAL"), nullptr, 0) : 0x3f;   // 0x3f matches the existing MAME captures (PEDAL=63); a real floored pedal is 0xc0
                 if (frame == pedal_frame) { top->pedal0 = pedal_val; top->pedal1 = pedal_val; top->wheel0 = 0x30; }   // as tools/dumpstate.lua's PEDAL/WHEEL (APB's pedal is channel 1)
                 static int pedal_off = getenv("PEDAL_OFF") ? atoi(getenv("PEDAL_OFF")) : -1;
-                if (frame == pedal_off) { top->pedal0 = 0xff; top->pedal1 = 0xff; }
+                if (frame == pedal_off) { top->pedal0 = pedal_idle; top->pedal1 = pedal_idle; }
             }
             if (top->de && !prev_de) { y++; x = 0; }
             if (top->de && y >= 0 && y < 384 && x < 512) {

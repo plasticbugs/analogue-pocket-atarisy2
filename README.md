@@ -20,7 +20,12 @@ in software.
 | Paperboy (1984) | `paperboy` | plays on the Pocket; slapstic 105, speech, handlebars on two ADC channels: image byte-exact, T11 cycle-exact, the video gate states pixel-identical and the boot too but for one small element, the sound board's 15 s identical to MAME's log |
 | 720 Degrees (1986) | `720` | plays on the Pocket; slapstic 107, speech, the rotating joystick on two LETA counters: image byte-exact, T11 cycle-exact over the boot and a park demo, the attract states in the video gate pixel-identical, the sound board's POKEYs and speech stream identical to MAME's log (the RANDOM bytes it reports differ because MAME's are its scheduler's, not the chip's) |
 
-## Status (0.3.0)
+## Status (0.3.1)
+
+0.3.1 feeds the pedals as MAME's port reads them when a player drives it,
+0x3f up and 0x00 floored (0xff, what an untouched port reads in a headless
+MAME, made APB's pedal calibration wrap and drive the car by itself at the
+start of a game until the pedal had moved once).
 
 0.3.0 adds Paperboy and 720 Degrees and the sound-board fixes found while
 matching their speech, and APB's, against MAME: the TMS5220's /READY now
@@ -115,10 +120,7 @@ Per game:
   controls (dock pad 2 is player 2); it shares the "Sprint:" switches.
 * **APB** -- D-pad or stick steers; B, X, L or R is the accelerator; A is the
   siren, which also starts the game and picks the day; Y is the game's other
-  button; Select is the coin. Press and release the gas once when a game
-  starts: the game calibrates its pedal from the values it sees, and until it
-  has seen the pedal move it drives the car itself (MAME does the same with
-  an untouched pedal).
+  button; Select is the coin.
 * **Paperboy** -- the D-pad or stick is the handlebars (left / right steer,
   up / down set the speed); A and B throw papers left and right, and A also
   starts the game; Select is the coin.
