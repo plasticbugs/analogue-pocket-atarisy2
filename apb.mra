@@ -34,24 +34,24 @@
 
         <!-- T11 fixed program: little-endian words, 7l on the even byte -->
         <interleave output="16">
-            <part name="136051-2126.7l" crc="8edf4726" map="10"/>
-            <part name="136051-2127.7n" crc="e2b2aff2" map="01"/>
+            <part name="136051-2126.7l" crc="8edf4726" map="01"/>
+            <part name="136051-2127.7n" crc="e2b2aff2" map="10"/>
         </interleave>
 
         <!-- banked program, MAME region 0x10000-0x8ffff: 64 KB pairs at
              0x10000, 0x30000 and 0x70000; 0x50000-0x6ffff not fitted -->
         <interleave output="16">
-            <part name="136051-7128.6f" crc="c08504d2" map="10"/>
-            <part name="136051-7129.6n" crc="79adb57f" map="01"/>
+            <part name="136051-7128.6f" crc="c08504d2" map="01"/>
+            <part name="136051-7129.6n" crc="79adb57f" map="10"/>
         </interleave>
         <interleave output="16">
-            <part name="136051-1130.6j" crc="f64c752e" map="10"/>
-            <part name="136051-1131.6p" crc="0a506e04" map="01"/>
+            <part name="136051-1130.6j" crc="f64c752e" map="01"/>
+            <part name="136051-1131.6p" crc="0a506e04" map="10"/>
         </interleave>
         <part repeat="131072">00</part>
         <interleave output="16">
-            <part name="136051-1132.6l" crc="6d0e7a4e" map="10"/>
-            <part name="136051-1133.6s" crc="af88d429" map="01"/>
+            <part name="136051-1132.6l" crc="6d0e7a4e" map="01"/>
+            <part name="136051-1133.6s" crc="af88d429" map="10"/>
         </interleave>
 
         <!-- 6502 program 0x4000-0xffff -->

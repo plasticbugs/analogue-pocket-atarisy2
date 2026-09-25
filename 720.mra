@@ -18,23 +18,23 @@
 
         <!-- T11 fixed program: little-endian words, 7lm on the even byte -->
         <interleave output="16">
-            <part name="136047-3126.7lm" crc="43abd367" map="10"/>
-            <part name="136047-3127.7mn" crc="772e1e5b" map="01"/>
+            <part name="136047-3126.7lm" crc="43abd367" map="01"/>
+            <part name="136047-3127.7mn" crc="772e1e5b" map="10"/>
         </interleave>
 
         <!-- banked program, MAME region 0x10000-0x8ffff: three 64 KB pairs at
              0x10000, 0x30000 and 0x50000; 0x70000-0x8ffff is empty -->
         <interleave output="16">
-            <part name="136047-3128.6fh" crc="bf6f425b" map="10"/>
-            <part name="136047-4131.6mn" crc="2ea8a20f" map="01"/>
+            <part name="136047-3128.6fh" crc="bf6f425b" map="01"/>
+            <part name="136047-4131.6mn" crc="2ea8a20f" map="10"/>
         </interleave>
         <interleave output="16">
-            <part name="136047-1129.6hj" crc="eabf0b01" map="10"/>
-            <part name="136047-1132.6p" crc="a24f333e" map="01"/>
+            <part name="136047-1129.6hj" crc="eabf0b01" map="01"/>
+            <part name="136047-1132.6p" crc="a24f333e" map="10"/>
         </interleave>
         <interleave output="16">
-            <part name="136047-1130.6k" crc="93fba845" map="10"/>
-            <part name="136047-1133.6r" crc="53c177be" map="01"/>
+            <part name="136047-1130.6k" crc="93fba845" map="01"/>
+            <part name="136047-1133.6r" crc="53c177be" map="10"/>
         </interleave>
         <part repeat="131072">00</part>
 

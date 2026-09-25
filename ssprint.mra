@@ -34,38 +34,38 @@
 
         <!-- T11 fixed program: little-endian words, 7l on the even byte -->
         <interleave output="16">
-            <part name="136042-330.7l" crc="ee312027" map="10"/>
-            <part name="136042-331.7n" crc="2ef15354" map="01"/>
+            <part name="136042-330.7l" crc="ee312027" map="01"/>
+            <part name="136042-331.7n" crc="2ef15354" map="10"/>
         </interleave>
 
         <!-- banked program: region 0x10000-0x2ffff = pair 329/325 twice -->
         <interleave output="16">
-            <part name="136042-329.6f" crc="ed1d6205" map="10"/>
-            <part name="136042-325.6n" crc="aecaa2bf" map="01"/>
+            <part name="136042-329.6f" crc="ed1d6205" map="01"/>
+            <part name="136042-325.6n" crc="aecaa2bf" map="10"/>
         </interleave>
         <interleave output="16">
-            <part name="136042-329.6f" crc="ed1d6205" map="10"/>
-            <part name="136042-325.6n" crc="aecaa2bf" map="01"/>
+            <part name="136042-329.6f" crc="ed1d6205" map="01"/>
+            <part name="136042-325.6n" crc="aecaa2bf" map="10"/>
         </interleave>
         <!-- region 0x30000-0x4ffff: nothing fitted -->
         <part repeat="131072">00</part>
         <!-- region 0x50000-0x6ffff = pair 127/123 twice -->
         <interleave output="16">
-            <part name="136042-127.6k" crc="de6c4db9" map="10"/>
-            <part name="136042-123.6r" crc="aff23b5a" map="01"/>
+            <part name="136042-127.6k" crc="de6c4db9" map="01"/>
+            <part name="136042-123.6r" crc="aff23b5a" map="10"/>
         </interleave>
         <interleave output="16">
-            <part name="136042-127.6k" crc="de6c4db9" map="10"/>
-            <part name="136042-123.6r" crc="aff23b5a" map="01"/>
+            <part name="136042-127.6k" crc="de6c4db9" map="01"/>
+            <part name="136042-123.6r" crc="aff23b5a" map="10"/>
         </interleave>
         <!-- region 0x70000-0x8ffff = pair 126/122 twice -->
         <interleave output="16">
-            <part name="136042-126.6l" crc="92f5392c" map="10"/>
-            <part name="136042-122.6s" crc="0381f362" map="01"/>
+            <part name="136042-126.6l" crc="92f5392c" map="01"/>
+            <part name="136042-122.6s" crc="0381f362" map="10"/>
         </interleave>
         <interleave output="16">
-            <part name="136042-126.6l" crc="92f5392c" map="10"/>
-            <part name="136042-122.6s" crc="0381f362" map="01"/>
+            <part name="136042-126.6l" crc="92f5392c" map="01"/>
+            <part name="136042-122.6s" crc="0381f362" map="10"/>
         </interleave>
 
         <!-- 6502 program: nothing at 0x4000-0x7fff, ROMs at 0x8000-0xffff -->
