@@ -142,6 +142,6 @@
         <part name="vid_t06.rv1" crc="60d7aebb"/>
 
         <!-- EEPROM factory contents -->
-        <part name="paperboy-eeprom.bin" crc="1bbf9b07|756b90cc"/>   <!-- MAME's dump, or the one in some sets -->
+        <part name="paperboy-eeprom.bin" crc="756b90cc"/>
     </rom>
 </misterromdescription>

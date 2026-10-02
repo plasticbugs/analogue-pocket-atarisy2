@@ -98,7 +98,7 @@
         <!-- alphanumerics -->
         <part name="136047-1125.4t" crc="6b7e2328"/>
 
-        <!-- 2804 EEPROM: MAME's factory image, or the one shipped in the romset -->
-        <part name="720-eeprom.bin" crc="5d2acf11|cfe1c24e"/>
+        <!-- 2804 EEPROM: MAME's factory image (current MAME's CRC; one CRC per part, as every MRA tool expects) -->
+        <part name="720-eeprom.bin" crc="cfe1c24e"/>
     </rom>
 </misterromdescription>
