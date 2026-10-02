@@ -20,7 +20,11 @@ in software.
 | Paperboy (1984) | `paperboy` | plays on the Pocket; slapstic 105, speech, handlebars on two ADC channels: image byte-exact, T11 cycle-exact, the video gate states pixel-identical and the boot too but for one small element, the sound board's 15 s identical to MAME's log |
 | 720 Degrees (1986) | `720` | plays on the Pocket; slapstic 107, speech, the rotating joystick on two LETA counters: image byte-exact, T11 cycle-exact over the boot and a park demo, the attract states in the video gate pixel-identical, the sound board's POKEYs and speech stream identical to MAME's log (the RANDOM bytes it reports differ because MAME's are its scheduler's, not the chip's) |
 
-## Status (0.3.2)
+## Status (0.3.4)
+
+0.3.3 and 0.3.4 fix the ROM recipes only (the core is 0.3.2's): the interleave
+maps follow the MRA convention, and each part carries one CRC, current MAME's,
+so standard MRA tools build every image from current merged romsets.
 
 0.3.2 ships the platform's own image on the Pocket (the earlier one was a
 placeholder).
